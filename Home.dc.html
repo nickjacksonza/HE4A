@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/health-equity-4-all-design-system-0f3082be-7cd0-44e5-852e-85981f5b017b/tokens/fonts.css">
+<link rel="stylesheet" href="_ds/health-equity-4-all-design-system-0f3082be-7cd0-44e5-852e-85981f5b017b/tokens/colors.css">
+<link rel="stylesheet" href="_ds/health-equity-4-all-design-system-0f3082be-7cd0-44e5-852e-85981f5b017b/tokens/typography.css">
+<link rel="stylesheet" href="_ds/health-equity-4-all-design-system-0f3082be-7cd0-44e5-852e-85981f5b017b/tokens/spacing.css">
+<link rel="stylesheet" href="_ds/health-equity-4-all-design-system-0f3082be-7cd0-44e5-852e-85981f5b017b/tokens/effects.css">
+<link rel="stylesheet" href="_ds/health-equity-4-all-design-system-0f3082be-7cd0-44e5-852e-85981f5b017b/styles.css">
+<script src="_ds/health-equity-4-all-design-system-0f3082be-7cd0-44e5-852e-85981f5b017b/_ds_bundle.js"></script>
+<style>body{margin:0;background:var(--color-paper-50)}a{color:var(--color-sky-700)}a:hover{color:var(--color-sky-800)}</style>
+</helmet>
+<div data-screen-label="Home" style="background:var(--color-paper-50)">
+<dc-import name="SiteHeader" active="Home" hint-size="100%,110px"></dc-import>
+
+<!-- HERO: full-bleed image with floating content panel -->
+<section style="position:relative;min-height:580px;overflow:hidden">
+  <img src="assets/photos/team-outdoors.jpg" alt="Members of the collective standing together outdoors" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%">
+  <div style="position:absolute;inset:0;background:linear-gradient(to right,oklch(17% 0.02 54 / 0.72) 0%,oklch(17% 0.02 54 / 0.35) 60%,transparent 100%)"></div>
+  <div style="position:relative;max-width:var(--container-max);margin:0 auto;padding:96px 48px;display:flex;flex-direction:column;gap:24px">
+    <div style="font-family:var(--font-body);font-weight:600;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-sky-300)">Onward. Together.</div>
+    <h1 style="font-family:var(--font-display);font-weight:600;font-size:clamp(38px,4.4vw,58px);letter-spacing:-0.018em;color:var(--color-paper-50);line-height:1.08;margin:0;text-wrap:pretty;max-width:15ch">Equitable healthcare, built with communities</h1>
+    <p style="font-family:var(--font-body);font-size:18px;color:var(--color-paper-200);line-height:1.6;max-width:44ch;margin:0">We are a global collective of public health leaders working alongside organizations to strengthen governance, programs and practice so your equity commitments become lasting change.</p>
+    <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:8px">
+      <a href="Contact.dc.html" style="font-family:var(--font-body);font-size:16px;font-weight:600;color:var(--color-ink-900);background:var(--color-sky-300);border-radius:999px;padding:15px 28px;text-decoration:none" style-hover="background:var(--color-sky-400)">Start a Conversation</a>
+      <a href="#services" style="font-family:var(--font-body);font-size:16px;font-weight:600;color:var(--color-paper-50);background:transparent;border:1px solid var(--color-paper-200);border-radius:999px;padding:14px 28px;text-decoration:none" style-hover="background:oklch(99% 0 0 / 0.1)">See Our Services</a>
+    </div>
+  </div>
+</section>
+
+<!-- MISSION STRIP -->
+<section style="background:var(--color-paper-50);padding:56px 48px">
+  <div style="max-width:800px;margin:0 auto;text-align:center">
+    <p style="font-family:var(--font-display);font-size:clamp(22px,2.6vw,30px);color:var(--color-ink-900);line-height:1.36;margin:0;text-wrap:pretty">We transform healthcare systems into agents of change for historically excluded communities — BIPOC, LGBTQ+, differently abled, immigrant and refugee populations worldwide.</p>
+  </div>
+</section>
+
+<!-- IMPACT STATS -->
+<sc-if value="{{ showImpact }}" hint-placeholder-val="{{ true }}">
+<section style="background:var(--block-sky);padding:72px 48px">
+  <div style="max-width:var(--container-max);margin:0 auto">
+    <div style="font-family:var(--font-body);font-weight:600;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-ink-800);margin-bottom:32px;text-align:center">Our Reach</div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:32px;text-align:center">
+      <div style="display:flex;flex-direction:column;gap:10px;align-items:center">
+        <div style="font-family:var(--font-display);font-weight:600;font-size:clamp(48px,5vw,64px);line-height:1;color:var(--color-ink-900)">12</div>
+        <div style="font-family:var(--font-body);font-size:15px;color:var(--color-ink-700);line-height:1.6;max-width:24ch">countries where collective members lead health equity work</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:10px;align-items:center">
+        <div style="font-family:var(--font-display);font-weight:600;font-size:clamp(48px,5vw,64px);line-height:1;color:var(--color-ink-900)">40+</div>
+        <div style="font-family:var(--font-body);font-size:15px;color:var(--color-ink-700);line-height:1.6;max-width:24ch">organizations supported with governance, policy and programs</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:10px;align-items:center">
+        <div style="font-family:var(--font-display);font-weight:600;font-size:clamp(48px,5vw,64px);line-height:1;color:var(--color-ink-900)">20 yrs</div>
+        <div style="font-family:var(--font-body);font-size:15px;color:var(--color-ink-700);line-height:1.6;max-width:24ch">of frontline experience in HIV, LGBTQ+ and community health</div>
+      </div>
+    </div>
+  </div>
+</section>
+</sc-if>
+
+<!-- SERVICES: featured card + 3 smaller -->
+<section id="services" style="padding:96px 48px;background:var(--color-paper-50)">
+  <div style="max-width:var(--container-max);margin:0 auto">
+    <div style="font-family:var(--font-body);font-weight:600;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-sky-700);margin-bottom:12px">What We Do</div>
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:48px">
+      <div>
+        <h2 style="font-family:var(--font-display);font-weight:600;font-size:clamp(28px,3vw,40px);letter-spacing:-0.018em;color:var(--color-ink-900);margin:0 0 12px;max-width:20ch;line-height:1.28">Four ways we can support your work</h2>
+        <p style="font-family:var(--font-body);font-size:17px;color:var(--color-ink-600);line-height:1.6;max-width:52ch;margin:0">Every engagement is shaped around what your team needs most — and designed so you can carry it forward on your own.</p>
+      </div>
+      <a href="Contact.dc.html" style="font-family:var(--font-body);font-size:15px;font-weight:600;color:var(--color-ink-900);border:1px solid var(--color-border-strong);border-radius:999px;padding:12px 24px;text-decoration:none;white-space:nowrap" style-hover="background:var(--color-paper-100)">Work with us</a>
+    </div>
+    <!-- Featured + side stack -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px">
+      <a href="Non-Profit-Leadership.dc.html" style="background:var(--color-paper-0);border:1px solid var(--color-border);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;text-decoration:none;grid-row:span 2" style-hover="box-shadow:var(--shadow-md)">
+        <img src="assets/photos/whiteboard-session.jpg" alt="Two colleagues mapping ideas on a whiteboard" style="width:100%;height:280px;object-fit:cover;display:block">
+        <div style="padding:28px;display:flex;flex-direction:column;gap:14px;flex:1">
+          <div style="font-family:var(--font-display);font-weight:600;font-size:24px;color:var(--color-ink-900);line-height:1.28">Non-Profit Leadership</div>
+          <div style="font-family:var(--font-body);font-size:16px;color:var(--color-ink-600);line-height:1.6">Board governance and executive coaching for leaders navigating the real complexity of equity-centered work.</div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:auto">
+            <span style="font-family:var(--font-body);font-size:12px;font-weight:600;color:var(--color-ink-700);background:var(--color-paper-100);border-radius:999px;padding:6px 12px">Board Governance</span>
+            <span style="font-family:var(--font-body);font-size:12px;font-weight:600;color:var(--color-ink-700);background:var(--color-paper-100);border-radius:999px;padding:6px 12px">Executive Coaching</span>
+          </div>
+        </div>
+      </a>
+      <a href="Organizational-Development.dc.html" style="background:var(--color-paper-0);border:1px solid var(--color-border);border-radius:16px;overflow:hidden;display:flex;text-decoration:none;min-height:0" style-hover="box-shadow:var(--shadow-md)">
+        <img src="assets/photos/pair-working.jpg" alt="Two colleagues working at a laptop" style="width:180px;flex:none;object-fit:cover;display:block">
+        <div style="padding:22px;display:flex;flex-direction:column;gap:10px;justify-content:center">
+          <div style="font-family:var(--font-display);font-weight:600;font-size:20px;color:var(--color-ink-900);line-height:1.28">Organizational Development</div>
+          <div style="font-family:var(--font-body);font-size:14px;color:var(--color-ink-600);line-height:1.6">Program oversight, communications, public policy and grant writing that keep your mission funded.</div>
+          <div style="font-family:var(--font-body);font-size:13px;font-weight:600;color:var(--color-sky-700)">Explore →</div>
+        </div>
+      </a>
+      <a href="Trainings.dc.html" style="background:var(--color-paper-0);border:1px solid var(--color-border);border-radius:16px;overflow:hidden;display:flex;text-decoration:none;min-height:0" style-hover="box-shadow:var(--shadow-md)">
+        <img src="assets/photos/team-meeting.jpg" alt="A team in discussion around a table" style="width:180px;flex:none;object-fit:cover;display:block">
+        <div style="padding:22px;display:flex;flex-direction:column;gap:10px;justify-content:center">
+          <div style="font-family:var(--font-display);font-weight:600;font-size:20px;color:var(--color-ink-900);line-height:1.28">Trainings</div>
+          <div style="font-family:var(--font-body);font-size:14px;color:var(--color-ink-600);line-height:1.6">Racial equity, LGBTQ+ equity and social determinants of health — built for practice, not just awareness.</div>
+          <div style="font-family:var(--font-body);font-size:13px;font-weight:600;color:var(--color-sky-700)">Explore →</div>
+        </div>
+      </a>
+    </div>
+    <!-- Public Speaking: full-width banner card -->
+    <a href="Public-Speaking.dc.html" style="margin-top:24px;background:var(--color-paper-0);border:1px solid var(--color-border);border-radius:16px;overflow:hidden;display:grid;grid-template-columns:1fr 1fr;text-decoration:none" style-hover="box-shadow:var(--shadow-md)">
+      <div style="padding:36px;display:flex;flex-direction:column;gap:14px;justify-content:center">
+        <div style="font-family:var(--font-display);font-weight:600;font-size:24px;color:var(--color-ink-900);line-height:1.28">Public Speaking</div>
+        <div style="font-family:var(--font-body);font-size:16px;color:var(--color-ink-600);line-height:1.6;max-width:40ch">Keynotes and panel moderation grounded in the real questions your audience is carrying — not a circuit talk.</div>
+        <div style="font-family:var(--font-body);font-size:14px;font-weight:600;color:var(--color-sky-700)">Explore →</div>
+      </div>
+      <img src="assets/photos/panel-speaking.jpg" alt="A collective member speaking on a panel" style="width:100%;height:100%;min-height:200px;object-fit:cover;display:block">
+    </a>
+  </div>
+</section>
+
+<!-- QUOTE: full-width centered on blossom band -->
+<sc-if value="{{ showQuotes }}" hint-placeholder-val="{{ true }}">
+<section style="background:var(--block-blossom);padding:88px 48px">
+  <div style="max-width:720px;margin:0 auto;text-align:center;display:flex;flex-direction:column;align-items:center;gap:24px">
+    <div style="font-family:var(--font-body);font-weight:600;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-blossom-800)">What We Say To People</div>
+    <p style="font-family:var(--font-display);font-size:clamp(26px,2.8vw,36px);color:var(--color-ink-900);line-height:1.28;margin:0;text-wrap:pretty">{{ quoteText }}</p>
+    <div style="font-family:var(--font-body);font-weight:600;color:var(--color-ink-800);font-size:14px">{{ quoteAuthor }}</div>
+    <div style="display:flex;gap:8px">
+      <sc-for list="{{ dots }}" as="d" hint-placeholder-count="3">
+        <button onClick="{{ d.pick }}" aria-label="{{ d.label }}" style="{{ d.style }}"></button>
+      </sc-for>
+    </div>
+  </div>
+</section>
+</sc-if>
+
+<!-- COLLECTIVE: staggered grid -->
+<sc-if value="{{ showCollective }}" hint-placeholder-val="{{ true }}">
+<section style="padding:96px 48px;background:var(--color-paper-100)">
+  <div style="max-width:var(--container-max);margin:0 auto">
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:48px">
+      <div>
+        <div style="font-family:var(--font-body);font-weight:600;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-sky-700);margin-bottom:12px">Who We Are</div>
+        <h2 style="font-family:var(--font-display);font-weight:600;font-size:clamp(28px,3vw,40px);letter-spacing:-0.018em;color:var(--color-ink-900);margin:0 0 10px;line-height:1.28">The Collective</h2>
+        <p style="font-family:var(--font-body);font-size:17px;color:var(--color-ink-600);max-width:50ch;margin:0;line-height:1.6">Public health leaders across twelve countries, each working where they live.</p>
+      </div>
+      <a href="About-Us.dc.html" style="font-family:var(--font-body);font-size:15px;font-weight:600;color:var(--color-ink-900);border:1px solid var(--color-border-strong);border-radius:999px;padding:12px 24px;text-decoration:none" style-hover="background:var(--color-paper-0)">Meet everyone</a>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:24px">
+      <sc-for list="{{ people }}" as="p" hint-placeholder-count="5">
+        <div style="{{ p.staggerStyle }}">
+          <div style="aspect-ratio:4/5;background:var(--color-paper-200);border:2px dashed var(--color-paper-300);border-radius:10px;display:flex;align-items:flex-end;padding:12px">
+            <span style="font-family:var(--font-body);font-size:12px;color:var(--color-ink-500)">Portrait — {{ p.name }}</span>
+          </div>
+          <div style="font-family:var(--font-display);font-weight:600;font-size:18px;color:var(--color-ink-900);margin-top:12px">{{ p.name }}</div>
+          <div style="font-family:var(--font-body);font-size:12px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--color-blossom-700);margin-top:6px">{{ p.place }}</div>
+          <div style="font-family:var(--font-body);font-size:14px;color:var(--color-ink-600);line-height:1.6;margin-top:8px">{{ p.bio }}</div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+</sc-if>
+
+<!-- CTA: centered warm -->
+<section style="background:var(--block-sky);padding:96px 48px">
+  <div style="max-width:680px;margin:0 auto;text-align:center;display:flex;flex-direction:column;align-items:center;gap:20px">
+    <h2 style="font-family:var(--font-display);font-weight:600;font-size:clamp(28px,3vw,40px);letter-spacing:-0.018em;line-height:1.28;color:var(--color-ink-900);margin:0;text-wrap:pretty">Let's talk about what comes next</h2>
+    <p style="font-family:var(--font-body);font-size:17px;color:var(--color-ink-800);line-height:1.6;max-width:44ch;margin:0">Share the challenge you are working through. We will listen, and we will be honest about whether we can help.</p>
+    <a href="Contact.dc.html" style="display:inline-block;font-family:var(--font-body);font-size:16px;font-weight:600;color:var(--color-paper-50);background:var(--brand-primary);border-radius:999px;padding:16px 32px;text-decoration:none;margin-top:8px" style-hover="background:var(--brand-primary-hover)">Get in Touch</a>
+  </div>
+</section>
+
+<dc-import name="SiteFooter" hint-size="100%,320px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;showImpactBand&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Sections&quot;},&quot;showQuotes&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Sections&quot;},&quot;showCollective&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Sections&quot;}}">
+class Component extends DCLogic {
+  state = { q: 0 };
+  renderVals() {
+    const quotes = [
+      { quote: 'We must move beyond words into actionable steps. Show me your receipts.', author: 'Ace Robinson, M.P.H., M.H.L' },
+      { quote: 'The major difference between public health and thermodynamics is that thermodynamics is easier.', author: 'Ace Robinson, M.P.H., M.H.L' },
+      { quote: 'Achieving health equity is hard. Sometimes it means we have to go over, under, around or through challenges.', author: 'Ace Robinson, M.P.H., M.H.L' }
+    ];
+    const i = this.state.q;
+    const staggerOffsets = [0, 24, 8, 32, 12];
+    return {
+      showImpact: this.props.showImpactBand ?? true,
+      showQuotes: this.props.showQuotes ?? true,
+      showCollective: this.props.showCollective ?? true,
+      quoteText: '\u201C' + quotes[i].quote + '\u201D',
+      quoteAuthor: quotes[i].author,
+      dots: quotes.map((_, idx) => ({
+        label: 'Quote ' + (idx + 1),
+        pick: () => this.setState({ q: idx }),
+        style: { width: 10, height: 10, borderRadius: '50%', border: 'none', cursor: 'pointer', padding: 0, background: idx === i ? 'var(--color-ink-900)' : 'var(--color-blossom-500)' }
+      })),
+      people: [
+        { name: 'Ace Robinson', place: 'Seattle, USA', bio: 'Founder and Principal. Administrative and policy advocate in communicable disease; Acting Director of the Duke University Sexual & Gender Minority Wellness program.' },
+        { name: 'Lauren Miller', place: 'Atlanta, USA', bio: 'Advocate for DEI and health equity, guided by friendship, leadership and service to humanity.' },
+        { name: 'Diego Calixto', place: 'Brasília, Brazil', bio: 'Activist living with HIV and researcher at Fiocruz Brasília, focused on health and social justice.' },
+        { name: 'Lucy Wanjiku Njenga', place: 'Nairobi, Kenya', bio: 'HIV response leader for over a decade, building feminist movements from grassroots to global level.' },
+        { name: 'Eduardo Culbeaux', place: 'Southeast Asia', bio: 'Educator for over a decade, empowering youth through journalism and media programs.' }
+      ].map((p, idx) => ({ ...p, staggerStyle: { paddingTop: staggerOffsets[idx] + 'px', display: 'flex', flexDirection: 'column' } }))
+    };
+  }
+}
+</script>
+</body>
+</html>

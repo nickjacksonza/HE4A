@@ -1,0 +1,31 @@
+:root{
+/* Newsreader for headings — a newspaper serif, warm and readable at every size.
+   Public Sans for body and UI. Both cover the full Latin-1 range needed for FR / ES / PT. */
+--font-display:'Newsreader',Georgia,'Times New Roman',serif;
+--font-body:'Public Sans',system-ui,-apple-system,sans-serif;
+--font-mono:ui-monospace,'SFMono-Regular',Menlo,Consolas,monospace;
+
+--text-xs:0.75rem;
+--text-sm:0.875rem;
+--text-base:1rem;
+--text-md:1.125rem;
+--text-lg:1.375rem;
+--text-xl:1.75rem;
+--text-2xl:2.25rem;
+--text-3xl:3rem;
+--text-4xl:4rem;
+
+--weight-regular:400;
+--weight-medium:500;
+--weight-semibold:600;
+--weight-bold:700;
+
+--leading-tight:1.08;
+--leading-snug:1.28;
+--leading-normal:1.6;
+--leading-relaxed:1.75;
+
+--tracking-tight:-0.018em;
+--tracking-normal:0em;
+--tracking-wide:0.08em;
+}

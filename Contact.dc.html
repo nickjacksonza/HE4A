@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/health-equity-4-all-design-system-0f3082be-7cd0-44e5-852e-85981f5b017b/tokens/fonts.css">
+<link rel="stylesheet" href="_ds/health-equity-4-all-design-system-0f3082be-7cd0-44e5-852e-85981f5b017b/tokens/colors.css">
+<link rel="stylesheet" href="_ds/health-equity-4-all-design-system-0f3082be-7cd0-44e5-852e-85981f5b017b/tokens/typography.css">
+<link rel="stylesheet" href="_ds/health-equity-4-all-design-system-0f3082be-7cd0-44e5-852e-85981f5b017b/tokens/spacing.css">
+<link rel="stylesheet" href="_ds/health-equity-4-all-design-system-0f3082be-7cd0-44e5-852e-85981f5b017b/tokens/effects.css">
+<link rel="stylesheet" href="_ds/health-equity-4-all-design-system-0f3082be-7cd0-44e5-852e-85981f5b017b/styles.css">
+<script src="_ds/health-equity-4-all-design-system-0f3082be-7cd0-44e5-852e-85981f5b017b/_ds_bundle.js"></script>
+<style>body{margin:0;background:var(--color-paper-50)}a{color:var(--color-sky-700)}a:hover{color:var(--color-sky-800)}</style>
+</helmet>
+<div data-screen-label="Contact" style="background:var(--color-paper-50)">
+<dc-import name="SiteHeader" active="Contact" hint-size="100%,110px"></dc-import>
+
+<!-- INTRO -->
+<section style="padding:72px 48px 0;background:var(--color-paper-50)">
+  <div style="max-width:var(--container-max);margin:0 auto">
+    <div style="font-family:var(--font-body);font-size:13px;color:var(--color-ink-500);margin-bottom:18px"><a href="Home.dc.html" style="color:var(--color-ink-500);text-decoration:none">Home</a> / Contact</div>
+    <h1 style="font-family:var(--font-display);font-weight:600;font-size:clamp(34px,4vw,52px);letter-spacing:-0.018em;color:var(--color-ink-900);line-height:1.08;margin:0 0 18px;text-wrap:pretty;max-width:18ch">Let's talk about what comes next</h1>
+    <p style="font-family:var(--font-body);font-size:18px;color:var(--color-ink-600);line-height:1.6;max-width:52ch;margin:0">Share the challenge you are working through. We reply within three business days, and we will be honest about how we can help.</p>
+  </div>
+</section>
+
+<!-- FORM + INFO -->
+<section style="padding:48px 48px 96px;background:var(--color-paper-50)">
+  <div style="max-width:var(--container-max);margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:40px;align-items:start">
+
+    <!-- Form card -->
+    <div style="background:var(--color-paper-0);border:1px solid var(--color-border);border-radius:16px;padding:36px">
+      <h2 style="font-family:var(--font-display);font-weight:600;font-size:24px;color:var(--color-ink-900);margin:0 0 24px;line-height:1.28">Send a message</h2>
+      <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
+        <div style="background:var(--color-sky-100);border-radius:10px;padding:28px;font-family:var(--font-body);font-size:16px;color:var(--color-ink-800);line-height:1.6">
+          <div style="font-family:var(--font-display);font-weight:600;font-size:20px;color:var(--color-ink-900);margin-bottom:8px">Thank you for reaching out</div>
+          We have received your message and will get back to you within three business days.
+        </div>
+      </sc-if>
+      <sc-if value="{{ notSent }}" hint-placeholder-val="{{ true }}">
+        <div style="display:flex;flex-direction:column;gap:18px">
+          <label style="display:flex;flex-direction:column;gap:7px;font-family:var(--font-body);font-size:14px;font-weight:600;color:var(--color-ink-800)">Name
+            <input placeholder="Your name" style="font-family:var(--font-body);font-size:15px;font-weight:400;color:var(--color-ink-900);background:var(--color-paper-0);border:1px solid var(--color-border-strong);border-radius:8px;padding:13px 14px;min-height:44px">
+          </label>
+          <label style="display:flex;flex-direction:column;gap:7px;font-family:var(--font-body);font-size:14px;font-weight:600;color:var(--color-ink-800)">Email
+            <input placeholder="you@example.com" style="font-family:var(--font-body);font-size:15px;font-weight:400;color:var(--color-ink-900);background:var(--color-paper-0);border:1px solid var(--color-border-strong);border-radius:8px;padding:13px 14px;min-height:44px">
+          </label>
+          <label style="display:flex;flex-direction:column;gap:7px;font-family:var(--font-body);font-size:14px;font-weight:600;color:var(--color-ink-800)">Organization
+            <input placeholder="Where you work" style="font-family:var(--font-body);font-size:15px;font-weight:400;color:var(--color-ink-900);background:var(--color-paper-0);border:1px solid var(--color-border-strong);border-radius:8px;padding:13px 14px;min-height:44px">
+          </label>
+          <label style="display:flex;flex-direction:column;gap:7px;font-family:var(--font-body);font-size:14px;font-weight:600;color:var(--color-ink-800)">What can we help with?
+            <select style="font-family:var(--font-body);font-size:15px;font-weight:400;color:var(--color-ink-900);background:var(--color-paper-0);border:1px solid var(--color-border-strong);border-radius:8px;padding:13px 14px;min-height:44px">
+              <option>Non-Profit Leadership</option>
+              <option>Organizational Development</option>
+              <option>Trainings</option>
+              <option>Public Speaking</option>
+              <option>Something else</option>
+            </select>
+          </label>
+          <label style="display:flex;flex-direction:column;gap:7px;font-family:var(--font-body);font-size:14px;font-weight:600;color:var(--color-ink-800)">Message
+            <textarea rows="5" placeholder="Tell us about the challenge you are working through." style="font-family:var(--font-body);font-size:15px;font-weight:400;color:var(--color-ink-900);background:var(--color-paper-0);border:1px solid var(--color-border-strong);border-radius:8px;padding:13px 14px;resize:vertical"></textarea>
+          </label>
+          <button onClick="{{ send }}" style="align-self:flex-start;font-family:var(--font-body);font-size:16px;font-weight:600;color:var(--color-paper-50);background:var(--brand-primary);border:none;border-radius:999px;padding:15px 30px;min-height:44px;cursor:pointer" style-hover="background:var(--brand-primary-hover)">Send Message</button>
+        </div>
+      </sc-if>
+    </div>
+
+    <!-- Right column: photo + info cards -->
+    <div style="display:flex;flex-direction:column;gap:24px">
+      <div style="border-radius:16px;overflow:hidden">
+        <img src="assets/photos/pair-working.jpg" alt="Two colleagues working together" style="width:100%;height:240px;object-fit:cover;display:block">
+      </div>
+
+      <div style="background:var(--block-sky);border-radius:16px;padding:32px;display:flex;flex-direction:column;gap:20px">
+        <h2 style="font-family:var(--font-display);font-weight:600;font-size:22px;color:var(--color-ink-900);margin:0;line-height:1.28">Where to find us</h2>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
+          <div>
+            <h3 style="font-family:var(--font-body);font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-ink-800);margin:0 0 6px">Offices</h3>
+            <div style="font-family:var(--font-body);font-size:15px;color:var(--color-ink-900);line-height:1.6">Seattle, USA<br>Cape Town, South Africa</div>
+          </div>
+          <div>
+            <h3 style="font-family:var(--font-body);font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-ink-800);margin:0 0 6px">Hours</h3>
+            <div style="font-family:var(--font-body);font-size:15px;color:var(--color-ink-900);line-height:1.6">Mon – Fri<br>8:00 am – 5:00 pm</div>
+          </div>
+        </div>
+        <div>
+          <h3 style="font-family:var(--font-body);font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-ink-800);margin:0 0 6px">Languages</h3>
+          <div style="font-family:var(--font-body);font-size:15px;color:var(--color-ink-900);line-height:1.6">English · Français · Español · Português</div>
+        </div>
+      </div>
+
+      <div style="background:var(--block-blossom);border-radius:16px;padding:32px;display:flex;flex-direction:column;gap:12px">
+        <div style="font-family:var(--font-display);font-weight:600;font-size:20px;color:var(--color-ink-900)">Follow along</div>
+        <div style="display:flex;gap:12px;flex-wrap:wrap">
+          <a href="https://www.facebook.com/EquityIsTheWord" style="font-family:var(--font-body);font-size:14px;font-weight:600;color:var(--color-ink-800);background:var(--color-paper-0);border-radius:999px;padding:10px 18px;text-decoration:none" style-hover="background:var(--color-paper-100)">Facebook</a>
+          <a href="https://instagram.com/healthequity_4_all" style="font-family:var(--font-body);font-size:14px;font-weight:600;color:var(--color-ink-800);background:var(--color-paper-0);border-radius:999px;padding:10px 18px;text-decoration:none" style-hover="background:var(--color-paper-100)">Instagram</a>
+          <a href="https://linkedin.com/company/healthequity-4-all" style="font-family:var(--font-body);font-size:14px;font-weight:600;color:var(--color-ink-800);background:var(--color-paper-0);border-radius:999px;padding:10px 18px;text-decoration:none" style-hover="background:var(--color-paper-100)">LinkedIn</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<dc-import name="SiteFooter" hint-size="100%,320px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { sent: false };
+  renderVals() {
+    return {
+      sent: this.state.sent,
+      notSent: !this.state.sent,
+      send: () => this.setState({ sent: true })
+    };
+  }
+}
+</script>
+</body>
+</html>

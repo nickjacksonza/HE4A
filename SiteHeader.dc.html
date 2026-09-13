@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/health-equity-4-all-design-system-0f3082be-7cd0-44e5-852e-85981f5b017b/tokens/fonts.css">
+<link rel="stylesheet" href="_ds/health-equity-4-all-design-system-0f3082be-7cd0-44e5-852e-85981f5b017b/tokens/colors.css">
+<link rel="stylesheet" href="_ds/health-equity-4-all-design-system-0f3082be-7cd0-44e5-852e-85981f5b017b/tokens/typography.css">
+<link rel="stylesheet" href="_ds/health-equity-4-all-design-system-0f3082be-7cd0-44e5-852e-85981f5b017b/tokens/spacing.css">
+<link rel="stylesheet" href="_ds/health-equity-4-all-design-system-0f3082be-7cd0-44e5-852e-85981f5b017b/tokens/effects.css">
+<link rel="stylesheet" href="_ds/health-equity-4-all-design-system-0f3082be-7cd0-44e5-852e-85981f5b017b/styles.css">
+<script src="_ds/health-equity-4-all-design-system-0f3082be-7cd0-44e5-852e-85981f5b017b/_ds_bundle.js"></script>
+</helmet>
+<div style="position:relative;z-index:20;font-family:var(--font-body)">
+  <div style="background:var(--color-ink-900);display:flex;justify-content:flex-end;align-items:center;gap:16px;padding:7px 32px">
+    <span style="font-size:12px;color:var(--color-paper-200)">Language</span>
+    <div style="display:flex;gap:2px">
+      <sc-for list="{{ langs }}" as="l" hint-placeholder-count="4">
+        <button onClick="{{ l.pick }}" title="{{ l.name }}" style="{{ l.style }}">{{ l.code }}</button>
+      </sc-for>
+    </div>
+  </div>
+  <header style="display:flex;align-items:center;justify-content:space-between;gap:24px;padding:14px 32px;background:var(--color-paper-50);border-bottom:1px solid var(--color-border);flex-wrap:wrap">
+    <a href="Home.dc.html" style="display:flex;align-items:center;gap:12px;text-decoration:none">
+      <img src="assets/logo/mark-transparent.webp" alt="Health Equity 4 All" style="height:38px;display:block">
+      <span style="font-family:var(--font-display);font-weight:600;font-size:18px;color:var(--color-ink-900)">Equity Is the Word</span>
+    </a>
+    <nav style="display:flex;align-items:center;gap:22px;flex-wrap:wrap">
+      <sc-for list="{{ navItems }}" as="n" hint-placeholder-count="5">
+        <div onMouseEnter="{{ n.enter }}" onMouseLeave="{{ n.leave }}" style="position:relative;padding:8px 0">
+          <a href="{{ n.href }}" style="font-size:14px;font-weight:500;color:var(--color-ink-900);text-decoration:none;display:block" style-hover="color:var(--color-sky-700)">{{ n.label }}</a>
+          <sc-if value="{{ n.isActive }}" hint-placeholder-val="{{ false }}">
+            <div style="height:2px;background:var(--color-blossom-500);margin-top:5px;border-radius:2px"></div>
+          </sc-if>
+          <sc-if value="{{ n.isOpen }}" hint-placeholder-val="{{ false }}">
+            <div style="position:absolute;top:36px;left:-12px;background:var(--color-paper-0);box-shadow:var(--shadow-lg);border-radius:10px;border:1px solid var(--color-border);padding:10px;display:flex;flex-direction:column;gap:2px;min-width:250px">
+              <sc-for list="{{ n.items }}" as="it" hint-placeholder-count="2">
+                <a href="{{ n.href }}" style="font-size:14px;color:var(--color-ink-600);padding:7px 10px;border-radius:6px;text-decoration:none" style-hover="background:var(--color-paper-100);color:var(--color-sky-700)">{{ it }}</a>
+              </sc-for>
+            </div>
+          </sc-if>
+        </div>
+      </sc-for>
+      <a href="Contact.dc.html" style="font-size:14px;font-weight:600;color:var(--color-paper-50);background:var(--brand-primary);border-radius:999px;padding:11px 20px;text-decoration:none;line-height:1" style-hover="background:var(--brand-primary-hover)">Work With Us</a>
+    </nav>
+  </header>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;active&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+class Component extends DCLogic {
+  state = { open: null, lang: 'EN' };
+  renderVals() {
+    const active = this.props.active || '';
+    const nav = [
+      { label: 'Non-Profit Leadership', href: 'Non-Profit-Leadership.dc.html', items: ['Board Governance', 'Executive Coaching'] },
+      { label: 'Organizational Development', href: 'Organizational-Development.dc.html', items: ['Program Oversight', 'Marketing and Communications', 'Public Policy', 'Grant Writing'] },
+      { label: 'Trainings', href: 'Trainings.dc.html', items: ['Racial Equity', 'LGBTQ+ Equity', 'Social Determinants of Health Awareness'] },
+      { label: 'Public Speaking', href: 'Public-Speaking.dc.html', items: ['Keynote', 'Moderating'] },
+      { label: 'About Us', href: 'About-Us.dc.html', items: [] }
+    ];
+    const langs = [['EN', 'English'], ['FR', 'Français'], ['ES', 'Español'], ['PT', 'Português']].map(([code, name]) => ({
+      code, name,
+      pick: () => this.setState({ lang: code }),
+      style: {
+        fontFamily: 'var(--font-body)', fontSize: 12, fontWeight: 600, letterSpacing: '0.04em',
+        padding: '5px 11px', minHeight: 26, borderRadius: 6, border: 'none', cursor: 'pointer',
+        background: this.state.lang === code ? 'var(--color-sky-300)' : 'transparent',
+        color: this.state.lang === code ? 'var(--color-ink-900)' : 'var(--color-paper-200)'
+      }
+    }));
+    return {
+      langs,
+      navItems: nav.map(n => ({
+        label: n.label, href: n.href, items: n.items,
+        isActive: n.label === active,
+        isOpen: this.state.open === n.label && n.items.length > 0,
+        enter: () => this.setState({ open: n.label }),
+        leave: () => this.setState({ open: null })
+      }))
+    };
+  }
+}
+</script>
+</body>
+</html>

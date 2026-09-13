@@ -1,0 +1,15 @@
+:root{
+--shadow-sm:0 1px 2px oklch(30% 0.03 60 / 0.08);
+--shadow-md:0 6px 16px oklch(30% 0.03 60 / 0.10),0 1px 3px oklch(30% 0.03 60 / 0.07);
+--shadow-lg:0 20px 48px oklch(30% 0.03 60 / 0.15),0 4px 10px oklch(30% 0.03 60 / 0.08);
+
+--focus-ring:0 0 0 3px oklch(62% 0.135 226.5 / 0.5);
+
+--ease-standard:cubic-bezier(.4,0,.2,1); /* @kind other */
+--duration-fast:120ms; /* @kind other */
+--duration-base:200ms; /* @kind other */
+--duration-slow:340ms; /* @kind other */
+
+--gradient-spectrum:linear-gradient(120deg,var(--color-spectrum-coral),var(--color-spectrum-gold) 22%,var(--color-spectrum-leaf) 42%,var(--color-spectrum-teal) 60%,var(--color-spectrum-steel) 78%,var(--color-spectrum-indigo));
+--gradient-pastel:linear-gradient(120deg,var(--color-sky-300),var(--color-paper-50) 50%,var(--color-blossom-300));
+}
