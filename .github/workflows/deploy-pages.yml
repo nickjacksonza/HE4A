@@ -3,6 +3,10 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches: [main]
+    # site/ is a committed build snapshot kept in sync by sync-site-folder.yml
+    # (see that workflow) -- a push that only touches it doesn't need a
+    # redundant Pages redeploy.
+    paths-ignore: ['site/**']
   workflow_dispatch:
 
 permissions:

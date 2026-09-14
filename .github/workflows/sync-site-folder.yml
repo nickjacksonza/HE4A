@@ -1,0 +1,55 @@
+name: Sync site/ with latest build
+
+# Keeps the committed site/ folder (a plain, ready-to-upload HTML/CSS/JS
+# snapshot for manual deployment -- see site/README.md) in sync with the
+# actual source under build/, src/ and assets/. Builds for root deployment
+# (no SITE_BASE_PATH) since site/ is meant for uploading straight to a
+# server's web root, not a GitHub Pages subpath.
+
+on:
+  push:
+    branches: [main]
+    # Avoid retriggering on the sync commit this workflow itself makes.
+    paths-ignore: ['site/**']
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sync-site-folder
+  cancel-in-progress: true
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      # --omit=dev: sharp/png-to-ico are only used by the one-off
+      # scripts/optimize-images.js and scripts/generate-favicons.js, not by
+      # build/build.js itself.
+      - run: npm ci --omit=dev
+
+      - run: npm run build
+
+      # Mirror dist/ into site/, deleting anything no longer produced by
+      # the build, but keeping the hand-written README.md that isn't part
+      # of the build output.
+      - run: rsync -a --delete --exclude 'README.md' dist/ site/
+
+      - name: Commit and push if site/ changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add site
+          if git diff --cached --quiet; then
+            echo "site/ already up to date -- nothing to commit."
+          else
+            git commit -m "chore: sync site/ with latest build ($(date -u +%Y-%m-%d))"
+            git push
+          fi
