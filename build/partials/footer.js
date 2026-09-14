@@ -1,7 +1,7 @@
 const site = require('../content/site');
 const { NAV_LABELS } = require('../content/nav');
 const shared = require('../content/shared');
-const { href } = require('../helpers');
+const { href, asset } = require('../helpers');
 
 const FOOTER_COPY = {
   en: { services: 'Services', organization: 'Organization', businessHours: 'Business Hours', availableIn: 'Available in', contactCta: 'Contact Us →', blurb: 'A global health equity collective working with the communities healthcare has left out.' },
@@ -20,7 +20,7 @@ function footer(locale) {
   <div class="footer-grid">
     <div class="footer-col">
       <div class="footer-brand-row">
-        <img src="/assets/logo/mark-transparent-76.webp" alt="Health Equity 4 All" width="39" height="34" class="footer-logo">
+        <img src="${asset('assets/logo/mark-transparent-76.webp')}" alt="Health Equity 4 All" width="39" height="34" class="footer-logo">
         <span class="footer-wordmark">Equity Is the Word</span>
       </div>
       <p class="footer-blurb">${f.blurb}</p>

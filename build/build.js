@@ -10,6 +10,7 @@ const meta = require('./partials/meta');
 const site = require('./content/site');
 const locales = require('./content/locales');
 const clientStrings = require('./content/clientStrings');
+const { asset } = require('./helpers');
 
 const pages = [
   require('./content/pages/home'),
@@ -60,7 +61,7 @@ ${page.main(locale.code)}
 </main>
 ${footer(locale.code)}
 ${i18nScript}
-<script defer src="/scripts.js"></script>
+<script defer src="${asset('scripts.js')}"></script>
 </body>
 </html>
 `;

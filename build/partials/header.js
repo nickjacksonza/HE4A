@@ -1,6 +1,6 @@
 const { NAV_STRUCTURE, NAV_LABELS } = require('../content/nav');
 const locales = require('../content/locales');
-const { href } = require('../helpers');
+const { href, asset } = require('../helpers');
 
 function langBar(currentLocale, currentOutputFile) {
   const buttons = locales.map((locale) => {
@@ -52,7 +52,7 @@ function header(locale, activeNavId, currentOutputFile) {
 ${langBar(locale, currentOutputFile)}
   <header class="site-header">
     <a href="${href(locale, 'index.html')}" class="site-logo">
-      <img src="/assets/logo/mark-transparent-76.webp" alt="Health Equity 4 All" width="43" height="38" class="site-logo-mark">
+      <img src="${asset('assets/logo/mark-transparent-76.webp')}" alt="Health Equity 4 All" width="43" height="38" class="site-logo-mark">
       <span class="site-logo-word">Equity Is the Word</span>
     </a>
     <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="primary-nav" aria-label="Open menu">

@@ -1,0 +1,55 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Only one deployment at a time; cancel any in-progress run if a newer push lands.
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      # --omit=dev: sharp/png-to-ico are only used by the one-off
+      # scripts/optimize-images.js and scripts/generate-favicons.js, not by
+      # build/build.js itself, so the deploy build doesn't need them.
+      - run: npm ci --omit=dev
+
+      # SITE_BASE_PATH matches this repo's GitHub Pages project-site subpath
+      # (https://nickjacksonza.github.io/HE4A/) so every internal link and
+      # asset path resolves correctly there. Unset (or empty) for a root
+      # deployment, e.g. behind a future custom domain.
+      - run: npm run build
+        env:
+          SITE_BASE_PATH: /HE4A
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

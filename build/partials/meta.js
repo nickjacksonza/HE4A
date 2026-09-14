@@ -1,5 +1,6 @@
 const site = require('../content/site');
 const locales = require('../content/locales');
+const { asset } = require('../helpers');
 
 function organizationJsonLd() {
   return {
@@ -44,14 +45,14 @@ function meta(pageMeta) {
 ${alternates}
 ${xDefault}
 
-<link rel="icon" href="/assets/icons/favicon.ico" sizes="32x32">
-<link rel="icon" type="image/png" href="/assets/icons/icon-192.png" sizes="192x192">
-<link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
-<link rel="manifest" href="/assets/icons/site.webmanifest">
+<link rel="icon" href="${asset('assets/icons/favicon.ico')}" sizes="32x32">
+<link rel="icon" type="image/png" href="${asset('assets/icons/icon-192.png')}" sizes="192x192">
+<link rel="apple-touch-icon" href="${asset('assets/icons/apple-touch-icon.png')}">
+<link rel="manifest" href="${asset('assets/icons/site.webmanifest')}">
 
-<link rel="preload" as="font" type="font/woff2" href="/assets/fonts/public-sans/public-sans-400-latin.woff2" crossorigin>
-<link rel="preload" as="font" type="font/woff2" href="/assets/fonts/newsreader/newsreader-600-latin.woff2" crossorigin>
-<link rel="stylesheet" href="/styles.css">
+<link rel="preload" as="font" type="font/woff2" href="${asset('assets/fonts/public-sans/public-sans-400-latin.woff2')}" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="${asset('assets/fonts/newsreader/newsreader-600-latin.woff2')}" crossorigin>
+<link rel="stylesheet" href="${asset('styles.css')}">
 
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="${site.siteName}">
