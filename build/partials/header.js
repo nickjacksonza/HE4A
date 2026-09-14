@@ -1,19 +1,13 @@
-const navItems = require('../content/nav');
-const { slugify } = require('../helpers');
+const { NAV_STRUCTURE, NAV_LABELS } = require('../content/nav');
+const locales = require('../content/locales');
+const { href } = require('../helpers');
 
-const LANGS = [
-  { code: 'EN', name: 'English', active: true },
-  { code: 'FR', name: 'Français', active: false },
-  { code: 'ES', name: 'Español', active: false },
-  { code: 'PT', name: 'Português', active: false }
-];
-
-function langBar() {
-  const buttons = LANGS.map((lang) => {
-    if (lang.active) {
-      return `      <button type="button" class="lang-btn is-active" aria-current="true">${lang.code}</button>`;
+function langBar(currentLocale, currentOutputFile) {
+  const buttons = locales.map((locale) => {
+    if (locale.code === currentLocale) {
+      return `      <span class="lang-btn is-active" aria-current="true">${locale.code.toUpperCase()}</span>`;
     }
-    return `      <button type="button" class="lang-btn" disabled aria-disabled="true" title="${lang.name} — translation coming soon">${lang.code}<span class="visually-hidden"> (${lang.name}, coming soon)</span></button>`;
+    return `      <a href="${href(locale.code, currentOutputFile)}" class="lang-btn" title="${locale.endonym}">${locale.code.toUpperCase()}</a>`;
   }).join('\n');
 
   return `  <div class="lang-bar">
@@ -24,25 +18,27 @@ ${buttons}
   </div>`;
 }
 
-function navMarkup(activeLabel) {
-  return navItems
+function navMarkup(locale, activeNavId) {
+  const labels = NAV_LABELS[locale];
+  return NAV_STRUCTURE
     .map((item) => {
-      const isActive = item.label === activeLabel;
+      const isActive = item.id === activeNavId;
       const hasDropdown = item.items.length > 0;
       const underline = isActive ? '\n        <span class="nav-link-underline" aria-hidden="true"></span>' : '';
+      const itemHref = href(locale, item.href);
 
       if (!hasDropdown) {
         return `      <div class="nav-item">
-        <a href="${item.href}" class="nav-link"${isActive ? ' aria-current="page"' : ''}>${item.label}</a>${underline}
+        <a href="${itemHref}" class="nav-link"${isActive ? ' aria-current="page"' : ''}>${labels[item.id]}</a>${underline}
       </div>`;
       }
 
       const dropdownLinks = item.items
-        .map((sub) => `          <a href="${item.href}#${sub.anchor}" class="nav-dropdown-link">${sub.label}</a>`)
+        .map((sub) => `          <a href="${itemHref}#${sub.anchor}" class="nav-dropdown-link">${labels[sub.id]}</a>`)
         .join('\n');
 
       return `      <div class="nav-item">
-        <a href="${item.href}" class="nav-link" aria-haspopup="true" aria-expanded="false">${item.label} <span class="nav-caret" aria-hidden="true">▾</span></a>${underline}
+        <a href="${itemHref}" class="nav-link" aria-haspopup="true" aria-expanded="false">${labels[item.id]} <span class="nav-caret" aria-hidden="true">▾</span></a>${underline}
         <div class="nav-dropdown">
 ${dropdownLinks}
         </div>
@@ -51,20 +47,20 @@ ${dropdownLinks}
     .join('\n');
 }
 
-function header(activeLabel) {
+function header(locale, activeNavId, currentOutputFile) {
   return `<div class="site-header-wrap">
-${langBar()}
+${langBar(locale, currentOutputFile)}
   <header class="site-header">
-    <a href="index.html" class="site-logo">
-      <img src="assets/logo/mark-transparent-76.webp" alt="Health Equity 4 All" width="43" height="38" class="site-logo-mark">
+    <a href="${href(locale, 'index.html')}" class="site-logo">
+      <img src="/assets/logo/mark-transparent-76.webp" alt="Health Equity 4 All" width="43" height="38" class="site-logo-mark">
       <span class="site-logo-word">Equity Is the Word</span>
     </a>
     <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="primary-nav" aria-label="Open menu">
       <span class="nav-toggle-icon" aria-hidden="true"></span>
     </button>
     <nav class="nav" id="primary-nav">
-${navMarkup(activeLabel)}
-      <a href="contact.html" class="btn btn-primary btn-sm nav-cta">Work With Us</a>
+${navMarkup(locale, activeNavId)}
+      <a href="${href(locale, 'contact.html')}" class="btn btn-primary btn-sm nav-cta">${NAV_LABELS[locale].workWithUs}</a>
     </nav>
   </header>
 </div>`;

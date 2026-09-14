@@ -1,5 +1,19 @@
 // Shared template helpers used by build/content/pages/*.js modules.
 
+const locales = require('./content/locales');
+
+// Builds an internal same-site link, prefixed with the current locale's
+// URL segment (e.g. locale 'fr' -> "/fr/contact.html"; the default locale
+// 'en' stays unprefixed -> "/contact.html"). Every internal href/src in the
+// build must go through this (or already be locale-agnostic, like asset
+// paths or same-page "#anchor" links) so translated pages don't silently
+// link back to the English root.
+function href(locale, targetPath) {
+  const l = locales.find((x) => x.code === locale);
+  const prefix = l && !l.isDefault ? `/${l.code}` : '';
+  return `${prefix}/${targetPath}`;
+}
+
 // Intrinsic pixel dimensions of each source photo (assets/photos/*.jpg) --
 // used for width/height attributes so the browser can reserve layout space
 // before the image loads (prevents CLS) regardless of the CSS display size.
@@ -24,7 +38,9 @@ function escapeHtml(str) {
 // `priority: true` marks the page's LCP image (fetchpriority high, eager);
 // otherwise the image is lazy-loaded.
 function picture({ name, widths, sizes, alt, imgClass, priority }) {
-  const dir = `assets/photos-optimized/${name}`;
+  // Root-relative so the same markup resolves correctly from locale
+  // subdirectories (dist/fr/page.html) and from the site root alike.
+  const dir = `/assets/photos-optimized/${name}`;
   const srcset = (ext) => widths.map((w) => `${dir}/${name}-${w}.${ext} ${w}w`).join(', ');
   const largest = widths[widths.length - 1];
   const dims = INTRINSIC[name];
@@ -72,10 +88,15 @@ ${faqs
 </div>`;
 }
 
+// "Portrait" placeholder-text prefix shown over portrait-placeholder boxes,
+// translated since it's user-visible copy (unlike the person's own name).
+const PORTRAIT_LABEL = { en: 'Portrait', fr: 'Portrait', es: 'Retrato', pt: 'Retrato' };
+
 // Renders one team-card row.
-function teamCard(person) {
+function teamCard(person, locale) {
+  const label = PORTRAIT_LABEL[locale] || PORTRAIT_LABEL.en;
   return `<div class="team-card">
-  <div class="team-portrait-placeholder"><span>Portrait — ${escapeHtml(person.name)}</span></div>
+  <div class="team-portrait-placeholder"><span>${label} — ${escapeHtml(person.name)}</span></div>
   <div class="team-info">
     <div class="team-name">${escapeHtml(person.name)}</div>
     <div class="team-role">${escapeHtml(person.role)}</div>
@@ -84,4 +105,4 @@ function teamCard(person) {
 </div>`;
 }
 
-module.exports = { escapeHtml, picture, slugify, accordion, teamCard, INTRINSIC };
+module.exports = { escapeHtml, href, picture, slugify, accordion, teamCard, PORTRAIT_LABEL, INTRINSIC };

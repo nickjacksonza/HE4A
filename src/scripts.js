@@ -220,6 +220,13 @@
 
     var status = document.querySelector('[data-form-status]');
     var endpoint = form.dataset.endpoint;
+    var i18n = window.__I18N__ || {
+      requiredField: 'Please complete this field.',
+      invalidEmail: 'Enter a valid email address.',
+      successHeading: 'Thank you for reaching out',
+      successBody: 'We have received your message and will get back to you within three business days.',
+      errorBody: 'Something went wrong sending your message. Please try again, or email us directly.'
+    };
 
     function showError(field, message) {
       var errorEl = document.getElementById(field.id + '-error');
@@ -244,10 +251,10 @@
       fields.forEach(function (field) {
         clearError(field);
         if (!field.value.trim()) {
-          showError(field, 'Please complete this field.');
+          showError(field, i18n.requiredField);
           valid = false;
         } else if (field.type === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(field.value)) {
-          showError(field, 'Enter a valid email address.');
+          showError(field, i18n.invalidEmail);
           valid = false;
         }
       });
@@ -276,7 +283,7 @@
             if (status) {
               status.hidden = false;
               status.classList.remove('form-status--error');
-              status.innerHTML = '<div class="form-status-heading">Thank you for reaching out</div>We have received your message and will get back to you within three business days.';
+              status.innerHTML = '<div class="form-status-heading">' + i18n.successHeading + '</div>' + i18n.successBody;
               status.focus();
             }
           } else {
@@ -287,7 +294,7 @@
           if (status) {
             status.hidden = false;
             status.classList.add('form-status--error');
-            status.textContent = 'Something went wrong sending your message. Please try again, or email us directly.';
+            status.textContent = i18n.errorBody;
           }
           if (submitBtn) submitBtn.disabled = false;
         });

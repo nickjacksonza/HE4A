@@ -1,8 +1,15 @@
 // Single source of truth for cross-page facts referenced by partials and page modules.
+// Brand/legal names, URLs, and office city/country are proper nouns -- they stay
+// flat (unchanged across locales). Only tagline/hours are locale-keyed copy.
 module.exports = {
   siteName: 'Health Equity 4 All',
   legalName: 'Equity Is the Word, LLC',
-  tagline: 'Onward. Together.',
+  tagline: {
+    en: 'Onward. Together.',
+    fr: 'En Avant. Ensemble.',
+    es: 'Adelante. Juntos.',
+    pt: 'Em Frente. Juntos.'
+  },
   baseUrl: 'https://www.healthequity4all.org',
   formEndpoint: 'https://formspree.io/f/REPLACE_ME',
   social: {
@@ -15,8 +22,10 @@ module.exports = {
     { city: 'Cape Town', country: 'South Africa' }
   ],
   hours: {
-    weekday: 'Mon – Fri, 8:00 am – 5:00 pm',
-    weekend: 'Sat – Sun, Closed'
+    en: { weekday: 'Mon – Fri, 8:00 am – 5:00 pm', weekend: 'Sat – Sun, Closed' },
+    fr: { weekday: 'Lun – Ven, 8h00 – 17h00', weekend: 'Sam – Dim, Fermé' },
+    es: { weekday: 'Lun – Vie, 8:00 – 17:00', weekend: 'Sáb – Dom, Cerrado' },
+    pt: { weekday: 'Seg – Sex, 8h00 – 17h00', weekend: 'Sáb – Dom, Fechado' }
   },
   languages: ['English', 'Français', 'Español', 'Português'],
   copyrightYear: 2026

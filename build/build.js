@@ -8,6 +8,8 @@ const header = require('./partials/header');
 const footer = require('./partials/footer');
 const meta = require('./partials/meta');
 const site = require('./content/site');
+const locales = require('./content/locales');
+const clientStrings = require('./content/clientStrings');
 
 const pages = [
   require('./content/pages/home'),
@@ -30,55 +32,69 @@ function copyDir(src, dest) {
   }
 }
 
-function renderPage(page) {
+function outputPath(locale, outputFile) {
+  return locale.isDefault ? outputFile : path.join(locale.code, outputFile);
+}
+
+function renderPage(page, locale) {
   const metaHtml = meta({
-    title: page.meta.title,
-    description: page.meta.description,
-    path: page.outputFile,
+    locale,
+    title: page.meta.title[locale.code],
+    description: page.meta.description[locale.code],
+    outputFile: page.outputFile,
     ogImage: page.meta.ogImage
   });
 
+  const i18nScript = `<script>window.__I18N__=${JSON.stringify(clientStrings[locale.code])};</script>`;
+
   return `<!DOCTYPE html>
-<html lang="en">
+<html lang="${locale.hreflang}">
 <head>
 ${metaHtml}
 </head>
 <body>
 <a class="skip-link" href="#main-content">Skip to main content</a>
-${header(page.activeNavLabel)}
+${header(locale.code, page.activeNavId, page.outputFile)}
 <main id="main-content">
-${page.main()}
+${page.main(locale.code)}
 </main>
-${footer()}
-<script defer src="scripts.js"></script>
+${footer(locale.code)}
+${i18nScript}
+<script defer src="/scripts.js"></script>
 </body>
 </html>
 `;
 }
 
-function writeRobotsAndSitemap() {
+function writeRobotsAndSitemap(generatedPaths) {
   fs.writeFileSync(
     path.join(DIST, 'robots.txt'),
     `User-agent: *\nAllow: /\nSitemap: ${site.baseUrl}/sitemap.xml\n`
   );
 
-  const urls = pages
-    .map((page) => `  <url>\n    <loc>${site.baseUrl}/${page.outputFile}</loc>\n  </url>`)
-    .join('\n');
+  const urls = [];
+  for (const page of pages) {
+    for (const locale of locales) {
+      const loc = `${site.baseUrl}${locale.isDefault ? '' : '/' + locale.code}/${page.outputFile}`;
+      const alternates = locales
+        .map((l) => `      <xhtml:link rel="alternate" hreflang="${l.hreflang}" href="${site.baseUrl}${l.isDefault ? '' : '/' + l.code}/${page.outputFile}" />`)
+        .join('\n');
+      urls.push(`  <url>\n    <loc>${loc}</loc>\n${alternates}\n  </url>`);
+    }
+  }
   fs.writeFileSync(
     path.join(DIST, 'sitemap.xml'),
-    `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls}\n</urlset>\n`
+    `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n${urls.join('\n')}\n</urlset>\n`
   );
 }
 
-function assertNoAuthoringMarkup() {
+function assertNoAuthoringMarkup(generatedPaths) {
   const banned = ['dc-import', 'sc-if', 'sc-for', 'x-dc', 'hint-placeholder', 'style-hover', 'data-dc-script'];
-  for (const page of pages) {
-    const filePath = path.join(DIST, page.outputFile);
-    const html = fs.readFileSync(filePath, 'utf8');
+  for (const relPath of generatedPaths) {
+    const html = fs.readFileSync(path.join(DIST, relPath), 'utf8');
     for (const token of banned) {
       if (html.includes(token)) {
-        throw new Error(`Authoring-tool markup "${token}" leaked into ${page.outputFile}`);
+        throw new Error(`Authoring-tool markup "${token}" leaked into ${relPath}`);
       }
     }
   }
@@ -88,8 +104,14 @@ function build() {
   fs.rmSync(DIST, { recursive: true, force: true });
   fs.mkdirSync(DIST, { recursive: true });
 
-  for (const page of pages) {
-    fs.writeFileSync(path.join(DIST, page.outputFile), renderPage(page));
+  const generatedPaths = [];
+  for (const locale of locales) {
+    for (const page of pages) {
+      const relPath = outputPath(locale, page.outputFile);
+      fs.mkdirSync(path.join(DIST, path.dirname(relPath)), { recursive: true });
+      fs.writeFileSync(path.join(DIST, relPath), renderPage(page, locale));
+      generatedPaths.push(relPath);
+    }
   }
 
   fs.copyFileSync(path.join(ROOT, 'src', 'styles.css'), path.join(DIST, 'styles.css'));
@@ -105,10 +127,10 @@ function build() {
     path.join(DIST, 'assets', 'logo', 'mark-transparent-76.webp')
   );
 
-  writeRobotsAndSitemap();
-  assertNoAuthoringMarkup();
+  writeRobotsAndSitemap(generatedPaths);
+  assertNoAuthoringMarkup(generatedPaths);
 
-  console.log(`Built ${pages.length} pages into dist/`);
+  console.log(`Built ${generatedPaths.length} pages (${locales.length} locales x ${pages.length} pages) into dist/`);
 }
 
 build();

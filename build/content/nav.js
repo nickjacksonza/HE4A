@@ -1,53 +1,138 @@
-// Single source of truth for the primary nav + dropdown sub-items.
+// Nav structure (locale-independent: pages, hrefs, anchor slugs) is separated
+// from nav labels (locale-keyed translated text) so translating the site
+// doesn't require re-declaring hrefs/anchors four times over.
 //
-// The original design mockup (SiteHeader.dc.html) reused the parent item's href for every
-// sub-item link, so every dropdown item under a section pointed at the same bare page URL.
-// Here each sub-item instead points at a real in-page anchor on its target page.
+// Anchor slugs (e.g. "board-governance-review") are internal HTML ids, not
+// user-facing URLs -- they stay identical across every locale variant of a
+// page, so a translated dropdown link still lands on the right section.
 //
-// Organizational Development note: the nav lists 4 sub-items (Program Oversight / Marketing
-// and Communications / Public Policy / Grant Writing) but the page itself has only 3 content
-// rows -- row 2 covers both communications and public policy under one heading. That's a
-// deliberate merge, not a bug: both "Marketing and Communications" and "Public Policy" point
-// at the same #communications-and-public-policy anchor.
-module.exports = [
+// Organizational Development note: the nav lists 4 sub-items (Program Oversight /
+// Marketing and Communications / Public Policy / Grant Writing) but the page itself
+// has only 3 content rows -- row 2 covers both communications and public policy
+// under one heading. That's a deliberate merge, not a bug: both "Marketing and
+// Communications" and "Public Policy" point at the same #communications-and-public-policy
+// anchor in every locale.
+
+const NAV_STRUCTURE = [
   {
-    label: 'Non-Profit Leadership',
+    id: 'nonProfitLeadership',
     href: 'non-profit-leadership.html',
     items: [
-      { label: 'Board Governance', anchor: 'board-governance-review' },
-      { label: 'Executive Coaching', anchor: 'executive-coaching' }
+      { id: 'boardGovernance', anchor: 'board-governance-review' },
+      { id: 'executiveCoaching', anchor: 'executive-coaching' }
     ]
   },
   {
-    label: 'Organizational Development',
+    id: 'organizationalDevelopment',
     href: 'organizational-development.html',
     items: [
-      { label: 'Program Oversight', anchor: 'program-oversight' },
-      { label: 'Marketing and Communications', anchor: 'communications-and-public-policy' },
-      { label: 'Public Policy', anchor: 'communications-and-public-policy' },
-      { label: 'Grant Writing', anchor: 'grant-writing' }
+      { id: 'programOversight', anchor: 'program-oversight' },
+      { id: 'marketingCommunications', anchor: 'communications-and-public-policy' },
+      { id: 'publicPolicy', anchor: 'communications-and-public-policy' },
+      { id: 'grantWriting', anchor: 'grant-writing' }
     ]
   },
   {
-    label: 'Trainings',
+    id: 'trainings',
     href: 'trainings.html',
     items: [
-      { label: 'Racial Equity', anchor: 'racial-equity' },
-      { label: 'LGBTQ+ Equity', anchor: 'lgbtq-equity' },
-      { label: 'Social Determinants of Health Awareness', anchor: 'social-determinants' }
+      { id: 'racialEquity', anchor: 'racial-equity' },
+      { id: 'lgbtqEquity', anchor: 'lgbtq-equity' },
+      { id: 'socialDeterminants', anchor: 'social-determinants' }
     ]
   },
   {
-    label: 'Public Speaking',
+    id: 'publicSpeaking',
     href: 'public-speaking.html',
     items: [
-      { label: 'Keynote', anchor: 'keynote' },
-      { label: 'Moderating', anchor: 'moderating' }
+      { id: 'keynote', anchor: 'keynote' },
+      { id: 'moderating', anchor: 'moderating' }
     ]
   },
   {
-    label: 'About Us',
+    id: 'aboutUs',
     href: 'about-us.html',
     items: []
   }
 ];
+
+const NAV_LABELS = {
+  en: {
+    nonProfitLeadership: 'Non-Profit Leadership',
+    organizationalDevelopment: 'Organizational Development',
+    trainings: 'Trainings',
+    publicSpeaking: 'Public Speaking',
+    aboutUs: 'About Us',
+    boardGovernance: 'Board Governance',
+    executiveCoaching: 'Executive Coaching',
+    programOversight: 'Program Oversight',
+    marketingCommunications: 'Marketing and Communications',
+    publicPolicy: 'Public Policy',
+    grantWriting: 'Grant Writing',
+    racialEquity: 'Racial Equity',
+    lgbtqEquity: 'LGBTQ+ Equity',
+    socialDeterminants: 'Social Determinants of Health Awareness',
+    keynote: 'Keynote',
+    moderating: 'Moderating',
+    workWithUs: 'Work With Us'
+  },
+  fr: {
+    nonProfitLeadership: 'Direction Associative',
+    organizationalDevelopment: 'Développement Organisationnel',
+    trainings: 'Formations',
+    publicSpeaking: 'Prise de Parole Publique',
+    aboutUs: 'À Propos',
+    boardGovernance: 'Gouvernance du Conseil',
+    executiveCoaching: 'Coaching de Direction',
+    programOversight: 'Supervision de Programmes',
+    marketingCommunications: 'Marketing et Communication',
+    publicPolicy: 'Politiques Publiques',
+    grantWriting: 'Rédaction de Demandes de Subvention',
+    racialEquity: 'Équité Raciale',
+    lgbtqEquity: 'Équité LGBTQ+',
+    socialDeterminants: 'Sensibilisation aux Déterminants Sociaux de la Santé',
+    keynote: 'Conférence Principale',
+    moderating: 'Modération',
+    workWithUs: 'Travaillons Ensemble'
+  },
+  es: {
+    nonProfitLeadership: 'Liderazgo sin Fines de Lucro',
+    organizationalDevelopment: 'Desarrollo Organizacional',
+    trainings: 'Capacitaciones',
+    publicSpeaking: 'Oratoria Pública',
+    aboutUs: 'Sobre Nosotros',
+    boardGovernance: 'Gobernanza de la Junta',
+    executiveCoaching: 'Coaching Ejecutivo',
+    programOversight: 'Supervisión de Programas',
+    marketingCommunications: 'Marketing y Comunicaciones',
+    publicPolicy: 'Política Pública',
+    grantWriting: 'Redacción de Propuestas de Subvención',
+    racialEquity: 'Equidad Racial',
+    lgbtqEquity: 'Equidad LGBTQ+',
+    socialDeterminants: 'Sensibilización sobre los Determinantes Sociales de la Salud',
+    keynote: 'Conferencia Magistral',
+    moderating: 'Moderación',
+    workWithUs: 'Trabaja con Nosotros'
+  },
+  pt: {
+    nonProfitLeadership: 'Liderança Sem Fins Lucrativos',
+    organizationalDevelopment: 'Desenvolvimento Organizacional',
+    trainings: 'Capacitações',
+    publicSpeaking: 'Oratória Pública',
+    aboutUs: 'Sobre Nós',
+    boardGovernance: 'Governança do Conselho',
+    executiveCoaching: 'Coaching Executivo',
+    programOversight: 'Supervisão de Programas',
+    marketingCommunications: 'Marketing e Comunicação',
+    publicPolicy: 'Política Pública',
+    grantWriting: 'Redação de Propostas de Financiamento',
+    racialEquity: 'Equidade Racial',
+    lgbtqEquity: 'Equidade LGBTQ+',
+    socialDeterminants: 'Conscientização sobre os Determinantes Sociais da Saúde',
+    keynote: 'Palestra Principal',
+    moderating: 'Moderação',
+    workWithUs: 'Trabalhe Conosco'
+  }
+};
+
+module.exports = { NAV_STRUCTURE, NAV_LABELS };
