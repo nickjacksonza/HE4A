@@ -1,5 +1,6 @@
-const { picture, accordion, teamCard, href } = require('../../helpers');
+const { picture, accordion, teamCard, testimonialsSection, href } = require('../../helpers');
 const shared = require('../shared');
+const people = require('../people');
 
 const CURRICULUM_META = [
   { anchor: 'racial-equity', image: 'whiteboard-session', imageWidths: [400, 640, 960, 1200] },
@@ -262,9 +263,13 @@ ${panels}
       ${teamCard({ name: TEAM_META[0].name, role: t.team.role1, bio: t.team.bio1 }, locale)}
       ${teamCard({ name: TEAM_META[1].name, role: t.team.role2, bio: t.team.bio2 }, locale)}
       ${teamCard({ name: TEAM_META[2].name, role: t.team.role3, bio: t.team.bio3 }, locale)}
+      ${teamCard({ name: people.johnHanna.name, role: people.johnHanna.teamRole[locale], bio: people.johnHanna.bio[locale] }, locale)}
+      ${teamCard({ name: people.robertMiller.name, role: people.robertMiller.teamRole[locale], bio: people.robertMiller.bio[locale] }, locale)}
     </div>
   </div>
 </section>
+
+${testimonialsSection(locale)}
 
 <section class="section band-paper">
   <div class="container" style="max-width:820px">

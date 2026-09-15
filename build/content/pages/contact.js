@@ -35,7 +35,7 @@ const COPY = {
     serviceOptions: ['Non-Profit Leadership', 'Organizational Development', 'Trainings', 'Public Speaking', 'Something else'],
     submit: 'Send Message',
     photoAlt: 'Two colleagues working together',
-    findUs: { heading: 'Where to find us', offices: 'Offices', hours: 'Hours', languages: 'Languages' },
+    findUs: { heading: 'Where to find us', offices: 'Offices', hours: 'Hours', languages: 'Languages', email: 'Email', phone: 'Phone' },
     followAlong: 'Follow along'
   },
   fr: {
@@ -47,7 +47,7 @@ const COPY = {
     serviceOptions: ['Direction Associative', 'Développement Organisationnel', 'Formations', 'Prise de Parole Publique', 'Autre chose'],
     submit: 'Envoyer le Message',
     photoAlt: 'Deux collègues travaillant ensemble',
-    findUs: { heading: 'Où nous trouver', offices: 'Bureaux', hours: 'Horaires', languages: 'Langues' },
+    findUs: { heading: 'Où nous trouver', offices: 'Bureaux', hours: 'Horaires', languages: 'Langues', email: 'Courriel', phone: 'Téléphone' },
     followAlong: 'Suivez-nous'
   },
   es: {
@@ -59,7 +59,7 @@ const COPY = {
     serviceOptions: ['Liderazgo sin Fines de Lucro', 'Desarrollo Organizacional', 'Capacitaciones', 'Oratoria Pública', 'Algo más'],
     submit: 'Enviar Mensaje',
     photoAlt: 'Dos colegas trabajando juntos',
-    findUs: { heading: 'Dónde encontrarnos', offices: 'Oficinas', hours: 'Horario', languages: 'Idiomas' },
+    findUs: { heading: 'Dónde encontrarnos', offices: 'Oficinas', hours: 'Horario', languages: 'Idiomas', email: 'Correo electrónico', phone: 'Teléfono' },
     followAlong: 'Síguenos'
   },
   pt: {
@@ -71,7 +71,7 @@ const COPY = {
     serviceOptions: ['Liderança Sem Fins Lucrativos', 'Desenvolvimento Organizacional', 'Capacitações', 'Oratória Pública', 'Outra coisa'],
     submit: 'Enviar Mensagem',
     photoAlt: 'Dois colegas trabalhando juntos',
-    findUs: { heading: 'Onde nos encontrar', offices: 'Escritórios', hours: 'Horário', languages: 'Idiomas' },
+    findUs: { heading: 'Onde nos encontrar', offices: 'Escritórios', hours: 'Horário', languages: 'Idiomas', email: 'E-mail', phone: 'Telefone' },
     followAlong: 'Siga-nos'
   }
 };
@@ -120,6 +120,16 @@ function main(locale) {
               <div class="info-block-value">${hours.weekday.replace(', ', '<br>')}</div>
             </div>
           </div>
+          <div class="info-block-grid" style="margin-top:var(--space-5)">
+            <div>
+              <h3 class="info-block-label">${t.findUs.email}</h3>
+              <div class="info-block-value"><a href="mailto:${site.email}">${site.email}</a></div>
+            </div>
+            <div>
+              <h3 class="info-block-label">${t.findUs.phone}</h3>
+              <div class="info-block-value"><a href="tel:${site.phone.replace(/\s+/g, '')}">${site.phone}</a></div>
+            </div>
+          </div>
           <div>
             <h3 class="info-block-label">${t.findUs.languages}</h3>
             <div class="info-block-value">${site.languages.join(' · ')}</div>
@@ -130,6 +140,7 @@ function main(locale) {
           <h2 class="info-block-heading" style="font-size:20px">${t.followAlong}</h2>
           <div class="social-links">
             <a href="${site.social.facebook}" class="social-link">Facebook</a>
+            <a href="${site.social.twitter}" class="social-link">Twitter</a>
             <a href="${site.social.instagram}" class="social-link">Instagram</a>
             <a href="${site.social.linkedin}" class="social-link">LinkedIn</a>
           </div>

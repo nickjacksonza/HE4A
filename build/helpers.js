@@ -1,6 +1,7 @@
 // Shared template helpers used by build/content/pages/*.js modules.
 
 const locales = require('./content/locales');
+const { testimonials, HEADING: TESTIMONIALS_HEADING } = require('./content/testimonials');
 
 // Deployment base path, e.g. "/HE4A" when the build is served from a
 // GitHub Pages project subpath (nickjacksonza.github.io/HE4A/) rather than
@@ -120,4 +121,25 @@ function teamCard(person, locale) {
 </div>`;
 }
 
-module.exports = { escapeHtml, href, asset, BASE_PATH, picture, slugify, accordion, teamCard, PORTRAIT_LABEL, INTRINSIC };
+// Renders the shared client-testimonials section used on all 4 service pages.
+// `band` lets each caller pick a class that alternates cleanly with
+// whichever section comes immediately before it.
+function testimonialsSection(locale, band = 'band-paper') {
+  const items = testimonials(locale);
+  return `<section class="section ${band}">
+  <div class="container">
+    <h2 class="section-heading" style="text-align:center;margin:0 auto var(--space-7);max-width:none">${TESTIMONIALS_HEADING[locale]}</h2>
+    <div class="auto-grid" style="--min:260px">
+      ${items.map((t) => `<div class="testimonial-card">
+        <p class="testimonial-quote">“${escapeHtml(t.quote)}”</p>
+        <div class="testimonial-attribution">
+          <div class="testimonial-name">${escapeHtml(t.name)}</div>
+          ${t.title ? `<div class="testimonial-title">${escapeHtml(t.title)}</div>` : ''}
+        </div>
+      </div>`).join('\n      ')}
+    </div>
+  </div>
+</section>`;
+}
+
+module.exports = { escapeHtml, href, asset, BASE_PATH, picture, slugify, accordion, teamCard, testimonialsSection, PORTRAIT_LABEL, INTRINSIC };

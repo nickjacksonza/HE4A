@@ -1,14 +1,30 @@
 const { picture, href } = require('../../helpers');
 const site = require('../site');
+const people = require('../people');
 
 const PEOPLE_META = [
   { name: 'Ace Robinson', stagger: 0 },
   { name: 'Lauren Miller', stagger: 20 },
   { name: 'Diego Calixto', stagger: 6 },
   { name: 'Lucy Wanjiku Njenga', stagger: 28 },
-  { name: 'Eduardo Culbeaux', stagger: 10 },
-  { name: null, stagger: 18 } // "Open Seat" -- no proper name, label is itself translated copy
+  { name: 'Eduardo Culbeaux', stagger: 10 }
 ];
+
+// Members beyond the original 5, sourced from build/content/people.js (kept
+// there since the same bios are reused on service-page team cards). Ordered
+// to roughly match the live site's roster; stagger values just vary the
+// staggered-grid rhythm, no other significance.
+const EXTRA_PEOPLE = [
+  { key: 'johnHanna', stagger: 14 },
+  { key: 'victoriaOwoyele', stagger: 24 },
+  { key: 'leandroMaldonado', stagger: 4 },
+  { key: 'robertMiller', stagger: 18 },
+  { key: 'nickJackson', stagger: 8 },
+  { key: 'keletsoMakofane', stagger: 22 },
+  { key: 'stephenPlaceholder', stagger: 12 } // Juan Michael Porter II was removed at the user's request; this holds his slot for an incoming member (surname/bio pending)
+];
+
+const OPEN_SEAT = { name: null, stagger: 16 }; // no proper name, label is itself translated copy
 
 const COPY = {
   en: {
@@ -38,18 +54,18 @@ const COPY = {
         'Leadership Faculty · Atlanta, USA',
         'Research & Advocacy · Brasília, Brazil',
         'Programs & Policy · Nairobi, Kenya',
-        'Education & Media · Southeast Asia',
-        'Cape Town, South Africa'
+        'Education & Media · Southeast Asia'
       ],
       bios: [
         'M.P.H., M.H.L. Administrative and policy advocate in communicable disease. Acting Director of the Duke University Sexual & Gender Minority Wellness program.',
         'Advocate for DEI and health equity, guided by friendship, leadership and service to humanity.',
         'Activist living with HIV and researcher at Fiocruz Brasília, focused on health and social justice across Latin America.',
         'HIV response leader for over a decade, building feminist movements from grassroots to global level.',
-        'Educator for over a decade, empowering youth through journalism and media programmes.',
-        'We are growing the collective with members whose practice is rooted in Southern Africa. Know someone who should be here? Tell us.'
+        'Educator for over a decade, empowering youth through journalism and media programmes.'
       ],
-      openSeatName: 'Open Seat'
+      openSeatName: 'Open Seat',
+      openSeatRole: 'Cape Town, South Africa',
+      openSeatBio: 'We are growing the collective with members whose practice is rooted in Southern Africa. Know someone who should be here? Tell us.'
     },
     quote: { eyebrow: 'What We Say To People', text: 'The major difference between public health and thermodynamics is that thermodynamics is easier.' },
     ctaButton: 'Work With Us',
@@ -82,18 +98,18 @@ const COPY = {
         'Faculté de Leadership · Atlanta, États-Unis',
         'Recherche et Plaidoyer · Brasília, Brésil',
         'Programmes et Politiques · Nairobi, Kenya',
-        'Éducation et Médias · Asie du Sud-Est',
-        'Cape Town, Afrique du Sud'
+        'Éducation et Médias · Asie du Sud-Est'
       ],
       bios: [
         'M.P.H., M.H.L. Défenseur des politiques administratives en maladies transmissibles. Directeur par intérim du programme de bien-être des minorités sexuelles et de genre de l’Université Duke.',
         "Défenseure de la diversité, de l'équité et de l'inclusion ainsi que de l'équité en santé, guidée par l'amitié, le leadership et le service à l'humanité.",
         'Militant séropositif et chercheur à la Fiocruz Brasília, engagé pour la santé et la justice sociale à travers l’Amérique latine.',
         "Leader de la réponse au VIH depuis plus de dix ans, bâtissant des mouvements féministes de la base jusqu'à l'échelle mondiale.",
-        "Éducateur depuis plus de dix ans, donnant aux jeunes les moyens d'agir par le journalisme et les programmes médiatiques.",
-        'Nous développons le collectif avec des membres dont la pratique est enracinée en Afrique australe. Vous connaissez quelqu’un qui devrait être ici ? Dites-le-nous.'
+        "Éducateur depuis plus de dix ans, donnant aux jeunes les moyens d'agir par le journalisme et les programmes médiatiques."
       ],
-      openSeatName: 'Poste à Pourvoir'
+      openSeatName: 'Poste à Pourvoir',
+      openSeatRole: 'Cape Town, Afrique du Sud',
+      openSeatBio: 'Nous développons le collectif avec des membres dont la pratique est enracinée en Afrique australe. Vous connaissez quelqu’un qui devrait être ici ? Dites-le-nous.'
     },
     quote: { eyebrow: 'Ce que Nous Disons aux Gens', text: "La principale différence entre la santé publique et la thermodynamique, c'est que la thermodynamique est plus simple." },
     ctaButton: 'Travaillons Ensemble',
@@ -126,18 +142,18 @@ const COPY = {
         'Facultad de Liderazgo · Atlanta, EE. UU.',
         'Investigación y Defensoría · Brasília, Brasil',
         'Programas y Políticas · Nairobi, Kenia',
-        'Educación y Medios · Sudeste Asiático',
-        'Ciudad del Cabo, Sudáfrica'
+        'Educación y Medios · Sudeste Asiático'
       ],
       bios: [
         'M.P.H., M.H.L. Defensor de políticas administrativas en enfermedades transmisibles. Director interino del programa de bienestar de minorías sexuales y de género de la Universidad Duke.',
         'Defensora de la diversidad, equidad e inclusión y de la equidad en salud, guiada por la amistad, el liderazgo y el servicio a la humanidad.',
         'Activista que vive con VIH e investigador en Fiocruz Brasília, enfocado en la salud y la justicia social en toda América Latina.',
         'Líder de la respuesta al VIH durante más de una década, construyendo movimientos feministas desde las bases hasta el nivel global.',
-        'Educador durante más de una década, empoderando a los jóvenes a través del periodismo y programas de medios.',
-        'Estamos haciendo crecer el colectivo con miembros cuya práctica está arraigada en el África meridional. ¿Conoces a alguien que debería estar aquí? Cuéntanos.'
+        'Educador durante más de una década, empoderando a los jóvenes a través del periodismo y programas de medios.'
       ],
-      openSeatName: 'Puesto por Cubrir'
+      openSeatName: 'Puesto por Cubrir',
+      openSeatRole: 'Ciudad del Cabo, Sudáfrica',
+      openSeatBio: 'Estamos haciendo crecer el colectivo con miembros cuya práctica está arraigada en el África meridional. ¿Conoces a alguien que debería estar aquí? Cuéntanos.'
     },
     quote: { eyebrow: 'Lo Que le Decimos a la Gente', text: 'La principal diferencia entre la salud pública y la termodinámica es que la termodinámica es más fácil.' },
     ctaButton: 'Trabaja con Nosotros',
@@ -170,18 +186,18 @@ const COPY = {
         'Corpo Docente de Liderança · Atlanta, EUA',
         'Pesquisa e Advocacy · Brasília, Brasil',
         'Programas e Políticas · Nairobi, Quênia',
-        'Educação e Mídia · Sudeste Asiático',
-        'Cidade do Cabo, África do Sul'
+        'Educação e Mídia · Sudeste Asiático'
       ],
       bios: [
         'M.P.H., M.H.L. Defensor de políticas administrativas em doenças transmissíveis. Diretor interino do programa de bem-estar de minorias sexuais e de gênero da Universidade Duke.',
         'Defensora da diversidade, equidade e inclusão e da equidade em saúde, guiada pela amizade, liderança e serviço à humanidade.',
         'Ativista vivendo com HIV e pesquisador na Fiocruz Brasília, focado em saúde e justiça social em toda a América Latina.',
         'Líder da resposta ao HIV por mais de uma década, construindo movimentos feministas das bases até o nível global.',
-        'Educador por mais de uma década, capacitando jovens por meio do jornalismo e de programas de mídia.',
-        'Estamos expandindo o coletivo com membros cuja prática é enraizada na África Austral. Conhece alguém que deveria estar aqui? Conte para nós.'
+        'Educador por mais de uma década, capacitando jovens por meio do jornalismo e de programas de mídia.'
       ],
-      openSeatName: 'Vaga Aberta'
+      openSeatName: 'Vaga Aberta',
+      openSeatRole: 'Cidade do Cabo, África do Sul',
+      openSeatBio: 'Estamos expandindo o coletivo com membros cuja prática é enraizada na África Austral. Conhece alguém que deveria estar aqui? Conte para nós.'
     },
     quote: { eyebrow: 'O Que Dizemos às Pessoas', text: 'A principal diferença entre saúde pública e termodinâmica é que a termodinâmica é mais fácil.' },
     ctaButton: 'Fale Conosco',
@@ -247,15 +263,27 @@ function main(locale) {
     <h2 class="section-heading" style="margin-bottom:10px">${t.collective.heading}</h2>
     <p class="section-subtext" style="margin-bottom:var(--space-7)">${t.collective.subtext}</p>
     <div class="auto-grid" style="--min:220px">
-      ${PEOPLE_META.map((p, i) => {
-        const displayName = p.name || t.collective.openSeatName;
-        return `<div class="person" style="--stagger:${p.stagger}px">
-        <div class="person-portrait"><span>${displayName}</span></div>
-        <div class="person-name">${displayName}</div>
+      ${PEOPLE_META.map((p, i) => `<div class="person" style="--stagger:${p.stagger}px">
+        <div class="person-portrait"><span>${p.name}</span></div>
+        <div class="person-name">${p.name}</div>
         <div class="person-role">${t.collective.roles[i]}</div>
         <div class="person-bio">${t.collective.bios[i]}</div>
+      </div>`).join('\n      ')}
+      ${EXTRA_PEOPLE.map((entry) => {
+        const person = people[entry.key];
+        return `<div class="person" style="--stagger:${entry.stagger}px">
+        <div class="person-portrait"><span>${person.name}</span></div>
+        <div class="person-name">${person.name}</div>
+        <div class="person-role">${person.aboutRole[locale]}</div>
+        <div class="person-bio">${person.bio[locale]}</div>
       </div>`;
       }).join('\n      ')}
+      <div class="person" style="--stagger:${OPEN_SEAT.stagger}px">
+        <div class="person-portrait"><span>${t.collective.openSeatName}</span></div>
+        <div class="person-name">${t.collective.openSeatName}</div>
+        <div class="person-role">${t.collective.openSeatRole}</div>
+        <div class="person-bio">${t.collective.openSeatBio}</div>
+      </div>
     </div>
   </div>
 </section>

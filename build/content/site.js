@@ -12,8 +12,11 @@ module.exports = {
   },
   baseUrl: 'https://www.healthequity4all.org',
   formEndpoint: 'https://formspree.io/f/REPLACE_ME',
+  email: 'info@healthequity4all.org',
+  phone: '+1 206 931 3853',
   social: {
     facebook: 'https://www.facebook.com/EquityIsTheWord',
+    twitter: 'https://twitter.com/EquityIsTheWord',
     instagram: 'https://instagram.com/healthequity_4_all',
     linkedin: 'https://linkedin.com/company/healthequity-4-all'
   },

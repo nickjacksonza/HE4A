@@ -1,5 +1,6 @@
-const { picture, accordion, teamCard, href } = require('../../helpers');
+const { picture, accordion, teamCard, testimonialsSection, href } = require('../../helpers');
 const shared = require('../shared');
+const people = require('../people');
 
 const TEAM_META = [
   { name: 'Ace Robinson', roleKey: 'role1' },
@@ -237,9 +238,12 @@ function main(locale) {
     <div class="auto-grid" style="--min:280px">
       ${teamCard({ name: TEAM_META[0].name, role: t.team.role1, bio: t.team.bio1 }, locale)}
       ${teamCard({ name: TEAM_META[1].name, role: t.team.role2, bio: t.team.bio2 }, locale)}
+      ${teamCard({ name: people.keletsoMakofane.name, role: people.keletsoMakofane.teamRole[locale], bio: people.keletsoMakofane.bio[locale] }, locale)}
     </div>
   </div>
 </section>
+
+${testimonialsSection(locale)}
 
 <section class="section band-paper">
   <div class="container" style="max-width:820px">
