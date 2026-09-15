@@ -1,9 +1,11 @@
 # Health Equity 4 All — Website Redesign
 
 ## Project Overview
-HTML design prototypes for the Health Equity 4 All website (healthequity4all.org). These are **design references** — high-fidelity mockups showing intended look, layout and interactions. The goal is to recreate them in a production web framework (e.g. Next.js, Astro, etc.).
+The production static site for healthequity4all.org. Built (not a framework — a small hand-rolled Node script) from `build/` into two outputs: `dist/` (gitignored, `npm run build`) and `site/` (committed, ready-to-upload snapshot for manual server deploys, auto-kept in sync by `.github/workflows/sync-site-folder.yml` on every push to main). The original `*.dc.html` files, `_ds/`, and `support.js` are Claude Design authoring-tool artifacts — design reference only, never shipped; `build/build.js` asserts none of that markup leaks into output.
 
 ## Pages
+Implemented as `build/content/pages/*.js` (one module per page below), assembled by `build/build.js`. Each module's `main(locale)` renders from a per-locale `COPY` object zipped against locale-independent `META` (images, anchors, layout) — keep that split when editing content instead of inlining new locale-specific strings into the template.
+
 | File | Purpose |
 |------|---------|
 | `Home.dc.html` | Homepage — hero, impact stats, services grid, quotes, collective grid, CTA |
@@ -50,11 +52,13 @@ The `_ds/` folder contains the bound design system bundle with tokens and compon
 - **Tabs**: Pill-shaped toggle buttons (Trainings page)
 
 ## Translation
-Language switcher shows EN/FR/ES/PT. Currently English content only — the UI is wired for i18n.
+Implemented for EN/FR/ES/PT (`build/content/locales.js`, `build/content/nav.js`, `build/content/shared.js`, per-page `COPY`). FR/ES/PT text is AI-drafted — recommend native-speaker review before treating it as final for public launch. Every internal link/asset path MUST go through `build/helpers.js`'s `href(locale, path)` or `asset(path)` — never hardcode a leading `/` — or translated/subpath-deployed pages silently link back to the English root.
 
 ## Assets
 - `assets/logo/` — brand mark (transparent webp + rainbow square jpg)
 - `assets/photos/` — 6 stock photos used across the site
+- `assets/photos-optimized/` — generated (AVIF/WebP/JPG, responsive widths) by `scripts/optimize-images.js`; that script logs the *actual* widths it generates after clamping to native size — page modules' `widths` arrays must match those exact numbers.
+- `assets/fonts/`, `assets/icons/`, `assets/og/` — self-hosted font subsets and generated favicons/OG images; regenerate via `scripts/generate-favicons.js` (needs `sharp` + `png-to-ico`, dev-only deps not required by the main build).
 
 ## Voice & Tone
 Confident and informative but warm and supportive. The audience is under-represented organization leaders who have the passion and knowledge — they need guidance, not convincing. No emoji. Title Case for headings. Credentials (M.P.H., M.H.L) always shown.
