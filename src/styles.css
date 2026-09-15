@@ -862,7 +862,7 @@ main:focus { outline: none; }
 .service-card--featured .service-media { width: 100%; height: 280px; object-fit: cover; }
 .service-card--featured .service-body { padding: var(--space-6); display: flex; flex-direction: column; gap: var(--space-3); flex: 1; }
 .service-card--compact { min-height: 0; }
-.service-card--compact .service-media { width: 180px; flex: none; object-fit: cover; }
+.service-card--compact .service-media { width: 180px; height: 100%; min-height: 120px; flex: none; object-fit: cover; }
 .service-card--compact .service-body { padding: var(--space-5); display: flex; flex-direction: column; gap: var(--space-2); justify-content: center; }
 .service-card--banner { grid-column: 1 / -1; display: grid; grid-template-columns: 1fr 1fr; margin-top: var(--space-4); }
 .service-card--banner .service-body { padding: var(--space-6); display: flex; flex-direction: column; gap: var(--space-3); justify-content: center; }
@@ -986,9 +986,11 @@ main:focus { outline: none; }
   display: flex;
   align-items: stretch;
 }
-.team-portrait-placeholder {
+.team-portrait {
   width: 130px;
   flex: none;
+}
+.team-portrait-placeholder {
   background: var(--color-paper-200);
   border-right: 2px dashed var(--color-paper-300);
   display: flex;
@@ -996,6 +998,8 @@ main:focus { outline: none; }
   padding: var(--space-2);
 }
 .team-portrait-placeholder span { font-size: 11px; color: var(--color-ink-700); line-height: 1.4; }
+.team-portrait picture { display: block; width: 100%; height: 100%; }
+.team-portrait-photo { width: 100%; height: 100%; object-fit: cover; display: block; }
 .team-info { padding: var(--space-5); display: flex; flex-direction: column; gap: var(--space-2); }
 .team-name { font-family: var(--font-display); font-weight: var(--weight-semibold); font-size: 19px; color: var(--text-primary); }
 .team-role { font-size: 12px; font-weight: var(--weight-semibold); letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-blossom-800); }
@@ -1005,14 +1009,19 @@ main:focus { outline: none; }
 .person { display: flex; flex-direction: column; padding-top: var(--stagger, 0px); }
 .person-portrait {
   aspect-ratio: 4 / 5;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+.person-portrait-placeholder {
   background: var(--color-paper-200);
   border: 2px dashed var(--color-paper-300);
-  border-radius: var(--radius-md);
   display: flex;
   align-items: flex-end;
   padding: var(--space-3);
 }
 .person-portrait span { font-size: 12px; color: var(--color-ink-700); }
+.person-portrait picture { display: block; width: 100%; height: 100%; }
+.person-portrait-photo { width: 100%; height: 100%; object-fit: cover; display: block; }
 .person-name { font-family: var(--font-display); font-weight: var(--weight-semibold); font-size: 18px; color: var(--text-primary); margin-top: var(--space-3); }
 .person-role { font-size: 12px; font-weight: var(--weight-semibold); letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-blossom-800); margin-top: 6px; }
 .person-bio { font-size: var(--text-sm); color: var(--text-secondary); line-height: var(--leading-normal); margin-top: var(--space-2); }

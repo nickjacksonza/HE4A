@@ -1,4 +1,4 @@
-const { picture, href } = require('../../helpers');
+const { picture, href, personCard } = require('../../helpers');
 const site = require('../site');
 const people = require('../people');
 
@@ -263,27 +263,12 @@ function main(locale) {
     <h2 class="section-heading" style="margin-bottom:10px">${t.collective.heading}</h2>
     <p class="section-subtext" style="margin-bottom:var(--space-7)">${t.collective.subtext}</p>
     <div class="auto-grid" style="--min:220px">
-      ${PEOPLE_META.map((p, i) => `<div class="person" style="--stagger:${p.stagger}px">
-        <div class="person-portrait"><span>${p.name}</span></div>
-        <div class="person-name">${p.name}</div>
-        <div class="person-role">${t.collective.roles[i]}</div>
-        <div class="person-bio">${t.collective.bios[i]}</div>
-      </div>`).join('\n      ')}
+      ${PEOPLE_META.map((p, i) => personCard({ name: p.name, role: t.collective.roles[i], bio: t.collective.bios[i], stagger: p.stagger })).join('\n      ')}
       ${EXTRA_PEOPLE.map((entry) => {
         const person = people[entry.key];
-        return `<div class="person" style="--stagger:${entry.stagger}px">
-        <div class="person-portrait"><span>${person.name}</span></div>
-        <div class="person-name">${person.name}</div>
-        <div class="person-role">${person.aboutRole[locale]}</div>
-        <div class="person-bio">${person.bio[locale]}</div>
-      </div>`;
+        return personCard({ name: person.name, role: person.aboutRole[locale], bio: person.bio[locale], stagger: entry.stagger });
       }).join('\n      ')}
-      <div class="person" style="--stagger:${OPEN_SEAT.stagger}px">
-        <div class="person-portrait"><span>${t.collective.openSeatName}</span></div>
-        <div class="person-name">${t.collective.openSeatName}</div>
-        <div class="person-role">${t.collective.openSeatRole}</div>
-        <div class="person-bio">${t.collective.openSeatBio}</div>
-      </div>
+      ${personCard({ name: t.collective.openSeatName, role: t.collective.openSeatRole, bio: t.collective.openSeatBio, stagger: OPEN_SEAT.stagger })}
     </div>
   </div>
 </section>

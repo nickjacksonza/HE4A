@@ -2,6 +2,7 @@
 
 const locales = require('./content/locales');
 const { testimonials, HEADING: TESTIMONIALS_HEADING } = require('./content/testimonials');
+const PEOPLE_PHOTOS = require('./content/peoplePhotos');
 
 // Deployment base path, e.g. "/HE4A" when the build is served from a
 // GitHub Pages project subpath (nickjacksonza.github.io/HE4A/) rather than
@@ -72,6 +73,28 @@ function picture({ name, widths, sizes, alt, imgClass, priority }) {
 </picture>`;
 }
 
+// Intrinsic pixel dimensions of the optimized people-photo variants -- all
+// square (scripts/optimize-people-photos.js center-crops every source to
+// 1:1), so this is the same for everyone with a photo.
+const PEOPLE_PHOTO_WIDTHS = [200, 400];
+const PEOPLE_PHOTO_DIMS = { w: 400, h: 400 };
+
+// Renders a person's real headshot as a <picture>, if one exists for their
+// name (build/content/peoplePhotos.js); returns null otherwise so callers
+// fall back to the placeholder box.
+function personPhoto(name, imgClass) {
+  const key = PEOPLE_PHOTOS[name];
+  if (!key) return null;
+  const dir = asset(`assets/photos-optimized/people/${key}`);
+  const srcset = (ext) => PEOPLE_PHOTO_WIDTHS.map((w) => `${dir}/${key}-${w}.${ext} ${w}w`).join(', ');
+  const largest = PEOPLE_PHOTO_WIDTHS[PEOPLE_PHOTO_WIDTHS.length - 1];
+  return `<picture>
+  <source type="image/avif" srcset="${srcset('avif')}">
+  <source type="image/webp" srcset="${srcset('webp')}">
+  <img src="${dir}/${key}-${largest}.jpg" srcset="${srcset('jpg')}" width="${PEOPLE_PHOTO_DIMS.w}" height="${PEOPLE_PHOTO_DIMS.h}" alt="${escapeHtml(name)}"${imgClass ? ` class="${imgClass}"` : ''} loading="lazy" decoding="async">
+</picture>`;
+}
+
 function slugify(str) {
   return String(str)
     .toLowerCase()
@@ -108,17 +131,38 @@ ${faqs
 // translated since it's user-visible copy (unlike the person's own name).
 const PORTRAIT_LABEL = { en: 'Portrait', fr: 'Portrait', es: 'Retrato', pt: 'Retrato' };
 
-// Renders one team-card row.
+// Renders one team-card row. Uses the person's real headshot when one
+// exists (build/content/peoplePhotos.js), otherwise the dashed placeholder.
 function teamCard(person, locale) {
-  const label = PORTRAIT_LABEL[locale] || PORTRAIT_LABEL.en;
+  const photo = personPhoto(person.name, 'team-portrait-photo');
+  const portraitInner = photo
+    ? photo
+    : `<span>${PORTRAIT_LABEL[locale] || PORTRAIT_LABEL.en} — ${escapeHtml(person.name)}</span>`;
+  const portraitClass = photo ? 'team-portrait' : 'team-portrait team-portrait-placeholder';
   return `<div class="team-card">
-  <div class="team-portrait-placeholder"><span>${label} — ${escapeHtml(person.name)}</span></div>
+  <div class="${portraitClass}">${portraitInner}</div>
   <div class="team-info">
     <div class="team-name">${escapeHtml(person.name)}</div>
     <div class="team-role">${escapeHtml(person.role)}</div>
     <div class="team-bio">${escapeHtml(person.bio)}</div>
   </div>
 </div>`;
+}
+
+// Renders one collective-grid person card (Home/About Us). Uses the
+// person's real headshot when one exists, otherwise the dashed placeholder
+// box with their name as caption. `stagger` is the px offset already used
+// by callers for the staggered-grid rhythm.
+function personCard({ name, role, bio, stagger }) {
+  const photo = personPhoto(name, 'person-portrait-photo');
+  const portraitInner = photo ? photo : `<span>${escapeHtml(name)}</span>`;
+  const portraitClass = photo ? 'person-portrait' : 'person-portrait person-portrait-placeholder';
+  return `<div class="person" style="--stagger:${stagger}px">
+        <div class="${portraitClass}">${portraitInner}</div>
+        <div class="person-name">${escapeHtml(name)}</div>
+        <div class="person-role">${escapeHtml(role)}</div>
+        <div class="person-bio">${escapeHtml(bio)}</div>
+      </div>`;
 }
 
 // Renders the shared client-testimonials section used on all 4 service pages.
@@ -142,4 +186,4 @@ function testimonialsSection(locale, band = 'band-paper') {
 </section>`;
 }
 
-module.exports = { escapeHtml, href, asset, BASE_PATH, picture, slugify, accordion, teamCard, testimonialsSection, PORTRAIT_LABEL, INTRINSIC };
+module.exports = { escapeHtml, href, asset, BASE_PATH, picture, personPhoto, personCard, slugify, accordion, teamCard, testimonialsSection, PORTRAIT_LABEL, INTRINSIC };

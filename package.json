@@ -7,6 +7,7 @@
     "build": "node build/build.js",
     "serve": "npx serve dist -p 5000",
     "optimize:images": "node scripts/optimize-images.js",
+    "optimize:people": "node scripts/optimize-people-photos.js",
     "favicons": "node scripts/generate-favicons.js"
   },
   "license": "UNLICENSED",
