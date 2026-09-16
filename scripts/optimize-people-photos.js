@@ -9,7 +9,7 @@ const sharp = require('sharp');
 
 const SRC_DIR = path.join(__dirname, '..', 'assets', 'photos', 'people');
 const OUT_DIR = path.join(__dirname, '..', 'assets', 'photos-optimized', 'people');
-const WIDTHS = [200, 400];
+const WIDTHS = [200, 400, 700];
 
 (async () => {
   fs.rmSync(OUT_DIR, { recursive: true, force: true });

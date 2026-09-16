@@ -76,22 +76,24 @@ function picture({ name, widths, sizes, alt, imgClass, priority }) {
 // Intrinsic pixel dimensions of the optimized people-photo variants -- all
 // square (scripts/optimize-people-photos.js center-crops every source to
 // 1:1), so this is the same for everyone with a photo.
-const PEOPLE_PHOTO_WIDTHS = [200, 400];
+const PEOPLE_PHOTO_WIDTHS = [200, 400, 700];
 const PEOPLE_PHOTO_DIMS = { w: 400, h: 400 };
 
 // Renders a person's real headshot as a <picture>, if one exists for their
 // name (build/content/peoplePhotos.js); returns null otherwise so callers
-// fall back to the placeholder box.
-function personPhoto(name, imgClass) {
+// fall back to the placeholder box. `sizes` defaults to the small team-card/
+// collective-grid slot; pass a larger hint for a bigger feature portrait so
+// the browser picks the 700w variant instead.
+function personPhoto(name, imgClass, sizes = '400px') {
   const key = PEOPLE_PHOTOS[name];
   if (!key) return null;
   const dir = asset(`assets/photos-optimized/people/${key}`);
   const srcset = (ext) => PEOPLE_PHOTO_WIDTHS.map((w) => `${dir}/${key}-${w}.${ext} ${w}w`).join(', ');
   const largest = PEOPLE_PHOTO_WIDTHS[PEOPLE_PHOTO_WIDTHS.length - 1];
   return `<picture>
-  <source type="image/avif" srcset="${srcset('avif')}">
-  <source type="image/webp" srcset="${srcset('webp')}">
-  <img src="${dir}/${key}-${largest}.jpg" srcset="${srcset('jpg')}" width="${PEOPLE_PHOTO_DIMS.w}" height="${PEOPLE_PHOTO_DIMS.h}" alt="${escapeHtml(name)}"${imgClass ? ` class="${imgClass}"` : ''} loading="lazy" decoding="async">
+  <source type="image/avif" srcset="${srcset('avif')}" sizes="${sizes}">
+  <source type="image/webp" srcset="${srcset('webp')}" sizes="${sizes}">
+  <img src="${dir}/${key}-${largest}.jpg" srcset="${srcset('jpg')}" sizes="${sizes}" width="${PEOPLE_PHOTO_DIMS.w}" height="${PEOPLE_PHOTO_DIMS.h}" alt="${escapeHtml(name)}"${imgClass ? ` class="${imgClass}"` : ''} loading="lazy" decoding="async">
 </picture>`;
 }
 

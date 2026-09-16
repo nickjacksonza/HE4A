@@ -1,8 +1,14 @@
-const { picture, accordion, teamCard, testimonialsSection, href } = require('../../helpers');
+const { picture, personPhoto, accordion, teamCard, testimonialsSection, href } = require('../../helpers');
 const shared = require('../shared');
 const people = require('../people');
 
-const TEAM_META = [{ name: 'Ace Robinson' }, { name: 'Eduardo Culbeaux' }];
+const TEAM_META = [{ name: 'Eduardo Culbeaux' }];
+
+const SPEAKER_LINKS = {
+  linkedin: 'https://www.linkedin.com/in/akeliah/',
+  writing: 'https://www.thebody.com/author/ace-robinson',
+  listen: 'https://soundcloud.com/user-499494424/ace-robinson-administrative-and-policy-communicable-disease-advocate'
+};
 
 const COPY = {
   en: {
@@ -19,7 +25,15 @@ const COPY = {
       moderating: { label: 'Moderating', title: 'Panels and Plenaries', body: 'Preparation calls with every panelist, a real running order, and a moderator who keeps the conversation productive and honest.' },
       briefing: { label: 'Briefing', title: 'Board and Funder Sessions', body: 'Closed-room briefings for trustees, funders and government teams who need the evidence and the case for action in one sitting.' }
     },
-    quote: { eyebrow: 'On Stage', text: 'Achieving health equity is hard. Sometimes it means we have to go over, under, around or through challenges.' },
+    speaker: {
+      eyebrow: 'On Stage',
+      heading: 'Meet Your Speaker',
+      bio: 'Ace Robinson, M.P.H., M.H.L., is a leading administrative and policy communicable disease advocate and population health expert, working across HIV, mpox, COVID-19, tuberculosis and malaria. He co-chairs the Federal AIDS Policy Partnership, sits on the UCLA CHIPTS steering committee, and chairs the Brown University Advisory Council to Eliminate Anti-Black Racism. His commentary on HIV policy and leadership appears regularly in TheBody and TheBodyPro.',
+      quoteText: 'Achieving health equity is hard. Sometimes it means we have to go over, under, around or through challenges.',
+      linkedin: 'LinkedIn',
+      writing: 'His Writing on TheBody',
+      listen: 'Hear Him Speak'
+    },
     prepare: {
       heading1: 'How we prepare',
       text1: 'We ask for the audience list, the decision the convening is meant to produce, and whatever the organizers would rather not have said out loud. That last one often matters most — it tells us where the real conversation needs to go.',
@@ -27,10 +41,8 @@ const COPY = {
       text2: "Talks are delivered in English, French, Spanish or Portuguese. We work with interpreters where the audience needs it. Three months' lead time is comfortable; we hold short-notice capacity for policy moments and community convenings."
     },
     team: {
-      heading: 'Who takes the stage',
-      subtext: 'Speakers with a record in the rooms you are convening.',
-      role1: 'Keynote & Moderation · Seattle',
-      bio1: 'M.P.H., M.H.L. Communicable disease policy advocate and Acting Director of the Duke University Sexual & Gender Minority Wellness program.',
+      heading: 'Who else takes the stage',
+      subtext: 'More speakers with a record in the rooms you are convening.',
       role2: 'Moderation & Media · Southeast Asia',
       bio2: 'Educator for over a decade, empowering youth through journalism programmes. Moderates youth and media-facing sessions.'
     },
@@ -60,7 +72,15 @@ const COPY = {
       moderating: { label: 'Modération', title: 'Panels et Plénières', body: "Appels de préparation avec chaque panelliste, un véritable déroulé, et un modérateur qui maintient la conversation productive et honnête." },
       briefing: { label: 'Briefing', title: 'Séances pour Conseils et Bailleurs', body: "Briefings à huis clos pour administrateurs, bailleurs et équipes gouvernementales qui ont besoin des preuves et de l'argumentaire d'action en une seule séance." }
     },
-    quote: { eyebrow: 'Sur Scène', text: "Atteindre l'équité en santé est difficile. Parfois, il faut passer par-dessus, par-dessous, autour ou à travers les obstacles." },
+    speaker: {
+      eyebrow: 'Sur Scène',
+      heading: 'Découvrez Votre Intervenant',
+      bio: "Ace Robinson, M.P.H., M.H.L., est un défenseur reconnu des politiques en matière de maladies transmissibles et un expert en santé des populations, intervenant sur le VIH, le mpox, la COVID-19, la tuberculose et le paludisme. Il est co-président du Federal AIDS Policy Partnership, membre du comité directeur de l'UCLA CHIPTS, et préside le Brown University Advisory Council to Eliminate Anti-Black Racism. Ses analyses sur les politiques et le leadership en matière de VIH paraissent régulièrement dans TheBody et TheBodyPro.",
+      quoteText: "Atteindre l'équité en santé est difficile. Parfois, il faut passer par-dessus, par-dessous, autour ou à travers les obstacles.",
+      linkedin: 'LinkedIn',
+      writing: 'Ses Écrits sur TheBody',
+      listen: 'Écoutez-le'
+    },
     prepare: {
       heading1: 'Comment nous nous préparons',
       text1: "Nous demandons la liste du public, la décision que le rassemblement doit produire, et ce que les organisateurs préféreraient ne pas dire tout haut. Ce dernier point est souvent le plus important — il nous indique où doit aller la vraie conversation.",
@@ -68,10 +88,8 @@ const COPY = {
       text2: "Les interventions se font en anglais, français, espagnol ou portugais. Nous travaillons avec des interprètes si le public en a besoin. Un délai de trois mois est confortable ; nous réservons une capacité de dernière minute pour les moments politiques et les rassemblements communautaires."
     },
     team: {
-      heading: 'Qui Monte sur Scène',
-      subtext: 'Des intervenants ayant fait leurs preuves dans les salles que vous réunissez.',
-      role1: 'Conférences et Modération · Seattle',
-      bio1: 'M.P.H., M.H.L. Défenseur des politiques en maladies transmissibles et Directeur par intérim du programme de bien-être des minorités sexuelles et de genre de l’Université Duke.',
+      heading: 'Qui Monte Aussi sur Scène',
+      subtext: 'D’autres intervenants ayant fait leurs preuves dans les salles que vous réunissez.',
       role2: 'Modération et Médias · Asie du Sud-Est',
       bio2: "Éducateur depuis plus de dix ans, donnant aux jeunes les moyens d'agir par des programmes de journalisme. Anime des séances destinées aux jeunes et aux médias."
     },
@@ -101,7 +119,15 @@ const COPY = {
       moderating: { label: 'Moderación', title: 'Paneles y Plenarias', body: 'Llamadas de preparación con cada panelista, un orden del día real, y un moderador que mantiene la conversación productiva y honesta.' },
       briefing: { label: 'Sesión Informativa', title: 'Sesiones para Juntas y Financiadores', body: 'Sesiones a puerta cerrada para fiduciarios, financiadores y equipos gubernamentales que necesitan la evidencia y los argumentos de acción en una sola sesión.' }
     },
-    quote: { eyebrow: 'En Escena', text: 'Lograr la equidad en salud es difícil. A veces significa que debemos pasar por encima, por debajo, alrededor o a través de los obstáculos.' },
+    speaker: {
+      eyebrow: 'En Escena',
+      heading: 'Conoce a Tu Orador',
+      bio: 'Ace Robinson, M.P.H., M.H.L., es un destacado defensor de políticas en enfermedades transmisibles y experto en salud poblacional, con trabajo en VIH, mpox, COVID-19, tuberculosis y malaria. Es copresidente de la Federal AIDS Policy Partnership, integra el comité directivo de UCLA CHIPTS y preside el Brown University Advisory Council to Eliminate Anti-Black Racism. Sus análisis sobre política de VIH y liderazgo aparecen regularmente en TheBody y TheBodyPro.',
+      quoteText: 'Lograr la equidad en salud es difícil. A veces significa que debemos pasar por encima, por debajo, alrededor o a través de los obstáculos.',
+      linkedin: 'LinkedIn',
+      writing: 'Sus Artículos en TheBody',
+      listen: 'Escúchalo'
+    },
     prepare: {
       heading1: 'Cómo nos preparamos',
       text1: 'Solicitamos la lista de audiencia, la decisión que el encuentro debe producir, y lo que los organizadores prefieren no decir en voz alta. Este último punto suele ser el más importante — nos indica hacia dónde debe ir la conversación real.',
@@ -109,10 +135,8 @@ const COPY = {
       text2: 'Las charlas se ofrecen en inglés, francés, español o portugués. Trabajamos con intérpretes cuando la audiencia lo necesita. Tres meses de antelación es cómodo; reservamos capacidad de último momento para momentos políticos y encuentros comunitarios.'
     },
     team: {
-      heading: 'Quién Sube al Escenario',
-      subtext: 'Oradores con trayectoria en las salas que estás convocando.',
-      role1: 'Conferencias y Moderación · Seattle',
-      bio1: 'M.P.H., M.H.L. Defensor de políticas de enfermedades transmisibles y Director interino del programa de bienestar de minorías sexuales y de género de la Universidad Duke.',
+      heading: 'Quién Más Sube al Escenario',
+      subtext: 'Más oradores con trayectoria en las salas que estás convocando.',
       role2: 'Moderación y Medios · Sudeste Asiático',
       bio2: 'Educador durante más de una década, empoderando a jóvenes a través de programas de periodismo. Modera sesiones dirigidas a jóvenes y medios.'
     },
@@ -142,7 +166,15 @@ const COPY = {
       moderating: { label: 'Moderação', title: 'Painéis e Plenárias', body: 'Chamadas de preparação com cada painelista, uma ordem de trabalhos real, e um moderador que mantém a conversa produtiva e honesta.' },
       briefing: { label: 'Briefing', title: 'Sessões para Conselhos e Financiadores', body: 'Reuniões a portas fechadas para conselheiros, financiadores e equipes governamentais que precisam das evidências e do argumento de ação em uma única sessão.' }
     },
-    quote: { eyebrow: 'No Palco', text: 'Alcançar a equidade em saúde é difícil. Por vezes, significa que precisamos passar por cima, por baixo, ao redor ou através dos obstáculos.' },
+    speaker: {
+      eyebrow: 'No Palco',
+      heading: 'Conheça Seu Palestrante',
+      bio: 'Ace Robinson, M.P.H., M.H.L., é um renomado defensor de políticas em doenças transmissíveis e especialista em saúde populacional, atuando em HIV, mpox, COVID-19, tuberculose e malária. É copresidente da Federal AIDS Policy Partnership, integra o comitê diretor da UCLA CHIPTS e preside o Brown University Advisory Council to Eliminate Anti-Black Racism. Seus textos sobre política de HIV e liderança são publicados regularmente na TheBody e na TheBodyPro.',
+      quoteText: 'Alcançar a equidade em saúde é difícil. Por vezes, significa que precisamos passar por cima, por baixo, ao redor ou através dos obstáculos.',
+      linkedin: 'LinkedIn',
+      writing: 'Seus Textos na TheBody',
+      listen: 'Ouça-o'
+    },
     prepare: {
       heading1: 'Como nos preparamos',
       text1: 'Pedimos a lista de público, a decisão que o encontro deve produzir, e aquilo que os organizadores prefeririam não dizer em voz alta. Esse último ponto costuma ser o mais importante — ele nos diz para onde a conversa real precisa ir.',
@@ -150,10 +182,8 @@ const COPY = {
       text2: 'As palestras são proferidas em inglês, francês, espanhol ou português. Trabalhamos com intérpretes quando o público precisa. Três meses de antecedência é confortável; mantemos capacidade de última hora para momentos políticos e encontros comunitários.'
     },
     team: {
-      heading: 'Quem Sobe ao Palco',
-      subtext: 'Palestrantes com histórico nas salas que você está reunindo.',
-      role1: 'Palestras e Moderação · Seattle',
-      bio1: 'M.P.H., M.H.L. Defensor de políticas de doenças transmissíveis e Diretor interino do programa de bem-estar de minorias sexuais e de gênero da Universidade Duke.',
+      heading: 'Quem Mais Sobe ao Palco',
+      subtext: 'Mais palestrantes com histórico nas salas que você está reunindo.',
       role2: 'Moderação e Mídia · Sudeste Asiático',
       bio2: 'Educador por mais de uma década, capacitando jovens por meio de programas de jornalismo. Modera sessões voltadas a jovens e mídia.'
     },
@@ -215,11 +245,23 @@ function main(locale) {
   </div>
 </section>
 
-<section class="quote-band band-blossom">
-  <div class="quote-band-inner">
-    <span class="eyebrow eyebrow--on-blossom">${t.quote.eyebrow}</span>
-    <p class="quote-text">“${t.quote.text}”</p>
-    <span class="quote-author">Ace Robinson, M.P.H., M.H.L</span>
+<section class="speaker-feature band-blossom">
+  <div class="container speaker-feature-inner">
+    <div class="speaker-feature-photo">
+      ${personPhoto('Ace Robinson', 'speaker-feature-img', '(max-width: 640px) 100vw, 320px')}
+    </div>
+    <div class="speaker-feature-content">
+      <span class="eyebrow eyebrow--on-blossom">${t.speaker.eyebrow}</span>
+      <h2 class="section-heading">${t.speaker.heading}</h2>
+      <p class="speaker-feature-name">Ace Robinson, M.P.H., M.H.L.</p>
+      <p class="speaker-feature-bio">${t.speaker.bio}</p>
+      <p class="quote-text quote-text--feature">“${t.speaker.quoteText}”</p>
+      <div class="social-links">
+        <a href="${SPEAKER_LINKS.linkedin}" class="social-link" target="_blank" rel="noopener noreferrer">${t.speaker.linkedin}</a>
+        <a href="${SPEAKER_LINKS.writing}" class="social-link" target="_blank" rel="noopener noreferrer">${t.speaker.writing}</a>
+        <a href="${SPEAKER_LINKS.listen}" class="social-link" target="_blank" rel="noopener noreferrer">${t.speaker.listen}</a>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -243,8 +285,7 @@ function main(locale) {
     <h2 class="section-heading">${t.team.heading}</h2>
     <p class="section-subtext" style="margin-bottom:var(--space-7)">${t.team.subtext}</p>
     <div class="auto-grid" style="--min:280px">
-      ${teamCard({ name: TEAM_META[0].name, role: t.team.role1, bio: t.team.bio1 }, locale)}
-      ${teamCard({ name: TEAM_META[1].name, role: t.team.role2, bio: t.team.bio2 }, locale)}
+      ${teamCard({ name: TEAM_META[0].name, role: t.team.role2, bio: t.team.bio2 }, locale)}
       ${teamCard({ name: people.stephenPlaceholder.name, role: people.stephenPlaceholder.teamRole[locale], bio: people.stephenPlaceholder.bio[locale] }, locale)}
     </div>
   </div>
