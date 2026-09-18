@@ -141,6 +141,34 @@
       <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.healthequity4all.org/pt/public-speaking.html" />
   </url>
   <url>
+    <loc>https://www.healthequity4all.org/recruitment.html</loc>
+      <xhtml:link rel="alternate" hreflang="en" href="https://www.healthequity4all.org/recruitment.html" />
+      <xhtml:link rel="alternate" hreflang="fr" href="https://www.healthequity4all.org/fr/recruitment.html" />
+      <xhtml:link rel="alternate" hreflang="es" href="https://www.healthequity4all.org/es/recruitment.html" />
+      <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.healthequity4all.org/pt/recruitment.html" />
+  </url>
+  <url>
+    <loc>https://www.healthequity4all.org/fr/recruitment.html</loc>
+      <xhtml:link rel="alternate" hreflang="en" href="https://www.healthequity4all.org/recruitment.html" />
+      <xhtml:link rel="alternate" hreflang="fr" href="https://www.healthequity4all.org/fr/recruitment.html" />
+      <xhtml:link rel="alternate" hreflang="es" href="https://www.healthequity4all.org/es/recruitment.html" />
+      <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.healthequity4all.org/pt/recruitment.html" />
+  </url>
+  <url>
+    <loc>https://www.healthequity4all.org/es/recruitment.html</loc>
+      <xhtml:link rel="alternate" hreflang="en" href="https://www.healthequity4all.org/recruitment.html" />
+      <xhtml:link rel="alternate" hreflang="fr" href="https://www.healthequity4all.org/fr/recruitment.html" />
+      <xhtml:link rel="alternate" hreflang="es" href="https://www.healthequity4all.org/es/recruitment.html" />
+      <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.healthequity4all.org/pt/recruitment.html" />
+  </url>
+  <url>
+    <loc>https://www.healthequity4all.org/pt/recruitment.html</loc>
+      <xhtml:link rel="alternate" hreflang="en" href="https://www.healthequity4all.org/recruitment.html" />
+      <xhtml:link rel="alternate" hreflang="fr" href="https://www.healthequity4all.org/fr/recruitment.html" />
+      <xhtml:link rel="alternate" hreflang="es" href="https://www.healthequity4all.org/es/recruitment.html" />
+      <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.healthequity4all.org/pt/recruitment.html" />
+  </url>
+  <url>
     <loc>https://www.healthequity4all.org/about-us.html</loc>
       <xhtml:link rel="alternate" hreflang="en" href="https://www.healthequity4all.org/about-us.html" />
       <xhtml:link rel="alternate" hreflang="fr" href="https://www.healthequity4all.org/fr/about-us.html" />

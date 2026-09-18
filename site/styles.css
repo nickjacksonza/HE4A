@@ -614,6 +614,12 @@ main:focus { outline: none; }
   width: 100%;
   height: 100%;
   object-fit: cover;
+  /* Hero boxes are much wider than tall (full-bleed width, ~480-600px
+     height), so default center-cropping removes a large, increasing-with-
+     viewport-width slice off the top and bottom alike. Every hero photo
+     has its subjects' heads in the upper portion of the frame, so anchor
+     to the top: crop only comes off the bottom. */
+  object-position: center top;
 }
 .hero-overlay {
   position: absolute;
@@ -959,6 +965,33 @@ main:focus { outline: none; }
 .quote-card .quote-text { font-size: clamp(20px, 2vw, 26px); text-align: left; }
 .quote-card .quote-author { margin-top: var(--space-4); display: block; }
 
+/* Featured-speaker section (Public Speaking page) */
+.speaker-feature { padding: var(--space-8) var(--space-6); }
+.speaker-feature-inner {
+  display: grid;
+  grid-template-columns: minmax(200px, 320px) 1fr;
+  gap: var(--space-8);
+  align-items: center;
+}
+.speaker-feature-photo picture { display: block; }
+.speaker-feature-img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: var(--radius-lg);
+  display: block;
+}
+.speaker-feature-content { display: flex; flex-direction: column; gap: var(--space-3); }
+.speaker-feature-content .section-heading { margin-bottom: 0; }
+.speaker-feature-name { font-family: var(--font-display); font-weight: var(--weight-semibold); font-size: var(--text-lg); color: var(--text-primary); margin: 0; }
+.speaker-feature-bio { font-size: var(--text-base); color: var(--text-secondary); line-height: var(--leading-normal); }
+.speaker-feature-content .quote-text--feature { font-size: clamp(20px, 2vw, 26px); text-align: left; margin: 0; }
+.speaker-feature-content .social-links { margin-top: var(--space-2); }
+@media (max-width: 720px) {
+  .speaker-feature-inner { grid-template-columns: 1fr; text-align: left; }
+  .speaker-feature-photo { max-width: 240px; }
+}
+
 /* ---- 14. Split two-column blocks -------------------------------------------- */
 .split-block {
   display: grid;
@@ -1237,6 +1270,6 @@ main:focus { outline: none; }
 @media (max-width: 600px) {
   .section { padding: var(--space-7) var(--space-4); }
   .section-tight { padding: var(--space-6) var(--space-4); }
-  .quote-band, .cta-band { padding: var(--space-7) var(--space-4); }
+  .quote-band, .cta-band, .speaker-feature { padding: var(--space-7) var(--space-4); }
   .container { padding-inline: var(--space-4); }
 }
