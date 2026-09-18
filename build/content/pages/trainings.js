@@ -13,8 +13,8 @@ const TEAM_META = [{ name: 'Lauren Miller' }, { name: 'Diego Calixto' }, { name:
 const COPY = {
   en: {
     hero: {
-      title: 'Trainings',
-      text: 'Sessions designed for teams who will be back at work on Monday. Every training ends with concrete commitments the group has agreed to make — written down, owned by name, and followed up on.',
+      title: 'Equity Trainings',
+      text: 'Sessions built for teams who’ll be back at work on Monday. Every training ends with commitments the group has agreed to make, written down, owned by name, and followed up on.',
       tags: ['Racial Equity', 'LGBTQ+ Equity', 'Social Determinants of Health'],
       button: 'Book a Session'
     },
@@ -22,19 +22,19 @@ const COPY = {
       heading: 'The curriculum',
       subtext: 'Each module runs as a half day, a full day, or a series across a quarter. Content is adapted to your sector before delivery.',
       tabs: [
-        { label: 'Racial Equity', alt: 'Colleagues working through ideas on a whiteboard', title: 'Racial Equity', desc: 'How racism shows up in intake, referral, hiring and data collection — and what a team can change this month without waiting for permission.', topics: ['Structural racism in healthcare access', 'Bias in intake and referral processes', 'Data collection that reflects community reality', 'Building accountability into daily practice'] },
+        { label: 'Racial Equity', alt: 'Colleagues working through ideas on a whiteboard', title: 'Racial Equity', desc: 'How racism shows up in intake, referral, hiring and data collection, and what your team can change this month without waiting for permission.', topics: ['Structural racism in healthcare access', 'Bias in intake and referral processes', 'Data collection that reflects community reality', 'Building accountability into daily practice'] },
         { label: 'LGBTQ+ Equity', alt: 'Members of the collective together outdoors', title: 'LGBTQ+ Equity', desc: 'Affirming care and employment practice for LGBTQ+ people, with particular attention to trans and gender diverse clients and staff.', topics: ['Creating affirming clinical environments', 'Inclusive employment policies and practices', 'Working with trans and gender diverse communities', 'Addressing intersecting identities in care'] },
-        { label: 'Social Determinants', alt: 'A researcher at work in a laboratory', title: 'Social Determinants of Health', desc: 'Housing, income, migration status and criminalization treated as clinical facts — and how to design services that account for them.', topics: ['Housing instability as a health determinant', 'Immigration status and access to care', 'Economic barriers to health outcomes', 'Designing services around real circumstances'] }
+        { label: 'Social Determinants', alt: 'A researcher at work in a laboratory', title: 'Social Determinants of Health', desc: 'Housing, income, migration status and criminalization are clinical facts. We’ll show you how to design services that account for them.', topics: ['Housing instability as a health determinant', 'Immigration status and access to care', 'Economic barriers to health outcomes', 'Designing services around real circumstances'] }
       ]
     },
     info: {
       formats: { title: 'Formats', body: 'Half day, full day, or a multi-part series across a quarter. In person for groups up to 30, online up to 60.' },
-      preparation: { title: 'Preparation', body: 'We ask for a short pre-session survey and one conversation with a frontline staff member. The examples in the room will be yours, not borrowed.' },
-      languages: { title: 'Languages', body: 'Sessions run in English, French, Spanish and Portuguese — delivered by facilitators who teach in the language they live in.' },
+      preparation: { title: 'Preparation', body: 'We ask for a short pre-session survey and one conversation with a frontline staff member. That way the examples in the room are yours.' },
+      languages: { title: 'Languages', body: 'Sessions run in English, French, Spanish and Portuguese, delivered by facilitators who teach in the language they live in.' },
       followUp: { title: 'Follow-up', body: 'You receive the commitments made in the room, written up by name and date, plus a 60-day check-in call included in the fee.' }
     },
     team: {
-      subtext: 'Facilitators who have done the work they are teaching about.',
+      subtext: 'Facilitators who’ve done the work they teach.',
       role1: 'Racial Equity Faculty · Atlanta',
       bio1: 'Advocate for DEI and health equity, guided by friendship, leadership and service to humanity. Leads the racial equity curriculum.',
       role2: 'LGBTQ+ Equity Faculty · Brasília',
@@ -43,21 +43,21 @@ const COPY = {
       bio3: 'HIV response leader for over a decade, teaching the social and structural determinants that shape service uptake.'
     },
     faqs: [
-      { q: 'Are sessions delivered online or in person?', a: 'Both. In person for groups up to 30, online up to 60. Multi-part series often mix the two — opening in person and continuing online works well for many teams.' },
+      { q: 'Are sessions delivered online or in person?', a: 'Both. In person for groups up to 30, online up to 60. Multi-part series often mix the two. Opening in person and continuing online works well for many teams.' },
       { q: 'Do you offer continuing education credit?', a: 'Not directly, but we provide a syllabus, attendance record and learning objectives that most accrediting bodies accept for self-submission.' },
       { q: 'Can a training be adapted for clinical staff specifically?', a: 'Absolutely. Clinical, frontline, administrative and board audiences each receive different case material. We recommend not mixing board members with staff in the same room.' },
-      { q: 'What happens after the session?', a: 'You receive the commitments made in the room, written up by name and date, plus a 60-day check-in call included in the fee. That follow-up makes the difference.' }
+      { q: 'What happens after the session?', a: 'You get the commitments made in the room, written up by name and date, plus a 60-day check-in call included in the fee.' }
     ],
     cta: {
       heading: 'Ready to move your team from awareness to practice?',
-      text: 'Tell us who is in the room — team, size, language and what has been tried before. We will propose a format that fits.'
+      text: 'Tell us who’s in the room: team, size, language, and what’s been tried before. We’ll propose a format that fits.'
     },
     heroAlt: 'A team in discussion around a table'
   },
   fr: {
     hero: {
-      title: 'Formations',
-      text: "Des séances conçues pour des équipes qui reprendront le travail le lundi. Chaque formation se termine par des engagements concrets que le groupe accepte de prendre — consignés par écrit, attribués nommément, et suivis.",
+      title: 'Formations Équité',
+      text: "Des séances conçues pour des équipes qui reprendront le travail le lundi. Chaque formation se termine par des engagements que le groupe accepte de prendre, consignés par écrit, attribués nommément, et suivis.",
       tags: ['Équité Raciale', 'Équité LGBTQ+', 'Déterminants Sociaux de la Santé'],
       button: 'Réserver une Session'
     },
@@ -65,19 +65,19 @@ const COPY = {
       heading: 'Le programme',
       subtext: "Chaque module se déroule sur une demi-journée, une journée complète, ou en série sur un trimestre. Le contenu est adapté à votre secteur avant la prestation.",
       tabs: [
-        { label: 'Équité Raciale', alt: 'Collègues réfléchissant devant un tableau blanc', title: 'Équité Raciale', desc: "Comment le racisme se manifeste dans l'accueil, l'orientation, le recrutement et la collecte de données — et ce qu'une équipe peut changer ce mois-ci sans attendre de permission.", topics: ["Racisme structurel dans l'accès aux soins de santé", "Biais dans les processus d'accueil et d'orientation", 'Collecte de données reflétant la réalité communautaire', 'Intégrer la redevabilité dans la pratique quotidienne'] },
+        { label: 'Équité Raciale', alt: 'Collègues réfléchissant devant un tableau blanc', title: 'Équité Raciale', desc: "Comment le racisme se manifeste dans l'accueil, l'orientation, le recrutement et la collecte de données, et ce que votre équipe peut changer ce mois-ci sans attendre de permission.", topics: ["Racisme structurel dans l'accès aux soins de santé", "Biais dans les processus d'accueil et d'orientation", 'Collecte de données reflétant la réalité communautaire', 'Intégrer la redevabilité dans la pratique quotidienne'] },
         { label: 'Équité LGBTQ+', alt: 'Membres du collectif réunis à l’extérieur', title: 'Équité LGBTQ+', desc: "Pratiques de soins et d'emploi valorisantes pour les personnes LGBTQ+, avec une attention particulière aux clientèles et au personnel trans et de genre divers.", topics: ['Créer des environnements cliniques valorisants', "Politiques et pratiques d'emploi inclusives", 'Travailler avec les communautés trans et de genre divers', "Aborder les identités intersectionnelles dans les soins"] },
-        { label: 'Déterminants Sociaux', alt: 'Un chercheur au travail dans un laboratoire', title: 'Déterminants Sociaux de la Santé', desc: "Le logement, le revenu, le statut migratoire et la criminalisation traités comme des faits cliniques — et comment concevoir des services qui en tiennent compte.", topics: ["L'instabilité du logement comme déterminant de santé", "Statut migratoire et accès aux soins", "Obstacles économiques aux résultats de santé", "Concevoir des services autour des réalités vécues"] }
+        { label: 'Déterminants Sociaux', alt: 'Un chercheur au travail dans un laboratoire', title: 'Déterminants Sociaux de la Santé', desc: "Le logement, le revenu, le statut migratoire et la criminalisation sont des faits cliniques. Nous vous montrons comment concevoir des services qui en tiennent compte.", topics: ["L'instabilité du logement comme déterminant de santé", "Statut migratoire et accès aux soins", "Obstacles économiques aux résultats de santé", "Concevoir des services autour des réalités vécues"] }
       ]
     },
     info: {
       formats: { title: 'Formats', body: 'Demi-journée, journée complète ou série en plusieurs parties sur un trimestre. En présentiel pour des groupes jusqu’à 30 personnes, en ligne jusqu’à 60.' },
-      preparation: { title: 'Préparation', body: 'Nous demandons un court sondage préalable et un entretien avec un membre du personnel de terrain. Les exemples abordés seront les vôtres, pas des exemples génériques.' },
-      languages: { title: 'Langues', body: 'Les séances se déroulent en anglais, français, espagnol et portugais — animées par des formateurs qui enseignent dans la langue qu’ils vivent.' },
+      preparation: { title: 'Préparation', body: 'Nous demandons un court sondage préalable et un entretien avec un membre du personnel de terrain. Ainsi, les exemples abordés dans la salle sont les vôtres.' },
+      languages: { title: 'Langues', body: 'Les séances se déroulent en anglais, français, espagnol et portugais, animées par des formateurs qui enseignent dans la langue qu’ils vivent.' },
       followUp: { title: 'Suivi', body: 'Vous recevez les engagements pris dans la salle, consignés par nom et par date, ainsi qu’un appel de suivi à 60 jours inclus dans le tarif.' }
     },
     team: {
-      subtext: 'Des animateurs qui ont eux-mêmes mené le travail qu’ils enseignent.',
+      subtext: 'Des animateurs qui ont mené eux-mêmes le travail qu’ils enseignent.',
       role1: 'Équité Raciale · Atlanta',
       bio1: "Défenseure de la diversité, de l'équité et de l'inclusion ainsi que de l'équité en santé, guidée par l'amitié, le leadership et le service à l'humanité. Dirige le programme d'équité raciale.",
       role2: 'Équité LGBTQ+ · Brasília',
@@ -86,21 +86,21 @@ const COPY = {
       bio3: "Leader de la réponse au VIH depuis plus de dix ans, enseignant les déterminants sociaux et structurels qui influencent le recours aux services."
     },
     faqs: [
-      { q: 'Les séances sont-elles en ligne ou en présentiel ?', a: 'Les deux. En présentiel pour des groupes jusqu’à 30 personnes, en ligne jusqu’à 60. Les séries en plusieurs parties mélangent souvent les deux — commencer en présentiel puis continuer en ligne fonctionne bien pour de nombreuses équipes.' },
+      { q: 'Les séances sont-elles en ligne ou en présentiel ?', a: 'Les deux. En présentiel pour des groupes jusqu’à 30 personnes, en ligne jusqu’à 60. Les séries en plusieurs parties mélangent souvent les deux. Commencer en présentiel puis continuer en ligne fonctionne bien pour de nombreuses équipes.' },
       { q: 'Offrez-vous des crédits de formation continue ?', a: 'Pas directement, mais nous fournissons un programme, une feuille de présence et des objectifs d’apprentissage que la plupart des organismes accréditeurs acceptent en auto-soumission.' },
       { q: 'Une formation peut-elle être adaptée spécifiquement au personnel clinique ?', a: 'Absolument. Les publics clinique, de terrain, administratif et de conseil reçoivent chacun des études de cas différentes. Nous recommandons de ne pas mélanger les membres du conseil avec le personnel dans la même salle.' },
-      { q: 'Que se passe-t-il après la séance ?', a: 'Vous recevez les engagements pris dans la salle, consignés par nom et par date, ainsi qu’un appel de suivi à 60 jours inclus dans le tarif. Ce suivi fait toute la différence.' }
+      { q: 'Que se passe-t-il après la séance ?', a: 'Vous recevez les engagements pris dans la salle, consignés par nom et par date, ainsi qu’un appel de suivi à 60 jours inclus dans le tarif.' }
     ],
     cta: {
       heading: 'Prêt à faire passer votre équipe de la sensibilisation à la pratique ?',
-      text: 'Dites-nous qui sera dans la salle — équipe, taille, langue et ce qui a déjà été essayé. Nous proposerons un format adapté.'
+      text: 'Dites-nous qui sera dans la salle : équipe, taille, langue, et ce qui a déjà été essayé. Nous proposerons un format adapté.'
     },
     heroAlt: 'Équipe en discussion autour d’une table'
   },
   es: {
     hero: {
-      title: 'Capacitaciones',
-      text: 'Sesiones diseñadas para equipos que volverán al trabajo el lunes. Cada capacitación termina con compromisos concretos que el grupo acuerda asumir — por escrito, atribuidos por nombre y con seguimiento posterior.',
+      title: 'Capacitaciones en Equidad',
+      text: 'Sesiones hechas para equipos que volverán al trabajo el lunes. Cada capacitación termina con compromisos que el grupo acuerda asumir, por escrito, atribuidos por nombre y con seguimiento posterior.',
       tags: ['Equidad Racial', 'Equidad LGBTQ+', 'Determinantes Sociales de la Salud'],
       button: 'Reservar una Sesión'
     },
@@ -108,19 +108,19 @@ const COPY = {
       heading: 'El programa',
       subtext: 'Cada módulo se desarrolla en medio día, un día completo o una serie a lo largo de un trimestre. El contenido se adapta a tu sector antes de la entrega.',
       tabs: [
-        { label: 'Equidad Racial', alt: 'Colegas planteando ideas en una pizarra', title: 'Equidad Racial', desc: 'Cómo se manifiesta el racismo en la admisión, la derivación, la contratación y la recolección de datos — y qué puede cambiar un equipo este mes sin esperar permiso.', topics: ['Racismo estructural en el acceso a la salud', 'Sesgo en los procesos de admisión y derivación', 'Recolección de datos que refleje la realidad comunitaria', 'Integrar la rendición de cuentas en la práctica diaria'] },
+        { label: 'Equidad Racial', alt: 'Colegas planteando ideas en una pizarra', title: 'Equidad Racial', desc: 'Cómo se manifiesta el racismo en la admisión, la derivación, la contratación y la recolección de datos, y qué puede cambiar tu equipo este mes sin esperar permiso.', topics: ['Racismo estructural en el acceso a la salud', 'Sesgo en los procesos de admisión y derivación', 'Recolección de datos que refleje la realidad comunitaria', 'Integrar la rendición de cuentas en la práctica diaria'] },
         { label: 'Equidad LGBTQ+', alt: 'Miembros del colectivo reunidos al aire libre', title: 'Equidad LGBTQ+', desc: 'Prácticas afirmativas de atención y empleo para personas LGBTQ+, con especial atención a clientes y personal trans y de género diverso.', topics: ['Creación de entornos clínicos afirmativos', 'Políticas y prácticas de empleo inclusivas', 'Trabajo con comunidades trans y de género diverso', 'Abordar identidades interseccionales en la atención'] },
-        { label: 'Determinantes Sociales', alt: 'Un investigador trabajando en un laboratorio', title: 'Determinantes Sociales de la Salud', desc: 'Vivienda, ingresos, estatus migratorio y criminalización tratados como hechos clínicos — y cómo diseñar servicios que los tomen en cuenta.', topics: ['Inestabilidad de vivienda como determinante de salud', 'Estatus migratorio y acceso a la atención', 'Barreras económicas a los resultados de salud', 'Diseñar servicios en torno a circunstancias reales'] }
+        { label: 'Determinantes Sociales', alt: 'Un investigador trabajando en un laboratorio', title: 'Determinantes Sociales de la Salud', desc: 'Vivienda, ingresos, estatus migratorio y criminalización son hechos clínicos. Te mostramos cómo diseñar servicios que los tomen en cuenta.', topics: ['Inestabilidad de vivienda como determinante de salud', 'Estatus migratorio y acceso a la atención', 'Barreras económicas a los resultados de salud', 'Diseñar servicios en torno a circunstancias reales'] }
       ]
     },
     info: {
       formats: { title: 'Formatos', body: 'Medio día, día completo, o una serie en varias partes a lo largo de un trimestre. Presencial para grupos de hasta 30, en línea hasta 60.' },
-      preparation: { title: 'Preparación', body: 'Solicitamos una breve encuesta previa y una conversación con un miembro del personal de primera línea. Los ejemplos en la sala serán los tuyos, no genéricos.' },
-      languages: { title: 'Idiomas', body: 'Las sesiones se realizan en inglés, francés, español y portugués — impartidas por facilitadores que enseñan en el idioma que viven.' },
+      preparation: { title: 'Preparación', body: 'Solicitamos una breve encuesta previa y una conversación con un miembro del personal de primera línea. Así los ejemplos en la sala son los tuyos.' },
+      languages: { title: 'Idiomas', body: 'Las sesiones se realizan en inglés, francés, español y portugués, impartidas por facilitadores que enseñan en el idioma que viven.' },
       followUp: { title: 'Seguimiento', body: 'Recibes los compromisos asumidos en la sala, redactados por nombre y fecha, además de una llamada de seguimiento a los 60 días incluida en la tarifa.' }
     },
     team: {
-      subtext: 'Facilitadores que han realizado el trabajo sobre el que enseñan.',
+      subtext: 'Facilitadores que han hecho el trabajo que enseñan.',
       role1: 'Equidad Racial · Atlanta',
       bio1: 'Defensora de la diversidad, equidad e inclusión y de la equidad en salud, guiada por la amistad, el liderazgo y el servicio a la humanidad. Dirige el programa de equidad racial.',
       role2: 'Equidad LGBTQ+ · Brasília',
@@ -129,21 +129,21 @@ const COPY = {
       bio3: 'Líder de la respuesta al VIH durante más de una década, enseñando los determinantes sociales y estructurales que moldean el uso de los servicios.'
     },
     faqs: [
-      { q: '¿Las sesiones son en línea o presenciales?', a: 'Ambas. Presencial para grupos de hasta 30, en línea hasta 60. Las series en varias partes suelen combinar ambas — comenzar presencial y continuar en línea funciona bien para muchos equipos.' },
+      { q: '¿Las sesiones son en línea o presenciales?', a: 'Ambas. Presencial para grupos de hasta 30, en línea hasta 60. Las series en varias partes suelen combinar ambas. Comenzar presencial y continuar en línea funciona bien para muchos equipos.' },
       { q: '¿Ofrecen créditos de educación continua?', a: 'No directamente, pero proporcionamos un programa, registro de asistencia y objetivos de aprendizaje que la mayoría de los organismos acreditadores aceptan por autopresentación.' },
       { q: '¿Se puede adaptar una capacitación específicamente para personal clínico?', a: 'Por supuesto. Las audiencias clínicas, de primera línea, administrativas y de junta reciben cada una material de caso diferente. Recomendamos no mezclar miembros de la junta con personal en la misma sala.' },
-      { q: '¿Qué sucede después de la sesión?', a: 'Recibes los compromisos asumidos en la sala, redactados por nombre y fecha, además de una llamada de seguimiento a los 60 días incluida en la tarifa. Ese seguimiento marca la diferencia.' }
+      { q: '¿Qué sucede después de la sesión?', a: 'Recibes los compromisos asumidos en la sala, redactados por nombre y fecha, además de una llamada de seguimiento a los 60 días incluida en la tarifa.' }
     ],
     cta: {
       heading: '¿Listo para llevar a tu equipo de la sensibilización a la práctica?',
-      text: 'Cuéntanos quién estará en la sala — equipo, tamaño, idioma y qué se ha intentado antes. Te propondremos un formato adecuado.'
+      text: 'Cuéntanos quién estará en la sala: equipo, tamaño, idioma, y qué se ha intentado antes. Te propondremos un formato adecuado.'
     },
     heroAlt: 'Un equipo en discusión alrededor de una mesa'
   },
   pt: {
     hero: {
-      title: 'Capacitações',
-      text: 'Sessões desenhadas para equipes que voltarão ao trabalho na segunda-feira. Cada capacitação termina com compromissos concretos que o grupo concorda em assumir — registrados por escrito, atribuídos por nome e com acompanhamento posterior.',
+      title: 'Capacitações em Equidade',
+      text: 'Sessões feitas para equipes que voltarão ao trabalho na segunda-feira. Cada capacitação termina com compromissos que o grupo concorda em assumir, registrados por escrito, atribuídos por nome e com acompanhamento posterior.',
       tags: ['Equidade Racial', 'Equidade LGBTQ+', 'Determinantes Sociais da Saúde'],
       button: 'Reservar uma Sessão'
     },
@@ -151,19 +151,19 @@ const COPY = {
       heading: 'O currículo',
       subtext: 'Cada módulo ocorre em meio período, um dia completo ou uma série ao longo de um trimestre. O conteúdo é adaptado ao seu setor antes da entrega.',
       tabs: [
-        { label: 'Equidade Racial', alt: 'Colegas mapeando ideias em um quadro branco', title: 'Equidade Racial', desc: 'Como o racismo se manifesta na triagem, no encaminhamento, na contratação e na coleta de dados — e o que uma equipe pode mudar ainda este mês sem esperar permissão.', topics: ['Racismo estrutural no acesso à saúde', 'Viés nos processos de triagem e encaminhamento', 'Coleta de dados que reflete a realidade da comunidade', 'Construindo responsabilização na prática diária'] },
+        { label: 'Equidade Racial', alt: 'Colegas mapeando ideias em um quadro branco', title: 'Equidade Racial', desc: 'Como o racismo se manifesta na triagem, no encaminhamento, na contratação e na coleta de dados, e o que sua equipe pode mudar ainda este mês sem esperar permissão.', topics: ['Racismo estrutural no acesso à saúde', 'Viés nos processos de triagem e encaminhamento', 'Coleta de dados que reflete a realidade da comunidade', 'Construindo responsabilização na prática diária'] },
         { label: 'Equidade LGBTQ+', alt: 'Membros do coletivo reunidos ao ar livre', title: 'Equidade LGBTQ+', desc: 'Práticas de cuidado e emprego acolhedoras para pessoas LGBTQ+, com atenção especial a clientes e equipe trans e de gênero diverso.', topics: ['Criando ambientes clínicos acolhedores', 'Políticas e práticas de emprego inclusivas', 'Trabalhando com comunidades trans e de gênero diverso', 'Abordando identidades interseccionais no cuidado'] },
-        { label: 'Determinantes Sociais', alt: 'Um pesquisador trabalhando em um laboratório', title: 'Determinantes Sociais da Saúde', desc: 'Moradia, renda, status migratório e criminalização tratados como fatos clínicos — e como projetar serviços que os levem em conta.', topics: ['Instabilidade habitacional como determinante de saúde', 'Status migratório e acesso ao cuidado', 'Barreiras econômicas aos resultados de saúde', 'Projetando serviços em torno de circunstâncias reais'] }
+        { label: 'Determinantes Sociais', alt: 'Um pesquisador trabalhando em um laboratório', title: 'Determinantes Sociais da Saúde', desc: 'Moradia, renda, status migratório e criminalização são fatos clínicos. Mostramos como projetar serviços que os levem em conta.', topics: ['Instabilidade habitacional como determinante de saúde', 'Status migratório e acesso ao cuidado', 'Barreiras econômicas aos resultados de saúde', 'Projetando serviços em torno de circunstâncias reais'] }
       ]
     },
     info: {
       formats: { title: 'Formatos', body: 'Meio período, dia completo, ou uma série em várias partes ao longo de um trimestre. Presencial para grupos de até 30, online até 60.' },
-      preparation: { title: 'Preparação', body: 'Pedimos uma breve pesquisa prévia e uma conversa com um membro da equipe de linha de frente. Os exemplos na sala serão os seus, não genéricos.' },
-      languages: { title: 'Idiomas', body: 'As sessões ocorrem em inglês, francês, espanhol e português — conduzidas por facilitadores que ensinam no idioma que vivem.' },
+      preparation: { title: 'Preparação', body: 'Pedimos uma breve pesquisa prévia e uma conversa com um membro da equipe de linha de frente. Assim os exemplos na sala são os seus.' },
+      languages: { title: 'Idiomas', body: 'As sessões ocorrem em inglês, francês, espanhol e português, conduzidas por facilitadores que ensinam no idioma que vivem.' },
       followUp: { title: 'Acompanhamento', body: 'Você recebe os compromissos assumidos na sala, registrados por nome e data, além de uma chamada de acompanhamento em 60 dias incluída na taxa.' }
     },
     team: {
-      subtext: 'Facilitadores que já realizaram o trabalho sobre o qual ensinam.',
+      subtext: 'Facilitadores que já fizeram o trabalho que ensinam.',
       role1: 'Equidade Racial · Atlanta',
       bio1: 'Defensora da diversidade, equidade e inclusão e da equidade em saúde, guiada pela amizade, liderança e serviço à humanidade. Lidera o currículo de equidade racial.',
       role2: 'Equidade LGBTQ+ · Brasília',
@@ -172,14 +172,14 @@ const COPY = {
       bio3: 'Líder da resposta ao HIV por mais de uma década, ensinando os determinantes sociais e estruturais que moldam a busca por serviços.'
     },
     faqs: [
-      { q: 'As sessões são online ou presenciais?', a: 'Ambas. Presencial para grupos de até 30, online até 60. Séries em várias partes costumam combinar as duas — começar presencial e continuar online funciona bem para muitas equipes.' },
+      { q: 'As sessões são online ou presenciais?', a: 'Ambas. Presencial para grupos de até 30, online até 60. Séries em várias partes costumam combinar as duas. Começar presencial e continuar online funciona bem para muitas equipes.' },
       { q: 'Vocês oferecem créditos de educação continuada?', a: 'Não diretamente, mas fornecemos um programa, registro de presença e objetivos de aprendizagem que a maioria dos órgãos credenciadores aceita por autossubmissão.' },
       { q: 'Uma capacitação pode ser adaptada especificamente para a equipe clínica?', a: 'Sem dúvida. Públicos clínicos, de linha de frente, administrativos e do conselho recebem, cada um, material de caso diferente. Recomendamos não misturar membros do conselho com a equipe na mesma sala.' },
-      { q: 'O que acontece depois da sessão?', a: 'Você recebe os compromissos assumidos na sala, registrados por nome e data, além de uma chamada de acompanhamento em 60 dias incluída na taxa. Esse acompanhamento faz a diferença.' }
+      { q: 'O que acontece depois da sessão?', a: 'Você recebe os compromissos assumidos na sala, registrados por nome e data, além de uma chamada de acompanhamento em 60 dias incluída na taxa.' }
     ],
     cta: {
       heading: 'Pronto para levar sua equipe da conscientização à prática?',
-      text: 'Conte-nos quem estará na sala — equipe, tamanho, idioma e o que já foi tentado antes. Vamos propor um formato adequado.'
+      text: 'Conte-nos quem estará na sala: equipe, tamanho, idioma, e o que já foi tentado antes. Vamos propor um formato adequado.'
     },
     heroAlt: 'Uma equipe em discussão em torno de uma mesa'
   }
@@ -293,16 +293,16 @@ module.exports = {
   activeNavId: 'trainings',
   meta: {
     title: {
-      en: 'Trainings',
-      fr: 'Formations',
-      es: 'Capacitaciones',
-      pt: 'Capacitações'
+      en: 'Equity Trainings',
+      fr: 'Formations Équité',
+      es: 'Capacitaciones en Equidad',
+      pt: 'Capacitações em Equidade'
     },
     description: {
-      en: 'Racial equity, LGBTQ+ equity and social determinants of health trainings built for practice — every session ends with commitments the team follows up on.',
-      fr: 'Équité raciale, équité LGBTQ+ et déterminants sociaux de la santé — des formations conçues pour la pratique, avec des engagements suivis après chaque séance.',
-      es: 'Equidad racial, equidad LGBTQ+ y determinantes sociales de la salud — capacitaciones diseñadas para la práctica, con compromisos que el equipo da seguimiento.',
-      pt: 'Equidade racial, equidade LGBTQ+ e determinantes sociais da saúde — capacitações construídas para a prática, com compromissos acompanhados pela equipe.'
+      en: 'Racial equity, LGBTQ+ equity and social determinants of health, taught so your team can use it on Monday. Every session ends with commitments the team follows up on.',
+      fr: 'Équité raciale, équité LGBTQ+ et déterminants sociaux de la santé, enseignés pour que votre équipe s’en serve dès lundi. Chaque séance se termine par des engagements suivis.',
+      es: 'Equidad racial, equidad LGBTQ+ y determinantes sociales de la salud, enseñados para que tu equipo los use el lunes. Cada sesión termina con compromisos que el equipo da seguimiento.',
+      pt: 'Equidade racial, equidade LGBTQ+ e determinantes sociais da saúde, ensinados para sua equipe usar na segunda-feira. Cada sessão termina com compromissos acompanhados pela equipe.'
     },
     ogImage: 'trainings'
   },

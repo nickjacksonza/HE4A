@@ -14,15 +14,15 @@ const COPY = {
   en: {
     hero: {
       title: 'Public Speaking',
-      text: 'Conferences, convenings and closed-door briefings. We prepare for your audience and your goals — every talk is written for the room it will be delivered in.',
+      text: 'Conferences, convenings and closed-door briefings. Every talk is written for the room it’ll be delivered in, for the audience you’ve actually gathered.',
       tags: ['Keynote', 'Moderating'],
       button: 'Check Availability'
     },
     formats: {
       heading: 'What we can bring to your event',
-      subtext: 'Each format is booked individually or together across a full programme.',
-      keynote: { label: 'Keynote', title: 'Opening or Closing Address', body: 'Thirty to forty-five minutes on health equity, HIV policy, or leading through political hostility — written against the theme you have set, for the audience you have gathered.' },
-      moderating: { label: 'Moderating', title: 'Panels and Plenaries', body: 'Preparation calls with every panelist, a real running order, and a moderator who keeps the conversation productive and honest.' },
+      subtext: 'Book any format on its own, or all three across a full program.',
+      keynote: { label: 'Keynote', title: 'Opening or Closing Address', body: 'Thirty to forty-five minutes on health equity, HIV policy, or leading through political hostility, written against the theme you’ve set.' },
+      moderating: { label: 'Moderating', title: 'Panels and Plenaries', body: 'Preparation calls with every panelist, a running order that holds up, and a moderator who keeps the conversation moving and truthful.' },
       briefing: { label: 'Briefing', title: 'Board and Funder Sessions', body: 'Closed-room briefings for trustees, funders and government teams who need the evidence and the case for action in one sitting.' }
     },
     speaker: {
@@ -36,40 +36,40 @@ const COPY = {
     },
     prepare: {
       heading1: 'How we prepare',
-      text1: 'We ask for the audience list, the decision the convening is meant to produce, and whatever the organizers would rather not have said out loud. That last one often matters most — it tells us where the real conversation needs to go.',
+      text1: 'We ask for the audience list, the decision the convening is meant to produce, and whatever the organizers would rather not have said out loud. That last one usually matters most. It tells us where the conversation actually needs to go.',
       heading2: 'Languages and logistics',
       text2: "Talks are delivered in English, French, Spanish or Portuguese. We work with interpreters where the audience needs it. Three months' lead time is comfortable; we hold short-notice capacity for policy moments and community convenings."
     },
     team: {
       heading: 'Who else takes the stage',
-      subtext: 'More speakers with a record in the rooms you are convening.',
+      subtext: 'More speakers with a record in the rooms you’re convening.',
       role2: 'Moderation & Media · Southeast Asia',
-      bio2: 'Educator for over a decade, empowering youth through journalism programmes. Moderates youth and media-facing sessions.'
+      bio2: 'Educator for over a decade, empowering youth through journalism programs. Moderates youth and media-facing sessions.'
     },
     faqs: [
       { q: 'How far ahead should we book?', a: 'Three months is comfortable. We hold a small amount of short-notice capacity for community convenings and policy moments that cannot wait.' },
-      { q: 'Do you speak at events without a fee?', a: 'Yes, selectively — community-led convenings and youth programmes in particular. Travel and accommodation still need to be covered.' },
-      { q: 'Can you tailor a talk to our theme?', a: 'That is the default, not the exception. We ask for the programme, the audience list and the outcome the convening needs to produce, then write against all three.' },
-      { q: 'Will you appear on a panel you are not moderating?', a: 'Yes, provided equity is woven into the programme rather than confined to one panel. If it is the only place equity appears, we will say so — and we can help you fix that.' }
+      { q: 'Do you speak at events without a fee?', a: 'Yes, selectively. Community-led convenings and youth programs in particular. Travel and accommodation still need to be covered.' },
+      { q: 'Can you tailor a talk to our theme?', a: 'That’s the default. We ask for the program, the audience list and the outcome the convening needs to produce, then write against all three.' },
+      { q: 'Will you appear on a panel you are not moderating?', a: 'Yes, provided equity runs through the program instead of being parked on one panel. If that panel is the only place it shows up, we’ll say so, and we can help you fix it.' }
     ],
     cta: {
       heading: 'Have an event coming up?',
-      text: 'Send us the dates, the audience and the outcome you need. We will confirm availability within a week.'
+      text: 'Send us the dates, the audience and the outcome you need. We’ll confirm availability within a week.'
     },
     heroAlt: 'A collective member speaking on a panel'
   },
   fr: {
     hero: {
       title: 'Prise de Parole Publique',
-      text: 'Conférences, rassemblements et briefings à huis clos. Nous nous préparons pour votre public et vos objectifs — chaque intervention est écrite pour la salle dans laquelle elle sera livrée.',
+      text: 'Conférences, rassemblements et briefings à huis clos. Chaque intervention est écrite pour la salle où elle sera livrée, pour le public que vous avez réellement réuni.',
       tags: ['Conférence Principale', 'Modération'],
       button: 'Vérifier la Disponibilité'
     },
     formats: {
       heading: 'Ce que nous pouvons apporter à votre événement',
-      subtext: 'Chaque format se réserve individuellement ou combiné dans un programme complet.',
-      keynote: { label: 'Conférence', title: "Discours d'Ouverture ou de Clôture", body: "Trente à quarante-cinq minutes sur l'équité en santé, les politiques sur le VIH, ou diriger face à l'hostilité politique — écrit selon le thème que vous avez fixé, pour le public que vous avez réuni." },
-      moderating: { label: 'Modération', title: 'Panels et Plénières', body: "Appels de préparation avec chaque panelliste, un véritable déroulé, et un modérateur qui maintient la conversation productive et honnête." },
+      subtext: 'Réservez un format seul, ou les trois sur un programme complet.',
+      keynote: { label: 'Conférence', title: "Discours d'Ouverture ou de Clôture", body: "Trente à quarante-cinq minutes sur l'équité en santé, les politiques sur le VIH, ou diriger face à l'hostilité politique, écrit selon le thème que vous avez fixé." },
+      moderating: { label: 'Modération', title: 'Panels et Plénières', body: "Appels de préparation avec chaque panelliste, un déroulé qui tient la route, et un modérateur qui garde la conversation vivante et franche." },
       briefing: { label: 'Briefing', title: 'Séances pour Conseils et Bailleurs', body: "Briefings à huis clos pour administrateurs, bailleurs et équipes gouvernementales qui ont besoin des preuves et de l'argumentaire d'action en une seule séance." }
     },
     speaker: {
@@ -83,7 +83,7 @@ const COPY = {
     },
     prepare: {
       heading1: 'Comment nous nous préparons',
-      text1: "Nous demandons la liste du public, la décision que le rassemblement doit produire, et ce que les organisateurs préféreraient ne pas dire tout haut. Ce dernier point est souvent le plus important — il nous indique où doit aller la vraie conversation.",
+      text1: "Nous demandons la liste du public, la décision que le rassemblement doit produire, et ce que les organisateurs préféreraient ne pas dire tout haut. Ce dernier point est généralement le plus important. Il nous indique où la conversation doit réellement aller.",
       heading2: 'Langues et logistique',
       text2: "Les interventions se font en anglais, français, espagnol ou portugais. Nous travaillons avec des interprètes si le public en a besoin. Un délai de trois mois est confortable ; nous réservons une capacité de dernière minute pour les moments politiques et les rassemblements communautaires."
     },
@@ -95,9 +95,9 @@ const COPY = {
     },
     faqs: [
       { q: 'Combien de temps à l’avance devons-nous réserver ?', a: "Trois mois, c'est confortable. Nous réservons une petite capacité de dernière minute pour les rassemblements communautaires et les moments politiques qui ne peuvent attendre." },
-      { q: 'Intervenez-vous sans frais lors d’événements ?', a: "Oui, de manière sélective — notamment pour les rassemblements menés par la communauté et les programmes jeunesse. Les frais de voyage et d'hébergement restent à couvrir." },
-      { q: 'Pouvez-vous adapter une intervention à notre thème ?', a: "C'est la norme, pas l'exception. Nous demandons le programme, la liste du public et le résultat attendu du rassemblement, puis nous écrivons en fonction des trois." },
-      { q: 'Participerez-vous à un panel que vous ne modérez pas ?', a: "Oui, à condition que l'équité soit intégrée dans tout le programme plutôt que confinée à un seul panel. Si c'est le seul endroit où elle apparaît, nous le dirons — et nous pouvons vous aider à y remédier." }
+      { q: 'Intervenez-vous sans frais lors d’événements ?', a: "Oui, de manière sélective. Notamment les rassemblements menés par la communauté et les programmes jeunesse. Les frais de voyage et d'hébergement restent à couvrir." },
+      { q: 'Pouvez-vous adapter une intervention à notre thème ?', a: "C'est la norme. Nous demandons le programme, la liste du public et le résultat attendu du rassemblement, puis nous écrivons en fonction des trois." },
+      { q: 'Participerez-vous à un panel que vous ne modérez pas ?', a: "Oui, à condition que l'équité traverse tout le programme au lieu d'être reléguée à un seul panel. Si c'est le seul endroit où elle apparaît, nous le dirons, et nous pouvons vous aider à y remédier." }
     ],
     cta: {
       heading: 'Un événement approche ?',
@@ -108,15 +108,15 @@ const COPY = {
   es: {
     hero: {
       title: 'Oratoria Pública',
-      text: 'Conferencias, encuentros y sesiones a puerta cerrada. Nos preparamos para tu audiencia y tus objetivos — cada charla se escribe para la sala en la que se presentará.',
+      text: 'Conferencias, encuentros y sesiones a puerta cerrada. Cada charla se escribe para la sala en la que se presentará, para la audiencia que realmente reuniste.',
       tags: ['Conferencia Magistral', 'Moderación'],
       button: 'Consultar Disponibilidad'
     },
     formats: {
       heading: 'Lo que podemos aportar a tu evento',
-      subtext: 'Cada formato se reserva individualmente o combinado en un programa completo.',
-      keynote: { label: 'Conferencia', title: 'Discurso de Apertura o Cierre', body: 'De treinta a cuarenta y cinco minutos sobre equidad en salud, política de VIH, o liderazgo frente a la hostilidad política — escrito según el tema que hayas fijado, para la audiencia que hayas reunido.' },
-      moderating: { label: 'Moderación', title: 'Paneles y Plenarias', body: 'Llamadas de preparación con cada panelista, un orden del día real, y un moderador que mantiene la conversación productiva y honesta.' },
+      subtext: 'Reserva un formato solo, o los tres en un programa completo.',
+      keynote: { label: 'Conferencia', title: 'Discurso de Apertura o Cierre', body: 'De treinta a cuarenta y cinco minutos sobre equidad en salud, política de VIH, o liderazgo frente a la hostilidad política, escrito según el tema que hayas fijado.' },
+      moderating: { label: 'Moderación', title: 'Paneles y Plenarias', body: 'Llamadas de preparación con cada panelista, un orden del día que se sostiene, y un moderador que mantiene la conversación viva y franca.' },
       briefing: { label: 'Sesión Informativa', title: 'Sesiones para Juntas y Financiadores', body: 'Sesiones a puerta cerrada para fiduciarios, financiadores y equipos gubernamentales que necesitan la evidencia y los argumentos de acción en una sola sesión.' }
     },
     speaker: {
@@ -130,7 +130,7 @@ const COPY = {
     },
     prepare: {
       heading1: 'Cómo nos preparamos',
-      text1: 'Solicitamos la lista de audiencia, la decisión que el encuentro debe producir, y lo que los organizadores prefieren no decir en voz alta. Este último punto suele ser el más importante — nos indica hacia dónde debe ir la conversación real.',
+      text1: 'Solicitamos la lista de audiencia, la decisión que el encuentro debe producir, y lo que los organizadores prefieren no decir en voz alta. Este último punto suele ser el más importante. Nos indica hacia dónde tiene que ir realmente la conversación.',
       heading2: 'Idiomas y logística',
       text2: 'Las charlas se ofrecen en inglés, francés, español o portugués. Trabajamos con intérpretes cuando la audiencia lo necesita. Tres meses de antelación es cómodo; reservamos capacidad de último momento para momentos políticos y encuentros comunitarios.'
     },
@@ -142,9 +142,9 @@ const COPY = {
     },
     faqs: [
       { q: '¿Con cuánta anticipación debemos reservar?', a: 'Tres meses es cómodo. Reservamos una pequeña capacidad de último momento para encuentros comunitarios y momentos políticos que no pueden esperar.' },
-      { q: '¿Hablan en eventos sin cobrar honorarios?', a: 'Sí, de forma selectiva — especialmente encuentros liderados por la comunidad y programas juveniles. Los gastos de viaje y alojamiento aún deben cubrirse.' },
-      { q: '¿Pueden adaptar una charla a nuestro tema?', a: 'Eso es lo habitual, no la excepción. Pedimos el programa, la lista de audiencia y el resultado que el encuentro necesita producir, y luego escribimos en función de los tres.' },
-      { q: '¿Participarán en un panel que no están moderando?', a: 'Sí, siempre que la equidad esté integrada en todo el programa y no confinada a un solo panel. Si es el único lugar donde aparece, lo diremos — y podemos ayudarte a solucionarlo.' }
+      { q: '¿Hablan en eventos sin cobrar honorarios?', a: 'Sí, de forma selectiva. Especialmente encuentros liderados por la comunidad y programas juveniles. Los gastos de viaje y alojamiento aún deben cubrirse.' },
+      { q: '¿Pueden adaptar una charla a nuestro tema?', a: 'Eso es lo habitual. Pedimos el programa, la lista de audiencia y el resultado que el encuentro necesita producir, y luego escribimos en función de los tres.' },
+      { q: '¿Participarán en un panel que no están moderando?', a: 'Sí, siempre que la equidad atraviese todo el programa en lugar de quedar confinada a un solo panel. Si es el único lugar donde aparece, lo diremos, y podemos ayudarte a solucionarlo.' }
     ],
     cta: {
       heading: '¿Tienes un evento próximo?',
@@ -155,15 +155,15 @@ const COPY = {
   pt: {
     hero: {
       title: 'Oratória Pública',
-      text: 'Conferências, encontros e reuniões a portas fechadas. Nos preparamos para o seu público e seus objetivos — cada palestra é escrita para a sala em que será apresentada.',
+      text: 'Conferências, encontros e reuniões a portas fechadas. Cada palestra é escrita para a sala em que será apresentada, para o público que você realmente reuniu.',
       tags: ['Palestra Principal', 'Moderação'],
       button: 'Verificar Disponibilidade'
     },
     formats: {
       heading: 'O que podemos trazer para o seu evento',
-      subtext: 'Cada formato é reservado individualmente ou combinado em um programa completo.',
-      keynote: { label: 'Palestra', title: 'Discurso de Abertura ou Encerramento', body: 'De trinta a quarenta e cinco minutos sobre equidade em saúde, política de HIV, ou liderança diante da hostilidade política — escrito conforme o tema definido, para o público reunido.' },
-      moderating: { label: 'Moderação', title: 'Painéis e Plenárias', body: 'Chamadas de preparação com cada painelista, uma ordem de trabalhos real, e um moderador que mantém a conversa produtiva e honesta.' },
+      subtext: 'Reserve um formato sozinho, ou os três em um programa completo.',
+      keynote: { label: 'Palestra', title: 'Discurso de Abertura ou Encerramento', body: 'De trinta a quarenta e cinco minutos sobre equidade em saúde, política de HIV, ou liderança diante da hostilidade política, escrito conforme o tema que você definiu.' },
+      moderating: { label: 'Moderação', title: 'Painéis e Plenárias', body: 'Chamadas de preparação com cada painelista, uma ordem de trabalhos que se sustenta, e um moderador que mantém a conversa viva e franca.' },
       briefing: { label: 'Briefing', title: 'Sessões para Conselhos e Financiadores', body: 'Reuniões a portas fechadas para conselheiros, financiadores e equipes governamentais que precisam das evidências e do argumento de ação em uma única sessão.' }
     },
     speaker: {
@@ -177,7 +177,7 @@ const COPY = {
     },
     prepare: {
       heading1: 'Como nos preparamos',
-      text1: 'Pedimos a lista de público, a decisão que o encontro deve produzir, e aquilo que os organizadores prefeririam não dizer em voz alta. Esse último ponto costuma ser o mais importante — ele nos diz para onde a conversa real precisa ir.',
+      text1: 'Pedimos a lista de público, a decisão que o encontro deve produzir, e aquilo que os organizadores prefeririam não dizer em voz alta. Esse último ponto costuma ser o mais importante. Ele nos diz para onde a conversa realmente precisa ir.',
       heading2: 'Idiomas e logística',
       text2: 'As palestras são proferidas em inglês, francês, espanhol ou português. Trabalhamos com intérpretes quando o público precisa. Três meses de antecedência é confortável; mantemos capacidade de última hora para momentos políticos e encontros comunitários.'
     },
@@ -189,9 +189,9 @@ const COPY = {
     },
     faqs: [
       { q: 'Com quanta antecedência devemos reservar?', a: 'Três meses é confortável. Mantemos uma pequena capacidade de última hora para encontros comunitários e momentos políticos que não podem esperar.' },
-      { q: 'Vocês falam em eventos sem cobrar honorários?', a: 'Sim, de forma seletiva — especialmente encontros liderados pela comunidade e programas para jovens. Despesas de viagem e hospedagem ainda precisam ser cobertas.' },
-      { q: 'Podem adaptar uma palestra ao nosso tema?', a: 'Esse é o padrão, não a exceção. Pedimos o programa, a lista de público e o resultado que o encontro precisa produzir, e escrevemos com base nos três.' },
-      { q: 'Vocês participam de um painel que não estão moderando?', a: 'Sim, desde que a equidade esteja tecida em todo o programa e não confinada a um único painel. Se for o único lugar onde ela aparece, diremos isso — e podemos ajudar a corrigir.' }
+      { q: 'Vocês falam em eventos sem cobrar honorários?', a: 'Sim, de forma seletiva. Especialmente encontros liderados pela comunidade e programas para jovens. Despesas de viagem e hospedagem ainda precisam ser cobertas.' },
+      { q: 'Podem adaptar uma palestra ao nosso tema?', a: 'Esse é o padrão. Pedimos o programa, a lista de público e o resultado que o encontro precisa produzir, e escrevemos com base nos três.' },
+      { q: 'Vocês participam de um painel que não estão moderando?', a: 'Sim, desde que a equidade atravesse todo o programa em vez de ficar restrita a um único painel. Se for o único lugar onde ela aparece, diremos isso, e podemos ajudar a corrigir.' }
     ],
     cta: {
       heading: 'Tem um evento chegando?',
@@ -321,10 +321,10 @@ module.exports = {
       pt: 'Oratória Pública'
     },
     description: {
-      en: 'Keynotes, panel moderation and closed-door briefings on health equity — written for the audience and outcome each room actually needs.',
-      fr: 'Conférences, modération de panels et briefings à huis clos sur l’équité en santé — écrits pour le public et le résultat que chaque salle exige réellement.',
-      es: 'Conferencias magistrales, moderación de paneles y sesiones a puerta cerrada sobre equidad en salud — escritas para la audiencia y el resultado que cada sala realmente necesita.',
-      pt: 'Palestras, moderação de painéis e reuniões a portas fechadas sobre equidade em saúde — escritas para o público e o resultado que cada sala realmente precisa.'
+      en: 'Keynotes, panel moderation and closed-door briefings on health equity, written for the audience and the outcome each room actually needs.',
+      fr: 'Conférences, modération de panels et briefings à huis clos sur l’équité en santé, écrits pour le public et le résultat que chaque salle exige réellement.',
+      es: 'Conferencias magistrales, moderación de paneles y sesiones a puerta cerrada sobre equidad en salud, escritas para la audiencia y el resultado que cada sala realmente necesita.',
+      pt: 'Palestras, moderação de painéis e reuniões a portas fechadas sobre equidade em saúde, escritas para o público e o resultado que cada sala realmente precisa.'
     },
     ogImage: 'public-speaking'
   },

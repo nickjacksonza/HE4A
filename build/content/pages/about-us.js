@@ -30,7 +30,7 @@ const COPY = {
   en: {
     hero: {
       title: 'A collective, not a consultancy',
-      text: 'Equity Is the Word, LLC works publicly as Health Equity 4 All. We are public health leaders based in Seattle and Cape Town, supporting organizations that serve BIPOC, LGBTQ+, differently abled, asylee, immigrant and sex worker communities.'
+      text: 'Equity Is the Word, LLC works publicly as Health Equity 4 All. We’re public health leaders based in Seattle and Cape Town, supporting organizations that serve BIPOC, LGBTQ+, differently abled, asylee, immigrant and sex worker communities.'
     },
     pillars: {
       vision: { label: 'Vision', text: 'Liberating people and communities from systemic and structural barriers that lessen health outcomes.' },
@@ -38,11 +38,11 @@ const COPY = {
     },
     values: {
       heading: 'What we hold ourselves to',
-      subtext: 'Three commitments we are accountable for — to the communities first.',
+      subtext: 'Three commitments we’re accountable for, to the communities before anyone else.',
       items: [
         { title: 'Receipts over statements', body: 'We ask organizations to show what changed after the commitment was published, and we welcome the same question in return.' },
-        { title: 'Local before global', body: 'Members lead work where they live, in the language of the community. Nobody is flown in to explain a context they have only read about.' },
-        { title: 'Leave the capacity behind', body: 'Every engagement is designed to end. What we build is documented and handed to the people who will still be there next year.' }
+        { title: 'Local before global', body: 'Members lead work where they live, in the language of the community. We don’t fly someone in to explain a place they’ve only read about.' },
+        { title: 'Leave the capacity behind', body: 'Every engagement is designed to end. What we build gets documented and handed to the people who’ll still be there next year.' }
       ]
     },
     collective: {
@@ -61,11 +61,11 @@ const COPY = {
         'Advocate for DEI and health equity, guided by friendship, leadership and service to humanity.',
         'Activist living with HIV and researcher at Fiocruz Brasília, focused on health and social justice across Latin America.',
         'HIV response leader for over a decade, building feminist movements from grassroots to global level.',
-        'Educator for over a decade, empowering youth through journalism and media programmes.'
+        'Educator for over a decade, empowering youth through journalism and media programs.'
       ],
       openSeatName: 'Open Seat',
       openSeatRole: 'Cape Town, South Africa',
-      openSeatBio: 'We are growing the collective with members whose practice is rooted in Southern Africa. Know someone who should be here? Tell us.'
+      openSeatBio: 'We’re growing the collective with members whose practice is rooted in Southern Africa. Know someone who should be here? Tell us.'
     },
     quote: { eyebrow: 'What We Say To People', text: 'The major difference between public health and thermodynamics is that thermodynamics is easier.' },
     ctaButton: 'Work With Us',
@@ -82,10 +82,10 @@ const COPY = {
     },
     values: {
       heading: 'Ce à quoi nous nous tenons',
-      subtext: 'Trois engagements dont nous sommes redevables — aux communautés avant tout.',
+      subtext: 'Trois engagements dont nous sommes redevables, aux communautés avant tous les autres.',
       items: [
         { title: 'Des preuves plutôt que des déclarations', body: 'Nous demandons aux organisations de montrer ce qui a changé après la publication de leur engagement, et nous accueillons la même question en retour.' },
-        { title: 'Le local avant le mondial', body: 'Les membres dirigent le travail là où ils vivent, dans la langue de la communauté. Personne n’est envoyé pour expliquer un contexte qu’il n’a fait que lire.' },
+        { title: 'Le local avant le mondial', body: 'Les membres dirigent le travail là où ils vivent, dans la langue de la communauté. Nous n’envoyons personne expliquer un endroit qu’il n’a fait que lire.' },
         { title: 'Laisser la capacité en héritage', body: 'Chaque intervention est conçue pour se terminer. Ce que nous construisons est documenté et remis aux personnes qui seront encore là l’année prochaine.' }
       ]
     },
@@ -126,10 +126,10 @@ const COPY = {
     },
     values: {
       heading: 'A qué nos comprometemos',
-      subtext: 'Tres compromisos por los que rendimos cuentas — a las comunidades primero.',
+      subtext: 'Tres compromisos por los que rendimos cuentas, a las comunidades antes que a nadie.',
       items: [
         { title: 'Comprobantes antes que declaraciones', body: 'Pedimos a las organizaciones que muestren qué cambió después de publicar su compromiso, y damos la bienvenida a la misma pregunta a cambio.' },
-        { title: 'Lo local antes que lo global', body: 'Los miembros dirigen el trabajo donde viven, en el idioma de la comunidad. Nadie es enviado a explicar un contexto que solo ha leído.' },
+        { title: 'Lo local antes que lo global', body: 'Los miembros dirigen el trabajo donde viven, en el idioma de la comunidad. No enviamos a nadie a explicar un lugar que solo ha leído.' },
         { title: 'Dejar la capacidad instalada', body: 'Cada intervención está diseñada para terminar. Lo que construimos queda documentado y se entrega a las personas que seguirán ahí el año próximo.' }
       ]
     },
@@ -170,10 +170,10 @@ const COPY = {
     },
     values: {
       heading: 'Ao que nos responsabilizamos',
-      subtext: 'Três compromissos pelos quais respondemos — às comunidades, em primeiro lugar.',
+      subtext: 'Três compromissos pelos quais respondemos, às comunidades antes de qualquer outro.',
       items: [
         { title: 'Comprovantes antes de declarações', body: 'Pedimos que as organizações mostrem o que mudou depois de publicar seu compromisso, e recebemos de bom grado a mesma pergunta em troca.' },
-        { title: 'O local antes do global', body: 'Os membros lideram o trabalho onde vivem, no idioma da comunidade. Ninguém é enviado para explicar um contexto que apenas leu sobre.' },
+        { title: 'O local antes do global', body: 'Os membros lideram o trabalho onde vivem, no idioma da comunidade. Não mandamos ninguém explicar um lugar que apenas leu a respeito.' },
         { title: 'Deixar a capacidade instalada', body: 'Cada atuação é desenhada para terminar. O que construímos é documentado e entregue às pessoas que ainda estarão lá no próximo ano.' }
       ]
     },
@@ -295,10 +295,10 @@ module.exports = {
       pt: 'Sobre Nós'
     },
     description: {
-      en: 'A global collective, not a consultancy — public health leaders based in Seattle and Cape Town supporting historically excluded communities worldwide.',
-      fr: 'Un collectif mondial, pas un cabinet de conseil — des responsables de santé publique basés à Seattle et Cape Town, soutenant des communautés historiquement exclues à travers le monde.',
-      es: 'Un colectivo global, no una consultora — líderes de salud pública con base en Seattle y Ciudad del Cabo que apoyan a comunidades históricamente excluidas en todo el mundo.',
-      pt: 'Um coletivo global, não uma consultoria — líderes de saúde pública baseados em Seattle e Cidade do Cabo apoiando comunidades historicamente excluídas em todo o mundo.'
+      en: 'A global collective, not a consultancy. Public health leaders based in Seattle and Cape Town supporting historically excluded communities worldwide.',
+      fr: 'Un collectif mondial, pas un cabinet de conseil. Des responsables de santé publique basés à Seattle et Cape Town, soutenant des communautés historiquement exclues à travers le monde.',
+      es: 'Un colectivo global, no una consultora. Líderes de salud pública con base en Seattle y Ciudad del Cabo que apoyan a comunidades históricamente excluidas en todo el mundo.',
+      pt: 'Um coletivo global, não uma consultoria. Líderes de saúde pública baseados em Seattle e Cidade do Cabo apoiando comunidades historicamente excluídas em todo o mundo.'
     },
     ogImage: 'about-us'
   },

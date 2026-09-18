@@ -515,7 +515,7 @@ main:focus { outline: none; }
 .nav {
   display: flex;
   align-items: center;
-  gap: var(--space-5);
+  gap: var(--space-4);
   flex-wrap: wrap;
 }
 .nav-item { position: relative; padding: var(--space-2) 0; }
@@ -568,7 +568,14 @@ main:focus { outline: none; }
   .nav-item:hover .nav-dropdown { display: flex; }
 }
 
-@media (max-width: 860px) {
+/* Six top-level items plus the logo and CTA need ~1327px in English before
+   they fit on one line; below that .nav's flex-wrap kicks in and the header
+   silently doubles in height, so the drawer has to take over far above the
+   usual tablet breakpoint. Translated navs are wider still (fr ~1450, es
+   ~1511, pt ~1521), so they wrap between this breakpoint and their own
+   threshold -- shorter nav labels or a higher breakpoint would close that
+   gap. Adding a nav item or lengthening a label means re-measuring. */
+@media (max-width: 1340px) {
   .nav-toggle { display: inline-flex; }
   .nav {
     position: fixed;

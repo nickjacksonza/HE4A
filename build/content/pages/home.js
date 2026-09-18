@@ -18,7 +18,7 @@ const COPY = {
     hero: {
       eyebrow: 'Onward. Together.',
       title: 'Equitable healthcare, built with communities',
-      text: 'We are a global collective of public health leaders working alongside organizations to strengthen governance, programs and practice so your equity commitments become lasting change.',
+      text: 'We’re a global collective of public health leaders. You already know what your communities need. We help you build the leadership, systems and teams to deliver it.',
       ctaPrimary: 'Start a Conversation',
       ctaSecondary: 'See Our Services'
     },
@@ -33,14 +33,13 @@ const COPY = {
     },
     services: {
       eyebrow: 'What We Do',
-      heading: 'Four ways we can support your work',
-      subtext: 'Every engagement is shaped around what your team needs most — and designed so you can carry it forward on your own.',
+      heading: 'Three ways we can support your work',
+      subtext: 'Every engagement is built around what your team needs most, and built so you can keep it running once we’re gone.',
       cta: 'Work with us',
       cards: [
-        { heading: 'Non-Profit Leadership', desc: 'Board governance and executive coaching for leaders navigating the real complexity of equity-centered work.', tags: ['Board Governance', 'Executive Coaching'] },
-        { heading: 'Organizational Development', desc: 'Program oversight, communications, public policy and grant writing that keep your mission funded.', link: 'Explore →' },
-        { heading: 'Trainings', desc: 'Racial equity, LGBTQ+ equity and social determinants of health — built for practice, not just awareness.', link: 'Explore →' },
-        { heading: 'Public Speaking', desc: 'Keynotes and panel moderation grounded in the real questions your audience is carrying — not a circuit talk.', link: 'Explore →' }
+        { heading: 'Non-Profit Leadership', desc: 'Board governance and executive coaching for the people holding equity work together.', tags: ['Board Governance', 'Executive Coaching'] },
+        { heading: 'Organizational Development', desc: 'Program oversight, communications, policy, grant writing and financial leadership that keep your mission funded.', link: 'Explore →' },
+        { heading: 'Equity Trainings', desc: 'Racial equity, LGBTQ+ equity and social determinants of health, taught so your team can use it on Monday.', link: 'Explore →' }
       ]
     },
     quoteBand: {
@@ -68,22 +67,21 @@ const COPY = {
     },
     cta: {
       heading: "Let's talk about what comes next",
-      text: 'Share the challenge you are working through. We will listen, and we will be honest about whether we can help.',
+      text: 'Tell us what you’re working through. We’ll listen, and we’ll tell you straight if we’re not the right fit.',
       button: 'Get in Touch'
     },
     alts: {
       outdoors: 'Members of the collective standing together outdoors',
       whiteboard: 'Two colleagues mapping ideas on a whiteboard',
       laptop: 'Two colleagues working at a laptop',
-      meeting: 'A team in discussion around a table',
-      panel: 'A collective member speaking on a panel'
+      meeting: 'A team in discussion around a table'
     }
   },
   fr: {
     hero: {
       eyebrow: 'En Avant. Ensemble.',
       title: 'Équité en santé, construite avec les communautés',
-      text: "Nous sommes un collectif mondial de responsables de santé publique qui travaillons aux côtés d'organisations pour renforcer la gouvernance, les programmes et les pratiques, afin que vos engagements en matière d'équité deviennent un changement durable.",
+      text: "Nous sommes un collectif mondial de responsables de santé publique. Vous savez déjà ce dont vos communautés ont besoin. Nous vous aidons à bâtir la direction, les systèmes et les équipes pour y répondre.",
       ctaPrimary: 'Démarrer une Conversation',
       ctaSecondary: 'Découvrir nos Services'
     },
@@ -98,14 +96,13 @@ const COPY = {
     },
     services: {
       eyebrow: 'Ce que Nous Faisons',
-      heading: 'Quatre façons de soutenir votre travail',
-      subtext: "Chaque intervention est façonnée selon les besoins prioritaires de votre équipe — et conçue pour que vous puissiez la poursuivre de manière autonome.",
+      heading: 'Trois façons de soutenir votre travail',
+      subtext: "Chaque intervention est bâtie selon les besoins prioritaires de votre équipe, et bâtie pour que vous puissiez la poursuivre une fois que nous sommes partis.",
       cta: 'Travailler avec nous',
       cards: [
-        { heading: 'Direction Associative', desc: 'Gouvernance du conseil et coaching de direction pour les leaders qui naviguent la réelle complexité du travail centré sur l’équité.', tags: ['Gouvernance du Conseil', 'Coaching de Direction'] },
-        { heading: 'Développement Organisationnel', desc: 'Supervision de programmes, communication, politiques publiques et rédaction de demandes de subvention qui maintiennent le financement de votre mission.', link: 'Découvrir →' },
-        { heading: 'Formations', desc: 'Équité raciale, équité LGBTQ+ et déterminants sociaux de la santé — conçues pour la pratique, pas seulement la sensibilisation.', link: 'Découvrir →' },
-        { heading: 'Prise de Parole Publique', desc: 'Conférences et modération de panels ancrées dans les vraies questions de votre public — pas un discours standard.', link: 'Découvrir →' }
+        { heading: 'Direction Associative', desc: 'Gouvernance du conseil et coaching de direction pour celles et ceux qui portent le travail sur l’équité.', tags: ['Gouvernance du Conseil', 'Coaching de Direction'] },
+        { heading: 'Développement Organisationnel', desc: 'Supervision de programmes, communication, politiques publiques, rédaction de subventions et direction financière qui maintiennent le financement de votre mission.', link: 'Découvrir →' },
+        { heading: 'Formations Équité', desc: 'Équité raciale, équité LGBTQ+ et déterminants sociaux de la santé, enseignés pour que votre équipe s’en serve dès lundi.', link: 'Découvrir →' }
       ]
     },
     quoteBand: {
@@ -133,22 +130,21 @@ const COPY = {
     },
     cta: {
       heading: 'Parlons de la suite',
-      text: 'Partagez le défi que vous traversez. Nous écouterons, et nous serons honnêtes sur notre capacité à vous aider.',
+      text: 'Dites-nous ce que vous traversez. Nous écouterons, et nous vous dirons franchement si nous ne sommes pas les bonnes personnes.',
       button: 'Contactez-Nous'
     },
     alts: {
       outdoors: 'Des membres du collectif réunis à l’extérieur',
       whiteboard: 'Deux collègues réfléchissant devant un tableau blanc',
       laptop: 'Deux collègues travaillant sur un ordinateur portable',
-      meeting: 'Équipe en discussion autour d’une table',
-      panel: 'Un membre du collectif s’exprimant lors d’un panel'
+      meeting: 'Équipe en discussion autour d’une table'
     }
   },
   es: {
     hero: {
       eyebrow: 'Adelante. Juntos.',
       title: 'Salud equitativa, construida con las comunidades',
-      text: 'Somos un colectivo global de líderes de salud pública que trabajamos junto a organizaciones para fortalecer la gobernanza, los programas y las prácticas, de modo que sus compromisos con la equidad se conviertan en un cambio duradero.',
+      text: 'Somos un colectivo global de líderes de salud pública. Ya sabes lo que tus comunidades necesitan. Te ayudamos a construir el liderazgo, los sistemas y los equipos para lograrlo.',
       ctaPrimary: 'Iniciar una Conversación',
       ctaSecondary: 'Ver Nuestros Servicios'
     },
@@ -163,14 +159,13 @@ const COPY = {
     },
     services: {
       eyebrow: 'Lo Que Hacemos',
-      heading: 'Cuatro formas de apoyar tu trabajo',
-      subtext: 'Cada intervención se diseña según lo que tu equipo necesita más — y está pensada para que puedas continuarla de forma autónoma.',
+      heading: 'Tres formas de apoyar tu trabajo',
+      subtext: 'Cada intervención se construye según lo que tu equipo más necesita, y se construye para que siga funcionando cuando ya no estemos.',
       cta: 'Trabaja con nosotros',
       cards: [
-        { heading: 'Liderazgo sin Fines de Lucro', desc: 'Gobernanza de la junta y coaching ejecutivo para líderes que enfrentan la verdadera complejidad del trabajo centrado en la equidad.', tags: ['Gobernanza de la Junta', 'Coaching Ejecutivo'] },
-        { heading: 'Desarrollo Organizacional', desc: 'Supervisión de programas, comunicaciones, política pública y redacción de propuestas que mantienen financiada tu misión.', link: 'Explorar →' },
-        { heading: 'Capacitaciones', desc: 'Equidad racial, equidad LGBTQ+ y determinantes sociales de la salud — diseñadas para la práctica, no solo la sensibilización.', link: 'Explorar →' },
-        { heading: 'Oratoria Pública', desc: 'Conferencias magistrales y moderación de paneles basadas en las preguntas reales de tu audiencia — no una charla genérica.', link: 'Explorar →' }
+        { heading: 'Liderazgo sin Fines de Lucro', desc: 'Gobernanza de la junta y coaching ejecutivo para quienes sostienen el trabajo de equidad.', tags: ['Gobernanza de la Junta', 'Coaching Ejecutivo'] },
+        { heading: 'Desarrollo Organizacional', desc: 'Supervisión de programas, comunicaciones, política pública, redacción de propuestas y liderazgo financiero que mantienen financiada tu misión.', link: 'Explorar →' },
+        { heading: 'Capacitaciones en Equidad', desc: 'Equidad racial, equidad LGBTQ+ y determinantes sociales de la salud, enseñados para que tu equipo los use el lunes.', link: 'Explorar →' }
       ]
     },
     quoteBand: {
@@ -198,22 +193,21 @@ const COPY = {
     },
     cta: {
       heading: 'Hablemos de lo que sigue',
-      text: 'Comparte el desafío que estás enfrentando. Te escucharemos y seremos honestos sobre si podemos ayudar.',
+      text: 'Cuéntanos lo que estás enfrentando. Te escucharemos y te diremos con franqueza si no somos las personas indicadas.',
       button: 'Contáctanos'
     },
     alts: {
       outdoors: 'Miembros del colectivo reunidos al aire libre',
       whiteboard: 'Dos colegas planteando ideas en una pizarra',
       laptop: 'Dos colegas trabajando en una laptop',
-      meeting: 'Un equipo en discusión alrededor de una mesa',
-      panel: 'Un miembro del colectivo hablando en un panel'
+      meeting: 'Un equipo en discusión alrededor de una mesa'
     }
   },
   pt: {
     hero: {
       eyebrow: 'Em Frente. Juntos.',
       title: 'Saúde equitativa, construída com as comunidades',
-      text: 'Somos um coletivo global de líderes de saúde pública que trabalha junto a organizações para fortalecer a governança, os programas e as práticas, para que seus compromissos com a equidade se tornem mudança duradoura.',
+      text: 'Somos um coletivo global de líderes de saúde pública. Você já sabe do que suas comunidades precisam. Ajudamos você a construir a liderança, os sistemas e as equipes para entregar isso.',
       ctaPrimary: 'Iniciar uma Conversa',
       ctaSecondary: 'Ver Nossos Serviços'
     },
@@ -228,14 +222,13 @@ const COPY = {
     },
     services: {
       eyebrow: 'O Que Fazemos',
-      heading: 'Quatro formas de apoiar seu trabalho',
-      subtext: 'Cada atuação é desenhada em torno do que sua equipe mais precisa — e projetada para que você possa continuar de forma autônoma.',
+      heading: 'Três formas de apoiar seu trabalho',
+      subtext: 'Cada atuação é construída em torno do que sua equipe mais precisa, e construída para continuar funcionando depois que sairmos.',
       cta: 'Trabalhe conosco',
       cards: [
-        { heading: 'Liderança Sem Fins Lucrativos', desc: 'Governança do conselho e coaching executivo para líderes que enfrentam a real complexidade do trabalho centrado em equidade.', tags: ['Governança do Conselho', 'Coaching Executivo'] },
-        { heading: 'Desenvolvimento Organizacional', desc: 'Supervisão de programas, comunicação, política pública e redação de propostas que mantém sua missão financiada.', link: 'Explorar →' },
-        { heading: 'Capacitações', desc: 'Equidade racial, equidade LGBTQ+ e determinantes sociais da saúde — construídas para a prática, não apenas a conscientização.', link: 'Explorar →' },
-        { heading: 'Oratória Pública', desc: 'Palestras e moderação de painéis baseadas nas perguntas reais do seu público — não uma palestra padrão.', link: 'Explorar →' }
+        { heading: 'Liderança Sem Fins Lucrativos', desc: 'Governança do conselho e coaching executivo para quem sustenta o trabalho de equidade.', tags: ['Governança do Conselho', 'Coaching Executivo'] },
+        { heading: 'Desenvolvimento Organizacional', desc: 'Supervisão de programas, comunicação, política pública, redação de propostas e liderança financeira que mantêm sua missão financiada.', link: 'Explorar →' },
+        { heading: 'Capacitações em Equidade', desc: 'Equidade racial, equidade LGBTQ+ e determinantes sociais da saúde, ensinados para sua equipe usar na segunda-feira.', link: 'Explorar →' }
       ]
     },
     quoteBand: {
@@ -263,15 +256,14 @@ const COPY = {
     },
     cta: {
       heading: 'Vamos falar sobre os próximos passos',
-      text: 'Compartilhe o desafio que você está enfrentando. Vamos ouvir e ser honestos sobre se podemos ajudar.',
+      text: 'Conte o que você está enfrentando. Vamos ouvir e dizer com franqueza se não somos as pessoas certas.',
       button: 'Fale Conosco'
     },
     alts: {
       outdoors: 'Membros do coletivo reunidos ao ar livre',
       whiteboard: 'Dois colegas mapeando ideias em um quadro branco',
       laptop: 'Dois colegas trabalhando em um laptop',
-      meeting: 'Uma equipe em discussão em torno de uma mesa',
-      panel: 'Um membro do coletivo falando em um painel'
+      meeting: 'Uma equipe em discussão em torno de uma mesa'
     }
   }
 };
@@ -350,14 +342,6 @@ function main(locale) {
           <div class="service-link">${t.services.cards[2].link}</div>
         </div>
       </a>
-      <a href="${href(locale, 'public-speaking.html')}" class="service-card service-card--banner">
-        <div class="service-body">
-          <div class="service-heading">${t.services.cards[3].heading}</div>
-          <p class="service-desc">${t.services.cards[3].desc}</p>
-          <div class="service-link">${t.services.cards[3].link}</div>
-        </div>
-        ${picture({ name: 'panel-speaking', widths: [640, 960, 1200], sizes: '(max-width: 720px) 100vw, 50vw', alt: alts.panel, imgClass: 'service-media' })}
-      </a>
     </div>
   </div>
 </section>
@@ -413,10 +397,10 @@ module.exports = {
       pt: 'Health Equity 4 All'
     },
     description: {
-      en: 'A global collective of public health leaders strengthening governance, programs and practice so your organization’s equity commitments become lasting change.',
-      fr: 'Un collectif mondial de responsables de santé publique qui renforce la gouvernance, les programmes et les pratiques pour transformer vos engagements en matière d’équité en changement durable.',
-      es: 'Un colectivo global de líderes de salud pública que fortalece la gobernanza, los programas y las prácticas para convertir los compromisos de equidad de tu organización en un cambio duradero.',
-      pt: 'Um coletivo global de líderes de saúde pública que fortalece a governança, os programas e as práticas para transformar os compromissos de equidade da sua organização em mudança duradoura.'
+      en: 'A global collective of public health leaders helping organizations build the leadership, systems and teams their communities need.',
+      fr: 'Un collectif mondial de responsables de santé publique qui aide les organisations à bâtir la direction, les systèmes et les équipes dont leurs communautés ont besoin.',
+      es: 'Un colectivo global de líderes de salud pública que ayuda a las organizaciones a construir el liderazgo, los sistemas y los equipos que sus comunidades necesitan.',
+      pt: 'Um coletivo global de líderes de saúde pública que ajuda organizações a construir a liderança, os sistemas e as equipes que suas comunidades precisam.'
     },
     ogImage: 'home'
   },

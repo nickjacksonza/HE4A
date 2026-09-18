@@ -28,11 +28,11 @@ function field({ id, label, type = 'text', required = false, autocomplete, texta
 const COPY = {
   en: {
     heading: "Let's talk about what comes next",
-    subtext: 'Share the challenge you are working through. We reply within three business days, and we will be honest about how we can help.',
+    subtext: 'Tell us what you’re working through. We reply within three business days, and we’ll say plainly whether we’re the right fit.',
     formHeading: 'Send a message',
     fields: { name: 'Name', email: 'Email', organization: 'Organization', service: 'What can we help with?', message: 'Message' },
-    messagePlaceholder: 'Tell us about the challenge you are working through.',
-    serviceOptions: ['Non-Profit Leadership', 'Organizational Development', 'Trainings', 'Public Speaking', 'Something else'],
+    messagePlaceholder: 'Tell us about the challenge you’re working through.',
+    serviceOptions: ['Non-Profit Leadership', 'Organizational Development', 'Equity Trainings', 'Healthcare Recruitment', 'Public Speaking', 'Something else'],
     submit: 'Send Message',
     photoAlt: 'Two colleagues working together',
     findUs: { heading: 'Where to find us', offices: 'Offices', hours: 'Hours', languages: 'Languages', email: 'Email', phone: 'Phone' },
@@ -40,11 +40,11 @@ const COPY = {
   },
   fr: {
     heading: 'Parlons de la suite',
-    subtext: 'Partagez le défi que vous traversez. Nous répondons dans un délai de trois jours ouvrables, et nous serons honnêtes sur notre capacité à vous aider.',
+    subtext: 'Dites-nous ce que vous traversez. Nous répondons dans un délai de trois jours ouvrables, et nous vous dirons clairement si nous sommes les bonnes personnes.',
     formHeading: 'Envoyer un message',
     fields: { name: 'Nom', email: 'Courriel', organization: 'Organisation', service: 'En quoi pouvons-nous vous aider ?', message: 'Message' },
     messagePlaceholder: 'Parlez-nous du défi que vous traversez.',
-    serviceOptions: ['Direction Associative', 'Développement Organisationnel', 'Formations', 'Prise de Parole Publique', 'Autre chose'],
+    serviceOptions: ['Direction Associative', 'Développement Organisationnel', 'Formations Équité', 'Recrutement en Santé', 'Prise de Parole Publique', 'Autre chose'],
     submit: 'Envoyer le Message',
     photoAlt: 'Deux collègues travaillant ensemble',
     findUs: { heading: 'Où nous trouver', offices: 'Bureaux', hours: 'Horaires', languages: 'Langues', email: 'Courriel', phone: 'Téléphone' },
@@ -52,11 +52,11 @@ const COPY = {
   },
   es: {
     heading: 'Hablemos de lo que sigue',
-    subtext: 'Comparte el desafío que estás enfrentando. Respondemos dentro de tres días hábiles, y seremos honestos sobre cómo podemos ayudar.',
+    subtext: 'Cuéntanos lo que estás enfrentando. Respondemos dentro de tres días hábiles, y te diremos con claridad si somos las personas indicadas.',
     formHeading: 'Enviar un mensaje',
     fields: { name: 'Nombre', email: 'Correo electrónico', organization: 'Organización', service: '¿En qué podemos ayudarte?', message: 'Mensaje' },
     messagePlaceholder: 'Cuéntanos sobre el desafío que estás enfrentando.',
-    serviceOptions: ['Liderazgo sin Fines de Lucro', 'Desarrollo Organizacional', 'Capacitaciones', 'Oratoria Pública', 'Algo más'],
+    serviceOptions: ['Liderazgo sin Fines de Lucro', 'Desarrollo Organizacional', 'Capacitaciones en Equidad', 'Reclutamiento en Salud', 'Oratoria Pública', 'Algo más'],
     submit: 'Enviar Mensaje',
     photoAlt: 'Dos colegas trabajando juntos',
     findUs: { heading: 'Dónde encontrarnos', offices: 'Oficinas', hours: 'Horario', languages: 'Idiomas', email: 'Correo electrónico', phone: 'Teléfono' },
@@ -64,11 +64,11 @@ const COPY = {
   },
   pt: {
     heading: 'Vamos falar sobre os próximos passos',
-    subtext: 'Compartilhe o desafio que você está enfrentando. Respondemos em até três dias úteis, e seremos honestos sobre como podemos ajudar.',
+    subtext: 'Conte o que você está enfrentando. Respondemos em até três dias úteis, e diremos com clareza se somos as pessoas certas.',
     formHeading: 'Enviar uma mensagem',
     fields: { name: 'Nome', email: 'E-mail', organization: 'Organização', service: 'Com o que podemos ajudar?', message: 'Mensagem' },
     messagePlaceholder: 'Conte-nos sobre o desafio que você está enfrentando.',
-    serviceOptions: ['Liderança Sem Fins Lucrativos', 'Desenvolvimento Organizacional', 'Capacitações', 'Oratória Pública', 'Outra coisa'],
+    serviceOptions: ['Liderança Sem Fins Lucrativos', 'Desenvolvimento Organizacional', 'Capacitações em Equidade', 'Recrutamento em Saúde', 'Oratória Pública', 'Outra coisa'],
     submit: 'Enviar Mensagem',
     photoAlt: 'Dois colegas trabalhando juntos',
     findUs: { heading: 'Onde nos encontrar', offices: 'Escritórios', hours: 'Horário', languages: 'Idiomas', email: 'E-mail', phone: 'Telefone' },
@@ -163,10 +163,10 @@ module.exports = {
       pt: 'Contato'
     },
     description: {
-      en: 'Share the challenge your organization is working through. We reply within three business days and are honest about how we can help.',
-      fr: 'Partagez le défi que traverse votre organisation. Nous répondons dans un délai de trois jours ouvrables et sommes honnêtes sur notre capacité à vous aider.',
-      es: 'Comparte el desafío que tu organización está enfrentando. Respondemos dentro de tres días hábiles y somos honestos sobre cómo podemos ayudar.',
-      pt: 'Compartilhe o desafio que sua organização está enfrentando. Respondemos em até três dias úteis e somos honestos sobre como podemos ajudar.'
+      en: 'Tell us what your organization is working through. We reply within three business days and say plainly whether we’re the right fit.',
+      fr: 'Dites-nous ce que traverse votre organisation. Nous répondons dans un délai de trois jours ouvrables et vous disons clairement si nous sommes les bonnes personnes.',
+      es: 'Cuéntanos lo que tu organización está enfrentando. Respondemos dentro de tres días hábiles y te decimos con claridad si somos las personas indicadas.',
+      pt: 'Conte o que sua organização está enfrentando. Respondemos em até três dias úteis e dizemos com clareza se somos as pessoas certas.'
     },
     ogImage: 'contact'
   },

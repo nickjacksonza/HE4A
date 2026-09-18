@@ -6,11 +6,11 @@
 // user-facing URLs -- they stay identical across every locale variant of a
 // page, so a translated dropdown link still lands on the right section.
 //
-// Organizational Development note: the nav lists 4 sub-items (Program Oversight /
-// Marketing and Communications / Public Policy / Grant Writing) but the page itself
-// has only 3 content rows -- row 2 covers both communications and public policy
-// under one heading. That's a deliberate merge, not a bug: both "Marketing and
-// Communications" and "Public Policy" point at the same #communications-and-public-policy
+// Organizational Development note: the nav lists 5 sub-items (Program Oversight /
+// Marketing and Communications / Public Policy / Grant Writing / Financial Leadership)
+// but the page itself has only 4 content rows -- row 2 covers both communications and
+// public policy under one heading. That's a deliberate merge, not a bug: both "Marketing
+// and Communications" and "Public Policy" point at the same #communications-and-public-policy
 // anchor in every locale.
 
 const NAV_STRUCTURE = [
@@ -29,7 +29,8 @@ const NAV_STRUCTURE = [
       { id: 'programOversight', anchor: 'program-oversight' },
       { id: 'marketingCommunications', anchor: 'communications-and-public-policy' },
       { id: 'publicPolicy', anchor: 'communications-and-public-policy' },
-      { id: 'grantWriting', anchor: 'grant-writing' }
+      { id: 'grantWriting', anchor: 'grant-writing' },
+      { id: 'financialLeadership', anchor: 'financial-leadership' }
     ]
   },
   {
@@ -54,7 +55,7 @@ const NAV_STRUCTURE = [
     href: 'recruitment.html',
     items: [
       { id: 'executiveSearch', anchor: 'executive-search' },
-      { id: 'programStaffing', anchor: 'program-staffing' },
+      { id: 'clinicalFrontline', anchor: 'clinical-frontline' },
       { id: 'equityHiring', anchor: 'equity-hiring' }
     ]
   },
@@ -69,9 +70,9 @@ const NAV_LABELS = {
   en: {
     nonProfitLeadership: 'Non-Profit Leadership',
     organizationalDevelopment: 'Organizational Development',
-    trainings: 'Trainings',
+    trainings: 'Equity Trainings',
     publicSpeaking: 'Public Speaking',
-    recruitment: 'Recruitment',
+    recruitment: 'Healthcare Recruitment',
     aboutUs: 'About Us',
     boardGovernance: 'Board Governance',
     executiveCoaching: 'Executive Coaching',
@@ -79,22 +80,23 @@ const NAV_LABELS = {
     marketingCommunications: 'Marketing and Communications',
     publicPolicy: 'Public Policy',
     grantWriting: 'Grant Writing',
+    financialLeadership: 'Financial Leadership',
     racialEquity: 'Racial Equity',
     lgbtqEquity: 'LGBTQ+ Equity',
     socialDeterminants: 'Social Determinants of Health Awareness',
     keynote: 'Keynote',
     moderating: 'Moderating',
     executiveSearch: 'Executive Search',
-    programStaffing: 'Program Staffing',
+    clinicalFrontline: 'Clinical & Frontline',
     equityHiring: 'Equity-Centered Hiring',
     workWithUs: 'Work With Us'
   },
   fr: {
     nonProfitLeadership: 'Direction Associative',
     organizationalDevelopment: 'Développement Organisationnel',
-    trainings: 'Formations',
+    trainings: 'Formations Équité',
     publicSpeaking: 'Prise de Parole Publique',
-    recruitment: 'Recrutement',
+    recruitment: 'Recrutement en Santé',
     aboutUs: 'À Propos',
     boardGovernance: 'Gouvernance du Conseil',
     executiveCoaching: 'Coaching de Direction',
@@ -102,22 +104,23 @@ const NAV_LABELS = {
     marketingCommunications: 'Marketing et Communication',
     publicPolicy: 'Politiques Publiques',
     grantWriting: 'Rédaction de Demandes de Subvention',
+    financialLeadership: 'Direction Financière',
     racialEquity: 'Équité Raciale',
     lgbtqEquity: 'Équité LGBTQ+',
     socialDeterminants: 'Sensibilisation aux Déterminants Sociaux de la Santé',
     keynote: 'Conférence Principale',
     moderating: 'Modération',
     executiveSearch: 'Recherche de Cadres',
-    programStaffing: 'Personnel de Programme',
+    clinicalFrontline: 'Clinique et Terrain',
     equityHiring: 'Recrutement Équitable',
     workWithUs: 'Travaillons Ensemble'
   },
   es: {
     nonProfitLeadership: 'Liderazgo sin Fines de Lucro',
     organizationalDevelopment: 'Desarrollo Organizacional',
-    trainings: 'Capacitaciones',
+    trainings: 'Capacitaciones en Equidad',
     publicSpeaking: 'Oratoria Pública',
-    recruitment: 'Reclutamiento',
+    recruitment: 'Reclutamiento en Salud',
     aboutUs: 'Sobre Nosotros',
     boardGovernance: 'Gobernanza de la Junta',
     executiveCoaching: 'Coaching Ejecutivo',
@@ -125,22 +128,23 @@ const NAV_LABELS = {
     marketingCommunications: 'Marketing y Comunicaciones',
     publicPolicy: 'Política Pública',
     grantWriting: 'Redacción de Propuestas de Subvención',
+    financialLeadership: 'Liderazgo Financiero',
     racialEquity: 'Equidad Racial',
     lgbtqEquity: 'Equidad LGBTQ+',
     socialDeterminants: 'Sensibilización sobre los Determinantes Sociales de la Salud',
     keynote: 'Conferencia Magistral',
     moderating: 'Moderación',
     executiveSearch: 'Búsqueda de Ejecutivos',
-    programStaffing: 'Personal de Programa',
+    clinicalFrontline: 'Clínico y Primera Línea',
     equityHiring: 'Contratación Equitativa',
     workWithUs: 'Trabaja con Nosotros'
   },
   pt: {
     nonProfitLeadership: 'Liderança Sem Fins Lucrativos',
     organizationalDevelopment: 'Desenvolvimento Organizacional',
-    trainings: 'Capacitações',
+    trainings: 'Capacitações em Equidade',
     publicSpeaking: 'Oratória Pública',
-    recruitment: 'Recrutamento',
+    recruitment: 'Recrutamento em Saúde',
     aboutUs: 'Sobre Nós',
     boardGovernance: 'Governança do Conselho',
     executiveCoaching: 'Coaching Executivo',
@@ -148,13 +152,14 @@ const NAV_LABELS = {
     marketingCommunications: 'Marketing e Comunicação',
     publicPolicy: 'Política Pública',
     grantWriting: 'Redação de Propostas de Financiamento',
+    financialLeadership: 'Liderança Financeira',
     racialEquity: 'Equidade Racial',
     lgbtqEquity: 'Equidade LGBTQ+',
     socialDeterminants: 'Conscientização sobre os Determinantes Sociais da Saúde',
     keynote: 'Palestra Principal',
     moderating: 'Moderação',
     executiveSearch: 'Busca de Executivos',
-    programStaffing: 'Equipe de Programa',
+    clinicalFrontline: 'Clínico e Linha de Frente',
     equityHiring: 'Contratação Equitativa',
     workWithUs: 'Trabalhe Conosco'
   }
