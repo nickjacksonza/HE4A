@@ -18,6 +18,7 @@ const pages = [
   require('./content/pages/organizational-development'),
   require('./content/pages/trainings'),
   require('./content/pages/public-speaking'),
+  require('./content/pages/recruitment'),
   require('./content/pages/about-us'),
   require('./content/pages/contact')
 ];

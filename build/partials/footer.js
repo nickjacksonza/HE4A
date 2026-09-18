@@ -32,6 +32,7 @@ function footer(locale) {
       <a href="${href(locale, 'organizational-development.html')}" class="footer-link">${labels.organizationalDevelopment}</a>
       <a href="${href(locale, 'trainings.html')}" class="footer-link">${labels.trainings}</a>
       <a href="${href(locale, 'public-speaking.html')}" class="footer-link">${labels.publicSpeaking}</a>
+      <a href="${href(locale, 'recruitment.html')}" class="footer-link">${labels.recruitment}</a>
     </div>
     <div class="footer-col">
       <div class="footer-heading">${f.organization}</div>

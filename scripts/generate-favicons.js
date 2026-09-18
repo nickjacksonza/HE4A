@@ -12,7 +12,7 @@ const OG_DIR = path.join(__dirname, '..', 'assets', 'og');
 
 const OG_PAGES = [
   'home', 'non-profit-leadership', 'organizational-development',
-  'trainings', 'public-speaking', 'about-us', 'contact'
+  'trainings', 'public-speaking', 'recruitment', 'about-us', 'contact'
 ];
 
 async function icons() {

@@ -50,6 +50,15 @@ const NAV_STRUCTURE = [
     ]
   },
   {
+    id: 'recruitment',
+    href: 'recruitment.html',
+    items: [
+      { id: 'executiveSearch', anchor: 'executive-search' },
+      { id: 'programStaffing', anchor: 'program-staffing' },
+      { id: 'equityHiring', anchor: 'equity-hiring' }
+    ]
+  },
+  {
     id: 'aboutUs',
     href: 'about-us.html',
     items: []
@@ -62,6 +71,7 @@ const NAV_LABELS = {
     organizationalDevelopment: 'Organizational Development',
     trainings: 'Trainings',
     publicSpeaking: 'Public Speaking',
+    recruitment: 'Recruitment',
     aboutUs: 'About Us',
     boardGovernance: 'Board Governance',
     executiveCoaching: 'Executive Coaching',
@@ -74,6 +84,9 @@ const NAV_LABELS = {
     socialDeterminants: 'Social Determinants of Health Awareness',
     keynote: 'Keynote',
     moderating: 'Moderating',
+    executiveSearch: 'Executive Search',
+    programStaffing: 'Program Staffing',
+    equityHiring: 'Equity-Centered Hiring',
     workWithUs: 'Work With Us'
   },
   fr: {
@@ -81,6 +94,7 @@ const NAV_LABELS = {
     organizationalDevelopment: 'Développement Organisationnel',
     trainings: 'Formations',
     publicSpeaking: 'Prise de Parole Publique',
+    recruitment: 'Recrutement',
     aboutUs: 'À Propos',
     boardGovernance: 'Gouvernance du Conseil',
     executiveCoaching: 'Coaching de Direction',
@@ -93,6 +107,9 @@ const NAV_LABELS = {
     socialDeterminants: 'Sensibilisation aux Déterminants Sociaux de la Santé',
     keynote: 'Conférence Principale',
     moderating: 'Modération',
+    executiveSearch: 'Recherche de Cadres',
+    programStaffing: 'Personnel de Programme',
+    equityHiring: 'Recrutement Équitable',
     workWithUs: 'Travaillons Ensemble'
   },
   es: {
@@ -100,6 +117,7 @@ const NAV_LABELS = {
     organizationalDevelopment: 'Desarrollo Organizacional',
     trainings: 'Capacitaciones',
     publicSpeaking: 'Oratoria Pública',
+    recruitment: 'Reclutamiento',
     aboutUs: 'Sobre Nosotros',
     boardGovernance: 'Gobernanza de la Junta',
     executiveCoaching: 'Coaching Ejecutivo',
@@ -112,6 +130,9 @@ const NAV_LABELS = {
     socialDeterminants: 'Sensibilización sobre los Determinantes Sociales de la Salud',
     keynote: 'Conferencia Magistral',
     moderating: 'Moderación',
+    executiveSearch: 'Búsqueda de Ejecutivos',
+    programStaffing: 'Personal de Programa',
+    equityHiring: 'Contratación Equitativa',
     workWithUs: 'Trabaja con Nosotros'
   },
   pt: {
@@ -119,6 +140,7 @@ const NAV_LABELS = {
     organizationalDevelopment: 'Desenvolvimento Organizacional',
     trainings: 'Capacitações',
     publicSpeaking: 'Oratória Pública',
+    recruitment: 'Recrutamento',
     aboutUs: 'Sobre Nós',
     boardGovernance: 'Governança do Conselho',
     executiveCoaching: 'Coaching Executivo',
@@ -131,6 +153,9 @@ const NAV_LABELS = {
     socialDeterminants: 'Conscientização sobre os Determinantes Sociais da Saúde',
     keynote: 'Palestra Principal',
     moderating: 'Moderação',
+    executiveSearch: 'Busca de Executivos',
+    programStaffing: 'Equipe de Programa',
+    equityHiring: 'Contratação Equitativa',
     workWithUs: 'Trabalhe Conosco'
   }
 };

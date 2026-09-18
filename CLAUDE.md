@@ -13,6 +13,7 @@ Implemented as `build/content/pages/*.js` (one module per page below), assembled
 | `Organizational-Development.dc.html` | Service page — program oversight, comms, policy, grants |
 | `Trainings.dc.html` | Service page — racial equity, LGBTQ+ equity, SDOH (tabbed) |
 | `Public-Speaking.dc.html` | Service page — keynotes, moderation, briefings |
+| `build/content/pages/recruitment.js` (no `.dc.html` source — added post-redesign, modeled on Public Speaking) | Service page — executive search, program staffing, equity-centered hiring |
 | `About-Us.dc.html` | About page — vision/mission, values, full collective grid |
 | `Contact.dc.html` | Contact form + office info + social links |
 | `SiteHeader.dc.html` | Shared header — nav with dropdowns, language switcher (EN/FR/ES/PT) |
