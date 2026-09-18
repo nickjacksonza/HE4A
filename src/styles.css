@@ -614,6 +614,12 @@ main:focus { outline: none; }
   width: 100%;
   height: 100%;
   object-fit: cover;
+  /* Hero boxes are much wider than tall (full-bleed width, ~480-600px
+     height), so default center-cropping removes a large, increasing-with-
+     viewport-width slice off the top and bottom alike. Every hero photo
+     has its subjects' heads in the upper portion of the frame, so anchor
+     to the top: crop only comes off the bottom. */
+  object-position: center top;
 }
 .hero-overlay {
   position: absolute;

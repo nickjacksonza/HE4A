@@ -60,5 +60,9 @@ Implemented for EN/FR/ES/PT (`build/content/locales.js`, `build/content/nav.js`,
 - `assets/photos-optimized/` — generated (AVIF/WebP/JPG, responsive widths) by `scripts/optimize-images.js`; that script logs the *actual* widths it generates after clamping to native size — page modules' `widths` arrays must match those exact numbers.
 - `assets/fonts/`, `assets/icons/`, `assets/og/` — self-hosted font subsets and generated favicons/OG images; regenerate via `scripts/generate-favicons.js` (needs `sharp` + `png-to-ico`, dev-only deps not required by the main build).
 
+## Deployment
+- Production (healthequity4all.org) and the committed `site/` snapshot both build for **root** path — plain `npm run build`, no env var.
+- The dev preview at `https://projects.slash301.com/HE4A/` is a **subpath deploy** — build with `SITE_BASE_PATH=/HE4A npm run build` first, or every root-absolute `href`/`asset` link (styles.css, images, internal pages) 404s one level too high. Manual deploys there go over SFTP — re-upload the whole `dist/`, not a diff, since every page's links change with the base path.
+
 ## Voice & Tone
 Confident and informative but warm and supportive. The audience is under-represented organization leaders who have the passion and knowledge — they need guidance, not convincing. No emoji. Title Case for headings. Credentials (M.P.H., M.H.L) always shown.
