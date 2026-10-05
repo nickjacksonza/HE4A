@@ -4,3 +4,23 @@ dist/
 .claude.local.md
 .DS_Store
 Thumbs.db
+
+# Added by repo hygiene
+.idea/
+.vscode/*
+!.vscode/extensions.json
+.env
+.env.*
+!.env.example
+!.env.sample
+*.pem
+*.key
+__pycache__/
+*.pyc
+*.log
+*.sqlite
+*.sqlite3
+*.db
+*.db-shm
+*.db-wal
+.playwright-cli/
