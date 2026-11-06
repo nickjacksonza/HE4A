@@ -1,30 +1,55 @@
-# Ready-to-upload static site
+# Health Equity 4 All
 
-Everything in this folder is the finished, built website. No build step,
-no npm, no Python, no server-side code of any kind — just plain HTML,
-CSS, JS, images and fonts.
+This is the source code for [healthequity4all.org](https://healthequity4all.org), the website of Health Equity 4 All, the public name of Equity Is the Word, LLC.
 
-## How to deploy
+We are a global collective of public health leaders. We work with organizations that serve historically excluded communities, on non-profit leadership, organizational development, equity trainings, healthcare recruitment and public speaking.
 
-Upload the **contents** of this folder (not the folder itself) to the web
-root of your server, exactly as they are:
+## Found something wrong?
 
-- `index.html`, `contact.html`, `about-us.html`, etc. — the English pages
-- `fr/`, `es/`, `pt/` — the French, Spanish and Portuguese translations
-- `styles.css`, `scripts.js` — the site's stylesheet and behavior
-- `assets/` — images, fonts, icons
-- `robots.txt`, `sitemap.xml` — for search engines
+Email [info@healthequity4all.org](mailto:info@healthequity4all.org) or use the [contact form](https://healthequity4all.org/contact.html). You can also [open an issue](https://github.com/nickjacksonza/HE4A/issues) on this repository.
 
-On a plain host (e.g. Hetzner), that's typically your `public_html/` or
-`/var/www/<yoursite>/` directory. Once uploaded, `index.html` is the
-homepage and everything else just works via ordinary relative URLs — no
-web server configuration, rewrite rules, or `.htaccess` needed.
+If a page is hard to use with a keyboard, a screen reader or a translation tool, read our [accessibility statement](https://healthequity4all.org/accessibility.html) and tell us about the barrier.
 
-## Where this comes from
+## Languages
 
-This folder is a snapshot of the site as built from source. The actual
-source code — page content, styles, translations — lives outside this
-folder (`build/`, `src/`, `assets/` at the repo root) and is assembled by
-a small Node build script (`npm run build`). If you (or an AI assistant)
-change the source later, this folder needs to be rebuilt and re-committed
-to stay in sync — it does not update itself.
+The site is in English, French, Spanish and Portuguese. The French, Spanish and Portuguese text was drafted with AI and has not yet been reviewed by native speakers. Corrections are welcome.
+
+Every English page also has a plain Markdown copy at the same address, with `.md` in place of `.html` (for example [`/about-us.md`](https://healthequity4all.org/about-us.md)). [`/llms.txt`](https://healthequity4all.org/llms.txt) lists the pages for AI tools.
+
+## How the site is built
+
+The site is plain HTML, CSS and JavaScript. A small Node script assembles the pages. There is no framework and no server-side code.
+
+```
+build/        the build script, page templates and all page text
+  content/    pages, people, translations, navigation, site-wide facts
+src/          the stylesheet and browser script
+assets/       images, fonts, icons and social-sharing images
+scripts/      one-off tools for resizing images and making favicons
+design/       the original design files, kept for reference and not published
+```
+
+To run it on your own computer you need [Node.js](https://nodejs.org) 20 or later.
+
+```
+npm ci --omit=dev
+npm run build     # writes the finished site to dist/
+npm run serve     # opens it at http://localhost:5000
+```
+
+The build writes `index.html` and the other pages, the `fr/`, `es/` and `pt/` translations, the Markdown copies, `sitemap.xml`, `robots.txt`, `llms.txt` and `.well-known/security.txt`.
+
+## Changing the content
+
+- Page text lives in `build/content/pages/`, one file per page. Each file holds the text for all four languages.
+- Each person in the collective is described in `build/content/people.js`. Their profile page details (full biography, home-language biography, email, phone and social links) are in `build/content/profiles.js`.
+- Site-wide facts, such as the address, phone number and social links, are in `build/content/site.js`.
+- Colors, type and spacing are set at the top of `src/styles.css`.
+
+## Publishing
+
+The live site is hosted on GitHub Pages. When a change is merged into the `main` branch, a GitHub Actions workflow builds the site and publishes it. Pull requests run the same build first, so a broken build shows up before anything goes live.
+
+## Rights
+
+The text, photographs, logo and biographies on this site belong to Equity Is the Word, LLC and the people they describe. All rights reserved. Please ask before reusing them.

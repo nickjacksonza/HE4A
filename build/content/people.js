@@ -14,6 +14,7 @@ module.exports = {
   johnHanna: {
     name: 'John Hanna',
     slug: 'john-hanna',
+    homeShort: { code: 'ar', name: 'العربية', dir: 'rtl', text: 'شارك جون كشريك مؤسس في مبادرة دنتاليا في مصر منذ عام 2017 حتى 2022، حيث قاد جهودًا لتعزيز الوعي بصحة الأسنان والتعليم المجتمعي، مما استفادت منه الشرائح السكانية غير المحظية.' },
     aboutRole: { en: 'Global Health Advocate · Rome, Italy', fr: 'Défenseur de la Santé Mondiale · Rome, Italie', es: 'Defensor de la Salud Global · Roma, Italia', pt: 'Defensor da Saúde Global · Roma, Itália' },
     teamRole: { en: 'Global Health Advocate · Rome', fr: 'Défenseur de la Santé Mondiale · Rome', es: 'Defensor de la Salud Global · Roma', pt: 'Defensor da Saúde Global · Roma' },
     bio: {
@@ -65,27 +66,29 @@ module.exports = {
     aboutRole: { en: 'Communications & Marketing · Johannesburg, South Africa', fr: 'Communication et Marketing · Johannesburg, Afrique du Sud', es: 'Comunicación y Marketing · Johannesburgo, Sudáfrica', pt: 'Comunicação e Marketing · Joanesburgo, África do Sul' },
     teamRole: { en: 'Communications & Marketing · Johannesburg', fr: 'Communication et Marketing · Johannesburg', es: 'Comunicación y Marketing · Johannesburgo', pt: 'Comunicação e Marketing · Joanesburgo' },
     bio: {
-      en: 'Digital marketing producer and project manager with 16 years of experience working with African brands and NGOs on health equity communications.',
-      fr: 'Producteur en marketing numérique et chef de projet, fort de 16 ans d’expérience auprès de marques et d’ONG africaines sur les communications liées à l’équité en santé.',
-      es: 'Productor de marketing digital y gerente de proyectos, con 16 años de experiencia trabajando con marcas y ONG africanas en comunicaciones sobre equidad en salud.',
-      pt: 'Produtor de marketing digital e gerente de projetos, com 16 anos de experiência trabalhando com marcas e ONGs africanas em comunicações sobre equidade em saúde.'
+      en: 'Digital marketing producer and project manager with almost 20 years of experience working with African brands and NGOs on health equity communications.',
+      fr: 'Producteur en marketing numérique et chef de projet, fort de près de 20 ans d’expérience auprès de marques et d’ONG africaines sur les communications liées à l’équité en santé.',
+      es: 'Productor de marketing digital y gerente de proyectos, con casi 20 años de experiencia trabajando con marcas y ONG africanas en comunicaciones sobre equidad en salud.',
+      pt: 'Produtor de marketing digital e gerente de projetos, com quase 20 anos de experiência trabalhando com marcas e ONGs africanas em comunicações sobre equidade em saúde.'
     }
   },
   brianKanyemba: {
     name: 'Brian Kanyemba',
     slug: 'brian-kanyemba',
+    homeShort: { code: 'sn', name: 'chiShona', text: 'Brian Kanyemba inyanzvi yezvehutano hweveruzhinji anogara kuCape Town, ane ruzivo rwemakore anodarika gumi nemashanu mukudzivirira HIV, zvirongwa zvemapoka anokosha(KPs), kushandiswa nezvisizvo kwezvinodhaka, uye kodzero dzevanhu kumaMawodzanyemba, Mabavazuva nekuMadokero kweAfrica.' },
     aboutRole: { en: 'Public Health & Advocacy · Cape Town, South Africa', fr: 'Santé Publique et Plaidoyer · Le Cap, Afrique du Sud', es: 'Salud Pública e Incidencia · Ciudad del Cabo, Sudáfrica', pt: 'Saúde Pública e Advocacia · Cidade do Cabo, África do Sul' },
     teamRole: { en: 'Public Health & Advocacy · Cape Town', fr: 'Santé Publique et Plaidoyer · Le Cap', es: 'Salud Pública e Incidencia · Ciudad del Cabo', pt: 'Saúde Pública e Advocacia · Cidade do Cabo' },
     bio: {
-      en: 'Public health specialist and advocate based in Cape Town, with over 15 years of experience in HIV prevention, key population programs, substance use and human rights across Southern and Eastern Africa. PhD candidate at Stellenbosch University, studying digital intervention design for long-acting injectable PrEP among key populations. His work advances community-led HIV responses, U=U, the repeal of laws that criminalize people, and equal access for LGBTI+ people and other key populations across Africa.',
-      fr: 'Spécialiste de la santé publique et défenseur basé au Cap, avec plus de 15 ans d’expérience en prévention du VIH, programmes pour les populations clés, usage de substances et droits humains en Afrique australe et orientale. Doctorant à l’Université de Stellenbosch, il étudie la conception d’interventions numériques pour la PrEP injectable à action prolongée auprès des populations clés. Son travail fait avancer les ripostes au VIH menées par les communautés, l’indétectable = intransmissible (U=U), l’abrogation des lois qui criminalisent les personnes et l’égalité d’accès pour les personnes LGBTI+ et les autres populations clés partout en Afrique.',
-      es: 'Especialista en salud pública y defensor radicado en Ciudad del Cabo, con más de 15 años de experiencia en prevención del VIH, programas para poblaciones clave, consumo de sustancias y derechos humanos en el sur y el este de África. Doctorando en la Universidad de Stellenbosch, estudia el diseño de intervenciones digitales para la PrEP inyectable de acción prolongada entre poblaciones clave. Su trabajo impulsa las respuestas al VIH lideradas por la comunidad, I=I (U=U), la derogación de leyes que criminalizan a las personas y el acceso equitativo para las personas LGBTI+ y otras poblaciones clave en toda África.',
-      pt: 'Especialista em saúde pública e defensor radicado na Cidade do Cabo, com mais de 15 anos de experiência em prevenção do HIV, programas para populações-chave, uso de substâncias e direitos humanos na África Austral e Oriental. Doutorando na Universidade de Stellenbosch, estuda o desenho de intervenções digitais para a PrEP injetável de ação prolongada entre populações-chave. Seu trabalho promove respostas ao HIV lideradas pela comunidade, I=I (U=U), a revogação de leis que criminalizam pessoas e o acesso igualitário para pessoas LGBTI+ e outras populações-chave em toda a África.'
+      en: 'Public health consultant and advocate based in Cape Town, with over 15 years of experience in HIV prevention, key populations programming, substance abuse and human rights across Western, Southern and Eastern Africa.',
+      fr: 'Consultant en santé publique et défenseur basé au Cap, avec plus de 15 ans d’expérience en prévention du VIH, programmes pour les populations clés, consommation abusive de substances et droits humains en Afrique de l’Ouest, australe et orientale.',
+      es: 'Consultor en salud pública y defensor radicado en Ciudad del Cabo, con más de 15 años de experiencia en prevención del VIH, programas para poblaciones clave, abuso de sustancias y derechos humanos en África occidental, meridional y oriental.',
+      pt: 'Consultor em saúde pública e defensor radicado na Cidade do Cabo, com mais de 15 anos de experiência em prevenção do HIV, programas para populações-chave, abuso de substâncias e direitos humanos na África Ocidental, Austral e Oriental.'
     }
   },
   tinasheMuchenje: {
     name: 'Tinashe Stephen Muchenje',
     slug: 'tinashe-stephen-muchenje',
+    homeShort: { code: 'sn', name: 'chiShona', text: 'Tinashe Stephen Muchenje, MBA, ACMA, CGMA, AICPA, inyanzvi yezvemari uye Virtual CFO ane makore anopfuura gumi nemaviri eruzivo muhurongwa hwezvemari, kuongorora, uye kuronga bhajeti. Anozivikanwa nekusimudzira kushanda zvakanaka kwemari, kusimbisa mitemo yekudzora, uye kupa ongororo dzinobva padata dzinotsigira kukura kwebhizimisi kunogara kwenguva refu.' },
     aboutRole: { en: 'Finance & Virtual CFO · Cape Town, South Africa', fr: 'Finance et Directeur Financier Virtuel · Cape Town, Afrique du Sud', es: 'Finanzas y Director Financiero Virtual · Ciudad del Cabo, Sudáfrica', pt: 'Finanças e Diretor Financeiro Virtual · Cidade do Cabo, África do Sul' },
     teamRole: { en: 'Finance & Virtual CFO · Cape Town', fr: 'Finance et Directeur Financier Virtuel · Cape Town', es: 'Finanzas y Director Financiero Virtual · Ciudad del Cabo', pt: 'Finanças e Diretor Financeiro Virtual · Cidade do Cabo' },
     bio: {

@@ -10,7 +10,7 @@ module.exports = {
     es: 'Adelante. Juntos.',
     pt: 'Em Frente. Juntos.'
   },
-  baseUrl: 'https://www.healthequity4all.org',
+  baseUrl: 'https://healthequity4all.org',
   formEndpoint: 'https://formspree.io/f/REPLACE_ME',
   email: 'info@healthequity4all.org',
   phone: '+1 206 931 3853',

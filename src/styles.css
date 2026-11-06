@@ -1,11 +1,11 @@
 /* =========================================================================
    Health Equity 4 All -- production stylesheet
-   Ported from the Claude Design token bundle (_ds/.../tokens/*.css) plus
+   Ported from the Claude Design token bundle (design/_ds/.../tokens/*.css) plus
    hand-authored component classes replacing the design mockups' inline
    style="..." attributes and fake style-hover="..." attribute.
    ========================================================================= */
 
-/* ---- 1. Design tokens (ported verbatim from _ds tokens/*.css) --------- */
+/* ---- 1. Design tokens (ported verbatim from design/_ds tokens/*.css) --------- */
 :root {
   /* Primary -- sampled from the Transgender Pride flag */
   --color-sky-50: oklch(98% 0.008 226.5);
@@ -564,43 +564,196 @@ main:focus { outline: none; }
 
 .nav-cta { margin-left: var(--space-2); }
 
-@media (hover: hover) and (pointer: fine) {
+@media (hover: hover) and (pointer: fine) and (min-width: 1261px) {
   .nav-item:hover .nav-dropdown { display: flex; }
 }
+.nav-extras { display: none; }
 
-/* Six top-level items plus the logo and CTA need ~1327px in English before
-   they fit on one line; below that .nav's flex-wrap kicks in and the header
-   silently doubles in height, so the drawer has to take over far above the
-   usual tablet breakpoint. Translated navs are wider still (fr ~1450, es
-   ~1511, pt ~1521), so they wrap between this breakpoint and their own
-   threshold -- shorter nav labels or a higher breakpoint would close that
-   gap. Adding a nav item or lengthening a label means re-measuring. */
-@media (max-width: 1340px) {
-  .nav-toggle { display: inline-flex; }
+/* Desktop fit. Measured at 1536px wide: English fits on one line down to
+   ~1351px, but es/pt need ~1535-1545px and fr ~1450. Compact mode (13px labels
+   balanced onto two lines, tighter gaps) brings every locale under ~1260px, so
+   one drawer breakpoint (1260px) serves all four. Compact applies to English
+   only below 1351px, where it would otherwise wrap, and to fr/es/pt below
+   1600px. Adding a nav item or lengthening a label means re-measuring. */
+@media (min-width: 1261px) and (max-width: 1350px) {
+  .site-header { flex-wrap: nowrap; gap: var(--space-4); padding-inline: var(--space-5); }
+  .nav { flex-wrap: nowrap; gap: var(--space-2); }
+  .nav-link { font-size: 13px; max-width: 135px; line-height: 1.25; text-wrap: balance; }
+  .nav-cta { white-space: nowrap; padding: 10px 14px; font-size: 13px; }
+}
+@media (min-width: 1351px) and (max-width: 1599px) {
+  .nav--long .site-header { flex-wrap: nowrap; gap: var(--space-4); padding-inline: var(--space-5); }
+  .nav--long .nav { flex-wrap: nowrap; gap: var(--space-2); }
+  .nav--long .nav-link { font-size: 13px; max-width: 135px; line-height: 1.25; text-wrap: balance; }
+  .nav--long .nav-cta { white-space: nowrap; padding: 10px 14px; font-size: 13px; }
+}
+
+/* Mobile / tablet menu: full-screen ink overlay with large numbered links, an
+   accordion for sub-pages, and CTA, language, contact and social links at the
+   bottom. The logo and toggle stay above the overlay. */
+@media (max-width: 1260px) {
+  .site-logo, .nav-toggle { position: relative; z-index: 2; }
+  .site-header { transition: background var(--duration-base) var(--ease-standard), border-color var(--duration-base) var(--ease-standard); }
+  .site-header-wrap.is-nav-open .site-header { background: transparent; border-bottom-color: transparent; }
+  .site-header-wrap.is-nav-open .site-logo-word { color: var(--color-paper-50); }
+  .nav-toggle { display: inline-flex; border-radius: var(--radius-full); transition: background var(--duration-base) var(--ease-standard), border-color var(--duration-base) var(--ease-standard); }
+  .nav-toggle[aria-expanded="true"] { background: transparent; border-color: oklch(99% 0 0 / 0.35); }
+  .nav-toggle[aria-expanded="true"] .nav-toggle-icon::before,
+  .nav-toggle[aria-expanded="true"] .nav-toggle-icon::after { background: var(--color-paper-50); }
+
   .nav {
     position: fixed;
-    inset: 110px 0 0 0;
-    background: var(--color-paper-50);
+    inset: 0;
+    z-index: 1;
+    background: var(--color-ink-900);
     flex-direction: column;
+    flex-wrap: nowrap;
     align-items: stretch;
+    justify-content: flex-start;
     gap: 0;
-    padding: var(--space-4) var(--space-6) var(--space-7);
+    padding: 132px var(--space-6) var(--space-7);
     overflow-y: auto;
-    transform: translateY(-8px);
+    overscroll-behavior: contain;
+    counter-reset: navitem;
+    visibility: hidden;
     opacity: 0;
+    clip-path: circle(0% at calc(100% - 40px) 48px);
     pointer-events: none;
-    transition: opacity var(--duration-base) var(--ease-standard), transform var(--duration-base) var(--ease-standard);
+    transition: opacity var(--duration-base) var(--ease-standard), clip-path 0.5s var(--ease-standard), visibility 0s linear 0.5s;
   }
-  .nav.is-open { opacity: 1; transform: translateY(0); pointer-events: auto; }
-  .nav-item { padding: var(--space-3) 0; border-bottom: 1px solid var(--color-border); }
+  .nav.is-open {
+    visibility: visible;
+    opacity: 1;
+    clip-path: circle(150% at calc(100% - 40px) 48px);
+    pointer-events: auto;
+    transition: opacity var(--duration-base) var(--ease-standard), clip-path 0.6s var(--ease-standard), visibility 0s;
+  }
+  html.nav-locked, html.nav-locked body { overflow: hidden; }
+  /* Solid band so links scrolling in the open menu pass behind the logo and toggle */
+  .site-header-wrap.is-nav-open::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 132px;
+    background: linear-gradient(to bottom, var(--color-ink-900) 78%, transparent);
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  .nav-item {
+    padding: 0;
+    border-bottom: 1px solid oklch(99% 0 0 / 0.14);
+    counter-increment: navitem;
+    opacity: 0;
+    transform: translateY(14px);
+    transition: opacity 0.4s var(--ease-standard), transform 0.4s var(--ease-standard);
+  }
+  .nav.is-open .nav-item { opacity: 1; transform: none; }
+  .nav.is-open .nav-item:nth-child(1) { transition-delay: 0.12s; }
+  .nav.is-open .nav-item:nth-child(2) { transition-delay: 0.17s; }
+  .nav.is-open .nav-item:nth-child(3) { transition-delay: 0.22s; }
+  .nav.is-open .nav-item:nth-child(4) { transition-delay: 0.27s; }
+  .nav.is-open .nav-item:nth-child(5) { transition-delay: 0.32s; }
+  .nav.is-open .nav-item:nth-child(6) { transition-delay: 0.37s; }
+  .nav-link {
+    font-family: var(--font-display);
+    font-size: clamp(26px, 6.2vw, 38px);
+    font-weight: var(--weight-semibold);
+    line-height: 1.15;
+    letter-spacing: var(--tracking-tight);
+    color: var(--color-paper-50);
+    padding: var(--space-4) 0;
+    gap: var(--space-4);
+    max-width: none;
+  }
+  .nav-link::before {
+    content: counter(navitem, decimal-leading-zero);
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: var(--weight-semibold);
+    letter-spacing: 0.08em;
+    color: var(--color-sky-300);
+    min-width: 2ch;
+  }
+  .nav-link:hover, .nav-link:focus-visible { color: var(--color-sky-300); }
+  .nav-link[aria-current="page"] { color: var(--color-sky-300); }
+  .nav-caret { margin-left: auto; font-size: 14px; opacity: 0.8; transition: transform var(--duration-base) var(--ease-standard); }
+  .nav-item.is-open .nav-caret { transform: rotate(180deg); }
+  .nav-link-underline { display: none; }
+
   .nav-dropdown {
     position: static;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
     box-shadow: none;
+    background: transparent;
     border: none;
-    padding: var(--space-2) 0 0 var(--space-4);
+    border-radius: 0;
+    padding: 0 0 0 calc(2ch + var(--space-4));
     min-width: 0;
+    max-height: 0;
+    overflow: hidden;
+    visibility: hidden;
+    transition: max-height 0.4s var(--ease-standard), visibility 0s linear 0.4s;
   }
-  .nav-cta { margin-left: 0; margin-top: var(--space-4); align-self: flex-start; }
+  .nav-item.is-open .nav-dropdown { max-height: 420px; visibility: visible; padding-bottom: var(--space-4); transition: max-height 0.4s var(--ease-standard), visibility 0s; }
+  .nav-dropdown-link {
+    font-size: 17px;
+    color: var(--color-paper-200);
+    padding: 10px 0 10px var(--space-4);
+    border-left: 1px solid oklch(99% 0 0 / 0.2);
+    border-radius: 0;
+  }
+  .nav-dropdown-link:hover, .nav-dropdown-link:focus-visible { background: transparent; color: var(--color-sky-300); border-left-color: var(--color-sky-300); }
+
+  .nav-cta {
+    margin: var(--space-6) 0 0;
+    align-self: stretch;
+    justify-content: center;
+    padding: 16px 24px;
+    font-size: var(--text-base);
+    background: var(--color-sky-300);
+    color: var(--color-ink-900);
+    opacity: 0;
+    transform: translateY(14px);
+    transition: opacity 0.4s var(--ease-standard) 0.42s, transform 0.4s var(--ease-standard) 0.42s, background var(--duration-base) var(--ease-standard);
+  }
+  .nav.is-open .nav-cta { opacity: 1; transform: none; }
+  .nav-cta:hover { background: var(--color-sky-400); color: var(--color-ink-900); }
+
+  .nav-extras {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    margin-top: var(--space-6);
+    padding-top: var(--space-5);
+    border-top: 1px solid oklch(99% 0 0 / 0.14);
+    opacity: 0;
+    transition: opacity 0.4s var(--ease-standard) 0.5s;
+  }
+  .nav.is-open .nav-extras { opacity: 1; }
+  .nav-extras-row { display: flex; flex-wrap: wrap; gap: var(--space-2) var(--space-5); align-items: center; }
+  .nav-lang-chip {
+    font-size: 13px;
+    font-weight: var(--weight-semibold);
+    letter-spacing: 0.06em;
+    color: var(--color-paper-200);
+    text-decoration: none;
+    padding: 8px 14px;
+    min-height: 36px;
+    border: 1px solid oklch(99% 0 0 / 0.25);
+    border-radius: var(--radius-full);
+  }
+  a.nav-lang-chip:hover, a.nav-lang-chip:focus-visible { color: var(--color-paper-50); border-color: var(--color-paper-50); }
+  .nav-lang-chip.is-active { background: var(--color-sky-300); border-color: var(--color-sky-300); color: var(--color-ink-900); }
+  .nav-extras-link { font-size: var(--text-sm); color: var(--color-paper-200); text-decoration: none; padding: 4px 0; }
+  .nav-extras-link:hover, .nav-extras-link:focus-visible { color: var(--color-sky-300); text-decoration: underline; text-underline-offset: 3px; }
+}
+@media (max-width: 1260px) and (prefers-reduced-motion: reduce) {
+  .nav, .nav.is-open, .nav-item, .nav-cta, .nav-extras, .nav-dropdown { transition: none; }
 }
 
 @media (max-width: 600px) {
@@ -875,7 +1028,12 @@ main:focus { outline: none; }
 .service-card--featured .service-media { width: 100%; height: 280px; object-fit: cover; }
 .service-card--featured .service-body { padding: var(--space-6); display: flex; flex-direction: column; gap: var(--space-3); flex: 1; }
 .service-card--compact { min-height: 0; }
-.service-card--compact .service-media { width: 180px; height: 100%; min-height: 120px; flex: none; object-fit: cover; }
+.service-card--compact picture { flex: 0 0 44%; position: relative; display: block; min-height: 190px; }
+.service-card--compact .service-media { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+@media (max-width: 720px) {
+  .service-card--compact { flex-direction: column; }
+  .service-card--compact picture { flex: none; min-height: 0; height: 200px; }
+}
 .service-card--compact .service-body { padding: var(--space-5); display: flex; flex-direction: column; gap: var(--space-2); justify-content: center; }
 .service-card--banner { grid-column: 1 / -1; display: grid; grid-template-columns: 1fr 1fr; margin-top: var(--space-4); }
 .service-card--banner .service-body { padding: var(--space-6); display: flex; flex-direction: column; gap: var(--space-3); justify-content: center; }
@@ -1027,8 +1185,12 @@ main:focus { outline: none; }
   align-items: stretch;
 }
 .team-portrait {
-  width: 130px;
+  width: 190px;
   flex: none;
+}
+@media (max-width: 480px) {
+  .team-card { flex-direction: column; }
+  .team-portrait { width: 100%; height: 280px; }
 }
 .team-portrait-placeholder {
   background: var(--color-paper-200);
@@ -1039,7 +1201,7 @@ main:focus { outline: none; }
 }
 .team-portrait-placeholder span { font-size: 11px; color: var(--color-ink-700); line-height: 1.4; }
 .team-portrait picture { display: block; width: 100%; height: 100%; }
-.team-portrait-photo { width: 100%; height: 100%; object-fit: cover; display: block; }
+.team-portrait-photo { width: 100%; height: 100%; object-fit: cover; object-position: center 20%; display: block; }
 .team-info { padding: var(--space-5); display: flex; flex-direction: column; gap: var(--space-2); }
 .team-name { font-family: var(--font-display); font-weight: var(--weight-semibold); font-size: 19px; color: var(--text-primary); }
 .team-role { font-size: 12px; font-weight: var(--weight-semibold); letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-blossom-800); }
@@ -1061,7 +1223,7 @@ main:focus { outline: none; }
 }
 .person-portrait span { font-size: 12px; color: var(--color-ink-700); }
 .person-portrait picture { display: block; width: 100%; height: 100%; }
-.person-portrait-photo { width: 100%; height: 100%; object-fit: cover; display: block; }
+.person-portrait-photo { width: 100%; height: 100%; object-fit: cover; object-position: center 20%; display: block; }
 .person-name { font-family: var(--font-display); font-weight: var(--weight-semibold); font-size: 18px; color: var(--text-primary); margin-top: var(--space-3); }
 .person-role { font-size: 12px; font-weight: var(--weight-semibold); letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-blossom-800); margin-top: 6px; }
 .person-bio { font-size: var(--text-sm); color: var(--text-secondary); line-height: var(--leading-normal); margin-top: var(--space-2); }
@@ -1284,9 +1446,9 @@ main:focus { outline: none; }
 /* ---- 22. Profile pages (about-us/<slug>.html) ------------------------------------- */
 .person-link { display: block; text-decoration: none; }
 .person-name-link { color: inherit; text-decoration: none; }
-.person-name-link:hover { text-decoration: underline; }
-.person-more { font-size: var(--text-sm); font-weight: var(--weight-semibold); color: var(--color-ink-800); margin-top: var(--space-3); text-decoration: none; }
-.person-more:hover { text-decoration: underline; }
+.person-name-link:hover, .person-link:hover + .person-name .person-name-link { color: var(--brand-primary-hover); text-decoration: underline; text-underline-offset: 3px; }
+.person-more { align-self: flex-start; font-size: var(--text-sm); font-weight: var(--weight-semibold); color: var(--brand-primary); text-decoration: none; margin-top: var(--space-2); padding: 6px 0; }
+.person-more:hover { color: var(--brand-primary-hover); text-decoration: underline; text-underline-offset: 3px; }
 
 .profile-grid {
   display: grid;
@@ -1296,7 +1458,7 @@ main:focus { outline: none; }
 }
 .profile-portrait { aspect-ratio: 4 / 5; border-radius: var(--radius-lg); overflow: hidden; }
 .profile-portrait picture { display: block; width: 100%; height: 100%; }
-.profile-portrait-photo { width: 100%; height: 100%; object-fit: cover; display: block; }
+.profile-portrait-photo { width: 100%; height: 100%; object-fit: cover; object-position: center 20%; display: block; }
 .profile-portrait-placeholder {
   background: var(--color-paper-200);
   border: 2px dashed var(--color-paper-300);
@@ -1332,3 +1494,23 @@ main:focus { outline: none; }
   .profile-portrait { max-width: 320px; }
 }
 .contact-grid > .form-card:only-child { max-width: 720px; }
+
+/* ---- 23. Short-bio translation on hover/focus ------------------------------------ */
+.bio-tr { display: grid; cursor: help; border-radius: var(--radius-sm); }
+.bio-tr > * { grid-area: 1 / 1; transition: opacity var(--duration-base) var(--ease-standard); }
+.bio-alt { opacity: 0; }
+.bio-alt-label { display: block; font-size: 11px; font-weight: var(--weight-semibold); letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-blossom-800); margin-bottom: 2px; }
+.bio-tr:hover .bio-main, .bio-tr:focus .bio-main { opacity: 0; }
+.bio-tr:hover .bio-alt, .bio-tr:focus .bio-alt { opacity: 1; }
+@media (prefers-reduced-motion: reduce) { .bio-tr > * { transition: none; } }
+
+/* ---- 24. Prose pages (Accessibility Statement) ---------------------------------- */
+.prose { max-width: 68ch; }
+.prose-heading { font-family: var(--font-display); font-weight: var(--weight-semibold); font-size: clamp(22px, 2.4vw, 28px); line-height: var(--leading-snug); color: var(--text-primary); margin: var(--space-8) 0 var(--space-3); }
+.prose-heading:first-child { margin-top: 0; }
+.prose p, .prose-list { font-size: var(--text-base); color: var(--color-ink-800); line-height: var(--leading-normal); margin: 0 0 var(--space-4); }
+.prose-list { padding-left: 1.25em; list-style: disc; }
+.prose-list li { margin-bottom: var(--space-3); }
+.prose-list li::marker { color: var(--color-blossom-800); }
+.prose a { color: var(--brand-primary); text-decoration: underline; text-underline-offset: 3px; }
+.prose a:hover { color: var(--brand-primary-hover); }

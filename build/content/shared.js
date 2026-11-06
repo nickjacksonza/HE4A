@@ -3,6 +3,7 @@
 // drift) in every page module that needs it.
 module.exports = {
   breadcrumbHome: { en: 'Home', fr: 'Accueil', es: 'Inicio', pt: 'Início' },
+  accessibilityLabel: { en: 'Accessibility', fr: 'Accessibilité', es: 'Accesibilidad', pt: 'Acessibilidade' },
   contactLabel: { en: 'Contact', fr: 'Contact', es: 'Contacto', pt: 'Contato' },
   servicesEyebrow: { en: 'Services', fr: 'Services', es: 'Servicios', pt: 'Serviços' },
   startConversation: {

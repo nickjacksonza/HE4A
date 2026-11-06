@@ -327,7 +327,7 @@ function main(locale) {
         </div>
       </a>
       <a href="${href(locale, 'organizational-development.html')}" class="service-card service-card--compact">
-        ${picture({ name: 'pair-working', widths: [400, 640, 960, 1280, 1920], sizes: '180px', alt: alts.laptop, imgClass: 'service-media' })}
+        ${picture({ name: 'pair-working', widths: [400, 640, 960, 1280, 1920], sizes: '(max-width: 720px) 100vw, 26vw', alt: alts.laptop, imgClass: 'service-media' })}
         <div class="service-body">
           <div class="service-heading">${t.services.cards[1].heading}</div>
           <p class="service-desc">${t.services.cards[1].desc}</p>
@@ -335,7 +335,7 @@ function main(locale) {
         </div>
       </a>
       <a href="${href(locale, 'trainings.html')}" class="service-card service-card--compact">
-        ${picture({ name: 'team-meeting', widths: [400, 640, 960, 1280, 1920], sizes: '180px', alt: alts.meeting, imgClass: 'service-media' })}
+        ${picture({ name: 'team-meeting', widths: [400, 640, 960, 1280, 1920], sizes: '(max-width: 720px) 100vw, 26vw', alt: alts.meeting, imgClass: 'service-media' })}
         <div class="service-body">
           <div class="service-heading">${t.services.cards[2].heading}</div>
           <p class="service-desc">${t.services.cards[2].desc}</p>
