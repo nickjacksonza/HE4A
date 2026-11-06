@@ -1,6 +1,7 @@
 node_modules/
 dist/
 .claude/
-.claude.local.md
+CLAUDE.local.md
 .DS_Store
 Thumbs.db
+*.zip

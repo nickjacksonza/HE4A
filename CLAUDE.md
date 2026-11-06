@@ -1,46 +1,26 @@
 # Health Equity 4 All — Website Redesign
 
 ## Project Overview
-The production static site for healthequity4all.org. Built (not a framework — a small hand-rolled Node script) from `build/` into two outputs: `dist/` (gitignored, `npm run build`) and `site/` (committed, ready-to-upload snapshot for manual server deploys, auto-kept in sync by `.github/workflows/sync-site-folder.yml` on every push to main). The original `*.dc.html` files, `_ds/`, and `support.js` are Claude Design authoring-tool artifacts — design reference only, never shipped; `build/build.js` asserts none of that markup leaks into output.
+The production static site for healthequity4all.org, served by GitHub Pages. Built (not a framework — a small hand-rolled Node script) from `build/` into `dist/` (gitignored, `npm run build`); `.github/workflows/deploy-pages.yml` builds and publishes it on every push to main. The original `*.dc.html` files, `_ds/`, and `support.js` are Claude Design authoring-tool artifacts, kept in `design/` as design reference only and never shipped; `build/build.js` asserts none of that markup leaks into output. The build also writes `robots.txt`, `sitemap.xml`, `llms.txt`, `.well-known/security.txt`, `CNAME` and an English `.md` copy of each page.
 
 ## Pages
 Implemented as `build/content/pages/*.js` (one module per page below), assembled by `build/build.js`. Each module's `main(locale)` renders from a per-locale `COPY` object zipped against locale-independent `META` (images, anchors, layout) — keep that split when editing content instead of inlining new locale-specific strings into the template.
 
 | File | Purpose |
 |------|---------|
-| `Home.dc.html` | Homepage — hero, impact stats, services grid, quotes, collective grid, CTA |
-| `Non-Profit-Leadership.dc.html` | Service page — board governance, executive coaching |
-| `Organizational-Development.dc.html` | Service page — program oversight, comms, policy, grants |
-| `Trainings.dc.html` | Service page — racial equity, LGBTQ+ equity, SDOH (tabbed) |
-| `Public-Speaking.dc.html` | Service page — keynotes, moderation, briefings |
-| `build/content/pages/recruitment.js` (no `.dc.html` source — added post-redesign, modeled on Public Speaking) | Service page — executive search, program staffing, equity-centered hiring |
-| `About-Us.dc.html` | About page — vision/mission, values, full collective grid |
-| `Contact.dc.html` | Contact form + office info + social links |
-| `SiteHeader.dc.html` | Shared header — nav with dropdowns, language switcher (EN/FR/ES/PT) |
-| `SiteFooter.dc.html` | Shared footer — links, hours, locations |
+| `design/Home.dc.html` | Homepage — hero, impact stats, services grid, quotes, collective grid, CTA |
+| `design/Non-Profit-Leadership.dc.html` | Service page — board governance, executive coaching |
+| `design/Organizational-Development.dc.html` | Service page — program oversight, comms, policy, grants |
+| `design/Trainings.dc.html` | Service page, now titled Equity Trainings — racial equity, LGBTQ+ equity, SDOH (tabbed) |
+| `design/Public-Speaking.dc.html` | Service page — keynotes, moderation, briefings |
+| `build/content/pages/recruitment.js` (no `design/*.dc.html` source — added post-redesign, modeled on Public Speaking) | Service page, titled Healthcare Recruitment — executive search, clinical & frontline hiring, equity-centered hiring |
+| `design/About-Us.dc.html` | About page — vision/mission, values, full collective grid |
+| `design/Contact.dc.html` | Contact form + office info + social links |
+| `design/SiteHeader.dc.html` | Shared header — nav with dropdowns, language switcher (EN/FR/ES/PT) |
+| `design/SiteFooter.dc.html` | Shared footer — links, hours, locations |
 
 ## Design System
-The `_ds/` folder contains the bound design system bundle with tokens and components. Key tokens:
-
-### Colors (from tokens/colors.css)
-- **Sky (primary blue)**: `--color-sky-50` through `--color-sky-900` — oklch blues from Trans Pride flag
-- **Blossom (secondary pink)**: `--color-blossom-50` through `--color-blossom-900`
-- **Paper (warm ground)**: `--color-paper-0` through `--color-paper-300` — cream/sand, NOT white
-- **Ink (neutrals)**: `--color-ink-0` through `--color-ink-900` — warm-tinted greys
-- **Spectrum (accents)**: coral, gold, leaf, teal, steel, indigo — from brand mark rainbow
-- **Blocks**: `--block-sky` (sky-300), `--block-blossom` (blossom-300), `--block-paper`, `--block-ink`
-- **Brand**: `--brand-primary` (sky-700), `--brand-primary-hover` (sky-800)
-
-### Typography
-- **Display/headings**: Newsreader (serif), weight 500-600, tight tracking at large sizes
-- **Body/UI**: Public Sans (sans-serif)
-- Scale: `--text-xs` (0.75rem) through `--text-4xl` (4rem)
-
-### Spacing
-8px base scale: 4/8/12/16/24/32/48/64/96/128
-
-### Radius
-6/10/16/24px + full pill (999px) for buttons
+`design/_ds/` holds the bound design-system bundle. The live token values — colors, type scale, spacing, radius — are declared in `src/styles.css`; read them there rather than from a copy here, which drifts.
 
 ## Design Patterns
 - **Heroes**: Full-bleed images with left-aligned dark gradient overlay, light text
@@ -51,6 +31,7 @@ The `_ds/` folder contains the bound design system bundle with tokens and compon
 - **Team cards**: Horizontal layout with portrait placeholder + info
 - **Staggered grids**: Collective portraits use varied top padding for visual rhythm
 - **Tabs**: Pill-shaped toggle buttons (Trainings page)
+- **Nav width**: six top-level items is the ceiling — the header wraps to double height below ~1327px (en) and ~1521px (pt). Renaming a nav label or adding an item means re-measuring the drawer breakpoint in `src/styles.css`.
 
 ## Translation
 Implemented for EN/FR/ES/PT (`build/content/locales.js`, `build/content/nav.js`, `build/content/shared.js`, per-page `COPY`). FR/ES/PT text is AI-drafted — recommend native-speaker review before treating it as final for public launch. Every internal link/asset path MUST go through `build/helpers.js`'s `href(locale, path)` or `asset(path)` — never hardcode a leading `/` — or translated/subpath-deployed pages silently link back to the English root.
@@ -62,8 +43,13 @@ Implemented for EN/FR/ES/PT (`build/content/locales.js`, `build/content/nav.js`,
 - `assets/fonts/`, `assets/icons/`, `assets/og/` — self-hosted font subsets and generated favicons/OG images; regenerate via `scripts/generate-favicons.js` (needs `sharp` + `png-to-ico`, dev-only deps not required by the main build).
 
 ## Deployment
-- Production (healthequity4all.org) and the committed `site/` snapshot both build for **root** path — plain `npm run build`, no env var.
+- Production (healthequity4all.org) is **GitHub Pages**, deployed by `.github/workflows/deploy-pages.yml` when a change merges to main. It builds for the **root** path: plain `npm run build`, no env var. The build writes `CNAME` so the custom domain survives each deploy. Only Nick merges to main; that merge is the live deploy.
+- Pull requests run `.github/workflows/build-check.yml`, which only builds, so a broken build shows up before merging.
 - The dev preview at `https://projects.slash301.com/HE4A/` is a **subpath deploy** — build with `SITE_BASE_PATH=/HE4A npm run build` first, or every root-absolute `href`/`asset` link (styles.css, images, internal pages) 404s one level too high. Manual deploys there go over SFTP — re-upload the whole `dist/`, not a diff, since every page's links change with the base path.
 
 ## Voice & Tone
 Confident and informative but warm and supportive. The audience is under-represented organization leaders who have the passion and knowledge — they need guidance, not convincing. No emoji. Title Case for headings. Credentials (M.P.H., M.H.L) always shown.
+
+Write like Ace: contractions, concrete nouns (name the actual job titles), plain idiom. Avoid the AI tells — "X, not Y" antithesis, em-dash connectors, "honest/honestly", "real" as an intensifier, portentous one-line closers. US spelling (program, center).
+
+Ace's quotes are his own words — reuse verbatim, never reword. Never invent biographical or credential claims about collective members; if it isn't already in a bio or `build/content/people.js`, leave it out.

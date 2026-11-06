@@ -205,6 +205,14 @@ function build() {
     path.join(DIST, 'assets', 'logo', 'mark-transparent-76.webp')
   );
 
+  // GitHub Pages: keep the custom domain across deploys, and never run Jekyll
+  // over the output. Skipped for subpath builds (the dev preview), which
+  // aren't served from the custom domain.
+  if (!BASE_PATH) {
+    fs.writeFileSync(path.join(DIST, 'CNAME'), `${new URL(site.baseUrl).hostname}\n`);
+    fs.writeFileSync(path.join(DIST, '.nojekyll'), '');
+  }
+
   writeRobotsAndSitemap(generatedPaths);
   const mdPaths = writeMarkdownPages();
   writeLlmsTxt();

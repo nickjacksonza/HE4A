@@ -1,12 +1,12 @@
 name: Deploy to GitHub Pages
 
+# Builds the site from source and publishes it at https://healthequity4all.org
+# on every push to main. The build writes CNAME into dist/, so the custom domain
+# stays set across deploys.
+
 on:
   push:
     branches: [main]
-    # site/ is a committed build snapshot kept in sync by sync-site-folder.yml
-    # (see that workflow) -- a push that only touches it doesn't need a
-    # redundant Pages redeploy.
-    paths-ignore: ['site/**']
   workflow_dispatch:
 
 permissions:
@@ -29,21 +29,18 @@ jobs:
         with:
           node-version: 20
 
-      # --omit=dev: sharp/png-to-ico are only used by the one-off
-      # scripts/optimize-images.js and scripts/generate-favicons.js, not by
-      # build/build.js itself, so the deploy build doesn't need them.
+      # --omit=dev: sharp and png-to-ico are only used by the one-off image
+      # scripts in scripts/, not by build/build.js.
       - run: npm ci --omit=dev
 
-      # SITE_BASE_PATH matches this repo's GitHub Pages project-site subpath
-      # (https://nickjacksonza.github.io/HE4A/) so every internal link and
-      # asset path resolves correctly there. Unset (or empty) for a root
-      # deployment, e.g. behind a future custom domain.
+      # Root build: no SITE_BASE_PATH, because the site is served from the
+      # domain root.
       - run: npm run build
-        env:
-          SITE_BASE_PATH: /HE4A
 
       - uses: actions/configure-pages@v5
 
+      # Keep @v3: it includes dotfiles, so dist/.well-known/security.txt and
+      # dist/.nojekyll are deployed. v4 and later leave hidden files out.
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist

@@ -1,7 +1,9 @@
 {
   "name": "he4a",
   "version": "1.0.0",
-  "description": "Health Equity 4 All static site build",
+  "description": "Source for healthequity4all.org, the Health Equity 4 All website",
+  "homepage": "https://healthequity4all.org",
+  "repository": { "type": "git", "url": "git+https://github.com/nickjacksonza/HE4A.git" },
   "private": true,
   "scripts": {
     "build": "node build/build.js",

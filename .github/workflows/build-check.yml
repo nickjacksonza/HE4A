@@ -1,0 +1,24 @@
+name: Build check
+
+# Builds the site on every pull request so a broken build is caught before
+# anything is merged. Nothing is deployed from here.
+
+on:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - run: npm ci --omit=dev
+
+      - run: npm run build

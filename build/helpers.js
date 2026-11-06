@@ -4,11 +4,10 @@ const locales = require('./content/locales');
 const { testimonials, HEADING: TESTIMONIALS_HEADING } = require('./content/testimonials');
 const PEOPLE_PHOTOS = require('./content/peoplePhotos');
 
-// Deployment base path, e.g. "/HE4A" when the build is served from a
-// GitHub Pages project subpath (nickjacksonza.github.io/HE4A/) rather than
-// a domain root. Empty by default (root deployment, matching the site's
-// real production domain). Set via SITE_BASE_PATH in the build environment;
-// normalized to have no trailing slash.
+// Deployment base path, e.g. "/HE4A" for the subpath dev preview
+// (projects.slash301.com/HE4A/) rather than a domain root. Empty by default
+// (root deployment, matching the live domain). Set via SITE_BASE_PATH in the
+// build environment; normalized to have no trailing slash.
 const BASE_PATH = (process.env.SITE_BASE_PATH || '').replace(/\/$/, '');
 
 // Builds an internal same-site link, prefixed with BASE_PATH and the

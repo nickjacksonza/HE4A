@@ -1,11 +1,11 @@
 /* =========================================================================
    Health Equity 4 All -- production stylesheet
-   Ported from the Claude Design token bundle (_ds/.../tokens/*.css) plus
+   Ported from the Claude Design token bundle (design/_ds/.../tokens/*.css) plus
    hand-authored component classes replacing the design mockups' inline
    style="..." attributes and fake style-hover="..." attribute.
    ========================================================================= */
 
-/* ---- 1. Design tokens (ported verbatim from _ds tokens/*.css) --------- */
+/* ---- 1. Design tokens (ported verbatim from design/_ds tokens/*.css) --------- */
 :root {
   /* Primary -- sampled from the Transgender Pride flag */
   --color-sky-50: oklch(98% 0.008 226.5);
