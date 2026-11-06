@@ -2,6 +2,14 @@ const site = require('../content/site');
 const locales = require('../content/locales');
 const { asset } = require('../helpers');
 
+// Google Tag Manager, added to every page as supplied.
+const GTM_SNIPPET = `<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-K7QJ4WB9"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+</script>`;
+
 function organizationJsonLd() {
   return {
     '@context': 'https://schema.org',
@@ -26,7 +34,7 @@ function urlFor(locale, outputFile) {
 
 // pageMeta: { locale, title, description, outputFile, ogImage }
 function meta(pageMeta) {
-  const { locale, title, description, outputFile, ogImage } = pageMeta;
+  const { locale, title, description, outputFile, ogImage, jsonLd = [], noindex = false } = pageMeta;
   const url = urlFor(locale, outputFile);
   const ogImageUrl = `${site.baseUrl}/assets/og/${ogImage}.jpg`;
   const fullTitle = title === site.siteName ? site.siteName : `${title} | ${site.siteName}`;
@@ -41,9 +49,9 @@ function meta(pageMeta) {
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>${fullTitle}</title>
 <meta name="description" content="${description}">
-<link rel="canonical" href="${url}">
+${noindex ? '<meta name="robots" content="noindex">' : `<link rel="canonical" href="${url}">
 ${alternates}
-${xDefault}
+${xDefault}${locale.isDefault ? `\n<link rel="alternate" type="text/markdown" href="${asset(outputFile.replace(/\.html$/, '.md'))}">` : ''}`}
 
 <link rel="icon" href="${asset('assets/icons/favicon.ico')}" sizes="32x32">
 <link rel="icon" type="image/png" href="${asset('assets/icons/icon-192.png')}" sizes="192x192">
@@ -65,7 +73,9 @@ ${xDefault}
 <meta name="twitter:description" content="${description}">
 <meta name="twitter:image" content="${ogImageUrl}">
 
-<script type="application/ld+json">${JSON.stringify(organizationJsonLd())}</script>`;
+${[organizationJsonLd(), ...jsonLd].map((d) => `<script type="application/ld+json">${JSON.stringify(d)}</script>`).join('\n')}
+
+${GTM_SNIPPET}`;
 }
 
 module.exports = meta;

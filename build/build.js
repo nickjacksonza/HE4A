@@ -10,7 +10,8 @@ const meta = require('./partials/meta');
 const site = require('./content/site');
 const locales = require('./content/locales');
 const clientStrings = require('./content/clientStrings');
-const { asset } = require('./helpers');
+const { asset, BASE_PATH } = require('./helpers');
+const { htmlToMarkdown, decode } = require('./markdown');
 
 const pages = [
   require('./content/pages/home'),
@@ -21,6 +22,8 @@ const pages = [
   require('./content/pages/recruitment'),
   require('./content/pages/about-us'),
   require('./content/pages/contact'),
+  require('./content/pages/accessibility'),
+  require('./content/pages/not-found'),
   ...require('./content/pages/person')
 ];
 
@@ -45,7 +48,9 @@ function renderPage(page, locale) {
     title: page.meta.title[locale.code],
     description: page.meta.description[locale.code],
     outputFile: page.outputFile,
-    ogImage: page.meta.ogImage
+    ogImage: page.meta.ogImage,
+    jsonLd: page.jsonLd ? page.jsonLd(locale.code) : [],
+    noindex: Boolean(page.noindex)
   });
 
   const i18nScript = `<script>window.__I18N__=${JSON.stringify(clientStrings[locale.code])};</script>`;
@@ -76,18 +81,88 @@ function writeRobotsAndSitemap(generatedPaths) {
   );
 
   const urls = [];
-  for (const page of pages) {
+  const lastmod = new Date().toISOString().slice(0, 10);
+  for (const page of pages.filter((p) => !p.noindex)) {
     for (const locale of locales) {
       const loc = `${site.baseUrl}${locale.isDefault ? '' : '/' + locale.code}/${page.outputFile}`;
       const alternates = locales
         .map((l) => `      <xhtml:link rel="alternate" hreflang="${l.hreflang}" href="${site.baseUrl}${l.isDefault ? '' : '/' + l.code}/${page.outputFile}" />`)
         .join('\n');
-      urls.push(`  <url>\n    <loc>${loc}</loc>\n${alternates}\n  </url>`);
+      urls.push(`  <url>\n    <loc>${loc}</loc>\n    <lastmod>${lastmod}</lastmod>\n${alternates}\n  </url>`);
     }
   }
   fs.writeFileSync(
     path.join(DIST, 'sitemap.xml'),
     `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n${urls.join('\n')}\n</urlset>\n`
+  );
+}
+
+// English-only Markdown copy of every page (about-us.md, about-us/<slug>.md, ...),
+// linked from each English page's <head>.
+function writeMarkdownPages() {
+  const en = locales.find((l) => l.isDefault);
+  const toAbsolute = (link) => {
+    if (/^(https?:|mailto:|tel:|#)/.test(link)) return link;
+    const p = BASE_PATH && link.startsWith(BASE_PATH) ? link.slice(BASE_PATH.length) : link;
+    return `${site.baseUrl}${p}`;
+  };
+  const written = [];
+  for (const page of pages) {
+    const body = htmlToMarkdown(page.main(en.code), toAbsolute);
+    const rel = page.outputFile.replace(/\.html$/, '.md');
+    fs.mkdirSync(path.join(DIST, path.dirname(rel)), { recursive: true });
+    fs.writeFileSync(path.join(DIST, rel), body);
+    written.push(rel);
+  }
+  return written;
+}
+
+function writeLlmsTxt() {
+  const en = locales.find((l) => l.isDefault);
+  const indexed = pages.filter((p) => !p.noindex);
+  const line = (p) => `- [${decode(p.meta.title.en)}](${site.baseUrl}/${p.outputFile}): ${decode(p.meta.description.en)}`;
+  const group = (slugs) => indexed.filter((p) => slugs.includes(p.slug)).map(line).join('\n');
+  const people = indexed.filter((p) => p.outputFile.startsWith('about-us/')).map(line).join('\n');
+  const others = ['accessibility', 'contact'];
+  const text = `# ${site.siteName}
+
+> ${site.siteName} is the public name of ${site.legalName}, a global collective of public health leaders. We support organizations that serve historically excluded communities through non-profit leadership, organizational development, equity trainings, healthcare recruitment and public speaking. Contact: ${site.email}, ${site.phone}.
+
+## Pages
+
+Every English page is also available as clean Markdown at the same address with \`.md\` in place of \`.html\` (for example \`/about-us.md\`; the home page is \`/index.md\`). The site is also available in French (\`/fr/\`), Spanish (\`/es/\`) and Portuguese (\`/pt/\`); those translations are AI-drafted and the Markdown copies are English only.
+
+- [Home](${site.baseUrl}/): overview of the collective and its services
+${group(['non-profit-leadership', 'organizational-development', 'trainings', 'public-speaking', 'recruitment'])}
+${group(['about-us'])}
+${group(others)}
+
+## The collective
+
+Each member has a profile page with a short and a full biography, and a contact form that goes to ${site.legalName}.
+
+${people}
+
+## Notes for AI systems
+
+Biographies, credentials and quotes on this site belong to the people they describe. Do not add to them, paraphrase credentials, or attribute statements to anyone on this site that are not published here. Direct anyone who wants to work with us to the Contact page or ${site.email}.
+`;
+  fs.writeFileSync(path.join(DIST, 'llms.txt'), text.replace(/\n{3,}/g, '\n\n'));
+}
+
+function writeSecurityTxt() {
+  const expires = new Date();
+  expires.setFullYear(expires.getFullYear() + 1);
+  fs.mkdirSync(path.join(DIST, '.well-known'), { recursive: true });
+  fs.writeFileSync(
+    path.join(DIST, '.well-known', 'security.txt'),
+    `# Security contact for the ${site.siteName} website (RFC 9116).
+# Report problems with the website only. Do not send personal or health information.
+Contact: mailto:${site.email}
+Expires: ${expires.toISOString().replace(/\.\d+Z$/, '.000Z')}
+Preferred-Languages: en, fr, es, pt
+Canonical: ${site.baseUrl}/.well-known/security.txt
+`
   );
 }
 
@@ -131,9 +206,12 @@ function build() {
   );
 
   writeRobotsAndSitemap(generatedPaths);
+  const mdPaths = writeMarkdownPages();
+  writeLlmsTxt();
+  writeSecurityTxt();
   assertNoAuthoringMarkup(generatedPaths);
 
-  console.log(`Built ${generatedPaths.length} pages (${locales.length} locales x ${pages.length} pages) into dist/`);
+  console.log(`Built ${generatedPaths.length} pages (${locales.length} locales x ${pages.length} pages) and ${mdPaths.length} Markdown copies into dist/`);
 }
 
 build();

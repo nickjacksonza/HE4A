@@ -283,7 +283,7 @@ function main(locale) {
   <div class="container">
     <h2 class="section-heading">${t.team.heading}</h2>
     <p class="section-subtext" style="margin-bottom:var(--space-7)">${t.team.subtext}</p>
-    <div class="auto-grid" style="--min:280px">
+    <div class="auto-grid" style="--min:380px">
       ${teamCard({ name: TEAM_META[0].name, role: t.team.role2, bio: t.team.bio2 }, locale)}
     </div>
   </div>

@@ -1,4 +1,4 @@
-const { picture, accordion, teamCard, testimonialsSection, href } = require('../../helpers');
+const { picture, accordion, teamCard, testimonialsSection, href, homeShortFor } = require('../../helpers');
 const shared = require('../shared');
 const people = require('../people');
 
@@ -269,15 +269,15 @@ function main(locale) {
   <div class="container">
     <h2 class="section-heading">${shared.whoLeadsThisWork[locale]}</h2>
     <p class="section-subtext" style="margin-bottom:var(--space-7)">${t.team.subtext}</p>
-    <div class="auto-grid" style="--min:280px">
+    <div class="auto-grid" style="--min:380px">
       ${teamCard({ name: TEAM_META[0].name, role: t.team.role1, bio: t.team.bio1 }, locale)}
       ${teamCard({ name: TEAM_META[1].name, role: t.team.role2, bio: t.team.bio2 }, locale)}
-      ${teamCard({ name: people.victoriaOwoyele.name, role: people.victoriaOwoyele.teamRole[locale], bio: people.victoriaOwoyele.bio[locale] }, locale)}
-      ${teamCard({ name: people.nickJackson.name, role: people.nickJackson.teamRole[locale], bio: people.nickJackson.bio[locale] }, locale)}
-      ${teamCard({ name: people.jasPlaceholder.name, role: people.jasPlaceholder.teamRole[locale], bio: people.jasPlaceholder.bio[locale] }, locale)}
-      ${teamCard({ name: people.brianKanyemba.name, role: people.brianKanyemba.teamRole[locale], bio: people.brianKanyemba.bio[locale] }, locale)}
-      ${teamCard({ name: people.tinasheMuchenje.name, role: people.tinasheMuchenje.teamRole[locale], bio: people.tinasheMuchenje.bio[locale] }, locale)}
-      ${teamCard({ name: people.leandroMaldonado.name, role: people.leandroMaldonado.teamRole[locale], bio: people.leandroMaldonado.bio[locale] }, locale)}
+      ${teamCard({ name: people.victoriaOwoyele.name, role: people.victoriaOwoyele.teamRole[locale], bio: people.victoriaOwoyele.bio[locale], homeShort: homeShortFor(people.victoriaOwoyele, locale) }, locale)}
+      ${teamCard({ name: people.nickJackson.name, role: people.nickJackson.teamRole[locale], bio: people.nickJackson.bio[locale], homeShort: homeShortFor(people.nickJackson, locale) }, locale)}
+      ${teamCard({ name: people.jasPlaceholder.name, role: people.jasPlaceholder.teamRole[locale], bio: people.jasPlaceholder.bio[locale], homeShort: homeShortFor(people.jasPlaceholder, locale) }, locale)}
+      ${teamCard({ name: people.brianKanyemba.name, role: people.brianKanyemba.teamRole[locale], bio: people.brianKanyemba.bio[locale], homeShort: homeShortFor(people.brianKanyemba, locale) }, locale)}
+      ${teamCard({ name: people.tinasheMuchenje.name, role: people.tinasheMuchenje.teamRole[locale], bio: people.tinasheMuchenje.bio[locale], homeShort: homeShortFor(people.tinasheMuchenje, locale) }, locale)}
+      ${teamCard({ name: people.leandroMaldonado.name, role: people.leandroMaldonado.teamRole[locale], bio: people.leandroMaldonado.bio[locale], homeShort: homeShortFor(people.leandroMaldonado, locale) }, locale)}
     </div>
   </div>
 </section>

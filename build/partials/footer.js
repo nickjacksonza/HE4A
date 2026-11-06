@@ -38,6 +38,7 @@ function footer(locale) {
       <div class="footer-heading">${f.organization}</div>
       <a href="${href(locale, 'about-us.html')}" class="footer-link">${labels.aboutUs}</a>
       <a href="${href(locale, 'contact.html')}" class="footer-link">${shared.contactLabel[locale]}</a>
+      <a href="${href(locale, 'accessibility.html')}" class="footer-link">${shared.accessibilityLabel[locale]}</a>
       <div class="footer-text">${officesLine}</div>
       <a href="mailto:${site.email}" class="footer-link" style="margin-top:6px">${site.email}</a>
       <a href="tel:${site.phone.replace(/\s+/g, '')}" class="footer-link">${site.phone}</a>

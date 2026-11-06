@@ -1,4 +1,4 @@
-const { picture, personPhoto, accordion, teamCard, testimonialsSection, href } = require('../../helpers');
+const { picture, personPhoto, accordion, teamCard, testimonialsSection, href, homeShortFor } = require('../../helpers');
 const shared = require('../shared');
 const people = require('../people');
 
@@ -274,8 +274,8 @@ function main(locale) {
   <div class="container">
     <h2 class="section-heading">${t.team.heading}</h2>
     <p class="section-subtext" style="margin-bottom:var(--space-7)">${t.team.subtext}</p>
-    <div class="auto-grid" style="--min:280px">
-      ${teamCard({ name: people.leandroMaldonado.name, role: people.leandroMaldonado.teamRole[locale], bio: people.leandroMaldonado.bio[locale] }, locale)}
+    <div class="auto-grid" style="--min:380px">
+      ${teamCard({ name: people.leandroMaldonado.name, role: people.leandroMaldonado.teamRole[locale], bio: people.leandroMaldonado.bio[locale], homeShort: homeShortFor(people.leandroMaldonado, locale) }, locale)}
     </div>
   </div>
 </section>

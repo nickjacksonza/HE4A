@@ -133,6 +133,23 @@ ${faqs
 // translated since it's user-visible copy (unlike the person's own name).
 const PORTRAIT_LABEL = { en: 'Portrait', fr: 'Portrait', es: 'Retrato', pt: 'Retrato' };
 
+// A person's short bio, optionally with a home-language translation that
+// replaces it on hover or keyboard focus (both stack in one grid cell so the
+// card height doesn't change). `homeShort` is { code, name, text, dir? }.
+function bioBlock(cls, bio, homeShort) {
+  if (!homeShort) return `<div class="${cls}">${escapeHtml(bio)}</div>`;
+  const dir = homeShort.dir ? ` dir="${homeShort.dir}"` : '';
+  return `<div class="${cls} bio-tr" tabindex="0">
+    <span class="bio-main">${escapeHtml(bio)}</span>
+    <span class="bio-alt" lang="${homeShort.code}"${dir}><span class="bio-alt-label">${escapeHtml(homeShort.name)}</span> ${escapeHtml(homeShort.text)}</span>
+  </div>`;
+}
+
+// The person's home-language short bio, unless the page is already in that language.
+function homeShortFor(person, locale) {
+  return person && person.homeShort && person.homeShort.code !== locale ? person.homeShort : null;
+}
+
 // Renders one team-card row. Uses the person's real headshot when one
 // exists (build/content/peoplePhotos.js), otherwise the dashed placeholder.
 function teamCard(person, locale) {
@@ -146,7 +163,7 @@ function teamCard(person, locale) {
   <div class="team-info">
     <div class="team-name">${escapeHtml(person.name)}</div>
     <div class="team-role">${escapeHtml(person.role)}</div>
-    <div class="team-bio">${escapeHtml(person.bio)}</div>
+    ${bioBlock('team-bio', person.bio, person.homeShort)}
   </div>
 </div>`;
 }
@@ -157,7 +174,7 @@ function teamCard(person, locale) {
 // by callers for the staggered-grid rhythm.
 // `profile` ({ href, label }) is optional; when present the portrait and name
 // link to the person's profile page and a "View Profile" link follows the bio.
-function personCard({ name, role, bio, stagger, profile }) {
+function personCard({ name, role, bio, stagger, profile, homeShort }) {
   const photo = personPhoto(name, 'person-portrait-photo');
   const portraitInner = photo ? photo : `<span>${escapeHtml(name)}</span>`;
   const portraitClass = photo ? 'person-portrait' : 'person-portrait person-portrait-placeholder';
@@ -166,7 +183,7 @@ function personCard({ name, role, bio, stagger, profile }) {
         ${profile ? `<a href="${profile.href}" class="person-link" tabindex="-1" aria-hidden="true">${portrait}</a>` : portrait}
         <div class="person-name">${profile ? `<a href="${profile.href}" class="person-name-link">${escapeHtml(name)}</a>` : escapeHtml(name)}</div>
         <div class="person-role">${escapeHtml(role)}</div>
-        <div class="person-bio">${escapeHtml(bio)}</div>${profile ? `\n        <a href="${profile.href}" class="person-more">${profile.label}</a>` : ''}
+        ${bioBlock('person-bio', bio, homeShort)}${profile ? `\n        <a href="${profile.href}" class="person-more">${profile.label}</a>` : ''}
       </div>`;
 }
 
@@ -191,4 +208,4 @@ function testimonialsSection(locale, band = 'band-paper') {
 </section>`;
 }
 
-module.exports = { escapeHtml, href, asset, BASE_PATH, picture, personPhoto, personCard, slugify, accordion, teamCard, testimonialsSection, PORTRAIT_LABEL, INTRINSIC };
+module.exports = { homeShortFor, escapeHtml, href, asset, BASE_PATH, picture, personPhoto, personCard, slugify, accordion, teamCard, testimonialsSection, PORTRAIT_LABEL, INTRINSIC };

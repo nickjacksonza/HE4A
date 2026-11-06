@@ -1,4 +1,5 @@
 const { href, escapeHtml, personPhoto, PORTRAIT_LABEL } = require('../../helpers');
+const site = require('../site');
 const locales = require('../locales');
 const shared = require('../shared');
 const profiles = require('../profiles');
@@ -54,31 +55,46 @@ const COPY = {
 
 const SOCIAL_LABELS = { linkedin: 'LinkedIn', twitter: 'Twitter', instagram: 'Instagram', facebook: 'Facebook' };
 
-function bioSection(locale, person, profile, t) {
-  const localeInfo = locales.find((l) => l.code === locale);
-  const main = (profile.fullBio && (profile.fullBio[locale] || profile.fullBio.en)) || person.bio;
-  const home = profile.homeBio && profile.homeLanguage;
-  // A home bio in the page's own language would only repeat the first panel.
-  const hasToggle = home && profile.homeLanguage.code !== localeInfo.hreflang.split('-')[0];
+// Splits a bio on blank lines into <p> elements.
+function paragraphs(text) {
+  return text.split(/\n\s*\n/).map((para) => `<p>${escapeHtml(para.trim())}</p>`).join('\n        ');
+}
 
-  const mainPanel = `<div class="profile-bio-panel" id="bio-main" lang="${localeInfo.hreflang}" data-bio-panel>
-        <p>${escapeHtml(main)}</p>
+function bioSection(locale, person, profile, t) {
+  // With a full bio, a locale that has no translation of it falls back to the
+  // English one and is labeled as English. Otherwise the localized short bio.
+  const full = profile.fullBio;
+  const mainCode = full ? (full[locale] ? locale : 'en') : locale;
+  const mainInfo = locales.find((l) => l.code === mainCode);
+  const mainText = full ? full[mainCode] : person.bio;
+  // A home-language bio in the same language as the first panel would only repeat it.
+  const homes = (profile.homeBios || []).filter((h) => h.code !== mainInfo.hreflang.split('-')[0]);
+
+  const mainPanel = `<div class="profile-bio-panel" id="bio-0" lang="${mainInfo.hreflang}" data-bio-panel>
+        ${paragraphs(mainText)}
       </div>`;
-  if (!hasToggle) {
+  if (!homes.length) {
     return `<h2 class="section-heading profile-bio-heading">${t.bioHeading}</h2>
       ${mainPanel}`;
   }
+
+  const buttons = [{ id: 'bio-0', code: mainInfo.hreflang, name: mainInfo.endonym }]
+    .concat(homes.map((h, i) => ({ id: `bio-${i + 1}`, code: h.code, name: h.name, dir: h.dir })))
+    .map((b, i) => `<button type="button" class="bio-toggle-btn" aria-pressed="${i === 0}" aria-controls="${b.id}" data-bio-target="${b.id}" lang="${b.code}"${b.dir ? ` dir="${b.dir}"` : ''}>${escapeHtml(b.name)}</button>`)
+    .join('\n          ');
+  const homePanels = homes
+    .map((h, i) => `<div class="profile-bio-panel" id="bio-${i + 1}" lang="${h.code}"${h.dir ? ` dir="${h.dir}"` : ''} data-bio-panel>
+        ${paragraphs(h.text)}
+      </div>`)
+    .join('\n      ');
   return `<div class="profile-bio-head">
         <h2 class="section-heading profile-bio-heading">${t.bioHeading}</h2>
         <div class="bio-toggle" role="group" aria-label="${t.toggleLabel}" data-bio-toggle hidden>
-          <button type="button" class="bio-toggle-btn" aria-pressed="true" aria-controls="bio-main" data-bio-target="bio-main">${localeInfo.endonym}</button>
-          <button type="button" class="bio-toggle-btn" aria-pressed="false" aria-controls="bio-home" data-bio-target="bio-home" lang="${profile.homeLanguage.code}">${escapeHtml(profile.homeLanguage.name)}</button>
+          ${buttons}
         </div>
       </div>
       ${mainPanel}
-      <div class="profile-bio-panel" id="bio-home" lang="${profile.homeLanguage.code}" data-bio-panel>
-        <p>${escapeHtml(profile.homeBio)}</p>
-      </div>`;
+      ${homePanels}`;
 }
 
 function contactSection(profile, t) {
@@ -145,11 +161,42 @@ function makePage(slug) {
     description[l.code] = escapeHtml(`${p.role}. ${p.bio}`);
   }
 
+  const absolute = (locale, file) => `${site.baseUrl}${locale === 'en' ? '' : '/' + locale}/${file}`;
+  const jsonLd = (locale) => {
+    const p = person(locale);
+    const social = Object.values(profile.social || {}).filter(Boolean);
+    return [
+      {
+        '@context': 'https://schema.org',
+        '@type': 'ProfilePage',
+        mainEntity: {
+          '@type': 'Person',
+          name: p.name,
+          jobTitle: p.role.split(' · ')[0],
+          description: p.bio,
+          url: absolute(locale, `about-us/${slug}.html`),
+          worksFor: { '@type': 'Organization', name: site.siteName, url: site.baseUrl },
+          ...(social.length ? { sameAs: social } : {})
+        }
+      },
+      {
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: shared.breadcrumbHome[locale], item: absolute(locale, 'index.html') },
+          { '@type': 'ListItem', position: 2, name: aboutUs.meta.title[locale], item: absolute(locale, 'about-us.html') },
+          { '@type': 'ListItem', position: 3, name: p.name, item: absolute(locale, `about-us/${slug}.html`) }
+        ]
+      }
+    ];
+  };
+
   return {
     slug,
     outputFile: `about-us/${slug}.html`,
     activeNavId: 'aboutUs',
     meta: { title, description, ogImage: 'about-us' },
+    jsonLd,
     main
   };
 }

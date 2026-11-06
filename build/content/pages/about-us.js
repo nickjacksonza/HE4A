@@ -1,4 +1,4 @@
-const { picture, href, personCard } = require('../../helpers');
+const { picture, href, personCard, homeShortFor } = require('../../helpers');
 const site = require('../site');
 const people = require('../people');
 const shared = require('../shared');
@@ -207,6 +207,15 @@ const COPY = {
   }
 };
 
+// Home-language short bios shown on hover, for the original five. Diego's and
+// Eduardo's are the Portuguese and Spanish short bios above; Lucy's is a
+// sentence from her Kiswahili bio.
+const HOME_SHORT = {
+  'Diego Calixto': { code: 'pt', name: 'Português', text: COPY.pt.collective.bios[2] },
+  'Eduardo Culbeaux': { code: 'es', name: 'Español', text: COPY.es.collective.bios[4] },
+  'Lucy Wanjiku Njenga': { code: 'sw', name: 'Kiswahili', text: 'Amefanya kazi katika kukabiliana na HIV kwa zaidi ya miaka kumi akijenga harakati za kifeministi na kupigania usawa wa kijinsia kuanzia ngazi ya chini kabisa hadi ngazi ya kimataifa.' }
+};
+
 // Everyone with a profile page (about-us/<slug>.html), in grid order, with the
 // short bio/role as shown on this page. Jas and the Open Seat have no slug,
 // so they get no page and no link.
@@ -280,10 +289,10 @@ function main(locale) {
     <h2 class="section-heading" style="margin-bottom:10px">${t.collective.heading}</h2>
     <p class="section-subtext" style="margin-bottom:var(--space-7)">${t.collective.subtext}</p>
     <div class="auto-grid" style="--min:220px">
-      ${PEOPLE_META.map((p, i) => personCard({ name: p.name, role: t.collective.roles[i], bio: t.collective.bios[i], stagger: p.stagger, profile: profileLink(locale, p.slug) })).join('\n      ')}
+      ${PEOPLE_META.map((p, i) => personCard({ name: p.name, role: t.collective.roles[i], bio: t.collective.bios[i], stagger: p.stagger, profile: profileLink(locale, p.slug), homeShort: homeShortFor({ homeShort: HOME_SHORT[p.name] }, locale) })).join('\n      ')}
       ${EXTRA_PEOPLE.map((entry) => {
         const person = people[entry.key];
-        return personCard({ name: person.name, role: person.aboutRole[locale], bio: person.bio[locale], stagger: entry.stagger, profile: profileLink(locale, person.slug) });
+        return personCard({ name: person.name, role: person.aboutRole[locale], bio: person.bio[locale], stagger: entry.stagger, profile: profileLink(locale, person.slug), homeShort: homeShortFor(person, locale) });
       }).join('\n      ')}
       ${personCard({ name: t.collective.openSeatName, role: t.collective.openSeatRole, bio: t.collective.openSeatBio, stagger: OPEN_SEAT.stagger })}
     </div>
