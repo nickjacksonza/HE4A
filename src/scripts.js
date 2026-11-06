@@ -301,7 +301,35 @@
     });
   }
 
+  /* ---------------------------------------------------------------------
+     Profile bio language toggle. Without JS both bios stay visible and the
+     buttons stay hidden.
+     --------------------------------------------------------------------- */
+  function initBioToggle() {
+    var group = document.querySelector('[data-bio-toggle]');
+    if (!group) return;
+    var buttons = Array.prototype.slice.call(group.querySelectorAll('[data-bio-target]'));
+
+    function select(targetId) {
+      buttons.forEach(function (btn) {
+        btn.setAttribute('aria-pressed', String(btn.getAttribute('data-bio-target') === targetId));
+      });
+      document.querySelectorAll('[data-bio-panel]').forEach(function (panel) {
+        panel.hidden = panel.id !== targetId;
+      });
+    }
+
+    buttons.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        select(btn.getAttribute('data-bio-target'));
+      });
+    });
+    group.hidden = false;
+    select(buttons[0].getAttribute('data-bio-target'));
+  }
+
   document.addEventListener('DOMContentLoaded', function () {
+    initBioToggle();
     initNav();
     initCarousel();
     initAccordions();

@@ -155,15 +155,18 @@ function teamCard(person, locale) {
 // person's real headshot when one exists, otherwise the dashed placeholder
 // box with their name as caption. `stagger` is the px offset already used
 // by callers for the staggered-grid rhythm.
-function personCard({ name, role, bio, stagger }) {
+// `profile` ({ href, label }) is optional; when present the portrait and name
+// link to the person's profile page and a "View Profile" link follows the bio.
+function personCard({ name, role, bio, stagger, profile }) {
   const photo = personPhoto(name, 'person-portrait-photo');
   const portraitInner = photo ? photo : `<span>${escapeHtml(name)}</span>`;
   const portraitClass = photo ? 'person-portrait' : 'person-portrait person-portrait-placeholder';
+  const portrait = `<div class="${portraitClass}">${portraitInner}</div>`;
   return `<div class="person" style="--stagger:${stagger}px">
-        <div class="${portraitClass}">${portraitInner}</div>
-        <div class="person-name">${escapeHtml(name)}</div>
+        ${profile ? `<a href="${profile.href}" class="person-link" tabindex="-1" aria-hidden="true">${portrait}</a>` : portrait}
+        <div class="person-name">${profile ? `<a href="${profile.href}" class="person-name-link">${escapeHtml(name)}</a>` : escapeHtml(name)}</div>
         <div class="person-role">${escapeHtml(role)}</div>
-        <div class="person-bio">${escapeHtml(bio)}</div>
+        <div class="person-bio">${escapeHtml(bio)}</div>${profile ? `\n        <a href="${profile.href}" class="person-more">${profile.label}</a>` : ''}
       </div>`;
 }
 

@@ -20,7 +20,8 @@ const pages = [
   require('./content/pages/public-speaking'),
   require('./content/pages/recruitment'),
   require('./content/pages/about-us'),
-  require('./content/pages/contact')
+  require('./content/pages/contact'),
+  ...require('./content/pages/person')
 ];
 
 function copyDir(src, dest) {

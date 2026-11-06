@@ -35,9 +35,9 @@ const COPY = {
     },
     team: {
       subtext: 'Facilitators who’ve done the work they teach.',
-      role1: 'Racial Equity Faculty · Atlanta',
+      role1: 'Racial Equity Faculty · Washington, DC',
       bio1: 'Advocate for DEI and health equity, guided by friendship, leadership and service to humanity. Leads the racial equity curriculum.',
-      role2: 'LGBTQ+ Equity Faculty · Brasília',
+      role2: 'LGBTQ+ Equity Faculty · Geneva',
       bio2: 'Activist living with HIV and researcher at Fiocruz Brasília. Delivers LGBTQ+ equity sessions in Portuguese and Spanish.',
       role3: 'Determinants of Health Faculty · Nairobi',
       bio3: 'HIV response leader for over a decade, teaching the social and structural determinants that shape service uptake.'
@@ -78,9 +78,9 @@ const COPY = {
     },
     team: {
       subtext: 'Des animateurs qui ont mené eux-mêmes le travail qu’ils enseignent.',
-      role1: 'Équité Raciale · Atlanta',
+      role1: 'Équité Raciale · Washington, D.C.',
       bio1: "Défenseure de la diversité, de l'équité et de l'inclusion ainsi que de l'équité en santé, guidée par l'amitié, le leadership et le service à l'humanité. Dirige le programme d'équité raciale.",
-      role2: 'Équité LGBTQ+ · Brasília',
+      role2: 'Équité LGBTQ+ · Genève',
       bio2: 'Militant séropositif et chercheur à la Fiocruz Brasília. Anime les séances d’équité LGBTQ+ en portugais et en espagnol.',
       role3: 'Déterminants de la Santé · Nairobi',
       bio3: "Leader de la réponse au VIH depuis plus de dix ans, enseignant les déterminants sociaux et structurels qui influencent le recours aux services."
@@ -121,9 +121,9 @@ const COPY = {
     },
     team: {
       subtext: 'Facilitadores que han hecho el trabajo que enseñan.',
-      role1: 'Equidad Racial · Atlanta',
+      role1: 'Equidad Racial · Washington, D. C.',
       bio1: 'Defensora de la diversidad, equidad e inclusión y de la equidad en salud, guiada por la amistad, el liderazgo y el servicio a la humanidad. Dirige el programa de equidad racial.',
-      role2: 'Equidad LGBTQ+ · Brasília',
+      role2: 'Equidad LGBTQ+ · Ginebra',
       bio2: 'Activista que vive con VIH e investigador en Fiocruz Brasília. Imparte sesiones de equidad LGBTQ+ en portugués y español.',
       role3: 'Determinantes de la Salud · Nairobi',
       bio3: 'Líder de la respuesta al VIH durante más de una década, enseñando los determinantes sociales y estructurales que moldean el uso de los servicios.'
@@ -164,9 +164,9 @@ const COPY = {
     },
     team: {
       subtext: 'Facilitadores que já fizeram o trabalho que ensinam.',
-      role1: 'Equidade Racial · Atlanta',
+      role1: 'Equidade Racial · Washington, D.C.',
       bio1: 'Defensora da diversidade, equidade e inclusão e da equidade em saúde, guiada pela amizade, liderança e serviço à humanidade. Lidera o currículo de equidade racial.',
-      role2: 'Equidade LGBTQ+ · Brasília',
+      role2: 'Equidade LGBTQ+ · Genebra',
       bio2: 'Ativista vivendo com HIV e pesquisador na Fiocruz Brasília. Conduz sessões de equidade LGBTQ+ em português e espanhol.',
       role3: 'Determinantes da Saúde · Nairobi',
       bio3: 'Líder da resposta ao HIV por mais de uma década, ensinando os determinantes sociais e estruturais que moldam a busca por serviços.'

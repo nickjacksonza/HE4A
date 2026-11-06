@@ -76,6 +76,29 @@ const COPY = {
   }
 };
 
+// The contact form card. Shared with the per-person profile pages
+// (about-us/<slug>.html), which post to the same endpoint, so messages reach
+// Ace, with extra hidden fields naming who the visitor was writing about.
+function formCard(locale, { hidden = {}, intro = '' } = {}) {
+  const t = COPY[locale];
+  const hiddenInputs = Object.entries(hidden)
+    .map(([k, v]) => `<input type="hidden" name="${escapeHtml(k)}" value="${escapeHtml(v)}">`)
+    .join('\n          ');
+  return `<div class="form-card">
+        <h2 class="form-card-heading">${t.formHeading}</h2>${intro ? `\n        <p class="form-card-intro">${intro}</p>` : ''}
+        <form class="form" data-contact-form data-endpoint="${site.formEndpoint}" novalidate>
+          ${hiddenInputs}
+          ${field({ id: 'name', label: t.fields.name, required: true, autocomplete: 'name' })}
+          ${field({ id: 'email', label: t.fields.email, type: 'email', required: true, autocomplete: 'email' })}
+          ${field({ id: 'organization', label: t.fields.organization, autocomplete: 'organization' })}
+          ${field({ id: 'service', label: t.fields.service, select: true, options: t.serviceOptions })}
+          ${field({ id: 'message', label: t.fields.message, textarea: true, required: true, options: { placeholder: t.messagePlaceholder } })}
+          <button type="submit" class="btn btn-primary form-submit">${t.submit}</button>
+        </form>
+        <div class="form-status" role="status" aria-live="polite" tabindex="-1" hidden data-form-status></div>
+      </div>`;
+}
+
 function main(locale) {
   const t = COPY[locale];
   const officesLine = site.offices.map((o) => `${o.city}, ${o.country}`).join('<br>');
@@ -92,18 +115,7 @@ function main(locale) {
 <section class="section band-paper">
   <div class="container">
     <div class="contact-grid">
-      <div class="form-card">
-        <h2 class="form-card-heading">${t.formHeading}</h2>
-        <form class="form" data-contact-form data-endpoint="${site.formEndpoint}" novalidate>
-          ${field({ id: 'name', label: t.fields.name, required: true, autocomplete: 'name' })}
-          ${field({ id: 'email', label: t.fields.email, type: 'email', required: true, autocomplete: 'email' })}
-          ${field({ id: 'organization', label: t.fields.organization, autocomplete: 'organization' })}
-          ${field({ id: 'service', label: t.fields.service, select: true, options: t.serviceOptions })}
-          ${field({ id: 'message', label: t.fields.message, textarea: true, required: true, options: { placeholder: t.messagePlaceholder } })}
-          <button type="submit" class="btn btn-primary form-submit">${t.submit}</button>
-        </form>
-        <div class="form-status" role="status" aria-live="polite" tabindex="-1" hidden data-form-status></div>
-      </div>
+      ${formCard(locale)}
 
       <div class="contact-aside">
         <div class="contact-photo">${picture({ name: 'pair-working', widths: [400, 640, 960, 1280, 1920], sizes: '(max-width: 720px) 100vw, 40vw', alt: t.photoAlt })}</div>
@@ -170,5 +182,6 @@ module.exports = {
     },
     ogImage: 'contact'
   },
-  main
+  main,
+  formCard
 };

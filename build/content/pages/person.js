@@ -1,0 +1,157 @@
+const { href, escapeHtml, personPhoto, PORTRAIT_LABEL } = require('../../helpers');
+const locales = require('../locales');
+const shared = require('../shared');
+const profiles = require('../profiles');
+const aboutUs = require('./about-us');
+const { formCard } = require('./contact');
+
+const COPY = {
+  en: {
+    bioHeading: 'Biography',
+    toggleLabel: 'Biography language',
+    contactHeading: 'Contact',
+    email: 'Email',
+    phone: 'Phone',
+    follow: 'Find them online',
+    website: 'Website',
+    formIntro: 'This form sends your message to Ace Robinson at Health Equity 4 All.',
+    formSubject: (name) => `Message for ${name} via the website`
+  },
+  fr: {
+    bioHeading: 'Biographie',
+    toggleLabel: 'Langue de la biographie',
+    contactHeading: 'Contact',
+    email: 'Courriel',
+    phone: 'Téléphone',
+    follow: 'En ligne',
+    website: 'Site web',
+    formIntro: 'Ce formulaire envoie votre message à Ace Robinson, chez Health Equity 4 All.',
+    formSubject: (name) => `Message pour ${name} via le site`
+  },
+  es: {
+    bioHeading: 'Biografía',
+    toggleLabel: 'Idioma de la biografía',
+    contactHeading: 'Contacto',
+    email: 'Correo electrónico',
+    phone: 'Teléfono',
+    follow: 'En línea',
+    website: 'Sitio web',
+    formIntro: 'Este formulario envía tu mensaje a Ace Robinson, en Health Equity 4 All.',
+    formSubject: (name) => `Mensaje para ${name} desde el sitio`
+  },
+  pt: {
+    bioHeading: 'Biografia',
+    toggleLabel: 'Idioma da biografia',
+    contactHeading: 'Contato',
+    email: 'E-mail',
+    phone: 'Telefone',
+    follow: 'Na internet',
+    website: 'Site',
+    formIntro: 'Este formulário envia sua mensagem para Ace Robinson, na Health Equity 4 All.',
+    formSubject: (name) => `Mensagem para ${name} pelo site`
+  }
+};
+
+const SOCIAL_LABELS = { linkedin: 'LinkedIn', twitter: 'Twitter', instagram: 'Instagram', facebook: 'Facebook' };
+
+function bioSection(locale, person, profile, t) {
+  const localeInfo = locales.find((l) => l.code === locale);
+  const main = (profile.fullBio && (profile.fullBio[locale] || profile.fullBio.en)) || person.bio;
+  const home = profile.homeBio && profile.homeLanguage;
+  // A home bio in the page's own language would only repeat the first panel.
+  const hasToggle = home && profile.homeLanguage.code !== localeInfo.hreflang.split('-')[0];
+
+  const mainPanel = `<div class="profile-bio-panel" id="bio-main" lang="${localeInfo.hreflang}" data-bio-panel>
+        <p>${escapeHtml(main)}</p>
+      </div>`;
+  if (!hasToggle) {
+    return `<h2 class="section-heading profile-bio-heading">${t.bioHeading}</h2>
+      ${mainPanel}`;
+  }
+  return `<div class="profile-bio-head">
+        <h2 class="section-heading profile-bio-heading">${t.bioHeading}</h2>
+        <div class="bio-toggle" role="group" aria-label="${t.toggleLabel}" data-bio-toggle hidden>
+          <button type="button" class="bio-toggle-btn" aria-pressed="true" aria-controls="bio-main" data-bio-target="bio-main">${localeInfo.endonym}</button>
+          <button type="button" class="bio-toggle-btn" aria-pressed="false" aria-controls="bio-home" data-bio-target="bio-home" lang="${profile.homeLanguage.code}">${escapeHtml(profile.homeLanguage.name)}</button>
+        </div>
+      </div>
+      ${mainPanel}
+      <div class="profile-bio-panel" id="bio-home" lang="${profile.homeLanguage.code}" data-bio-panel>
+        <p>${escapeHtml(profile.homeBio)}</p>
+      </div>`;
+}
+
+function contactSection(profile, t) {
+  const rows = [];
+  if (profile.email) rows.push(`<div><h3 class="info-block-label">${t.email}</h3><div class="info-block-value"><a href="mailto:${escapeHtml(profile.email)}">${escapeHtml(profile.email)}</a></div></div>`);
+  if (profile.phone) rows.push(`<div><h3 class="info-block-label">${t.phone}</h3><div class="info-block-value"><a href="tel:${escapeHtml(profile.phone.replace(/\s+/g, ''))}">${escapeHtml(profile.phone)}</a></div></div>`);
+
+  const social = profile.social || {};
+  const links = Object.keys(social)
+    .filter((k) => social[k])
+    .map((k) => `<a href="${escapeHtml(social[k])}" class="social-link" rel="noopener">${SOCIAL_LABELS[k] || t.website}</a>`);
+
+  if (!rows.length && !links.length) return '';
+  return `<div class="info-block band-sky">
+          <h2 class="info-block-heading">${t.contactHeading}</h2>
+          ${rows.length ? `<div class="info-block-grid">${rows.join('')}</div>` : ''}
+          ${links.length ? `<div><h3 class="info-block-label">${t.follow}</h3><div class="social-links">${links.join('')}</div></div>` : ''}
+        </div>`;
+}
+
+function makePage(slug) {
+  const profile = profiles[slug] || {};
+  const person = (locale) => aboutUs.roster(locale).find((p) => p.slug === slug);
+  const name = person('en').name;
+
+  function main(locale) {
+    const t = COPY[locale];
+    const p = person(locale);
+    const photo = personPhoto(p.name, 'profile-portrait-photo', '(max-width: 720px) 100vw, 380px');
+    const portrait = photo
+      ? `<div class="profile-portrait">${photo}</div>`
+      : `<div class="profile-portrait profile-portrait-placeholder"><span>${PORTRAIT_LABEL[locale]} — ${escapeHtml(p.name)}</span></div>`;
+    const contact = contactSection(profile, t);
+
+    return `<section class="section--first band-paper">
+  <div class="container">
+    <p class="breadcrumb breadcrumb--light"><a href="${href(locale, 'index.html')}">${shared.breadcrumbHome[locale]}</a> / <a href="${href(locale, 'about-us.html')}">${aboutUs.meta.title[locale]}</a> / ${escapeHtml(p.name)}</p>
+    <div class="profile-grid">
+      ${portrait}
+      <div class="profile-intro">
+        <h1 class="section-heading profile-name">${escapeHtml(p.name)}</h1>
+        <div class="person-role profile-role">${escapeHtml(p.role)}</div>
+        ${bioSection(locale, p, profile, t)}
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section band-paper-subtle">
+  <div class="container">
+    <div class="contact-grid">
+      ${formCard(locale, { intro: t.formIntro, hidden: { _subject: t.formSubject(p.name), profile: p.name } })}
+      ${contact ? `<div class="contact-aside">${contact}</div>` : ''}
+    </div>
+  </div>
+</section>`;
+  }
+
+  const title = {};
+  const description = {};
+  for (const l of locales) {
+    const p = person(l.code);
+    title[l.code] = p.name;
+    description[l.code] = escapeHtml(`${p.role}. ${p.bio}`);
+  }
+
+  return {
+    slug,
+    outputFile: `about-us/${slug}.html`,
+    activeNavId: 'aboutUs',
+    meta: { title, description, ogImage: 'about-us' },
+    main
+  };
+}
+
+module.exports = aboutUs.roster('en').map((p) => makePage(p.slug));
