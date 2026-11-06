@@ -27,6 +27,7 @@ module.exports = {
   victoriaOwoyele: {
     name: 'Dr. Victoria Owoyele',
     slug: 'victoria-owoyele',
+    homeShort: { code: 'yo', name: 'Yorùbá', text: 'Victoria Oluwatosin Owoyele ni oye dokita (PhD) ni ilera gbogbo eniyan. Victoria ṣe ifọwọsowọpọ pẹlu ilera ati awọn apa ilera ti gbogbo eniyan, ni idojukọ lori itupalẹ data, iwoye data iwọntunwọnsi, ati awọn ilowosi ifisi fun awọn eniyan ti a ya sọtọ, pataki ni awọn agbegbe BIPOC.' },
     aboutRole: { en: 'Public Health Researcher · Nigeria', fr: 'Chercheuse en Santé Publique · Nigéria', es: 'Investigadora en Salud Pública · Nigeria', pt: 'Pesquisadora em Saúde Pública · Nigéria' },
     teamRole: { en: 'Public Health Researcher · Nigeria', fr: 'Chercheuse en Santé Publique · Nigéria', es: 'Investigadora en Salud Pública · Nigeria', pt: 'Pesquisadora em Saúde Pública · Nigéria' },
     bio: {

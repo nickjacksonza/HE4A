@@ -16,10 +16,13 @@
 
     var items = Array.prototype.slice.call(nav.querySelectorAll('.nav-item'));
 
+    function caretOf(item) {
+      return item.querySelector('.nav-caret-btn');
+    }
     function closeItem(item) {
       item.classList.remove('is-open');
-      var link = item.querySelector('.nav-link[aria-haspopup]');
-      if (link) link.setAttribute('aria-expanded', 'false');
+      var caret = caretOf(item);
+      if (caret) caret.setAttribute('aria-expanded', 'false');
     }
     function closeAll(except) {
       items.forEach(function (item) {
@@ -29,35 +32,33 @@
     function openItem(item) {
       closeAll(item);
       item.classList.add('is-open');
-      var link = item.querySelector('.nav-link[aria-haspopup]');
-      if (link) link.setAttribute('aria-expanded', 'true');
+      var caret = caretOf(item);
+      if (caret) caret.setAttribute('aria-expanded', 'true');
     }
 
+    // The item's label is a normal link to its page. The caret button next to
+    // it opens and closes the list of sub-pages (hover also opens it on desktop).
     items.forEach(function (item) {
-      var link = item.querySelector('.nav-link[aria-haspopup]');
+      var caret = caretOf(item);
       var dropdown = item.querySelector('.nav-dropdown');
-      if (!link || !dropdown) return;
+      if (!caret || !dropdown) return;
 
-      link.addEventListener('click', function (event) {
-        event.preventDefault();
+      caret.addEventListener('click', function () {
         if (item.classList.contains('is-open')) {
           closeItem(item);
         } else {
           openItem(item);
         }
       });
-      link.addEventListener('keydown', function (event) {
-        if (event.key === 'ArrowDown') {
+      item.addEventListener('keydown', function (event) {
+        if (event.key === 'ArrowDown' && (event.target === caret || event.target.classList.contains('nav-link'))) {
           event.preventDefault();
           openItem(item);
           var first = dropdown.querySelector('a');
           if (first) first.focus();
-        }
-      });
-      item.addEventListener('keydown', function (event) {
-        if (event.key === 'Escape') {
+        } else if (event.key === 'Escape' && item.classList.contains('is-open')) {
           closeItem(item);
-          link.focus();
+          caret.focus();
         }
       });
     });
@@ -73,7 +74,7 @@
 
     if (toggle) {
       var wrap = nav.closest('.site-header-wrap');
-      var drawerQuery = window.matchMedia('(max-width: 1260px)');
+      var drawerQuery = window.matchMedia('(max-width: 1270px)');
 
       function setOpen(isOpen) {
         nav.classList.toggle('is-open', isOpen);
@@ -88,7 +89,7 @@
       });
       nav.querySelectorAll('a').forEach(function (link) {
         link.addEventListener('click', function () {
-          if (drawerQuery.matches && !link.hasAttribute('aria-haspopup')) setOpen(false);
+          if (drawerQuery.matches) setOpen(false);
         });
       });
       document.addEventListener('keydown', function (event) {
@@ -318,7 +319,7 @@
 
   /* ---------------------------------------------------------------------
      Profile bio language toggle. Without JS both bios stay visible and the
-     buttons stay hidden.
+     buttons stay invisible (their space is reserved so nothing shifts).
      --------------------------------------------------------------------- */
   function initBioToggle() {
     var group = document.querySelector('[data-bio-toggle]');
@@ -339,7 +340,7 @@
         select(btn.getAttribute('data-bio-target'));
       });
     });
-    group.hidden = false;
+    group.classList.add('is-ready');
     select(buttons[0].getAttribute('data-bio-target'));
   }
 

@@ -2,12 +2,32 @@ const site = require('../content/site');
 const locales = require('../content/locales');
 const { asset } = require('../helpers');
 
-// Google Tag Manager, added to every page as supplied.
-const GTM_SNIPPET = `<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-K7QJ4WB9"></script>
-<script>
+// Google Tag Manager. The dataLayer is set up straight away, so nothing is lost,
+// but gtm.js itself loads on the visitor's first interaction (or about eight
+// seconds after the page has loaded, whichever comes first). That keeps its
+// ~70 KB of JavaScript off the critical path, which is what costs the
+// performance score (blocking time). Tracking starts a moment later, not
+// never: a visitor who leaves within eight seconds without touching the page
+// is not counted.
+const GTM_SNIPPET = `<script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
+  (function () {
+    var started = false;
+    function load() {
+      if (started) return;
+      started = true;
+      var s = document.createElement('script');
+      s.async = true;
+      s.src = 'https://www.googletagmanager.com/gtm.js?id=GTM-K7QJ4WB9';
+      document.head.appendChild(s);
+    }
+    ['pointerdown', 'keydown', 'scroll', 'touchstart'].forEach(function (e) {
+      addEventListener(e, load, { once: true, passive: true });
+    });
+    addEventListener('load', function () { setTimeout(load, 8000); });
+  })();
 </script>`;
 
 function organizationJsonLd() {
@@ -47,6 +67,7 @@ function meta(pageMeta) {
 
   return `<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="google-site-verification" content="jII_-pe_fkFM_Ft2Xjh8usSYIMGxs6m-SbZpmid3Fpw">
 <title>${fullTitle}</title>
 <meta name="description" content="${description}">
 ${noindex ? '<meta name="robots" content="noindex">' : `<link rel="canonical" href="${url}">

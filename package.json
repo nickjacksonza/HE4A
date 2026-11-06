@@ -3,7 +3,10 @@
   "version": "1.0.0",
   "description": "Source for healthequity4all.org, the Health Equity 4 All website",
   "homepage": "https://healthequity4all.org",
-  "repository": { "type": "git", "url": "git+https://github.com/nickjacksonza/HE4A.git" },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nickjacksonza/HE4A.git"
+  },
   "private": true,
   "scripts": {
     "build": "node build/build.js",
@@ -17,5 +20,10 @@
   "devDependencies": {
     "png-to-ico": "^3.0.2",
     "sharp": "^0.35.4"
+  },
+  "dependencies": {
+    "clean-css": "^5.3.3",
+    "prettier": "^3.9.10",
+    "terser": "^5.51.2"
   }
 }

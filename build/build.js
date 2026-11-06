@@ -1,5 +1,9 @@
 const fs = require('fs');
 const path = require('path');
+const crypto = require('crypto');
+const prettier = require('prettier');
+const CleanCSS = require('clean-css');
+const terser = require('terser');
 
 const ROOT = path.join(__dirname, '..');
 const DIST = path.join(ROOT, 'dist');
@@ -10,7 +14,7 @@ const meta = require('./partials/meta');
 const site = require('./content/site');
 const locales = require('./content/locales');
 const clientStrings = require('./content/clientStrings');
-const { asset, BASE_PATH } = require('./helpers');
+const { asset, BASE_PATH, setAssetVersions } = require('./helpers');
 const { htmlToMarkdown, decode } = require('./markdown');
 
 const pages = [
@@ -178,23 +182,41 @@ function assertNoAuthoringMarkup(generatedPaths) {
   }
 }
 
-function build() {
+// The stylesheet and script are minified into dist/; the readable sources stay
+// in src/. Level 1 CSS optimization only: it shortens values and removes
+// whitespace without reordering rules.
+async function buildAssets() {
+  const css = new CleanCSS({ level: 1 }).minify(fs.readFileSync(path.join(ROOT, 'src', 'styles.css'), 'utf8'));
+  if (css.errors.length) throw new Error(`styles.css: ${css.errors.join('; ')}`);
+  const js = await terser.minify(fs.readFileSync(path.join(ROOT, 'src', 'scripts.js'), 'utf8'), { compress: true, mangle: true });
+  fs.writeFileSync(path.join(DIST, 'styles.css'), css.styles);
+  fs.writeFileSync(path.join(DIST, 'scripts.js'), js.code);
+  const hash = (text) => crypto.createHash('md5').update(text).digest('hex').slice(0, 8);
+  setAssetVersions({ 'styles.css': hash(css.styles), 'scripts.js': hash(js.code) });
+}
+
+// Readable, indented HTML (not minified). 'css' whitespace sensitivity keeps
+// the spacing between inline elements exactly as the browser would render it.
+const prettyHtml = (html) => prettier.format(html, { parser: 'html', printWidth: 110, tabWidth: 2, htmlWhitespaceSensitivity: 'css' });
+
+async function build() {
   fs.rmSync(DIST, { recursive: true, force: true });
   fs.mkdirSync(DIST, { recursive: true });
+
+  await buildAssets();
 
   const generatedPaths = [];
   for (const locale of locales) {
     for (const page of pages) {
       const relPath = outputPath(locale, page.outputFile);
       fs.mkdirSync(path.join(DIST, path.dirname(relPath)), { recursive: true });
-      fs.writeFileSync(path.join(DIST, relPath), renderPage(page, locale));
+      fs.writeFileSync(path.join(DIST, relPath), await prettyHtml(renderPage(page, locale)));
       generatedPaths.push(relPath);
     }
   }
 
-  fs.copyFileSync(path.join(ROOT, 'src', 'styles.css'), path.join(DIST, 'styles.css'));
-  fs.copyFileSync(path.join(ROOT, 'src', 'scripts.js'), path.join(DIST, 'scripts.js'));
 
+  fs.copyFileSync(path.join(ROOT, 'assets', 'icons', 'favicon.ico'), path.join(DIST, 'favicon.ico'));
   copyDir(path.join(ROOT, 'assets', 'photos-optimized'), path.join(DIST, 'assets', 'photos-optimized'));
   copyDir(path.join(ROOT, 'assets', 'fonts'), path.join(DIST, 'assets', 'fonts'));
   copyDir(path.join(ROOT, 'assets', 'icons'), path.join(DIST, 'assets', 'icons'));
@@ -222,4 +244,7 @@ function build() {
   console.log(`Built ${generatedPaths.length} pages (${locales.length} locales x ${pages.length} pages) and ${mdPaths.length} Markdown copies into dist/`);
 }
 
-build();
+build().catch((err) => {
+  console.error(err);
+  process.exit(1);
+});

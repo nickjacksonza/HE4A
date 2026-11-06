@@ -118,7 +118,7 @@ function main(locale) {
       ${formCard(locale)}
 
       <div class="contact-aside">
-        <div class="contact-photo">${picture({ name: 'pair-working', widths: [400, 640, 960, 1280, 1920], sizes: '(max-width: 720px) 100vw, 40vw', alt: t.photoAlt })}</div>
+        <div class="contact-photo">${picture({ name: 'pair-working', widths: [400, 640, 960, 1280, 1920], sizes: '(max-width: 720px) calc(100vw - 64px), 40vw', alt: t.photoAlt })}</div>
 
         <div class="info-block band-sky">
           <h2 class="info-block-heading">${t.findUs.heading}</h2>
