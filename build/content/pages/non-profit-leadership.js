@@ -263,6 +263,9 @@ ${testimonialsSection(locale)}
 
 module.exports = {
   slug: 'non-profit-leadership',
+  service: true,
+  faqs: (locale) => COPY[locale].faqs,
+  people: ['Ace Robinson', 'Lauren Miller', people.brianKanyemba.name],
   outputFile: 'non-profit-leadership.html',
   activeNavId: 'nonProfitLeadership',
   meta: {

@@ -162,41 +162,11 @@ function makePage(slug) {
   }
 
   const absolute = (locale, file) => `${site.baseUrl}${locale === 'en' ? '' : '/' + locale}/${file}`;
-  const jsonLd = (locale) => {
-    const p = person(locale);
-    const social = Object.values(profile.social || {}).filter(Boolean);
-    return [
-      {
-        '@context': 'https://schema.org',
-        '@type': 'ProfilePage',
-        mainEntity: {
-          '@type': 'Person',
-          name: p.name,
-          jobTitle: p.role.split(' · ')[0],
-          description: p.bio,
-          url: absolute(locale, `about-us/${slug}.html`),
-          worksFor: { '@type': 'Organization', name: site.siteName, url: site.baseUrl },
-          ...(social.length ? { sameAs: social } : {})
-        }
-      },
-      {
-        '@context': 'https://schema.org',
-        '@type': 'BreadcrumbList',
-        itemListElement: [
-          { '@type': 'ListItem', position: 1, name: shared.breadcrumbHome[locale], item: absolute(locale, 'index.html') },
-          { '@type': 'ListItem', position: 2, name: aboutUs.meta.title[locale], item: absolute(locale, 'about-us.html') },
-          { '@type': 'ListItem', position: 3, name: p.name, item: absolute(locale, `about-us/${slug}.html`) }
-        ]
-      }
-    ];
-  };
-
   return {
     slug,
     outputFile: `about-us/${slug}.html`,
     activeNavId: 'aboutUs',
     meta: { title, description, ogImage: 'about-us' },
-    jsonLd,
     main
   };
 }

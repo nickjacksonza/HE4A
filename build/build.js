@@ -17,6 +17,8 @@ const clientStrings = require('./content/clientStrings');
 const { asset, BASE_PATH, setAssetVersions } = require('./helpers');
 const { htmlToMarkdown, decode } = require('./markdown');
 
+const structuredData = require('./structured-data');
+
 const pages = [
   require('./content/pages/home'),
   require('./content/pages/non-profit-leadership'),
@@ -53,7 +55,7 @@ function renderPage(page, locale) {
     description: page.meta.description[locale.code],
     outputFile: page.outputFile,
     ogImage: page.meta.ogImage,
-    jsonLd: page.jsonLd ? page.jsonLd(locale.code) : [],
+    jsonLd: structuredData.forPage(page, locale.code, pages),
     noindex: Boolean(page.noindex)
   });
 

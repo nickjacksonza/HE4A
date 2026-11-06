@@ -302,6 +302,9 @@ ${testimonialsSection(locale)}
 
 module.exports = {
   slug: 'organizational-development',
+  service: true,
+  faqs: (locale) => COPY[locale].faqs,
+  people: ['Lucy Wanjiku Njenga', 'Diego Calixto', people.victoriaOwoyele.name, people.nickJackson.name, people.jasPlaceholder.name, people.brianKanyemba.name, people.tinasheMuchenje.name, people.leandroMaldonado.name],
   outputFile: 'organizational-development.html',
   activeNavId: 'organizationalDevelopment',
   meta: {

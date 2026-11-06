@@ -300,6 +300,9 @@ ${testimonialsSection(locale)}
 
 module.exports = {
   slug: 'recruitment',
+  service: true,
+  faqs: (locale) => COPY[locale].faqs,
+  people: [people.leandroMaldonado.name],
   outputFile: 'recruitment.html',
   activeNavId: 'recruitment',
   meta: {

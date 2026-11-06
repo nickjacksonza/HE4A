@@ -309,6 +309,9 @@ ${testimonialsSection(locale)}
 
 module.exports = {
   slug: 'public-speaking',
+  service: true,
+  faqs: (locale) => COPY[locale].faqs,
+  people: ['Eduardo Culbeaux'],
   outputFile: 'public-speaking.html',
   activeNavId: 'publicSpeaking',
   meta: {

@@ -387,6 +387,7 @@ function main(locale) {
 
 module.exports = {
   slug: 'home',
+  people: PEOPLE_META.map((p) => p.name),
   outputFile: 'index.html',
   activeNavId: null,
   meta: {

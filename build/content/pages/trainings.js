@@ -289,6 +289,9 @@ ${testimonialsSection(locale)}
 
 module.exports = {
   slug: 'trainings',
+  service: true,
+  faqs: (locale) => COPY[locale].faqs,
+  people: ['Lauren Miller', 'Diego Calixto', 'Lucy Wanjiku Njenga', people.johnHanna.name, people.robertMiller.name],
   outputFile: 'trainings.html',
   activeNavId: 'trainings',
   meta: {

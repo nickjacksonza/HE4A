@@ -132,21 +132,6 @@ function main(locale) {
 </section>`;
 }
 
-function jsonLd(locale) {
-  const url = (file) => `${site.baseUrl}${locale === 'en' ? '' : '/' + locale}/${file}`;
-  return [
-    { '@context': 'https://schema.org', '@type': 'WebPage', url: url('accessibility.html'), name: COPY[locale].heading, isPartOf: { '@type': 'WebSite', name: site.siteName, url: site.baseUrl } },
-    {
-      '@context': 'https://schema.org',
-      '@type': 'BreadcrumbList',
-      itemListElement: [
-        { '@type': 'ListItem', position: 1, name: shared.breadcrumbHome[locale], item: url('index.html') },
-        { '@type': 'ListItem', position: 2, name: COPY[locale].heading, item: url('accessibility.html') }
-      ]
-    }
-  ];
-}
-
 module.exports = {
   slug: 'accessibility',
   outputFile: 'accessibility.html',
@@ -166,6 +151,5 @@ module.exports = {
     },
     ogImage: 'about-us'
   },
-  jsonLd,
   main
 };
