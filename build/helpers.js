@@ -25,8 +25,17 @@ function href(locale, targetPath) {
 
 // Builds a locale-agnostic asset/root-file link (stylesheet, script, icon,
 // font, logo, etc.) -- just BASE_PATH + the given path, no locale segment.
+//
+// styles.css and scripts.js get a content-hash ?v= query (set by the build via
+// setAssetVersions), so a changed file is always fetched fresh even though
+// GitHub Pages only lets browsers cache for ten minutes.
+const ASSET_VERSIONS = {};
+function setAssetVersions(versions) {
+  Object.assign(ASSET_VERSIONS, versions);
+}
 function asset(assetPath) {
-  return `${BASE_PATH}/${assetPath}`;
+  const v = ASSET_VERSIONS[assetPath];
+  return `${BASE_PATH}/${assetPath}${v ? `?v=${v}` : ''}`;
 }
 
 // Intrinsic pixel dimensions of each source photo (assets/photos/*.jpg) --
@@ -83,7 +92,7 @@ const PEOPLE_PHOTO_DIMS = { w: 400, h: 400 };
 // fall back to the placeholder box. `sizes` defaults to the small team-card/
 // collective-grid slot; pass a larger hint for a bigger feature portrait so
 // the browser picks the 700w variant instead.
-function personPhoto(name, imgClass, sizes = '400px') {
+function personPhoto(name, imgClass, sizes = '400px', priority = false) {
   const key = PEOPLE_PHOTOS[name];
   if (!key) return null;
   const dir = asset(`assets/photos-optimized/people/${key}`);
@@ -92,7 +101,7 @@ function personPhoto(name, imgClass, sizes = '400px') {
   return `<picture>
   <source type="image/avif" srcset="${srcset('avif')}" sizes="${sizes}">
   <source type="image/webp" srcset="${srcset('webp')}" sizes="${sizes}">
-  <img src="${dir}/${key}-${largest}.jpg" srcset="${srcset('jpg')}" sizes="${sizes}" width="${PEOPLE_PHOTO_DIMS.w}" height="${PEOPLE_PHOTO_DIMS.h}" alt="${escapeHtml(name)}"${imgClass ? ` class="${imgClass}"` : ''} loading="lazy" decoding="async">
+  <img src="${dir}/${key}-${largest}.jpg" srcset="${srcset('jpg')}" sizes="${sizes}" width="${PEOPLE_PHOTO_DIMS.w}" height="${PEOPLE_PHOTO_DIMS.h}" alt="${escapeHtml(name)}"${imgClass ? ` class="${imgClass}"` : ''} ${priority ? 'fetchpriority="high"' : 'loading="lazy" decoding="async"'}>
 </picture>`;
 }
 
@@ -207,4 +216,4 @@ function testimonialsSection(locale, band = 'band-paper') {
 </section>`;
 }
 
-module.exports = { homeShortFor, escapeHtml, href, asset, BASE_PATH, picture, personPhoto, personCard, slugify, accordion, teamCard, testimonialsSection, PORTRAIT_LABEL, INTRINSIC };
+module.exports = { setAssetVersions, homeShortFor, escapeHtml, href, asset, BASE_PATH, picture, personPhoto, personCard, slugify, accordion, teamCard, testimonialsSection, PORTRAIT_LABEL, INTRINSIC };

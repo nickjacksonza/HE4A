@@ -89,7 +89,7 @@ function bioSection(locale, person, profile, t) {
     .join('\n      ');
   return `<div class="profile-bio-head">
         <h2 class="section-heading profile-bio-heading">${t.bioHeading}</h2>
-        <div class="bio-toggle" role="group" aria-label="${t.toggleLabel}" data-bio-toggle hidden>
+        <div class="bio-toggle" role="group" aria-label="${t.toggleLabel}" data-bio-toggle>
           ${buttons}
         </div>
       </div>
@@ -123,7 +123,7 @@ function makePage(slug) {
   function main(locale) {
     const t = COPY[locale];
     const p = person(locale);
-    const photo = personPhoto(p.name, 'profile-portrait-photo', '(max-width: 720px) 100vw, 380px');
+    const photo = personPhoto(p.name, 'profile-portrait-photo', '(max-width: 720px) 100vw, 380px', true);
     const portrait = photo
       ? `<div class="profile-portrait">${photo}</div>`
       : `<div class="profile-portrait profile-portrait-placeholder"><span>${PORTRAIT_LABEL[locale]} — ${escapeHtml(p.name)}</span></div>`;

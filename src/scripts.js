@@ -318,7 +318,7 @@
 
   /* ---------------------------------------------------------------------
      Profile bio language toggle. Without JS both bios stay visible and the
-     buttons stay hidden.
+     buttons stay invisible (their space is reserved so nothing shifts).
      --------------------------------------------------------------------- */
   function initBioToggle() {
     var group = document.querySelector('[data-bio-toggle]');
@@ -339,7 +339,7 @@
         select(btn.getAttribute('data-bio-target'));
       });
     });
-    group.hidden = false;
+    group.classList.add('is-ready');
     select(buttons[0].getAttribute('data-bio-target'));
   }
 

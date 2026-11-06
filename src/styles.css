@@ -1474,7 +1474,9 @@ main:focus { outline: none; }
 .profile-bio-panel p { font-size: var(--text-md); color: var(--color-ink-800); line-height: var(--leading-normal); max-width: 62ch; margin: 0; }
 .profile-bio-panel[hidden] { display: none; }
 .bio-toggle { display: inline-flex; gap: 4px; padding: 4px; background: var(--color-paper-100); border-radius: var(--radius-full); margin-bottom: var(--space-3); }
-.bio-toggle[hidden] { display: none; }
+/* Invisible, not removed, until the script makes it usable: no layout shift. */
+.bio-toggle { visibility: hidden; }
+.bio-toggle.is-ready { visibility: visible; }
 .bio-toggle-btn {
   font: inherit;
   font-size: var(--text-sm);

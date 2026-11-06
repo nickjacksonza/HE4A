@@ -37,7 +37,7 @@ npm run build     # writes the finished site to dist/
 npm run serve     # opens it at http://localhost:5000
 ```
 
-The build writes `index.html` and the other pages, the `fr/`, `es/` and `pt/` translations, the Markdown copies, `sitemap.xml`, `robots.txt`, `llms.txt` and `.well-known/security.txt`.
+The build writes readable, indented HTML, a minified stylesheet and script, `index.html` and the other pages, the `fr/`, `es/` and `pt/` translations, the Markdown copies, `sitemap.xml`, `robots.txt`, `llms.txt` and `.well-known/security.txt`.
 
 ## Changing the content
 
