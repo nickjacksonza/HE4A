@@ -1,13 +1,14 @@
 const { picture, href, personCard } = require('../../helpers');
 const site = require('../site');
 const people = require('../people');
+const shared = require('../shared');
 
 const PEOPLE_META = [
-  { name: 'Ace Robinson', stagger: 0 },
-  { name: 'Lauren Miller', stagger: 20 },
-  { name: 'Diego Calixto', stagger: 6 },
-  { name: 'Lucy Wanjiku Njenga', stagger: 28 },
-  { name: 'Eduardo Culbeaux', stagger: 10 }
+  { name: 'Ace Robinson', slug: 'ace-robinson', stagger: 0 },
+  { name: 'Lauren Miller', slug: 'lauren-miller', stagger: 20 },
+  { name: 'Diego Calixto', slug: 'diego-calixto', stagger: 6 },
+  { name: 'Lucy Wanjiku Njenga', slug: 'lucy-wanjiku-njenga', stagger: 28 },
+  { name: 'Eduardo Culbeaux', slug: 'eduardo-culbeaux', stagger: 10 }
 ];
 
 // Members beyond the original 5, sourced from build/content/people.js (kept
@@ -20,8 +21,9 @@ const EXTRA_PEOPLE = [
   { key: 'leandroMaldonado', stagger: 4 },
   { key: 'robertMiller', stagger: 18 },
   { key: 'nickJackson', stagger: 8 },
-  { key: 'keletsoMakofane', stagger: 22 },
-  { key: 'stephenPlaceholder', stagger: 12 } // Juan Michael Porter II was removed at the user's request; this holds his slot for an incoming member (surname/bio pending)
+  { key: 'brianKanyemba', stagger: 22 },
+  { key: 'tinasheMuchenje', stagger: 12 },
+  { key: 'jasPlaceholder', stagger: 2 } // Juan Michael Porter II was removed at the user's request; this holds his slot for Jas Florentino (role and bio pending)
 ];
 
 const OPEN_SEAT = { name: null, stagger: 16 }; // no proper name, label is itself translated copy
@@ -50,14 +52,14 @@ const COPY = {
       heading: 'The Collective',
       subtext: 'Public health leaders across twelve countries, each carrying a practice of their own.',
       roles: [
-        'Founder & Principal · Seattle, USA',
-        'Leadership Faculty · Atlanta, USA',
-        'Research & Advocacy · Brasília, Brazil',
+        'Founder & Principal · Cape Town, South Africa',
+        'Leadership Faculty · Washington, DC, USA',
+        'Research & Advocacy · Geneva, Switzerland',
         'Programs & Policy · Nairobi, Kenya',
         'Education & Media · Southeast Asia'
       ],
       bios: [
-        'M.P.H., M.H.L. Administrative and policy advocate in communicable disease. Acting Director of the Duke University Sexual & Gender Minority Wellness program.',
+        'Administrative and policy advocate in communicable disease. Acting Director of the Duke University Sexual & Gender Minority Wellness program.',
         'Advocate for DEI and health equity, guided by friendship, leadership and service to humanity.',
         'Activist living with HIV and researcher at Fiocruz Brasília, focused on health and social justice across Latin America.',
         'HIV response leader for over a decade, building feminist movements from grassroots to global level.',
@@ -94,14 +96,14 @@ const COPY = {
       heading: 'Le Collectif',
       subtext: 'Des responsables de santé publique dans douze pays, chacun portant sa propre pratique.',
       roles: [
-        'Fondateur et Principal · Seattle, États-Unis',
-        'Faculté de Leadership · Atlanta, États-Unis',
-        'Recherche et Plaidoyer · Brasília, Brésil',
+        'Fondateur et Principal · Cape Town, Afrique du Sud',
+        'Faculté de Leadership · Washington, D.C., États-Unis',
+        'Recherche et Plaidoyer · Genève, Suisse',
         'Programmes et Politiques · Nairobi, Kenya',
         'Éducation et Médias · Asie du Sud-Est'
       ],
       bios: [
-        'M.P.H., M.H.L. Défenseur des politiques administratives en maladies transmissibles. Directeur par intérim du programme de bien-être des minorités sexuelles et de genre de l’Université Duke.',
+        'Défenseur des politiques administratives en maladies transmissibles. Directeur par intérim du programme de bien-être des minorités sexuelles et de genre de l’Université Duke.',
         "Défenseure de la diversité, de l'équité et de l'inclusion ainsi que de l'équité en santé, guidée par l'amitié, le leadership et le service à l'humanité.",
         'Militant séropositif et chercheur à la Fiocruz Brasília, engagé pour la santé et la justice sociale à travers l’Amérique latine.',
         "Leader de la réponse au VIH depuis plus de dix ans, bâtissant des mouvements féministes de la base jusqu'à l'échelle mondiale.",
@@ -138,14 +140,14 @@ const COPY = {
       heading: 'El Colectivo',
       subtext: 'Líderes de salud pública en doce países, cada uno con su propia práctica.',
       roles: [
-        'Fundador y Principal · Seattle, EE. UU.',
-        'Facultad de Liderazgo · Atlanta, EE. UU.',
-        'Investigación y Defensoría · Brasília, Brasil',
+        'Fundador y Principal · Ciudad del Cabo, Sudáfrica',
+        'Facultad de Liderazgo · Washington, D. C., EE. UU.',
+        'Investigación y Defensoría · Ginebra, Suiza',
         'Programas y Políticas · Nairobi, Kenia',
         'Educación y Medios · Sudeste Asiático'
       ],
       bios: [
-        'M.P.H., M.H.L. Defensor de políticas administrativas en enfermedades transmisibles. Director interino del programa de bienestar de minorías sexuales y de género de la Universidad Duke.',
+        'Defensor de políticas administrativas en enfermedades transmisibles. Director interino del programa de bienestar de minorías sexuales y de género de la Universidad Duke.',
         'Defensora de la diversidad, equidad e inclusión y de la equidad en salud, guiada por la amistad, el liderazgo y el servicio a la humanidad.',
         'Activista que vive con VIH e investigador en Fiocruz Brasília, enfocado en la salud y la justicia social en toda América Latina.',
         'Líder de la respuesta al VIH durante más de una década, construyendo movimientos feministas desde las bases hasta el nivel global.',
@@ -182,14 +184,14 @@ const COPY = {
       heading: 'O Coletivo',
       subtext: 'Líderes de saúde pública em doze países, cada um com sua própria prática.',
       roles: [
-        'Fundador e Diretor Principal · Seattle, EUA',
-        'Corpo Docente de Liderança · Atlanta, EUA',
-        'Pesquisa e Advocacy · Brasília, Brasil',
+        'Fundador e Diretor Principal · Cidade do Cabo, África do Sul',
+        'Corpo Docente de Liderança · Washington, D.C., EUA',
+        'Pesquisa e Advocacy · Genebra, Suíça',
         'Programas e Políticas · Nairobi, Quênia',
         'Educação e Mídia · Sudeste Asiático'
       ],
       bios: [
-        'M.P.H., M.H.L. Defensor de políticas administrativas em doenças transmissíveis. Diretor interino do programa de bem-estar de minorias sexuais e de gênero da Universidade Duke.',
+        'Defensor de políticas administrativas em doenças transmissíveis. Diretor interino do programa de bem-estar de minorias sexuais e de gênero da Universidade Duke.',
         'Defensora da diversidade, equidade e inclusão e da equidade em saúde, guiada pela amizade, liderança e serviço à humanidade.',
         'Ativista vivendo com HIV e pesquisador na Fiocruz Brasília, focado em saúde e justiça social em toda a América Latina.',
         'Líder da resposta ao HIV por mais de uma década, construindo movimentos feministas das bases até o nível global.',
@@ -204,6 +206,21 @@ const COPY = {
     heroAlt: 'Membros do coletivo reunidos ao ar livre'
   }
 };
+
+// Everyone with a profile page (about-us/<slug>.html), in grid order, with the
+// short bio/role as shown on this page. Jas and the Open Seat have no slug,
+// so they get no page and no link.
+function roster(locale) {
+  const t = COPY[locale];
+  return [
+    ...PEOPLE_META.map((p, i) => ({ slug: p.slug, name: p.name, role: t.collective.roles[i], bio: t.collective.bios[i] })),
+    ...EXTRA_PEOPLE.map((e) => people[e.key]).filter((p) => p.slug).map((p) => ({ slug: p.slug, name: p.name, role: p.aboutRole[locale], bio: p.bio[locale] }))
+  ];
+}
+
+function profileLink(locale, slug) {
+  return slug ? { href: href(locale, `about-us/${slug}.html`), label: shared.viewProfile[locale] } : null;
+}
 
 function main(locale) {
   const t = COPY[locale];
@@ -263,10 +280,10 @@ function main(locale) {
     <h2 class="section-heading" style="margin-bottom:10px">${t.collective.heading}</h2>
     <p class="section-subtext" style="margin-bottom:var(--space-7)">${t.collective.subtext}</p>
     <div class="auto-grid" style="--min:220px">
-      ${PEOPLE_META.map((p, i) => personCard({ name: p.name, role: t.collective.roles[i], bio: t.collective.bios[i], stagger: p.stagger })).join('\n      ')}
+      ${PEOPLE_META.map((p, i) => personCard({ name: p.name, role: t.collective.roles[i], bio: t.collective.bios[i], stagger: p.stagger, profile: profileLink(locale, p.slug) })).join('\n      ')}
       ${EXTRA_PEOPLE.map((entry) => {
         const person = people[entry.key];
-        return personCard({ name: person.name, role: person.aboutRole[locale], bio: person.bio[locale], stagger: entry.stagger });
+        return personCard({ name: person.name, role: person.aboutRole[locale], bio: person.bio[locale], stagger: entry.stagger, profile: profileLink(locale, person.slug) });
       }).join('\n      ')}
       ${personCard({ name: t.collective.openSeatName, role: t.collective.openSeatRole, bio: t.collective.openSeatBio, stagger: OPEN_SEAT.stagger })}
     </div>
@@ -302,5 +319,6 @@ module.exports = {
     },
     ogImage: 'about-us'
   },
-  main
+  main,
+  roster
 };

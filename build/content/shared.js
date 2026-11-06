@@ -19,6 +19,7 @@ module.exports = {
     es: 'Preguntas Frecuentes',
     pt: 'Perguntas Frequentes'
   },
+  viewProfile: { en: 'View Profile →', fr: 'Voir le Profil →', es: 'Ver Perfil →', pt: 'Ver Perfil →' },
   whoLeadsThisWork: {
     en: 'Who leads this work',
     fr: 'Qui Dirige ce Travail',

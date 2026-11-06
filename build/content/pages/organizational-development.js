@@ -30,7 +30,7 @@ const COPY = {
       subtext: 'Practitioners who’ve run the programs they’re advising on.',
       role1: 'Programs & Policy · Nairobi',
       bio1: 'HIV response leader for over a decade. Builds feminist movement infrastructure from grassroots organizations to global funding bodies.',
-      role2: 'Research & Advocacy · Brasília',
+      role2: 'Research & Advocacy · Geneva',
       bio2: 'Activist living with HIV and researcher at Fiocruz Brasília. Leads policy analysis and evidence work across Latin America.'
     },
     faqs: [
@@ -76,7 +76,7 @@ const COPY = {
       subtext: 'Des praticiens qui ont dirigé les programmes sur lesquels ils conseillent désormais.',
       role1: 'Programmes et Politiques · Nairobi',
       bio1: "Leader de la réponse au VIH depuis plus de dix ans. Bâtit une infrastructure de mouvement féministe, des organisations de base jusqu'aux bailleurs mondiaux.",
-      role2: 'Recherche et Plaidoyer · Brasília',
+      role2: 'Recherche et Plaidoyer · Genève',
       bio2: "Militant séropositif et chercheur à la Fiocruz Brasília. Dirige l'analyse des politiques et le travail de preuves à travers l'Amérique latine."
     },
     faqs: [
@@ -122,7 +122,7 @@ const COPY = {
       subtext: 'Profesionales que han dirigido los programas sobre los que hoy asesoran.',
       role1: 'Programas y Políticas · Nairobi',
       bio1: 'Líder de la respuesta al VIH durante más de una década. Construye infraestructura de movimiento feminista desde organizaciones de base hasta entidades financiadoras globales.',
-      role2: 'Investigación y Defensoría · Brasília',
+      role2: 'Investigación y Defensoría · Ginebra',
       bio2: 'Activista que vive con VIH e investigador en Fiocruz Brasília. Dirige análisis de políticas y trabajo de evidencia en toda América Latina.'
     },
     faqs: [
@@ -168,7 +168,7 @@ const COPY = {
       subtext: 'Profissionais que já conduziram os programas sobre os quais agora assessoram.',
       role1: 'Programas e Políticas · Nairobi',
       bio1: 'Líder da resposta ao HIV por mais de uma década. Constrói infraestrutura de movimento feminista desde organizações de base até órgãos de financiamento globais.',
-      role2: 'Pesquisa e Advocacy · Brasília',
+      role2: 'Pesquisa e Advocacy · Genebra',
       bio2: 'Ativista vivendo com HIV e pesquisador na Fiocruz Brasília. Lidera análise de políticas e trabalho de evidências em toda a América Latina.'
     },
     faqs: [
@@ -274,6 +274,9 @@ function main(locale) {
       ${teamCard({ name: TEAM_META[1].name, role: t.team.role2, bio: t.team.bio2 }, locale)}
       ${teamCard({ name: people.victoriaOwoyele.name, role: people.victoriaOwoyele.teamRole[locale], bio: people.victoriaOwoyele.bio[locale] }, locale)}
       ${teamCard({ name: people.nickJackson.name, role: people.nickJackson.teamRole[locale], bio: people.nickJackson.bio[locale] }, locale)}
+      ${teamCard({ name: people.jasPlaceholder.name, role: people.jasPlaceholder.teamRole[locale], bio: people.jasPlaceholder.bio[locale] }, locale)}
+      ${teamCard({ name: people.brianKanyemba.name, role: people.brianKanyemba.teamRole[locale], bio: people.brianKanyemba.bio[locale] }, locale)}
+      ${teamCard({ name: people.tinasheMuchenje.name, role: people.tinasheMuchenje.teamRole[locale], bio: people.tinasheMuchenje.bio[locale] }, locale)}
       ${teamCard({ name: people.leandroMaldonado.name, role: people.leandroMaldonado.teamRole[locale], bio: people.leandroMaldonado.bio[locale] }, locale)}
     </div>
   </div>

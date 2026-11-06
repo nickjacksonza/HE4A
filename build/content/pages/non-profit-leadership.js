@@ -31,9 +31,9 @@ const COPY = {
     },
     team: {
       subtext: 'You work directly with the person doing the work. There’s no account team.',
-      role1: 'Founder & Principal · Seattle',
-      bio1: 'M.P.H., M.H.L. Leads board governance reviews and executive coaching. Acting Director of the Duke University Sexual & Gender Minority Wellness program.',
-      role2: 'Leadership Faculty · Atlanta',
+      role1: 'Founder & Principal · Cape Town',
+      bio1: 'Leads board governance reviews and executive coaching. Acting Director of the Duke University Sexual & Gender Minority Wellness program.',
+      role2: 'Leadership Faculty · Washington, DC',
       bio2: 'Advocate for DEI and health equity. Works with executives and boards on culture, accountability and succession planning.'
     },
     faqs: [
@@ -71,9 +71,9 @@ const COPY = {
     },
     team: {
       subtext: 'Vous travaillez directement avec la personne qui fait le travail. Il n’y a pas d’équipe intermédiaire.',
-      role1: 'Fondateur et Principal · Seattle',
-      bio1: 'M.P.H., M.H.L. Dirige les revues de gouvernance du conseil et le coaching de direction. Directeur par intérim du programme de bien-être des minorités sexuelles et de genre de l’Université Duke.',
-      role2: 'Faculté de Leadership · Atlanta',
+      role1: 'Fondateur et Principal · Cape Town',
+      bio1: 'Dirige les revues de gouvernance du conseil et le coaching de direction. Directeur par intérim du programme de bien-être des minorités sexuelles et de genre de l’Université Duke.',
+      role2: 'Faculté de Leadership · Washington, D.C.',
       bio2: "Défenseure de la diversité, de l'équité et de l'inclusion ainsi que de l'équité en santé. Travaille avec les cadres et les conseils sur la culture, la redevabilité et la planification de succession."
     },
     faqs: [
@@ -111,9 +111,9 @@ const COPY = {
     },
     team: {
       subtext: 'Trabajas directamente con la persona que hace el trabajo. No hay equipo de cuentas.',
-      role1: 'Fundador y Principal · Seattle',
-      bio1: 'M.P.H., M.H.L. Dirige revisiones de gobernanza de la junta y coaching ejecutivo. Director interino del programa de bienestar de minorías sexuales y de género de la Universidad Duke.',
-      role2: 'Facultad de Liderazgo · Atlanta',
+      role1: 'Fundador y Principal · Ciudad del Cabo',
+      bio1: 'Dirige revisiones de gobernanza de la junta y coaching ejecutivo. Director interino del programa de bienestar de minorías sexuales y de género de la Universidad Duke.',
+      role2: 'Facultad de Liderazgo · Washington, D. C.',
       bio2: 'Defensora de la diversidad, equidad e inclusión y de la equidad en salud. Trabaja con ejecutivos y juntas en cultura, rendición de cuentas y planificación de sucesión.'
     },
     faqs: [
@@ -151,9 +151,9 @@ const COPY = {
     },
     team: {
       subtext: 'Você trabalha diretamente com quem faz o trabalho. Não existe equipe de contas.',
-      role1: 'Fundador e Diretor Principal · Seattle',
-      bio1: 'M.P.H., M.H.L. Lidera revisões de governança do conselho e coaching executivo. Diretor interino do programa de bem-estar de minorias sexuais e de gênero da Universidade Duke.',
-      role2: 'Corpo Docente de Liderança · Atlanta',
+      role1: 'Fundador e Diretor Principal · Cidade do Cabo',
+      bio1: 'Lidera revisões de governança do conselho e coaching executivo. Diretor interino do programa de bem-estar de minorias sexuais e de gênero da Universidade Duke.',
+      role2: 'Corpo Docente de Liderança · Washington, D.C.',
       bio2: 'Defensora da diversidade, equidade e inclusão e da equidade em saúde. Trabalha com executivos e conselhos em cultura, prestação de contas e planejamento de sucessão.'
     },
     faqs: [
@@ -238,7 +238,7 @@ function main(locale) {
     <div class="auto-grid" style="--min:280px">
       ${teamCard({ name: TEAM_META[0].name, role: t.team.role1, bio: t.team.bio1 }, locale)}
       ${teamCard({ name: TEAM_META[1].name, role: t.team.role2, bio: t.team.bio2 }, locale)}
-      ${teamCard({ name: people.keletsoMakofane.name, role: people.keletsoMakofane.teamRole[locale], bio: people.keletsoMakofane.bio[locale] }, locale)}
+      ${teamCard({ name: people.brianKanyemba.name, role: people.brianKanyemba.teamRole[locale], bio: people.brianKanyemba.bio[locale] }, locale)}
     </div>
   </div>
 </section>

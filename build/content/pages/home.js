@@ -5,9 +5,9 @@ const site = require('../site');
 const QUOTE_AUTHOR = 'Ace Robinson, M.P.H., M.H.L';
 
 const PEOPLE_META = [
-  { name: 'Ace Robinson', place: 'Seattle, USA', stagger: 0 },
-  { name: 'Lauren Miller', place: 'Atlanta, USA', stagger: 24 },
-  { name: 'Diego Calixto', place: 'Brasília, Brazil', stagger: 8 },
+  { name: 'Ace Robinson', place: 'Cape Town, South Africa', stagger: 0 },
+  { name: 'Lauren Miller', place: 'Washington, DC, USA', stagger: 24 },
+  { name: 'Diego Calixto', place: 'Geneva, Switzerland', stagger: 8 },
   { name: 'Lucy Wanjiku Njenga', place: 'Nairobi, Kenya', stagger: 32 },
   { name: 'Eduardo Culbeaux', place: 'Southeast Asia', stagger: 12 }
 ];
