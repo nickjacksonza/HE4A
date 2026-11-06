@@ -519,6 +519,7 @@ main:focus { outline: none; }
   flex-wrap: wrap;
 }
 .nav-item { position: relative; padding: var(--space-2) 0; }
+.nav-item-row { display: flex; align-items: center; }
 .nav-link {
   font-size: var(--text-sm);
   font-weight: var(--weight-medium);
@@ -536,11 +537,29 @@ main:focus { outline: none; }
   margin-top: 5px;
   border-radius: 2px;
 }
-.nav-caret { font-size: 10px; opacity: 0.7; }
+/* The arrow is its own button, so the label can be a plain link to the page. 32px
+   is above the 24px WCAG 2.2 minimum target size; the mobile menu makes it 48px. */
+.nav-caret-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  margin-left: 2px;
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius-full);
+  background: transparent;
+  color: var(--text-primary);
+  cursor: pointer;
+}
+.nav-caret-btn:hover { background: var(--color-paper-100); color: var(--brand-primary); }
+.nav-caret { transition: transform var(--duration-base) var(--ease-standard); }
+.nav-item.is-open .nav-caret { transform: rotate(180deg); }
 
 .nav-dropdown {
   position: absolute;
-  top: 36px;
+  top: calc(100% - 6px);
   left: -12px;
   background: var(--color-paper-0);
   box-shadow: var(--shadow-lg);
@@ -564,34 +583,51 @@ main:focus { outline: none; }
 
 .nav-cta { margin-left: var(--space-2); }
 
-@media (hover: hover) and (pointer: fine) and (min-width: 1261px) {
+@media (hover: hover) and (pointer: fine) and (min-width: 1271px) {
   .nav-item:hover .nav-dropdown { display: flex; }
 }
 .nav-extras { display: none; }
 
-/* Desktop fit. Measured at 1536px wide: English fits on one line down to
-   ~1351px, but es/pt need ~1535-1545px and fr ~1450. Compact mode (13px labels
-   balanced onto two lines, tighter gaps) brings every locale under ~1260px, so
-   one drawer breakpoint (1260px) serves all four. Compact applies to English
-   only below 1351px, where it would otherwise wrap, and to fr/es/pt below
-   1600px. Adding a nav item or lengthening a label means re-measuring. */
-@media (min-width: 1261px) and (max-width: 1350px) {
+/* Desktop fit. Measured at 1536px wide, with the arrow buttons and 16px gaps:
+   English fits on one line from ~1457px; fr/es/pt are wider (single line needs
+   about 1640px). Below those widths a compact layout (13px labels balanced
+   onto two lines, tighter header) keeps one line down to the 1270px drawer breakpoint,
+   and "Work With Us" moves out of the nav into the dark language bar. Adding a nav
+   item or lengthening a label means re-measuring. */
+.lang-bar-cta { display: none; }
+@media (min-width: 1271px) and (max-width: 1469px) {
   .site-header { flex-wrap: nowrap; gap: var(--space-4); padding-inline: var(--space-5); }
-  .nav { flex-wrap: nowrap; gap: var(--space-2); }
+  .nav { flex-wrap: nowrap; }
   .nav-link { font-size: 13px; max-width: 135px; line-height: 1.25; text-wrap: balance; }
-  .nav-cta { white-space: nowrap; padding: 10px 14px; font-size: 13px; }
+  .nav-cta { display: none; }
+  .lang-bar-cta { display: inline-flex; }
 }
-@media (min-width: 1351px) and (max-width: 1599px) {
+@media (min-width: 1271px) and (max-width: 1699px) {
   .nav--long .site-header { flex-wrap: nowrap; gap: var(--space-4); padding-inline: var(--space-5); }
-  .nav--long .nav { flex-wrap: nowrap; gap: var(--space-2); }
+  .nav--long .nav { flex-wrap: nowrap; }
   .nav--long .nav-link { font-size: 13px; max-width: 135px; line-height: 1.25; text-wrap: balance; }
-  .nav--long .nav-cta { white-space: nowrap; padding: 10px 14px; font-size: 13px; }
+  .nav--long .nav-cta { display: none; }
+  .nav--long .lang-bar-cta { display: inline-flex; }
 }
+.lang-bar-cta {
+  align-items: center;
+  font-size: 13px;
+  font-weight: var(--weight-semibold);
+  color: var(--color-ink-900);
+  background: var(--color-sky-300);
+  border-radius: var(--radius-full);
+  padding: 4px 14px;
+  min-height: 28px;
+  margin-left: var(--space-3);
+  text-decoration: none;
+  white-space: nowrap;
+}
+.lang-bar-cta:hover { background: var(--color-sky-400); color: var(--color-ink-900); }
 
 /* Mobile / tablet menu: full-screen ink overlay with large numbered links, an
    accordion for sub-pages, and CTA, language, contact and social links at the
    bottom. The logo and toggle stay above the overlay. */
-@media (max-width: 1260px) {
+@media (max-width: 1270px) {
   .site-logo, .nav-toggle { position: relative; z-index: 2; }
   .site-header { transition: background var(--duration-base) var(--ease-standard), border-color var(--duration-base) var(--ease-standard); }
   .site-header-wrap.is-nav-open .site-header { background: transparent; border-bottom-color: transparent; }
@@ -679,8 +715,18 @@ main:focus { outline: none; }
   }
   .nav-link:hover, .nav-link:focus-visible { color: var(--color-sky-300); }
   .nav-link[aria-current="page"] { color: var(--color-sky-300); }
-  .nav-caret { margin-left: auto; font-size: 14px; opacity: 0.8; transition: transform var(--duration-base) var(--ease-standard); }
-  .nav-item.is-open .nav-caret { transform: rotate(180deg); }
+  .nav-item-row { align-items: center; }
+  .nav-link { flex: 1; }
+  .nav-caret-btn {
+    width: 48px;
+    height: 48px;
+    margin: 0 -8px 0 var(--space-2);
+    color: var(--color-paper-50);
+    border: 1px solid oklch(99% 0 0 / 0.25);
+  }
+  .nav-caret-btn:hover, .nav-caret-btn:focus-visible { background: oklch(99% 0 0 / 0.1); color: var(--color-sky-300); }
+  .nav-caret { width: 20px; height: 20px; }
+  .nav-dropdown { top: auto; left: auto; }
   .nav-link-underline { display: none; }
 
   .nav-dropdown {
@@ -752,7 +798,7 @@ main:focus { outline: none; }
   .nav-extras-link { font-size: var(--text-sm); color: var(--color-paper-200); text-decoration: none; padding: 4px 0; }
   .nav-extras-link:hover, .nav-extras-link:focus-visible { color: var(--color-sky-300); text-decoration: underline; text-underline-offset: 3px; }
 }
-@media (max-width: 1260px) and (prefers-reduced-motion: reduce) {
+@media (max-width: 1270px) and (prefers-reduced-motion: reduce) {
   .nav, .nav.is-open, .nav-item, .nav-cta, .nav-extras, .nav-dropdown { transition: none; }
 }
 

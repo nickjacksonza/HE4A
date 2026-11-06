@@ -67,6 +67,7 @@ function meta(pageMeta) {
 
   return `<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="google-site-verification" content="jII_-pe_fkFM_Ft2Xjh8usSYIMGxs6m-SbZpmid3Fpw">
 <title>${fullTitle}</title>
 <meta name="description" content="${description}">
 ${noindex ? '<meta name="robots" content="noindex">' : `<link rel="canonical" href="${url}">

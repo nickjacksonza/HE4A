@@ -16,6 +16,7 @@ function langBar(currentLocale, currentOutputFile) {
     <div class="lang-buttons">
 ${buttons}
     </div>
+    <a href="${href(currentLocale, 'contact.html')}" class="lang-bar-cta">${NAV_LABELS[currentLocale].workWithUs}</a>
   </div>`;
 }
 
@@ -41,6 +42,17 @@ function navExtras(currentLocale, currentOutputFile) {
       </div>`;
 }
 
+// Accessible name for the button that opens a nav item's sub-pages. The item
+// itself is a normal link to its page; this button only toggles the list.
+const SUBMENU_LABEL = {
+  en: (label) => `${label} submenu`,
+  fr: (label) => `Sous-menu ${label}`,
+  es: (label) => `Submenú ${label}`,
+  pt: (label) => `Submenu ${label}`
+};
+
+const CHEVRON = '<svg class="nav-caret" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3.5 6l4.5 4.5L12.5 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+
 function navMarkup(locale, activeNavId) {
   const labels = NAV_LABELS[locale];
   return NAV_STRUCTURE
@@ -49,20 +61,27 @@ function navMarkup(locale, activeNavId) {
       const hasDropdown = item.items.length > 0;
       const underline = isActive ? '\n        <span class="nav-link-underline" aria-hidden="true"></span>' : '';
       const itemHref = href(locale, item.href);
+      const link = `<a href="${itemHref}" class="nav-link"${isActive ? ' aria-current="page"' : ''}>${labels[item.id]}</a>`;
 
       if (!hasDropdown) {
         return `      <div class="nav-item">
-        <a href="${itemHref}" class="nav-link"${isActive ? ' aria-current="page"' : ''}>${labels[item.id]}</a>${underline}
+        <div class="nav-item-row">
+          ${link}
+        </div>${underline}
       </div>`;
       }
 
+      const submenuId = `submenu-${item.id}`;
       const dropdownLinks = item.items
         .map((sub) => `          <a href="${itemHref}#${sub.anchor}" class="nav-dropdown-link">${labels[sub.id]}</a>`)
         .join('\n');
 
       return `      <div class="nav-item">
-        <a href="${itemHref}" class="nav-link" aria-haspopup="true" aria-expanded="false">${labels[item.id]} <span class="nav-caret" aria-hidden="true">▾</span></a>${underline}
-        <div class="nav-dropdown">
+        <div class="nav-item-row">
+          ${link}
+          <button type="button" class="nav-caret-btn" aria-expanded="false" aria-controls="${submenuId}" aria-label="${SUBMENU_LABEL[locale](labels[item.id])}">${CHEVRON}</button>
+        </div>${underline}
+        <div class="nav-dropdown" id="${submenuId}">
 ${dropdownLinks}
         </div>
       </div>`;
