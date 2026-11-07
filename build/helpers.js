@@ -211,7 +211,7 @@ function personCard({ name, role, bio, stagger, profile, homeShort, portraitAlt 
   const portraitClass = photo ? 'person-portrait' : 'person-portrait person-portrait-placeholder';
   const portrait = `<div class="${portraitClass}">${portraitInner}</div>`;
   return `<div class="person" style="--stagger:${stagger}px">
-        ${profile ? `<a href="${profile.href}" class="person-link" tabindex="-1" aria-hidden="true">${portrait}</a>` : portrait}
+        ${profile ? `<a href="${profile.href}" class="person-link" tabindex="-1" aria-hidden="true">${portrait}<span class="visually-hidden">${escapeHtml(name)}</span></a>` : portrait}
         <div class="person-name">${profile ? `<a href="${profile.href}" class="person-name-link">${escapeHtml(name)}</a>` : escapeHtml(name)}</div>
         <div class="person-role">${escapeHtml(role)}</div>
         ${bioBlock('person-bio', bio, homeShort)}${profile ? `\n        <a href="${profile.href}" class="person-more">${profile.label}<span class="visually-hidden">: ${escapeHtml(name)}</span></a>` : ''}
