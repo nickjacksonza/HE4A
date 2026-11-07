@@ -129,7 +129,7 @@ function makePage(slug) {
       : `<div class="profile-portrait profile-portrait-placeholder"><span>${PORTRAIT_LABEL[locale]} — ${escapeHtml(p.name)}</span></div>`;
     const contact = contactSection(profile, t);
 
-    return `<section class="section--first band-paper">
+    return `<section class="section section--first profile-hero band-paper">
   <div class="container">
     <p class="breadcrumb breadcrumb--light"><a href="${href(locale, 'index.html')}">${shared.breadcrumbHome[locale]}</a> / <a href="${href(locale, 'about-us.html')}">${aboutUs.meta.title[locale]}</a> / ${escapeHtml(p.name)}</p>
     <div class="profile-grid">
@@ -143,7 +143,7 @@ function makePage(slug) {
   </div>
 </section>
 
-<section class="section band-paper-subtle">
+<section class="section profile-contact band-paper-subtle">
   <div class="container">
     <div class="contact-grid">
       ${formCard(locale, { intro: t.formIntro, hidden: { _subject: t.formSubject(p.name), profile: p.name } })}

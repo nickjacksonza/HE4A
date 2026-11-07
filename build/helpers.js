@@ -162,10 +162,13 @@ function homeShortFor(person, locale) {
   return options.find((h) => h.code !== locale) || null;
 }
 
-// People are listed alphabetically by first name (ignoring "Dr."), with Ace
-// Robinson first wherever he appears. `nameOf` reads the name from an item.
+// People are listed alphabetically by surname (then first name, ignoring "Dr."),
+// with Ace Robinson first wherever he appears. `nameOf` reads the name from an item.
 function sortPeople(list, nameOf = (x) => x) {
-  const key = (item) => nameOf(item).replace(/^Dr\.\s+/, '').toLowerCase();
+  const key = (item) => {
+    const words = nameOf(item).replace(/^Dr\.\s+/, '').toLowerCase().split(/\s+/);
+    return `${words[words.length - 1]} ${words[0]}`;
+  };
   const isAce = (item) => nameOf(item) === 'Ace Robinson';
   return [...list].sort((a, b) => (isAce(b) - isAce(a)) || key(a).localeCompare(key(b)));
 }
