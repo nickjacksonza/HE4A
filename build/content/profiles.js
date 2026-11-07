@@ -14,6 +14,7 @@
 //   social:    { linkedin, twitter, instagram, facebook, website }  full URLs
 module.exports = {
   'ace-robinson': {
+    social: { linkedin: 'https://www.linkedin.com/in/akeliah' },
     fullBio: {
       en: `Equity Is the Word Founder & Principal, Ace Robinson, is a leading administrative and policy communicable disease advocate and population health expert. He serves as the Acting Director of Duke University’s Sexual & Gender Minority Wellness program while supporting communities disproportionately impacted by HIV, STI’s, mpox, COVID-19, tuberculosis, malaria, and associated illnesses. Robinson is also the Founder & Principal of Equity Is the Word, a global health equity consulting firm focused on bringing systemic changes to historically excluded key population who experience poorer health outcomes. He sits on the UCLA Center for HIV, Identification, Prevention & Treatment (CHIPTS) steering committee; UCSF’s Regional Advisory Board for their Health Equity Collaborative; and on the Coalition for TB Free California steering committee.
 

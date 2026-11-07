@@ -17,7 +17,7 @@ const COPY = {
     phone: 'Phone',
     follow: 'Find them online',
     website: 'Website',
-    formIntro: 'This form sends your message to Ace Robinson at Health Equity 4 All.',
+    formIntro: 'This form sends your message to Ace Robinson at Equity Is the Word.',
     formSubject: (name) => `Message for ${name} via the website`
   },
   fr: {
@@ -28,7 +28,7 @@ const COPY = {
     phone: 'Téléphone',
     follow: 'En ligne',
     website: 'Site web',
-    formIntro: 'Ce formulaire envoie votre message à Ace Robinson, chez Health Equity 4 All.',
+    formIntro: 'Ce formulaire envoie votre message à Ace Robinson, chez Equity Is the Word.',
     formSubject: (name) => `Message pour ${name} via le site`
   },
   es: {
@@ -39,7 +39,7 @@ const COPY = {
     phone: 'Teléfono',
     follow: 'En línea',
     website: 'Sitio web',
-    formIntro: 'Este formulario envía tu mensaje a Ace Robinson, en Health Equity 4 All.',
+    formIntro: 'Este formulario envía tu mensaje a Ace Robinson, en Equity Is the Word.',
     formSubject: (name) => `Mensaje para ${name} desde el sitio`
   },
   pt: {
@@ -50,12 +50,18 @@ const COPY = {
     phone: 'Telefone',
     follow: 'Na internet',
     website: 'Site',
-    formIntro: 'Este formulário envia sua mensagem para Ace Robinson, na Health Equity 4 All.',
+    formIntro: 'Este formulário envia sua mensagem para Ace Robinson, na Equity Is the Word.',
     formSubject: (name) => `Mensagem para ${name} pelo site`
   }
 };
 
-const SOCIAL_LABELS = { linkedin: 'LinkedIn', twitter: 'Twitter', instagram: 'Instagram', facebook: 'Facebook' };
+const SOCIAL_NAMES = { linkedin: 'LinkedIn', twitter: 'Twitter', instagram: 'Instagram', facebook: 'Facebook' };
+const PROFILE_LABEL = {
+  en: (n) => `${n} profile`,
+  fr: (n) => `Profil ${n}`,
+  es: (n) => `Perfil de ${n}`,
+  pt: (n) => `Perfil no ${n}`
+};
 
 // Splits a bio on blank lines into <p> elements.
 function paragraphs(text) {
@@ -99,7 +105,7 @@ function bioSection(locale, person, profile, t) {
       ${homePanels}`;
 }
 
-function contactSection(profile, t) {
+function contactSection(profile, t, locale) {
   const rows = [];
   if (profile.email) rows.push(`<div><h3 class="info-block-label">${t.email}</h3><div class="info-block-value"><a href="mailto:${escapeHtml(profile.email)}">${escapeHtml(profile.email)}</a></div></div>`);
   if (profile.phone) rows.push(`<div><h3 class="info-block-label">${t.phone}</h3><div class="info-block-value"><a href="tel:${escapeHtml(profile.phone.replace(/\s+/g, ''))}">${escapeHtml(profile.phone)}</a></div></div>`);
@@ -107,7 +113,7 @@ function contactSection(profile, t) {
   const social = profile.social || {};
   const links = Object.keys(social)
     .filter((k) => social[k])
-    .map((k) => `<a href="${escapeHtml(social[k])}" class="social-link" rel="noopener">${SOCIAL_LABELS[k] || t.website}</a>`);
+    .map((k) => `<a href="${escapeHtml(social[k])}" class="social-link" rel="noopener">${SOCIAL_NAMES[k] ? PROFILE_LABEL[locale](SOCIAL_NAMES[k]) : t.website}</a>`);
 
   if (!rows.length && !links.length) return '';
   return `<div class="info-block band-sky">
@@ -129,7 +135,7 @@ function makePage(slug) {
     const portrait = photo
       ? `<div class="profile-portrait">${photo}</div>`
       : `<div class="profile-portrait profile-portrait-placeholder"><span>${PORTRAIT_LABEL[locale]} — ${escapeHtml(p.name)}</span></div>`;
-    const contact = contactSection(profile, t);
+    const contact = contactSection(profile, t, locale);
 
     return `<section class="section section--first profile-hero band-paper">
   <div class="container">

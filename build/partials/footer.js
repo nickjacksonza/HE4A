@@ -2,15 +2,16 @@ const site = require('../content/site');
 const { NAV_LABELS } = require('../content/nav');
 const shared = require('../content/shared');
 const { href, asset } = require('../helpers');
+const posts = require('../content/posts');
 
 // Footer link text. The same pages are linked from the header menu, so these
 // describe the page instead of repeating its menu label. Every link text then
 // appears once on a page.
 const FOOTER_LINKS = {
-  en: { nonProfitLeadership: 'Board governance and coaching', organizationalDevelopment: 'Programs, policy and grants', trainings: 'Racial equity and LGBTQ+ training', publicSpeaking: 'Keynotes and moderation', recruitment: 'Executive search and hiring', aboutUs: 'Meet the collective', contact: 'Send us a message' },
-  fr: { nonProfitLeadership: 'Gouvernance et coaching', organizationalDevelopment: 'Programmes, politiques et subventions', trainings: 'Formation en équité raciale et LGBTQ+', publicSpeaking: 'Conférences et modération', recruitment: 'Recherche de cadres et recrutement', aboutUs: 'Rencontrer le collectif', contact: 'Envoyez-nous un message' },
-  es: { nonProfitLeadership: 'Gobernanza y coaching', organizationalDevelopment: 'Programas, políticas y subvenciones', trainings: 'Formación en equidad racial y LGBTQ+', publicSpeaking: 'Conferencias y moderación', recruitment: 'Búsqueda de ejecutivos y contratación', aboutUs: 'Conoce al colectivo', contact: 'Envíanos un mensaje' },
-  pt: { nonProfitLeadership: 'Governança e coaching', organizationalDevelopment: 'Programas, políticas e financiamentos', trainings: 'Treinamento em equidade racial e LGBTQ+', publicSpeaking: 'Palestras e moderação', recruitment: 'Busca de executivos e contratação', aboutUs: 'Conheça o coletivo', contact: 'Envie-nos uma mensagem' }
+  en: { nonProfitLeadership: 'Board governance and coaching', organizationalDevelopment: 'Programs, policy and grants', trainings: 'Racial equity and LGBTQ+ training', publicSpeaking: 'Keynotes and moderation', recruitment: 'Executive search and hiring', aboutUs: 'Meet the collective', contact: 'Send us a message', privacy: 'Privacy Policy', insights: 'Insights' },
+  fr: { nonProfitLeadership: 'Gouvernance et coaching', organizationalDevelopment: 'Programmes, politiques et subventions', trainings: 'Formation en équité raciale et LGBTQ+', publicSpeaking: 'Conférences et modération', recruitment: 'Recherche de cadres et recrutement', aboutUs: 'Rencontrer le collectif', contact: 'Envoyez-nous un message', privacy: 'Politique de confidentialité (en anglais)', insights: 'Articles (en anglais)' },
+  es: { nonProfitLeadership: 'Gobernanza y coaching', organizationalDevelopment: 'Programas, políticas y subvenciones', trainings: 'Formación en equidad racial y LGBTQ+', publicSpeaking: 'Conferencias y moderación', recruitment: 'Búsqueda de ejecutivos y contratación', aboutUs: 'Conoce al colectivo', contact: 'Envíanos un mensaje', privacy: 'Política de privacidad (en inglés)', insights: 'Artículos (en inglés)' },
+  pt: { nonProfitLeadership: 'Governança e coaching', organizationalDevelopment: 'Programas, políticas e financiamentos', trainings: 'Treinamento em equidade racial e LGBTQ+', publicSpeaking: 'Palestras e moderação', recruitment: 'Busca de executivos e contratação', aboutUs: 'Conheça o coletivo', contact: 'Envie-nos uma mensagem', privacy: 'Política de privacidade (em inglês)', insights: 'Artigos (em inglês)' }
 };
 
 const FOOTER_COPY = {
@@ -63,7 +64,7 @@ function footer(locale, page) {
   <div class="footer-grid">
     <div class="footer-col">
       <div class="footer-brand-row">
-        <img src="${asset('assets/logo/mark-transparent-76.webp')}" alt="Health Equity 4 All" width="39" height="34" class="footer-logo">
+        <img src="${asset('assets/logo/mark-transparent-76.webp')}" alt="Equity Is the Word" width="39" height="34" class="footer-logo">
         <span class="footer-wordmark">Equity Is the Word</span>
       </div>
       <p class="footer-blurb">${f.blurb}</p>
@@ -82,6 +83,7 @@ function footer(locale, page) {
       <a href="${href(locale, 'about-us.html')}" class="footer-link">${text.aboutUs}</a>
       <a href="${href(locale, 'contact.html')}" class="footer-link">${text.contact}</a>
       <a href="${href(locale, 'accessibility.html')}" class="footer-link">${shared.accessibilityLabel[locale]}</a>
+      <a href="${href('en', 'privacy.html')}" class="footer-link"${locale === 'en' ? '' : ' hreflang="en"'}>${text.privacy}</a>${posts.length ? `\n      <a href="${href('en', 'insights.html')}" class="footer-link"${locale === 'en' ? '' : ' hreflang="en"'}>${text.insights}</a>` : ''}
       <div class="footer-text">${officesLine}</div>
       <a href="mailto:${site.email}" class="footer-link" style="margin-top:6px">${site.email}</a>
       <a href="tel:${site.phone.replace(/\s+/g, '')}" class="footer-link">${site.phone}</a>
@@ -96,7 +98,7 @@ function footer(locale, page) {
   ${shareLinks(locale, page)}
   <div class="footer-bottom">
     <span>© ${site.copyrightYear} ${site.legalName}</span>
-    <span>${site.siteName}</span>
+    <span>${site.alternateName}</span>
   </div>
 </footer>`;
 }

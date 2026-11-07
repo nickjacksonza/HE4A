@@ -25,3 +25,6 @@ __pycache__/
 *.db-shm
 *.db-wal
 .playwright-cli/
+
+# Internal to-do list for the team; not published
+worksheet.md

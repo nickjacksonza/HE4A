@@ -317,7 +317,7 @@ module.exports = {
   outputFile: 'about-us.html',
   activeNavId: 'aboutUs',
   meta: {
-    seoTitle: { en: 'About Health Equity 4 All: A Collective, Not a Consultancy' },
+    seoTitle: { en: 'About Equity Is the Word: A Collective, Not a Consultancy' },
     title: {
       en: 'About Us',
       fr: 'À Propos',
