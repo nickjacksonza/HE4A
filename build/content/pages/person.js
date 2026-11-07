@@ -6,6 +6,8 @@ const profiles = require('../profiles');
 const aboutUs = require('./about-us');
 const { formCard } = require('./contact');
 
+const COLLECTIVE = { en: 'The Collective', fr: 'Le collectif', es: 'El colectivo', pt: 'O coletivo' };
+
 const COPY = {
   en: {
     bioHeading: 'Biography',
@@ -131,7 +133,7 @@ function makePage(slug) {
 
     return `<section class="section section--first profile-hero band-paper">
   <div class="container">
-    <p class="breadcrumb breadcrumb--light"><a href="${href(locale, 'index.html')}">${shared.breadcrumbHome[locale]}</a> / <a href="${href(locale, 'about-us.html')}">${aboutUs.meta.title[locale]}</a> / ${escapeHtml(p.name)}</p>
+    <p class="breadcrumb breadcrumb--light"><a href="${href(locale, 'index.html')}">${shared.breadcrumbHome[locale]}</a> / <a href="${href(locale, 'about-us.html')}">${COLLECTIVE[locale]}</a> / ${escapeHtml(p.name)}</p>
     <div class="profile-grid">
       ${portrait}
       <div class="profile-intro">

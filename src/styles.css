@@ -1077,7 +1077,7 @@ main:focus { outline: none; }
 .service-card-link::after { content: ""; position: absolute; inset: 0; z-index: 1; }
 .service-card-link:focus-visible { box-shadow: none; outline: none; }
 .service-card:has(.service-card-link:focus-visible) { box-shadow: var(--focus-ring); }
-.service-card:hover .service-card-link { text-decoration: underline; text-underline-offset: 4px; }
+.service-card:hover .service-link { text-decoration: underline; text-underline-offset: 4px; }
 .service-card--featured { flex-direction: column; grid-row: span 2; }
 .service-card--featured .service-media { width: 100%; height: 280px; object-fit: cover; }
 .service-card--featured .service-body { padding: var(--space-6); display: flex; flex-direction: column; gap: var(--space-3); flex: 1; }

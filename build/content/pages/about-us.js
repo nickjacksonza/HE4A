@@ -1,4 +1,4 @@
-const { picture, href, personCard, homeShortFor, sortPeople } = require('../../helpers');
+const { picture, href, personCard, homeShortFor, sortPeople, PORTRAIT_LABEL } = require('../../helpers');
 const site = require('../site');
 const people = require('../people');
 const shared = require('../shared');
@@ -70,7 +70,7 @@ const COPY = {
       openSeatBio: 'We’re growing the collective with members whose practice is rooted in Southern Africa. Know someone who should be here? Tell us.'
     },
     quote: { eyebrow: 'What We Say To People', text: 'The major difference between public health and thermodynamics is that thermodynamics is easier.' },
-    ctaButton: 'Work With Us',
+    ctaButton: 'Let’s Work Together',
     heroAlt: 'Members of the collective standing together outdoors'
   },
   fr: {
@@ -158,7 +158,7 @@ const COPY = {
       openSeatBio: 'Estamos haciendo crecer el colectivo con miembros cuya práctica está arraigada en el África meridional. ¿Conoces a alguien que debería estar aquí? Cuéntanos.'
     },
     quote: { eyebrow: 'Lo Que le Decimos a la Gente', text: 'La principal diferencia entre la salud pública y la termodinámica es que la termodinámica es más fácil.' },
-    ctaButton: 'Trabaja con Nosotros',
+    ctaButton: 'Trabajemos Juntos',
     heroAlt: 'Miembros del colectivo reunidos al aire libre'
   },
   pt: {
@@ -202,7 +202,7 @@ const COPY = {
       openSeatBio: 'Estamos expandindo o coletivo com membros cuja prática é enraizada na África Austral. Conhece alguém que deveria estar aqui? Conte para nós.'
     },
     quote: { eyebrow: 'O Que Dizemos às Pessoas', text: 'A principal diferença entre saúde pública e termodinâmica é que a termodinâmica é mais fácil.' },
-    ctaButton: 'Fale Conosco',
+    ctaButton: 'Vamos Trabalhar Juntos',
     heroAlt: 'Membros do coletivo reunidos ao ar livre'
   }
 };
@@ -296,7 +296,7 @@ function main(locale) {
           const person = people[entry.key];
           return { name: person.name, role: person.aboutRole[locale], bio: person.bio[locale], stagger: entry.stagger, profile: profileLink(locale, person.slug), homeShort: homeShortFor(person, locale) };
         })
-      ], (p) => p.name).map((card) => personCard(card)).join('\n      ')}
+      ], (p) => p.name).map((card) => personCard({ ...card, portraitAlt: `${PORTRAIT_LABEL[locale]}: ${card.name}` })).join('\n      ')}
       ${personCard({ name: t.collective.openSeatName, role: t.collective.openSeatRole, bio: t.collective.openSeatBio, stagger: OPEN_SEAT.stagger })}
     </div>
   </div>
