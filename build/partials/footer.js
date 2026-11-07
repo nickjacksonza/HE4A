@@ -84,13 +84,13 @@ function footer(locale, page) {
       <a href="${href(locale, 'contact.html')}" class="footer-link">${text.contact}</a>
       <a href="${href(locale, 'accessibility.html')}" class="footer-link">${shared.accessibilityLabel[locale]}</a>
       <a href="${href('en', 'privacy.html')}" class="footer-link"${locale === 'en' ? '' : ' hreflang="en"'}>${text.privacy}</a>${posts.length ? `\n      <a href="${href('en', 'insights.html')}" class="footer-link"${locale === 'en' ? '' : ' hreflang="en"'}>${text.insights}</a>` : ''}
+    </div>
+    <div class="footer-col">
+      <div class="footer-heading">${shared.contactLabel[locale]}</div>
       <div class="footer-text">${officesLine}</div>
       <a href="mailto:${site.email}" class="footer-link" style="margin-top:6px">${site.email}</a>
       <a href="tel:${site.phone.replace(/\s+/g, '')}" class="footer-link">${site.phone}</a>
-    </div>
-    <div class="footer-col">
-      <div class="footer-heading">${f.businessHours}</div>
-      <div class="footer-text">${hours.weekday}<br>${hours.weekend}</div>
+      <div class="footer-text" style="margin-top:var(--space-3)">${hours.weekday}<br>${hours.weekend}</div>
       <div class="footer-text">${f.availableIn} ${site.languages.join(', ')}</div>
       <a href="${href(locale, 'contact.html')}" class="footer-cta">${f.contactCta}</a>
     </div>
