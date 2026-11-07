@@ -1657,3 +1657,4 @@ main:focus { outline: none; }
 /* Two bands of the same colour in a row: no second helping of padding between them. */
 .page-hero.band-paper + .page-body.band-paper { padding-top: var(--space-4); }
 .band-sky .breadcrumb, .band-sky .breadcrumb a { color: var(--color-ink-800); }
+.footer-col .footer-cta { margin-bottom: var(--space-6); }
