@@ -10,7 +10,7 @@ const COPY = {
 
 function main(locale) {
   const t = COPY[locale];
-  return `<section class="section--first band-paper">
+  return `<section class="section section--first page-hero band-paper">
   <div class="container">
     <p class="breadcrumb breadcrumb--light"><a href="${href(locale, 'index.html')}">${shared.breadcrumbHome[locale]}</a> / 404</p>
     <h1 class="section-heading" style="font-size:clamp(34px,4vw,52px);max-width:18ch;margin-bottom:var(--space-5)">${t.heading}</h1>
