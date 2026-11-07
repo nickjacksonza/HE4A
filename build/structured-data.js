@@ -15,7 +15,7 @@ const peoplePhotos = require('./content/peoplePhotos');
 const shared = require('./content/shared');
 const { NAV_STRUCTURE, NAV_LABELS } = require('./content/nav');
 const aboutUs = require('./content/pages/about-us');
-const { slugify } = require('./helpers');
+const { slugify, cleanPath } = require('./helpers');
 
 const ACE_SLUG = 'ace-robinson';
 const ACE_SUFFIX = 'M.P.H., M.H.L';
@@ -35,7 +35,7 @@ function localeOf(code) {
 
 function pageUrl(locale, outputFile) {
   const prefix = localeOf(locale).isDefault ? '' : `/${locale}`;
-  return `${BASE}${prefix}/${outputFile}`;
+  return `${BASE}${prefix}/${cleanPath(outputFile)}`;
 }
 
 // Everyone shown on the site, keyed by display name. Jas has no profile page,

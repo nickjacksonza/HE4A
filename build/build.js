@@ -14,7 +14,7 @@ const meta = require('./partials/meta');
 const site = require('./content/site');
 const locales = require('./content/locales');
 const clientStrings = require('./content/clientStrings');
-const { asset, BASE_PATH, setAssetVersions } = require('./helpers');
+const { asset, BASE_PATH, setAssetVersions, cleanPath } = require('./helpers');
 const { htmlToMarkdown, decode } = require('./markdown');
 
 const structuredData = require('./structured-data');
@@ -72,7 +72,7 @@ ${header(locale.code, page.activeNavId, page.outputFile)}
 <main id="main-content">
 ${page.main(locale.code)}
 </main>
-${footer(locale.code)}
+${footer(locale.code, { url: meta.urlFor(locale, page.outputFile), title: page.meta.title[locale.code] })}
 ${i18nScript}
 <script defer src="${asset('scripts.js')}"></script>
 </body>
@@ -90,9 +90,9 @@ function writeRobotsAndSitemap(generatedPaths) {
   const lastmod = new Date().toISOString().slice(0, 10);
   for (const page of pages.filter((p) => !p.noindex)) {
     for (const locale of locales) {
-      const loc = `${site.baseUrl}${locale.isDefault ? '' : '/' + locale.code}/${page.outputFile}`;
+      const loc = `${site.baseUrl}${locale.isDefault ? '' : '/' + locale.code}/${cleanPath(page.outputFile)}`;
       const alternates = locales
-        .map((l) => `      <xhtml:link rel="alternate" hreflang="${l.hreflang}" href="${site.baseUrl}${l.isDefault ? '' : '/' + l.code}/${page.outputFile}" />`)
+        .map((l) => `      <xhtml:link rel="alternate" hreflang="${l.hreflang}" href="${site.baseUrl}${l.isDefault ? '' : '/' + l.code}/${cleanPath(page.outputFile)}" />`)
         .join('\n');
       urls.push(`  <url>\n    <loc>${loc}</loc>\n    <lastmod>${lastmod}</lastmod>\n${alternates}\n  </url>`);
     }

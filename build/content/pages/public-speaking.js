@@ -29,7 +29,7 @@ const COPY = {
       heading: 'Meet Your Speaker',
       bio: 'Ace Robinson is a leading administrative and policy communicable disease advocate and population health expert, working across HIV, mpox, COVID-19, tuberculosis and malaria. He co-chairs the Federal AIDS Policy Partnership, sits on the UCLA CHIPTS steering committee, and chairs the Brown University Advisory Council to Eliminate Anti-Black Racism. His commentary on HIV policy and leadership appears regularly in TheBody and TheBodyPro.',
       quoteText: 'Achieving health equity is hard. Sometimes it means we have to go over, under, around or through challenges.',
-      linkedin: 'LinkedIn',
+      linkedin: 'Ace on LinkedIn',
       writing: 'His Writing on TheBody',
       listen: 'Hear Him Speak'
     },
@@ -76,7 +76,7 @@ const COPY = {
       heading: 'Découvrez Votre Intervenant',
       bio: "Ace Robinson est un défenseur reconnu des politiques en matière de maladies transmissibles et un expert en santé des populations, intervenant sur le VIH, le mpox, la COVID-19, la tuberculose et le paludisme. Il est co-président du Federal AIDS Policy Partnership, membre du comité directeur de l'UCLA CHIPTS, et préside le Brown University Advisory Council to Eliminate Anti-Black Racism. Ses analyses sur les politiques et le leadership en matière de VIH paraissent régulièrement dans TheBody et TheBodyPro.",
       quoteText: "Atteindre l'équité en santé est difficile. Parfois, il faut passer par-dessus, par-dessous, autour ou à travers les obstacles.",
-      linkedin: 'LinkedIn',
+      linkedin: 'Ace sur LinkedIn',
       writing: 'Ses Écrits sur TheBody',
       listen: 'Écoutez-le'
     },
@@ -123,7 +123,7 @@ const COPY = {
       heading: 'Conoce a Tu Orador',
       bio: 'Ace Robinson es un destacado defensor de políticas en enfermedades transmisibles y experto en salud poblacional, con trabajo en VIH, mpox, COVID-19, tuberculosis y malaria. Es copresidente de la Federal AIDS Policy Partnership, integra el comité directivo de UCLA CHIPTS y preside el Brown University Advisory Council to Eliminate Anti-Black Racism. Sus análisis sobre política de VIH y liderazgo aparecen regularmente en TheBody y TheBodyPro.',
       quoteText: 'Lograr la equidad en salud es difícil. A veces significa que debemos pasar por encima, por debajo, alrededor o a través de los obstáculos.',
-      linkedin: 'LinkedIn',
+      linkedin: 'Ace en LinkedIn',
       writing: 'Sus Artículos en TheBody',
       listen: 'Escúchalo'
     },
@@ -170,7 +170,7 @@ const COPY = {
       heading: 'Conheça Seu Palestrante',
       bio: 'Ace Robinson é um renomado defensor de políticas em doenças transmissíveis e especialista em saúde populacional, atuando em HIV, mpox, COVID-19, tuberculose e malária. É copresidente da Federal AIDS Policy Partnership, integra o comitê diretor da UCLA CHIPTS e preside o Brown University Advisory Council to Eliminate Anti-Black Racism. Seus textos sobre política de HIV e liderança são publicados regularmente na TheBody e na TheBodyPro.',
       quoteText: 'Alcançar a equidade em saúde é difícil. Por vezes, significa que precisamos passar por cima, por baixo, ao redor ou através dos obstáculos.',
-      linkedin: 'LinkedIn',
+      linkedin: 'Ace no LinkedIn',
       writing: 'Seus Textos na TheBody',
       listen: 'Ouça-o'
     },

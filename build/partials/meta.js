@@ -1,6 +1,6 @@
 const site = require('../content/site');
 const locales = require('../content/locales');
-const { asset } = require('../helpers');
+const { asset, cleanPath } = require('../helpers');
 
 // Google Tag Manager. The dataLayer is set up straight away, so nothing is lost,
 // but gtm.js itself loads on the visitor's first interaction (or about eight
@@ -32,7 +32,7 @@ const GTM_SNIPPET = `<script>
 
 function urlFor(locale, outputFile) {
   const prefix = locale.isDefault ? '' : `/${locale.code}`;
-  return `${site.baseUrl}${prefix}/${outputFile}`;
+  return `${site.baseUrl}${prefix}/${cleanPath(outputFile)}`;
 }
 
 // pageMeta: { locale, title, description, outputFile, ogImage }
@@ -40,7 +40,7 @@ function meta(pageMeta) {
   const { locale, title, description, outputFile, ogImage, jsonLd, noindex = false } = pageMeta;
   const url = urlFor(locale, outputFile);
   const ogImageUrl = `${site.baseUrl}/assets/og/${ogImage}.jpg`;
-  const fullTitle = title === site.siteName ? site.siteName : `${title} | ${site.siteName}`;
+  const fullTitle = title.includes(site.siteName) ? title : `${title} | ${site.siteName}`;
 
   const alternates = locales
     .map((l) => `<link rel="alternate" hreflang="${l.hreflang}" href="${urlFor(l, outputFile)}">`)
@@ -82,4 +82,5 @@ ${xDefault}${locale.isDefault ? `\n<link rel="alternate" type="text/markdown" hr
 ${GTM_SNIPPET}`;
 }
 
+meta.urlFor = urlFor;
 module.exports = meta;

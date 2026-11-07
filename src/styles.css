@@ -1070,6 +1070,14 @@ main:focus { outline: none; }
   transition: box-shadow var(--duration-base) var(--ease-standard);
 }
 .service-card:hover { box-shadow: var(--shadow-md); }
+/* Only the heading is the link, so the link's text is short. Its ::after stretches
+   over the whole card, so the card is still one big click or tap target. */
+.service-card { position: relative; }
+.service-card-link { color: inherit; text-decoration: none; }
+.service-card-link::after { content: ""; position: absolute; inset: 0; z-index: 1; }
+.service-card-link:focus-visible { box-shadow: none; outline: none; }
+.service-card:has(.service-card-link:focus-visible) { box-shadow: var(--focus-ring); }
+.service-card:hover .service-card-link { text-decoration: underline; text-underline-offset: 4px; }
 .service-card--featured { flex-direction: column; grid-row: span 2; }
 .service-card--featured .service-media { width: 100%; height: 280px; object-fit: cover; }
 .service-card--featured .service-body { padding: var(--space-6); display: flex; flex-direction: column; gap: var(--space-3); flex: 1; }
@@ -1578,3 +1586,21 @@ main:focus { outline: none; }
 .prose-list li::marker { color: var(--color-blossom-800); }
 .prose a { color: var(--brand-primary); text-decoration: underline; text-underline-offset: 3px; }
 .prose a:hover { color: var(--brand-primary-hover); }
+
+/* ---- 25. Share links in the footer ------------------------------------------------ */
+.footer-share { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-3) var(--space-5); padding: var(--space-5) var(--space-6); border-top: 1px solid oklch(99% 0 0 / 0.12); }
+.footer-share-label { font-size: var(--text-sm); font-weight: var(--weight-semibold); color: var(--color-paper-50); }
+.footer-share-list { display: flex; flex-wrap: wrap; gap: var(--space-2); list-style: none; margin: 0; padding: 0; }
+.share-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 var(--space-4);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-semibold);
+  color: var(--color-sky-300);
+  text-decoration: none;
+  border: 1px solid oklch(99% 0 0 / 0.25);
+  border-radius: var(--radius-full);
+}
+.share-link:hover { background: oklch(99% 0 0 / 0.1); color: var(--color-paper-0); border-color: var(--color-paper-50); }
