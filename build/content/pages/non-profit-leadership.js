@@ -18,8 +18,8 @@ const COPY = {
       heading: 'What this work looks like',
       subtext: 'Three engagements that can run separately or together across a fiscal year, depending on where you are.',
       items: [
-        { title: 'Board Governance Review', body: 'We review bylaws, sit in on meetings and interview trustees. You receive a clear picture of where authority sits and a practical plan for the next two board cycles.' },
-        { title: 'Executive Coaching', body: "Confidential monthly sessions for executive directors and senior staff, especially the ones who are first to hold their role in the organization's history." },
+        { title: 'Board Governance Review for Health Nonprofits', body: 'We review bylaws, sit in on meetings and interview trustees. You receive a clear picture of where authority sits and a practical plan for the next two board cycles.' },
+        { title: 'Executive Coaching for HIV Nonprofit Leaders', body: "Confidential monthly sessions for executive directors and senior staff, especially the ones who are first to hold their role in the organization's history." },
         { title: 'Leadership Transition', body: 'Succession planning and interim support through a founder exit or a first outside hire, so the mission carries through the change.' }
       ]
     },

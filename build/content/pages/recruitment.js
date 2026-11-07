@@ -19,7 +19,7 @@ const COPY = {
     formats: {
       heading: 'Every seat you need to fill',
       subtext: 'Chief Medical Officer, Comptroller, Nurse Practitioner, Outreach Specialist, Front Desk Clerk. You can’t afford to hire someone who doesn’t understand and welcome your client base.',
-      executiveSearch: { label: 'Executive Search', title: 'Leadership and Executive Roles', body: 'Chief Medical Officers, Comptrollers, executive directors and senior clinical leaders. We vet for the mission as hard as we vet for the resume.' },
+      executiveSearch: { label: 'Executive Search', title: 'Healthcare Executive Search for Health Equity Organizations', body: 'Chief Medical Officers, Comptrollers, executive directors and senior clinical leaders. We vet for the mission as hard as we vet for the resume.' },
       staffing: { label: 'Clinical & Frontline', title: 'Clinical and Frontline Teams', body: 'Nurse practitioners, case managers, outreach specialists, community health workers and front desk staff. The people your clients actually meet.' },
       equityHiring: { label: 'Equity-Centered Hiring', title: 'Hiring Practices That Hold Up', body: 'Job descriptions, interview panels and scoring rubrics rebuilt so the pool widens and the bias narrows.' }
     },

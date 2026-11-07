@@ -114,7 +114,7 @@ function organizationNode(locale, pages, members) {
     '@type': 'Organization',
     '@id': ORG_ID,
     name: site.siteName,
-    alternateName: 'HE4A',
+    alternateName: [site.alternateName, 'HE4A'],
     legalName: site.legalName,
     url: site.baseUrl,
     logo: { '@type': 'ImageObject', url: `${BASE}/assets/logo/mark-transparent-76.webp`, width: 76, height: 76 },
@@ -156,7 +156,7 @@ function websiteNode(locale) {
     '@id': SITE_ID,
     url: site.baseUrl,
     name: site.siteName,
-    alternateName: 'HE4A',
+    alternateName: [site.alternateName, 'HE4A'],
     inLanguage: locales.map((l) => l.hreflang),
     publisher: { '@id': ORG_ID }
   };
@@ -169,6 +169,9 @@ function breadcrumbNode(locale, page, webPageId, title) {
   if (page.outputFile.startsWith('about-us/')) {
     items.push({ '@type': 'ListItem', position: 2, name: aboutUs.meta.title[locale], item: pageUrl(locale, 'about-us.html') });
   }
+  if (page.outputFile.startsWith('insights/')) {
+    items.push({ '@type': 'ListItem', position: 2, name: 'Insights', item: pageUrl(locale, 'insights.html') });
+  }
   items.push({ '@type': 'ListItem', position: items.length + 1, name: title, item: pageUrl(locale, page.outputFile) });
   return { '@type': 'BreadcrumbList', '@id': `${webPageId}-breadcrumb`.replace('#webpage', '#breadcrumb'), itemListElement: items };
 }
@@ -177,6 +180,7 @@ function breadcrumbNode(locale, page, webPageId, title) {
 function pageType(page) {
   if (page.slug === 'about-us') return 'AboutPage';
   if (page.slug === 'contact') return 'ContactPage';
+  if (page.slug === 'insights') return 'CollectionPage';
   if (page.outputFile.startsWith('about-us/')) return 'ProfilePage';
   return 'WebPage';
 }
@@ -184,6 +188,7 @@ function pageType(page) {
 // Names of the people a page features. Ace is always in the graph; the About
 // Us page lists the whole roster.
 function peopleOn(page, pages) {
+  if (page.post) return [page.post.author];
   if (page.slug === 'about-us') return [...new Set([...aboutUs.roster('en').map((p) => p.name), people.jasPlaceholder.name])];
   if (page.outputFile.startsWith('about-us/')) {
     const self = Object.values(REGISTRY).find((e) => e.slug === page.slug);
@@ -221,6 +226,23 @@ function forPage(page, locale, pages) {
   };
   graph.push(webPage);
   if (crumb) graph.push(crumb);
+
+  if (page.post) {
+    graph.push({
+      '@type': 'BlogPosting',
+      '@id': `${url}#article`,
+      headline: page.post.title,
+      description: page.post.description,
+      url,
+      datePublished: page.post.date,
+      dateModified: page.post.date,
+      inLanguage: localeOf(locale).hreflang,
+      author: { '@id': personId(page.post.author) },
+      publisher: { '@id': ORG_ID },
+      isPartOf: { '@id': SITE_ID },
+      mainEntityOfPage: { '@id': webPageId }
+    });
+  }
 
   if (page.service) {
     const labels = NAV_LABELS[locale];

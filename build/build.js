@@ -29,7 +29,9 @@ const pages = [
   require('./content/pages/about-us'),
   require('./content/pages/contact'),
   require('./content/pages/accessibility'),
+  require('./content/pages/privacy'),
   require('./content/pages/not-found'),
+  ...require('./content/pages/insights'),
   ...require('./content/pages/person')
 ];
 
@@ -57,7 +59,8 @@ function renderPage(page, locale) {
     outputFile: page.outputFile,
     ogImage: page.meta.ogImage,
     jsonLd: structuredData.forPage(page, locale.code, pages),
-    noindex: Boolean(page.noindex)
+    noindex: Boolean(page.noindex),
+    englishOnly: Boolean(page.englishOnly)
   });
 
   const i18nScript = `<script>window.__I18N__=${JSON.stringify(clientStrings[locale.code])};</script>`;
@@ -69,7 +72,7 @@ ${metaHtml}
 </head>
 <body>
 <a class="skip-link" href="#main-content">Skip to main content</a>
-${header(locale.code, page.activeNavId, page.outputFile)}
+${header(locale.code, page.activeNavId, page.englishOnly ? 'index.html' : page.outputFile)}
 <main id="main-content">
 ${page.main(locale.code)}
 </main>
@@ -90,9 +93,9 @@ function writeRobotsAndSitemap(generatedPaths) {
   const urls = [];
   const lastmod = new Date().toISOString().slice(0, 10);
   for (const page of pages.filter((p) => !p.noindex)) {
-    for (const locale of locales) {
+    for (const locale of page.englishOnly ? locales.filter((l) => l.isDefault) : locales) {
       const loc = `${site.baseUrl}${locale.isDefault ? '' : '/' + locale.code}/${cleanPath(page.outputFile)}`;
-      const alternates = locales
+      const alternates = (page.englishOnly ? locales.filter((l) => l.isDefault) : locales)
         .map((l) => `      <xhtml:link rel="alternate" hreflang="${l.hreflang}" href="${site.baseUrl}${l.isDefault ? '' : '/' + l.code}/${cleanPath(page.outputFile)}" />`)
         .join('\n');
       urls.push(`  <url>\n    <loc>${loc}</loc>\n    <lastmod>${lastmod}</lastmod>\n${alternates}\n  </url>`);
@@ -130,10 +133,10 @@ function writeLlmsTxt() {
   const line = (p) => `- [${decode(p.meta.title.en)}](${site.baseUrl}/${p.outputFile}): ${decode(p.meta.description.en)}`;
   const group = (slugs) => indexed.filter((p) => slugs.includes(p.slug)).map(line).join('\n');
   const people = indexed.filter((p) => p.outputFile.startsWith('about-us/')).map(line).join('\n');
-  const others = ['accessibility', 'contact'];
+  const others = ['accessibility', 'contact', 'privacy', 'insights'];
   const text = `# ${site.siteName}
 
-> ${site.siteName} is the public name of ${site.legalName}, a global collective of public health leaders. We support organizations that serve historically excluded communities through non-profit leadership, organizational development, equity trainings, healthcare recruitment and public speaking. Contact: ${site.email}, ${site.phone}.
+> ${site.siteName} (${site.legalName}), also known as ${site.alternateName}, is a global collective of public health leaders. We support organizations that serve historically excluded communities through non-profit leadership, organizational development, equity trainings, healthcare recruitment and public speaking. Contact: ${site.email}, ${site.phone}.
 
 ## Pages
 
@@ -211,6 +214,7 @@ async function build() {
   const generatedPaths = [];
   for (const locale of locales) {
     for (const page of pages) {
+      if (page.englishOnly && !locale.isDefault) continue;
       const relPath = outputPath(locale, page.outputFile);
       fs.mkdirSync(path.join(DIST, path.dirname(relPath)), { recursive: true });
       fs.writeFileSync(path.join(DIST, relPath), await prettyHtml(renderPage(page, locale)));
@@ -244,7 +248,7 @@ async function build() {
   writeSecurityTxt();
   assertNoAuthoringMarkup(generatedPaths);
 
-  console.log(`Built ${generatedPaths.length} pages (${locales.length} locales x ${pages.length} pages) and ${mdPaths.length} Markdown copies into dist/`);
+  console.log(`Built ${generatedPaths.length} pages and ${mdPaths.length} Markdown copies into dist/`);
 }
 
 build().catch((err) => {

@@ -395,10 +395,10 @@ module.exports = {
     // About 520-570px wide in a search result (the limit is about 580px), and it
     // carries the words of the page's H1.
     title: {
-      en: 'Health Equity 4 All: Equitable Healthcare Built With Communities',
-      fr: 'Health Equity 4 All | Équité en santé avec les communautés',
-      es: 'Health Equity 4 All | Salud equitativa con las comunidades',
-      pt: 'Health Equity 4 All | Saúde equitativa com as comunidades'
+      en: 'Equity Is the Word: Equitable Healthcare Built With Communities',
+      fr: 'Equity Is the Word | Équité en santé avec les communautés',
+      es: 'Equity Is the Word | Salud equitativa con las comunidades',
+      pt: 'Equity Is the Word | Saúde equitativa com as comunidades'
     },
     description: {
       en: 'A global collective of public health leaders helping organizations build the leadership, systems and teams their communities need.',

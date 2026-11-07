@@ -137,7 +137,7 @@ module.exports = {
   outputFile: 'accessibility.html',
   activeNavId: null,
   meta: {
-    seoTitle: { en: 'Accessibility Statement for Health Equity 4 All | WCAG 2.2 AA' },
+    seoTitle: { en: 'Accessibility Statement for Equity Is the Word | WCAG 2.2 AA' },
     title: {
       en: 'Accessibility Statement',
       fr: 'Déclaration d’Accessibilité',
@@ -145,10 +145,10 @@ module.exports = {
       pt: 'Declaração de Acessibilidade'
     },
     description: {
-      en: 'How Health Equity 4 All works to keep this website usable with a keyboard, a screen reader and reduced motion, and how to tell us about a barrier.',
-      fr: 'Comment Health Equity 4 All s’efforce de garder ce site utilisable au clavier, avec un lecteur d’écran et avec les animations réduites, et comment nous signaler un obstacle.',
-      es: 'Cómo Health Equity 4 All trabaja para que este sitio se pueda usar con teclado, lector de pantalla y movimiento reducido, y cómo contarnos sobre una barrera.',
-      pt: 'Como a Health Equity 4 All trabalha para manter este site utilizável com teclado, leitor de tela e movimento reduzido, e como nos contar sobre uma barreira.'
+      en: 'How Equity Is the Word works to keep this website usable with a keyboard, a screen reader and reduced motion, and how to tell us about a barrier.',
+      fr: 'Comment Equity Is the Word s’efforce de garder ce site utilisable au clavier, avec un lecteur d’écran et avec les animations réduites, et comment nous signaler un obstacle.',
+      es: 'Cómo Equity Is the Word trabaja para que este sitio se pueda usar con teclado, lector de pantalla y movimiento reducido, y cómo contarnos sobre una barrera.',
+      pt: 'Como a Equity Is the Word trabalha para manter este site utilizável com teclado, leitor de tela e movimento reduzido, e como nos contar sobre uma barreira.'
     },
     ogImage: 'about-us'
   },

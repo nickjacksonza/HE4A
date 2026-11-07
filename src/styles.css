@@ -1604,3 +1604,18 @@ main:focus { outline: none; }
   border-radius: var(--radius-full);
 }
 .share-link:hover { background: oklch(99% 0 0 / 0.1); color: var(--color-paper-0); border-color: var(--color-paper-50); }
+
+/* ---- 26. Insights (blog) -------------------------------------------------------- */
+.prose-heading--small { font-size: clamp(18px, 2vw, 22px); margin-top: var(--space-6); }
+.post-byline { font-size: var(--text-sm); color: var(--text-secondary); margin: 0; }
+.post-card { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: var(--space-6); display: flex; flex-direction: column; gap: var(--space-3); position: relative; transition: box-shadow var(--duration-base) var(--ease-standard); }
+.post-card:hover { box-shadow: var(--shadow-md); }
+.post-card-date { font-size: var(--text-sm); color: var(--text-secondary); }
+.post-card-title { font-family: var(--font-display); font-weight: var(--weight-semibold); font-size: 22px; line-height: var(--leading-snug); margin: 0; }
+.post-card-title a { color: var(--text-primary); text-decoration: none; }
+/* The title link covers the whole card, so a click or tap anywhere opens the post. */
+.post-card-title a::after { content: ""; position: absolute; inset: 0; }
+.post-card:hover .post-card-title a { text-decoration: underline; text-underline-offset: 4px; }
+.post-card:has(.post-card-title a:focus-visible) { box-shadow: var(--focus-ring); }
+.post-card-title a:focus-visible { outline: none; box-shadow: none; }
+.post-card-text { font-size: var(--text-base); color: var(--color-ink-800); line-height: var(--leading-normal); margin: 0; }

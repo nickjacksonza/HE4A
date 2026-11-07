@@ -2,7 +2,8 @@
 // Brand/legal names, URLs, and office city/country are proper nouns -- they stay
 // flat (unchanged across locales). Only tagline/hours are locale-keyed copy.
 module.exports = {
-  siteName: 'Health Equity 4 All',
+  siteName: 'Equity Is the Word',
+  alternateName: 'Health Equity 4 All',
   legalName: 'Equity Is the Word, LLC',
   tagline: {
     en: 'Onward. Together.',
