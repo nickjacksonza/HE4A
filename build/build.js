@@ -60,7 +60,8 @@ function renderPage(page, locale) {
     ogImage: page.meta.ogImage,
     jsonLd: structuredData.forPage(page, locale.code, pages),
     noindex: Boolean(page.noindex),
-    englishOnly: Boolean(page.englishOnly)
+    englishOnly: Boolean(page.englishOnly),
+    canonicalUrl: page.canonicalUrl
   });
 
   const i18nScript = `<script>window.__I18N__=${JSON.stringify(clientStrings[locale.code])};</script>`;
@@ -92,7 +93,7 @@ function writeRobotsAndSitemap(generatedPaths) {
 
   const urls = [];
   const lastmod = new Date().toISOString().slice(0, 10);
-  for (const page of pages.filter((p) => !p.noindex)) {
+  for (const page of pages.filter((p) => !p.noindex && !p.canonicalUrl)) {
     for (const locale of page.englishOnly ? locales.filter((l) => l.isDefault) : locales) {
       const loc = `${site.baseUrl}${locale.isDefault ? '' : '/' + locale.code}/${cleanPath(page.outputFile)}`;
       const alternates = (page.englishOnly ? locales.filter((l) => l.isDefault) : locales)

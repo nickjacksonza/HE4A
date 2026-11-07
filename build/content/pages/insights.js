@@ -1,7 +1,7 @@
 // Insights (the blog): an index page and one page per post. English only, and
 // only built when build/content/posts/ has at least one post (see posts.js).
 const { href, escapeHtml } = require('../../helpers');
-const { mdToHtml } = require('../../md');
+const { mdToHtml, splitTakeaways, outline } = require('../../md');
 const site = require('../site');
 const posts = require('../posts');
 
@@ -28,7 +28,7 @@ function indexMain(locale) {
       ${posts
         .map(
           (p) => `<article class="post-card">
-        <time class="post-card-date" datetime="${p.date}">${formatDate(p.date)}</time>
+        <p class="post-card-date"><time datetime="${p.date}">${formatDate(p.date)}</time>${p.source ? ` · First published on ${escapeHtml(p.source)}` : ''}</p>
         <h2 class="post-card-title"><a href="${href(locale, `insights/${p.slug}.html`)}">${escapeHtml(p.title)}</a></h2>
         <p class="post-card-text">${escapeHtml(p.description)}</p>
       </article>`
@@ -40,20 +40,42 @@ function indexMain(locale) {
 }
 
 function postMain(post) {
+  const { takeaways, rest } = splitTakeaways(post.body);
+  const headings = outline(rest);
+  // Takeaways and a contents list sit above the article, in the same column.
+  const takeawaysBox = takeaways.length
+    ? `<aside class="takeaways" aria-labelledby="takeaways-title">
+        <h2 class="takeaways-title" id="takeaways-title">Key Takeaways</h2>
+        <ul>
+          ${takeaways.map((t) => `<li>${escapeHtml(t)}</li>`).join('\n          ')}
+        </ul>
+      </aside>`
+    : '';
+  const toc = headings.length >= 3
+    ? `<nav class="toc" aria-labelledby="toc-title">
+        <h2 class="toc-title" id="toc-title">In This Article</h2>
+        <ol>
+          ${headings.map((h) => `<li><a href="#${h.id}">${escapeHtml(h.text)}</a></li>`).join('\n          ')}
+        </ol>
+      </nav>`
+    : '';
   return (locale) => `<section class="section--first band-paper">
   <div class="container">
     <p class="breadcrumb breadcrumb--light"><a href="${href(locale, 'index.html')}">Home</a> / <a href="${href(locale, 'insights.html')}">All ${TITLE}</a> / ${escapeHtml(post.title)}</p>
     <h1 class="section-heading" style="font-size:clamp(32px,4vw,48px);max-width:22ch;margin-bottom:var(--space-4)">${escapeHtml(post.title)}</h1>
-    <p class="post-byline">By ${escapeHtml(post.author)} · <time datetime="${post.date}">${formatDate(post.date)}</time></p>
+    <p class="post-byline">By ${escapeHtml(post.author)} · <time datetime="${post.date}">${formatDate(post.date)}</time>${post.updated ? ` · Last updated <time datetime="${post.updated}">${formatDate(post.updated)}</time>` : ''}</p>${post.source ? `
+    <p class="post-source">First published on <a href="${escapeHtml(post.sourceUrl)}" rel="noopener">${escapeHtml(post.source)}</a>. ${post.canonical ? 'Republished here with a link to the original.' : 'This page is a summary with the key points.'}</p>` : ''}
   </div>
 </section>
 
 <section class="section band-paper-subtle">
   <div class="container">
     <div class="prose">
-${mdToHtml(post.body)}
+      ${takeawaysBox}
+      ${toc}
+${mdToHtml(rest)}
     </div>
-    <p style="margin-top:var(--space-8)"><a href="${href(locale, 'contact.html')}" class="btn btn-primary">Talk to us about your work</a></p>
+    <p style="margin-top:var(--space-8);display:flex;flex-wrap:wrap;gap:var(--space-3)">${post.source ? `<a href="${escapeHtml(post.sourceUrl)}" class="btn btn-outline-dark" rel="noopener">${post.canonical ? 'Read the original on' : 'Read the full article on'} ${escapeHtml(post.source)}</a>` : ''}<a href="${href(locale, 'contact.html')}" class="btn btn-primary">Talk to us about your work</a></p>
   </div>
 </section>`;
 }
@@ -85,6 +107,7 @@ const postPages = posts.map((post) => ({
     description: allLocales(escapeHtml(post.description)),
     ogImage: 'home'
   },
+  canonicalUrl: post.canonical || undefined,
   main: postMain(post)
 }));
 

@@ -17,13 +17,37 @@ function inline(text) {
   return out;
 }
 
+// A heading's address, for the table of contents: "Who Decides What" -> "who-decides-what".
+function slugify(text) {
+  return text.toLowerCase().replace(/&/g, ' and ').replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+}
+
+// The "## Key Takeaways" list at the top of a post, taken out of the body so the
+// page can show it in its own box. Returns the items and the rest of the text.
+function splitTakeaways(source) {
+  const match = source.replace(/\r\n/g, '\n').match(/^## Key Takeaways\n\n((?:- .*\n?)+)\n*/m);
+  if (!match) return { takeaways: [], rest: source };
+  const takeaways = match[1].trim().split('\n').map((l) => l.replace(/^-\s+/, ''));
+  return { takeaways, rest: source.replace(match[0], '') };
+}
+
+// The "##" headings of a post, for the table of contents.
+function outline(source) {
+  return source
+    .replace(/\r\n/g, '\n')
+    .split('\n')
+    .filter((l) => /^##\s/.test(l))
+    .map((l) => l.replace(/^##\s+/, '').trim())
+    .map((text) => ({ text, id: slugify(text) }));
+}
+
 function mdToHtml(source) {
   const blocks = source.replace(/\r\n/g, '\n').trim().split(/\n\s*\n/);
   return blocks
     .map((block) => {
       const lines = block.split('\n');
-      if (/^###\s/.test(block)) return `<h3 class="prose-heading prose-heading--small">${inline(block.replace(/^###\s+/, ''))}</h3>`;
-      if (/^##\s/.test(block)) return `<h2 class="prose-heading">${inline(block.replace(/^##\s+/, ''))}</h2>`;
+      if (/^###\s/.test(block)) { const text = block.replace(/^###\s+/, ''); return `<h3 class="prose-heading prose-heading--small" id="${slugify(text)}">${inline(text)}</h3>`; }
+      if (/^##\s/.test(block)) { const text = block.replace(/^##\s+/, ''); return `<h2 class="prose-heading" id="${slugify(text)}">${inline(text)}</h2>`; }
       if (lines.every((l) => /^-\s/.test(l))) {
         return `<ul class="prose-list">\n${lines.map((l) => `  <li>${inline(l.replace(/^-\s+/, ''))}</li>`).join('\n')}\n</ul>`;
       }
@@ -32,4 +56,4 @@ function mdToHtml(source) {
     .join('\n');
 }
 
-module.exports = { mdToHtml, escapeHtml };
+module.exports = { mdToHtml, escapeHtml, splitTakeaways, outline };

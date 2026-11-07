@@ -3,9 +3,17 @@ title: What a Board Governance Review Covers, and What You Get at the End
 date: 2026-11-07
 description: What a board governance review looks at in a health nonprofit, what community health center boards say about their own gaps, and the plan you leave with.
 author: Ace Robinson
+updated: 2026-11-07
 seotitle: What a Board Governance Review Covers | Equity Is the Word
 ---
 Start with the answer. A board governance review tells you where authority sits in your organization today, where that differs from what your bylaws say, and what to fix first. You leave with a plan for the next two board cycles.
+
+## Key Takeaways
+
+- A review shows where authority sits today and where that differs from what your bylaws say.
+- It covers five areas: mission and strategy, legal and ethical oversight, money and risk, the executive director, and the board itself.
+- Health center boards report their biggest gaps in succession planning and term limits.
+- You should leave with a plan for the next two board cycles, and every gap should have an owner and a date.
 
 Here is what a review looks at, and why each part matters for a health nonprofit.
 
@@ -19,7 +27,7 @@ If they don't match, you've found the first problem. A hard call lands, a funder
 
 **1. Mission and strategy.** Does the board still agree on who the organization serves? When it plans, does it use data from the community? The National Association of Community Health Centers (NACHC) surveyed 667 health center board members and CEOs in 2023. About 85% said their boards had reviewed the mission and vision when they built the current strategic plan. Only 68% said their boards used the latest community needs assessment, the lowest of the practices NACHC asked about.
 
-**2. Legal and ethical oversight.** Do the bylaws match what the board actually does? Is there a conflict of interest policy that gets used, with annual disclosures and recusals written into the minutes? Are filings on time? The IRS Form 990 asks about several of these, including whether the board reviews the return before it is filed.
+**2. Legal and ethical oversight.** Do the bylaws match what the board actually does? Is there a conflict of interest policy that gets used, with annual disclosures and recusals written into the minutes? Are filings on time? The IRS Form 990 asks about several of these, including whether the board reviews the return before it is filed. The IRS also publishes [governance guidance for charities](https://www.irs.gov/pub/irs-tege/governance_practices.pdf), and the National Council of Nonprofits describes the [three legal duties of a board member](https://www.councilofnonprofits.org/running-nonprofit/governance-leadership/board-roles-and-responsibilities): care, loyalty and obedience. If you run a federally funded health center, chapter 19 of [HRSA's compliance manual](https://bphc.hrsa.gov/compliance/compliance-manual/chapter19) lists the authorities your board has to keep, including approving the annual budget and hiring and firing the CEO.
 
 **3. Money and risk.** Does the board approve a realistic budget and understand it? Does it see the audit? Does anyone ask about internal controls, reserves, debt and insurance? Board members don't need to be accountants. They do need to know which questions to ask.
 
@@ -56,7 +64,14 @@ Whoever runs your review, insist on one thing: every gap leaves the room with a 
 
 If one or more of these sounds familiar, read about our [board governance review for health nonprofits](/non-profit-leadership.html#board-governance-review), or [tell us what you're working through](/contact.html). We'll tell you plainly if we're not the right fit.
 
+Onward. Together.
+
 ## Sources
 
 - National Association of Community Health Centers, [Health Center Board Practices and Needs Assessment 2023](https://www.nachc.org/wp-content/uploads/2023/10/NACHC-Health-Center-Board-Practices-and-Needs-Assessment-2023-FINAL.pdf). The survey covers health centers, which have patient-majority boards, so some figures won't match other nonprofits.
 - IRS, [About Form 990, Return of Organization Exempt From Income Tax](https://www.irs.gov/forms-pubs/about-form-990).
+- IRS, [Governance and Related Topics: 501(c)(3) Organizations](https://www.irs.gov/pub/irs-tege/governance_practices.pdf). This guidance is older, so read it as a starting point.
+- National Council of Nonprofits, [Board Roles and Responsibilities](https://www.councilofnonprofits.org/running-nonprofit/governance-leadership/board-roles-and-responsibilities).
+- BoardSource, [Board Governance Best Practices for Nonprofits](https://boardsource.org/resources/recommended-board-practices/).
+- HRSA, [Health Center Program Compliance Manual, Chapter 19: Board Authority](https://bphc.hrsa.gov/compliance/compliance-manual/chapter19).
+- Candid, [The State of Diversity in the U.S. Nonprofit Sector](https://candid.org/about/press-room/releases/candid-s-the-state-of-diversity-in-the-u.s.-nonprofit-sector-report-sets-new-benchmark-for-demographic-data-collection) (2024), on who serves on nonprofit boards.

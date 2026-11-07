@@ -235,12 +235,13 @@ function forPage(page, locale, pages) {
       description: page.post.description,
       url,
       datePublished: page.post.date,
-      dateModified: page.post.date,
+      dateModified: page.post.updated || page.post.date,
       inLanguage: localeOf(locale).hreflang,
       author: { '@id': personId(page.post.author) },
       publisher: { '@id': ORG_ID },
       isPartOf: { '@id': SITE_ID },
-      mainEntityOfPage: { '@id': webPageId }
+      mainEntityOfPage: { '@id': webPageId },
+      ...(page.post.sourceUrl ? { isBasedOn: page.post.sourceUrl } : {})
     });
   }
 

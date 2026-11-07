@@ -37,7 +37,7 @@ function urlFor(locale, outputFile) {
 
 // pageMeta: { locale, title, description, outputFile, ogImage }
 function meta(pageMeta) {
-  const { locale, title, description, outputFile, ogImage, jsonLd, noindex = false, rawTitle = false, englishOnly = false } = pageMeta;
+  const { locale, title, description, outputFile, ogImage, jsonLd, noindex = false, rawTitle = false, englishOnly = false, canonicalUrl } = pageMeta;
   const url = urlFor(locale, outputFile);
   const ogImageUrl = `${site.baseUrl}/assets/og/${ogImage}.jpg`;
   const fullTitle = rawTitle || title.includes(site.siteName) ? title : `${title} | ${site.siteName}`;
@@ -53,9 +53,9 @@ function meta(pageMeta) {
 <meta name="google-site-verification" content="jII_-pe_fkFM_Ft2Xjh8usSYIMGxs6m-SbZpmid3Fpw">
 <title>${fullTitle}</title>
 <meta name="description" content="${description}">
-${noindex ? '<meta name="robots" content="noindex">' : `<link rel="canonical" href="${url}">
-${alternates}
-${xDefault}${locale.isDefault ? `\n<link rel="alternate" type="text/markdown" href="${asset(outputFile.replace(/\.html$/, '.md'))}">` : ''}`}
+${noindex ? '<meta name="robots" content="noindex">' : `<link rel="canonical" href="${canonicalUrl || url}">
+${canonicalUrl ? '' : `${alternates}
+${xDefault}`}${locale.isDefault ? `\n<link rel="alternate" type="text/markdown" href="${asset(outputFile.replace(/\.html$/, '.md'))}">` : ''}`}
 
 <link rel="icon" href="${asset('assets/icons/favicon.ico')}" sizes="32x32">
 <link rel="icon" type="image/png" href="${asset('assets/icons/icon-192.png')}" sizes="192x192">

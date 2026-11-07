@@ -1619,3 +1619,18 @@ main:focus { outline: none; }
 .post-card:has(.post-card-title a:focus-visible) { box-shadow: var(--focus-ring); }
 .post-card-title a:focus-visible { outline: none; box-shadow: none; }
 .post-card-text { font-size: var(--text-base); color: var(--color-ink-800); line-height: var(--leading-normal); margin: 0; }
+.post-source { font-size: var(--text-sm); color: var(--text-secondary); margin: var(--space-2) 0 0; max-width: 62ch; }
+.post-source a { color: var(--brand-primary); }
+
+/* Key takeaways box and table of contents on a post */
+.takeaways { background: var(--color-sky-50); border: 1px solid var(--color-sky-200); border-left: 4px solid var(--brand-primary); border-radius: var(--radius-md); padding: var(--space-5) var(--space-6); margin: 0 0 var(--space-6); }
+.takeaways-title, .toc-title { font-family: var(--font-display); font-weight: var(--weight-semibold); font-size: 20px; line-height: var(--leading-snug); color: var(--text-primary); margin: 0 0 var(--space-3); }
+.takeaways ul { margin: 0; padding-left: 1.25em; list-style: disc; }
+.takeaways li { font-size: var(--text-base); color: var(--color-ink-800); line-height: var(--leading-normal); margin: 0 0 var(--space-2); }
+.takeaways li:last-child { margin-bottom: 0; }
+.toc { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-md); padding: var(--space-5) var(--space-6); margin: 0 0 var(--space-7); }
+.toc ol { margin: 0; padding-left: 1.5em; }
+.toc li { font-size: var(--text-base); line-height: var(--leading-normal); margin: 0 0 var(--space-2); }
+.toc li:last-child { margin-bottom: 0; }
+.toc a { color: var(--brand-primary); text-underline-offset: 3px; display: inline-block; padding: 2px 0; }
+.prose [id] { scroll-margin-top: var(--space-8); }

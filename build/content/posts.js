@@ -6,7 +6,13 @@
 //   date: 2026-12-01
 //   description: One sentence, about 150 characters, shown in search results.
 //   author: Ace Robinson
+//   updated: Optional date of the last update, like 2026-12-15. Shown as "Last updated".
 //   seotitle: Optional shorter title for search results (about 60 characters, with the brand)
+//   source: Optional name of the site where it first appeared, for example TheBody
+//   sourceurl: Link to the original (required with source)
+//   canonical: Optional. Set it to the original's address only when the post is the full
+//              text of an article that appeared elsewhere. Search engines then treat the
+//              original as the main copy, and this post stays out of the sitemap.
 //   ---
 //   Body text in Markdown...
 //
@@ -33,12 +39,18 @@ function parse(file) {
     if (!meta[key]) throw new Error(`${file}: missing "${key}" in the header block`);
   }
   if (!/^\d{4}-\d{2}-\d{2}$/.test(meta.date)) throw new Error(`${file}: date must look like 2026-12-01`);
+  if (meta.updated && !/^\d{4}-\d{2}-\d{2}$/.test(meta.updated)) throw new Error(`${file}: updated must look like 2026-12-01`);
+  if (meta.source && !meta.sourceurl) throw new Error(`${file}: "source" needs a "sourceurl"`);
   return {
     slug: file.replace(/\.md$/, ''),
     title: meta.title,
     date: meta.date,
     description: meta.description,
+    updated: meta.updated || '',
     seoTitle: meta.seotitle || '',
+    source: meta.source || '',
+    sourceUrl: meta.sourceurl || '',
+    canonical: meta.canonical || '',
     author: meta.author || 'Ace Robinson',
     body: match[2].trim()
   };
