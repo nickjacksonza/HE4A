@@ -42,7 +42,7 @@ function indexMain(locale) {
 function postMain(post) {
   return (locale) => `<section class="section--first band-paper">
   <div class="container">
-    <p class="breadcrumb breadcrumb--light"><a href="${href(locale, 'index.html')}">Home</a> / <a href="${href(locale, 'insights.html')}">${TITLE}</a> / ${escapeHtml(post.title)}</p>
+    <p class="breadcrumb breadcrumb--light"><a href="${href(locale, 'index.html')}">Home</a> / <a href="${href(locale, 'insights.html')}">All ${TITLE}</a> / ${escapeHtml(post.title)}</p>
     <h1 class="section-heading" style="font-size:clamp(32px,4vw,48px);max-width:22ch;margin-bottom:var(--space-4)">${escapeHtml(post.title)}</h1>
     <p class="post-byline">By ${escapeHtml(post.author)} · <time datetime="${post.date}">${formatDate(post.date)}</time></p>
   </div>
@@ -65,7 +65,7 @@ const indexPage = {
   englishOnly: true,
   meta: {
     title: allLocales(TITLE),
-    seoTitle: { en: 'Insights on Health Equity, Leadership &amp; Organizational Development' },
+    seoTitle: { en: 'Insights on Health Equity and Nonprofit Leadership' },
     description: allLocales(INDEX_DESCRIPTION),
     ogImage: 'home'
   },
@@ -80,6 +80,8 @@ const postPages = posts.map((post) => ({
   post,
   meta: {
     title: allLocales(escapeHtml(post.title)),
+    // A long title would be cut off in search results, so a post can give a shorter one.
+    seoTitle: post.seoTitle ? { en: escapeHtml(post.seoTitle) } : undefined,
     description: allLocales(escapeHtml(post.description)),
     ogImage: 'home'
   },

@@ -6,6 +6,7 @@
 //   date: 2026-12-01
 //   description: One sentence, about 150 characters, shown in search results.
 //   author: Ace Robinson
+//   seotitle: Optional shorter title for search results (about 60 characters, with the brand)
 //   ---
 //   Body text in Markdown...
 //
@@ -37,6 +38,7 @@ function parse(file) {
     title: meta.title,
     date: meta.date,
     description: meta.description,
+    seoTitle: meta.seotitle || '',
     author: meta.author || 'Ace Robinson',
     body: match[2].trim()
   };
