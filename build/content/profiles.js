@@ -98,25 +98,25 @@ Lauren's unwavering dedication continues to shape positive change, exemplifying 
   },
   'nick-jackson': {
     fullBio: {
-      en: `Nick Jackson is a digital marketing producer and project manager with almost 20 years of experience working with African brands and NGOs on health equity communications.
+      en: `Nick Jackson is a digital marketing strategist and project manager with almost 20 years of experience, working with African brands and NGOs on health equity communications. He is based in Johannesburg, South Africa, and is part of the collective’s communications and marketing team.
 
-His health experience includes work with USAID/PEPFAR programs and the South African National Blood Service (SANBS), and NGO work with Dlala Nje and Yes 4 Youth.
+In health and development, Nick produced a USAID/PEPFAR-funded HIV education video series for the South African HIV Clinicians Society, served as Special Projects Manager at the Youth Employment Service (YES), a presidential initiative tackling youth unemployment, and has worked with the South African National Blood Service (SANBS), the Nelson Mandela Foundation and the Bill & Melinda Gates Foundation. Since 2023 he has been a Non-Executive Advisory Board Member at Dlala Nje, a Johannesburg social enterprise that funds free after-school programs, where he also rebuilt and search-optimized the website. He holds a certificate in HIV/AIDS counseling.
 
-He has managed social media and built social media strategy across tourism and hospitality, finance and insurance, telecommunications, aviation, NGOs, beverages and events. More recently he has built websites for doctors and health organizations.
+Nick has managed social media and built social media strategy for tourism and hospitality, finance and insurance, telecommunications, aviation, nonprofit, beverage and events brands, including Hollard Insurance, MTN, Mango Airlines, Savanna Cider and the Sasol Solar Challenge. His campaigns have been recognized at Cannes Lions, the Loerie Awards, the Bookmark Awards and the New Generation Social and Digital Media Awards.
 
-Nick is part of the collective’s communications and marketing team and is based in Johannesburg, South Africa.`
+He co-founded a digital agency and has recently built websites for doctors and health organizations. Nick speaks English and Afrikaans.`
     },
     homeBios: [
       {
         code: 'af',
         name: 'Afrikaans',
-        text: `Nick Jackson is 'n digitale bemarkingsvervaardiger en projekbestuurder met byna 20 jaar ervaring in samewerking met Afrika-handelsmerke en NRO’s oor kommunikasie vir gesondheidsgelykheid.
+        text: `Nick Jackson is 'n digitale bemarkingstrateeg en projekbestuurder met byna 20 jaar ervaring in samewerking met Afrika-handelsmerke en NRO’s oor kommunikasie vir gesondheidsgelykheid. Hy is in Johannesburg, Suid-Afrika, gebaseer en is deel van die kollektief se kommunikasie- en bemarkingspan.
 
-Sy gesondheidservaring sluit werk in met USAID/PEPFAR-programme en die South African National Blood Service (SANBS), asook NRO-werk by Dlala Nje en Yes 4 Youth.
+In gesondheid en ontwikkeling het Nick 'n USAID/PEPFAR-befondsde MIV-opvoedingsvideoreeks vir die South African HIV Clinicians Society vervaardig, as Spesiale Projekbestuurder by die Youth Employment Service (YES) gedien, 'n presidensiële inisiatief wat jeugwerkloosheid aanpak, en met die South African National Blood Service (SANBS), die Nelson Mandela Foundation en die Bill & Melinda Gates Foundation gewerk. Sedert 2023 is hy 'n nie-uitvoerende adviesraadslid van Dlala Nje, 'n maatskaplike onderneming in Johannesburg wat gratis naskoolse programme finansier, waar hy ook die webwerf herbou en vir soekenjins geoptimaliseer het. Hy het 'n sertifikaat in MIV/Vigs-berading.
 
-Hy het sosialemediabestuur gedoen en sosialemediastrategie gebou in toerisme en gasvryheid, finansies en versekering, telekommunikasie, lugvaart, NRO’s, drankprodukte en geleenthede. Meer onlangs het hy webwerwe gebou vir dokters en gesondheidsorganisasies.
+Nick het sosiale media bestuur en sosialemediastrategie gebou vir toerisme- en gasvryheids-, finansiële en versekerings-, telekommunikasie-, lugvaart-, nie-winsgewende, drank- en geleentheidshandelsmerke, onder meer Hollard Insurance, MTN, Mango Airlines, Savanna Cider en die Sasol Solar Challenge. Sy veldtogte is by die Cannes Lions, die Loerie-toekennings, die Bookmark-toekennings en die New Generation Social and Digital Media Awards erken.
 
-Nick is deel van die kollektief se kommunikasie- en bemarkingspan en is in Johannesburg, Suid-Afrika, gebaseer.`
+Hy het saam 'n digitale agentskap gestig en het onlangs webwerwe vir dokters en gesondheidsorganisasies gebou. Nick praat Engels en Afrikaans.`
       }
     ]
   },
