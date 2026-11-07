@@ -237,8 +237,8 @@ function main(locale) {
     <p class="section-subtext" style="margin-bottom:var(--space-7)">${t.team.subtext}</p>
     <div class="auto-grid" style="--min:380px">
       ${teamCard({ name: TEAM_META[0].name, role: t.team.role1, bio: t.team.bio1 }, locale)}
-      ${teamCard({ name: TEAM_META[1].name, role: t.team.role2, bio: t.team.bio2 }, locale)}
       ${teamCard({ name: people.brianKanyemba.name, role: people.brianKanyemba.teamRole[locale], bio: people.brianKanyemba.bio[locale], homeShort: homeShortFor(people.brianKanyemba, locale) }, locale)}
+      ${teamCard({ name: TEAM_META[1].name, role: t.team.role2, bio: t.team.bio2 }, locale)}
     </div>
   </div>
 </section>
@@ -265,7 +265,7 @@ module.exports = {
   slug: 'non-profit-leadership',
   service: true,
   faqs: (locale) => COPY[locale].faqs,
-  people: ['Ace Robinson', 'Lauren Miller', people.brianKanyemba.name],
+  people: ['Ace Robinson', people.brianKanyemba.name, 'Lauren Miller'],
   outputFile: 'non-profit-leadership.html',
   activeNavId: 'nonProfitLeadership',
   meta: {

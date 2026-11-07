@@ -1,4 +1,4 @@
-const { picture, href, personCard } = require('../../helpers');
+const { picture, href, personCard, sortPeople } = require('../../helpers');
 const site = require('../site');
 
 // META: locale-independent structural data (proper nouns + layout constants).
@@ -371,7 +371,7 @@ function main(locale) {
       <a href="${href(locale, 'about-us.html')}" class="btn btn-outline-dark">${t.collective.cta}</a>
     </div>
     <div class="auto-grid" style="--min:190px">
-      ${PEOPLE_META.map((p, i) => personCard({ name: p.name, role: p.place, bio: t.collective.bios[i], stagger: p.stagger })).join('\n      ')}
+      ${sortPeople(PEOPLE_META.map((p, i) => ({ name: p.name, role: p.place, bio: t.collective.bios[i], stagger: p.stagger })), (p) => p.name).map((card) => personCard(card)).join('\n      ')}
     </div>
   </div>
 </section>

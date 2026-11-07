@@ -260,10 +260,10 @@ ${panels}
     <h2 class="section-heading">${shared.whoLeadsThisWork[locale]}</h2>
     <p class="section-subtext" style="margin-bottom:var(--space-7)">${t.team.subtext}</p>
     <div class="auto-grid" style="--min:380px">
-      ${teamCard({ name: TEAM_META[0].name, role: t.team.role1, bio: t.team.bio1 }, locale)}
       ${teamCard({ name: TEAM_META[1].name, role: t.team.role2, bio: t.team.bio2 }, locale)}
-      ${teamCard({ name: TEAM_META[2].name, role: t.team.role3, bio: t.team.bio3 }, locale)}
       ${teamCard({ name: people.johnHanna.name, role: people.johnHanna.teamRole[locale], bio: people.johnHanna.bio[locale], homeShort: homeShortFor(people.johnHanna, locale) }, locale)}
+      ${teamCard({ name: TEAM_META[0].name, role: t.team.role1, bio: t.team.bio1 }, locale)}
+      ${teamCard({ name: TEAM_META[2].name, role: t.team.role3, bio: t.team.bio3 }, locale)}
       ${teamCard({ name: people.robertMiller.name, role: people.robertMiller.teamRole[locale], bio: people.robertMiller.bio[locale], homeShort: homeShortFor(people.robertMiller, locale) }, locale)}
     </div>
   </div>
@@ -291,7 +291,7 @@ module.exports = {
   slug: 'trainings',
   service: true,
   faqs: (locale) => COPY[locale].faqs,
-  people: ['Lauren Miller', 'Diego Calixto', 'Lucy Wanjiku Njenga', people.johnHanna.name, people.robertMiller.name],
+  people: ['Diego Calixto', people.johnHanna.name, 'Lauren Miller', 'Lucy Wanjiku Njenga', people.robertMiller.name],
   outputFile: 'trainings.html',
   activeNavId: 'trainings',
   meta: {

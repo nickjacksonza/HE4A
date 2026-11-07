@@ -40,6 +40,10 @@ module.exports = {
   leandroMaldonado: {
     name: 'Leandro Maldonado',
     slug: 'leandro-maldonado',
+    homeShort: [
+      { code: 'pt', name: 'Português', text: 'MBA. Gerente de projetos STEM com mais de uma década de experiência liderando grandes equipes e programas multimilionários, incluindo a logística das Olimpíadas do Rio 2016.' },
+      { code: 'it', name: 'Italiano', text: 'MBA. Project manager STEM con oltre dieci anni di esperienza nella guida di grandi team e programmi da milioni di dollari, inclusa la logistica delle Olimpiadi di Rio 2016.' }
+    ],
     aboutRole: { en: 'Program Management · Rio de Janeiro, Brazil', fr: 'Gestion de Programmes · Rio de Janeiro, Brésil', es: 'Gestión de Programas · Río de Janeiro, Brasil', pt: 'Gestão de Programas · Rio de Janeiro, Brasil' },
     teamRole: { en: 'Program Management · Rio de Janeiro', fr: 'Gestion de Programmes · Rio de Janeiro', es: 'Gestión de Programas · Río de Janeiro', pt: 'Gestão de Programas · Rio de Janeiro' },
     bio: {
@@ -64,6 +68,7 @@ module.exports = {
   nickJackson: {
     name: 'Nick Jackson',
     slug: 'nick-jackson',
+    homeShort: { code: 'af', name: 'Afrikaans', text: 'Digitale bemarkingsvervaardiger en projekbestuurder met byna 20 jaar ervaring in samewerking met Afrika-handelsmerke en NRO’s oor kommunikasie vir gesondheidsgelykheid.' },
     aboutRole: { en: 'Communications & Marketing · Johannesburg, South Africa', fr: 'Communication et Marketing · Johannesburg, Afrique du Sud', es: 'Comunicación y Marketing · Johannesburgo, Sudáfrica', pt: 'Comunicação e Marketing · Joanesburgo, África do Sul' },
     teamRole: { en: 'Communications & Marketing · Johannesburg', fr: 'Communication et Marketing · Johannesburg', es: 'Comunicación y Marketing · Johannesburgo', pt: 'Comunicação e Marketing · Joanesburgo' },
     bio: {

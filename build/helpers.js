@@ -154,8 +154,20 @@ function bioBlock(cls, bio, homeShort) {
 }
 
 // The person's home-language short bio, unless the page is already in that language.
+// homeShort may be one { code, name, text } or a list of them; the first one
+// that isn't the page's own language is used.
 function homeShortFor(person, locale) {
-  return person && person.homeShort && person.homeShort.code !== locale ? person.homeShort : null;
+  if (!person || !person.homeShort) return null;
+  const options = [].concat(person.homeShort);
+  return options.find((h) => h.code !== locale) || null;
+}
+
+// People are listed alphabetically by first name (ignoring "Dr."), with Ace
+// Robinson first wherever he appears. `nameOf` reads the name from an item.
+function sortPeople(list, nameOf = (x) => x) {
+  const key = (item) => nameOf(item).replace(/^Dr\.\s+/, '').toLowerCase();
+  const isAce = (item) => nameOf(item) === 'Ace Robinson';
+  return [...list].sort((a, b) => (isAce(b) - isAce(a)) || key(a).localeCompare(key(b)));
 }
 
 // Renders one team-card row. Uses the person's real headshot when one
@@ -216,4 +228,4 @@ function testimonialsSection(locale, band = 'band-paper') {
 </section>`;
 }
 
-module.exports = { setAssetVersions, homeShortFor, escapeHtml, href, asset, BASE_PATH, picture, personPhoto, personCard, slugify, accordion, teamCard, testimonialsSection, PORTRAIT_LABEL, INTRINSIC };
+module.exports = { setAssetVersions, homeShortFor, sortPeople, escapeHtml, href, asset, BASE_PATH, picture, personPhoto, personCard, slugify, accordion, teamCard, testimonialsSection, PORTRAIT_LABEL, INTRINSIC };

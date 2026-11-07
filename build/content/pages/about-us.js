@@ -1,4 +1,4 @@
-const { picture, href, personCard, homeShortFor } = require('../../helpers');
+const { picture, href, personCard, homeShortFor, sortPeople } = require('../../helpers');
 const site = require('../site');
 const people = require('../people');
 const shared = require('../shared');
@@ -211,6 +211,7 @@ const COPY = {
 // Eduardo's are the Portuguese and Spanish short bios above; Lucy's is a
 // sentence from her Kiswahili bio.
 const HOME_SHORT = {
+  'Ace Robinson': { code: 'fr', name: 'Français', text: COPY.fr.collective.bios[0] },
   'Diego Calixto': { code: 'pt', name: 'Português', text: COPY.pt.collective.bios[2] },
   'Eduardo Culbeaux': { code: 'es', name: 'Español', text: COPY.es.collective.bios[4] },
   'Lucy Wanjiku Njenga': { code: 'sw', name: 'Kiswahili', text: 'Amefanya kazi katika kukabiliana na HIV kwa zaidi ya miaka kumi akijenga harakati za kifeministi na kupigania usawa wa kijinsia kuanzia ngazi ya chini kabisa hadi ngazi ya kimataifa.' }
@@ -221,10 +222,10 @@ const HOME_SHORT = {
 // so they get no page and no link.
 function roster(locale) {
   const t = COPY[locale];
-  return [
+  return sortPeople([
     ...PEOPLE_META.map((p, i) => ({ slug: p.slug, name: p.name, role: t.collective.roles[i], bio: t.collective.bios[i] })),
     ...EXTRA_PEOPLE.map((e) => people[e.key]).filter((p) => p.slug).map((p) => ({ slug: p.slug, name: p.name, role: p.aboutRole[locale], bio: p.bio[locale] }))
-  ];
+  ], (p) => p.name);
 }
 
 function profileLink(locale, slug) {
@@ -289,11 +290,13 @@ function main(locale) {
     <h2 class="section-heading" style="margin-bottom:10px">${t.collective.heading}</h2>
     <p class="section-subtext" style="margin-bottom:var(--space-7)">${t.collective.subtext}</p>
     <div class="auto-grid" style="--min:220px">
-      ${PEOPLE_META.map((p, i) => personCard({ name: p.name, role: t.collective.roles[i], bio: t.collective.bios[i], stagger: p.stagger, profile: profileLink(locale, p.slug), homeShort: homeShortFor({ homeShort: HOME_SHORT[p.name] }, locale) })).join('\n      ')}
-      ${EXTRA_PEOPLE.map((entry) => {
-        const person = people[entry.key];
-        return personCard({ name: person.name, role: person.aboutRole[locale], bio: person.bio[locale], stagger: entry.stagger, profile: profileLink(locale, person.slug), homeShort: homeShortFor(person, locale) });
-      }).join('\n      ')}
+      ${sortPeople([
+        ...PEOPLE_META.map((p, i) => ({ name: p.name, role: t.collective.roles[i], bio: t.collective.bios[i], stagger: p.stagger, profile: profileLink(locale, p.slug), homeShort: homeShortFor({ homeShort: HOME_SHORT[p.name] }, locale) })),
+        ...EXTRA_PEOPLE.map((entry) => {
+          const person = people[entry.key];
+          return { name: person.name, role: person.aboutRole[locale], bio: person.bio[locale], stagger: entry.stagger, profile: profileLink(locale, person.slug), homeShort: homeShortFor(person, locale) };
+        })
+      ], (p) => p.name).map((card) => personCard(card)).join('\n      ')}
       ${personCard({ name: t.collective.openSeatName, role: t.collective.openSeatRole, bio: t.collective.openSeatBio, stagger: OPEN_SEAT.stagger })}
     </div>
   </div>

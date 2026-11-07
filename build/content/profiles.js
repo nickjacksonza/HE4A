@@ -17,8 +17,20 @@ module.exports = {
     fullBio: {
       en: `Equity Is the Word Founder & Principal, Ace Robinson, is a leading administrative and policy communicable disease advocate and population health expert. He serves as the Acting Director of Duke University’s Sexual & Gender Minority Wellness program while supporting communities disproportionately impacted by HIV, STI’s, mpox, COVID-19, tuberculosis, malaria, and associated illnesses. Robinson is also the Founder & Principal of Equity Is the Word, a global health equity consulting firm focused on bringing systemic changes to historically excluded key population who experience poorer health outcomes. He sits on the UCLA Center for HIV, Identification, Prevention & Treatment (CHIPTS) steering committee; UCSF’s Regional Advisory Board for their Health Equity Collaborative; and on the Coalition for TB Free California steering committee.
 
-Ace has previously served in senior leadership roles at the National Minority AIDS Council (NMAC) in Washington, DC, Gay Men’s Health Crisis (GMHC) in New York City, David Geffen School of Medicine at UCLA (Los Angeles), Partners in Health in Haiti, the Desmond Tutu Health (formerly HIV) Foundation in Cape Town, South Africa, and PCAF (Seattle, WA). Ace has also served as Chair of the Federal AIDS Policy Partnership (FAPP) and Chair of the Council to Eliminate Anti-Black Racism at Brown University. Robinson holds a master’s degree in healthcare leadership from Brown University, a master’s degree in public health from the University of Cape Town, and a bachelor’s in chemistry from Duke University.`
-    }
+Ace has previously served in senior leadership roles at the National Minority AIDS Council (NMAC) in Washington, DC, Gay Men’s Health Crisis (GMHC) in New York City, David Geffen School of Medicine at UCLA (Los Angeles), Partners in Health in Haiti, the Desmond Tutu Health (formerly HIV) Foundation in Cape Town, South Africa, and PCAF (Seattle, WA). Ace has also served as Chair of the Federal AIDS Policy Partnership (FAPP) and Chair of the Council to Eliminate Anti-Black Racism at Brown University. Robinson holds a master’s degree in healthcare leadership from Brown University, a master’s degree in public health from the University of Cape Town, and a bachelor’s in chemistry from Duke University.`,
+      fr: `Ace Robinson, fondateur et directeur (Founder & Principal) d’Equity Is the Word, est un défenseur de premier plan des politiques et de l’administration en matière de maladies transmissibles, ainsi qu’un expert en santé des populations. Il est directeur par intérim du programme de bien-être des minorités sexuelles et de genre de l’Université Duke, tout en soutenant les communautés touchées de manière disproportionnée par le VIH, les IST, le mpox, la COVID-19, la tuberculose, le paludisme et les maladies associées. Ace est également fondateur et directeur d’Equity Is the Word, un cabinet de conseil mondial en équité en santé qui travaille à obtenir des changements systémiques pour les populations clés historiquement exclues, dont les résultats de santé sont plus faibles. Il siège au comité de pilotage du UCLA Center for HIV, Identification, Prevention & Treatment (CHIPTS), au conseil consultatif régional du Health Equity Collaborative de l’UCSF et au comité de pilotage de la Coalition for TB Free California.
+
+Ace a précédemment occupé des postes de direction au National Minority AIDS Council (NMAC) à Washington, D.C., à Gay Men’s Health Crisis (GMHC) à New York, à la David Geffen School of Medicine de l’UCLA (Los Angeles), chez Partners in Health en Haïti, à la Desmond Tutu Health Foundation (anciennement Desmond Tutu HIV Foundation) au Cap, en Afrique du Sud, et à PCAF (Seattle, Washington). Il a également présidé le Federal AIDS Policy Partnership (FAPP) et le Council to Eliminate Anti-Black Racism de l’Université Brown. Ace est titulaire d’une maîtrise en leadership des soins de santé de l’Université Brown, d’une maîtrise en santé publique de l’Université du Cap et d’un baccalauréat en chimie de l’Université Duke.`
+    },
+    homeBios: [
+      {
+        code: 'fr',
+        name: 'Français',
+        text: `Ace Robinson, fondateur et directeur (Founder & Principal) d’Equity Is the Word, est un défenseur de premier plan des politiques et de l’administration en matière de maladies transmissibles, ainsi qu’un expert en santé des populations. Il est directeur par intérim du programme de bien-être des minorités sexuelles et de genre de l’Université Duke, tout en soutenant les communautés touchées de manière disproportionnée par le VIH, les IST, le mpox, la COVID-19, la tuberculose, le paludisme et les maladies associées. Ace est également fondateur et directeur d’Equity Is the Word, un cabinet de conseil mondial en équité en santé qui travaille à obtenir des changements systémiques pour les populations clés historiquement exclues, dont les résultats de santé sont plus faibles. Il siège au comité de pilotage du UCLA Center for HIV, Identification, Prevention & Treatment (CHIPTS), au conseil consultatif régional du Health Equity Collaborative de l’UCSF et au comité de pilotage de la Coalition for TB Free California.
+
+Ace a précédemment occupé des postes de direction au National Minority AIDS Council (NMAC) à Washington, D.C., à Gay Men’s Health Crisis (GMHC) à New York, à la David Geffen School of Medicine de l’UCLA (Los Angeles), chez Partners in Health en Haïti, à la Desmond Tutu Health Foundation (anciennement Desmond Tutu HIV Foundation) au Cap, en Afrique du Sud, et à PCAF (Seattle, Washington). Il a également présidé le Federal AIDS Policy Partnership (FAPP) et le Council to Eliminate Anti-Black Racism de l’Université Brown. Ace est titulaire d’une maîtrise en leadership des soins de santé de l’Université Brown, d’une maîtrise en santé publique de l’Université du Cap et d’un baccalauréat en chimie de l’Université Duke.`
+      }
+    ]
   },
   'diego-calixto': {
     fullBio: {
@@ -76,8 +88,37 @@ Lauren's unwavering dedication continues to shape positive change, exemplifying 
   },
   'leandro-maldonado': {
     fullBio: {
-      en: `Leandro Maldonado, MBA, is a seasoned STEM project manager with over a decade of experience in the management field. A native Brazilian based in Rio de Janeiro, he holds a Bachelor’s in Civil Engineering from Universidade Federal de Uberlândia and an MBA from Fundação Getúlio Vargas. Leandro’s career trajectory began with oversight of major country-funded projects and later he improved outcome standards at local state-funded entities. He has led large teams of over 50 individuals with annual budgets over $1M dollars. For the 2016 Rio Olympics, he was entrusted with enhancing sales channels and managing transport operations. Proficient in AutoCAD, MS Project, Excel, SAP, and Oracle, Leandro is fluent in English, Portuguese, and Italian, with intermediate Spanish.`
-    }
+      en: `Leandro Maldonado, MBA, is a seasoned STEM project manager with over a decade of experience in the management field. A native Brazilian based in Rio de Janeiro, he holds a Bachelor’s in Civil Engineering from Universidade Federal de Uberlândia and an MBA from Fundação Getúlio Vargas. Leandro’s career trajectory began with oversight of major country-funded projects and later he improved outcome standards at local state-funded entities. He has led large teams of over 50 individuals with annual budgets over $1M dollars. For the 2016 Rio Olympics, he was entrusted with enhancing sales channels and managing transport operations. Proficient in AutoCAD, MS Project, Excel, SAP, and Oracle, Leandro is fluent in English, Portuguese, and Italian, with intermediate Spanish.`,
+      pt: `Leandro Maldonado, MBA, é um gerente de projetos STEM experiente, com mais de uma década de atuação na área de gestão. Brasileiro, radicado no Rio de Janeiro, é bacharel em Engenharia Civil pela Universidade Federal de Uberlândia e tem MBA pela Fundação Getúlio Vargas. Sua carreira começou com a supervisão de grandes projetos financiados pelo governo e, depois, ele elevou os padrões de resultados em entidades locais financiadas pelo estado. Liderou grandes equipes, com mais de 50 pessoas, e orçamentos anuais superiores a US$ 1 milhão. Nas Olimpíadas do Rio 2016, foi encarregado de aprimorar os canais de venda e gerir as operações de transporte. Proficiente em AutoCAD, MS Project, Excel, SAP e Oracle, Leandro é fluente em inglês, português e italiano, com espanhol intermediário.`
+    },
+    homeBios: [
+      { code: 'pt', name: 'Português', text: `Leandro Maldonado, MBA, é um gerente de projetos STEM experiente, com mais de uma década de atuação na área de gestão. Brasileiro, radicado no Rio de Janeiro, é bacharel em Engenharia Civil pela Universidade Federal de Uberlândia e tem MBA pela Fundação Getúlio Vargas. Sua carreira começou com a supervisão de grandes projetos financiados pelo governo e, depois, ele elevou os padrões de resultados em entidades locais financiadas pelo estado. Liderou grandes equipes, com mais de 50 pessoas, e orçamentos anuais superiores a US$ 1 milhão. Nas Olimpíadas do Rio 2016, foi encarregado de aprimorar os canais de venda e gerir as operações de transporte. Proficiente em AutoCAD, MS Project, Excel, SAP e Oracle, Leandro é fluente em inglês, português e italiano, com espanhol intermediário.` },
+      { code: 'it', name: 'Italiano', text: `Leandro Maldonado, MBA, è un esperto project manager in ambito STEM con oltre dieci anni di esperienza nel campo della gestione. Brasiliano di nascita e residente a Rio de Janeiro, è laureato in Ingegneria Civile presso l’Universidade Federal de Uberlândia e ha conseguito un MBA presso la Fundação Getúlio Vargas. La sua carriera è iniziata con la supervisione di grandi progetti finanziati dal governo e, in seguito, ha migliorato gli standard dei risultati presso enti locali finanziati dallo Stato. Ha guidato grandi team di oltre 50 persone, con budget annuali superiori a 1 milione di dollari. Per le Olimpiadi di Rio 2016 gli sono stati affidati il potenziamento dei canali di vendita e la gestione delle operazioni di trasporto. Esperto di AutoCAD, MS Project, Excel, SAP e Oracle, Leandro parla correntemente inglese, portoghese e italiano, con un livello intermedio di spagnolo.` }
+    ]
+  },
+  'nick-jackson': {
+    fullBio: {
+      en: `Nick Jackson is a digital marketing producer and project manager with almost 20 years of experience working with African brands and NGOs on health equity communications.
+
+His health experience includes work with USAID/PEPFAR programs and the South African National Blood Service (SANBS), and NGO work with Dlala Nje and Yes 4 Youth.
+
+He has managed social media and built social media strategy across tourism and hospitality, finance and insurance, telecommunications, aviation, NGOs, beverages and events. More recently he has built websites for doctors and health organizations.
+
+Nick is part of the collective’s communications and marketing team and is based in Johannesburg, South Africa.`
+    },
+    homeBios: [
+      {
+        code: 'af',
+        name: 'Afrikaans',
+        text: `Nick Jackson is 'n digitale bemarkingsvervaardiger en projekbestuurder met byna 20 jaar ervaring in samewerking met Afrika-handelsmerke en NRO’s oor kommunikasie vir gesondheidsgelykheid.
+
+Sy gesondheidservaring sluit werk in met USAID/PEPFAR-programme en die South African National Blood Service (SANBS), asook NRO-werk by Dlala Nje en Yes 4 Youth.
+
+Hy het sosialemediabestuur gedoen en sosialemediastrategie gebou in toerisme en gasvryheid, finansies en versekering, telekommunikasie, lugvaart, NRO’s, drankprodukte en geleenthede. Meer onlangs het hy webwerwe gebou vir dokters en gesondheidsorganisasies.
+
+Nick is deel van die kollektief se kommunikasie- en bemarkingspan en is in Johannesburg, Suid-Afrika, gebaseer.`
+      }
+    ]
   },
   'lucy-wanjiku-njenga': {
     fullBio: {
