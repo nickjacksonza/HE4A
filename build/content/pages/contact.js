@@ -168,6 +168,7 @@ module.exports = {
   outputFile: 'contact.html',
   activeNavId: null,
   meta: {
+    seoTitle: { en: 'Contact Health Equity 4 All: Let’s Talk About What Comes Next' },
     title: {
       en: 'Contact',
       fr: 'Contact',

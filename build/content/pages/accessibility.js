@@ -137,6 +137,7 @@ module.exports = {
   outputFile: 'accessibility.html',
   activeNavId: null,
   meta: {
+    seoTitle: { en: 'Accessibility Statement for Health Equity 4 All | WCAG 2.2 AA' },
     title: {
       en: 'Accessibility Statement',
       fr: 'Déclaration d’Accessibilité',

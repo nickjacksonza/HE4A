@@ -295,6 +295,7 @@ module.exports = {
   outputFile: 'trainings.html',
   activeNavId: 'trainings',
   meta: {
+    seoTitle: { en: 'Equity Trainings: Racial Equity, LGBTQ+ &amp; Health Equity Training' },
     title: {
       en: 'Equity Trainings',
       fr: 'Formations Équité',
@@ -302,7 +303,7 @@ module.exports = {
       pt: 'Capacitações em Equidade'
     },
     description: {
-      en: 'Racial equity, LGBTQ+ equity and social determinants of health, taught so your team can use it on Monday. Every session ends with commitments the team follows up on.',
+      en: 'Racial equity, LGBTQ+ equity and social determinants of health, taught so your team can use it on Monday. Every session ends with follow-up commitments.',
       fr: 'Équité raciale, équité LGBTQ+ et déterminants sociaux de la santé, enseignés pour que votre équipe s’en serve dès lundi. Chaque séance se termine par des engagements suivis.',
       es: 'Equidad racial, equidad LGBTQ+ y determinantes sociales de la salud, enseñados para que tu equipo los use el lunes. Cada sesión termina con compromisos que el equipo da seguimiento.',
       pt: 'Equidade racial, equidade LGBTQ+ e determinantes sociais da saúde, ensinados para sua equipe usar na segunda-feira. Cada sessão termina com compromissos acompanhados pela equipe.'

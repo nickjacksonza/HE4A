@@ -315,6 +315,7 @@ module.exports = {
   outputFile: 'public-speaking.html',
   activeNavId: 'publicSpeaking',
   meta: {
+    seoTitle: { en: 'Public Speaking on Health Equity: Keynotes &amp; Moderation' },
     title: {
       en: 'Public Speaking',
       fr: 'Prise de Parole Publique',

@@ -269,6 +269,7 @@ module.exports = {
   outputFile: 'non-profit-leadership.html',
   activeNavId: 'nonProfitLeadership',
   meta: {
+    seoTitle: { en: 'Non-Profit Leadership: Board Governance &amp; Executive Coaching' },
     title: {
       en: 'Non-Profit Leadership',
       fr: 'Direction Associative',

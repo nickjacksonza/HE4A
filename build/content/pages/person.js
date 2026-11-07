@@ -154,11 +154,22 @@ function makePage(slug) {
   }
 
   const title = {};
+  const seoTitle = {};
   const description = {};
+  // Search snippets show about 155 characters, so cut at a word boundary.
+  const fit = (text, max = 158) => {
+    if (text.length <= max) return text;
+    return text.slice(0, max - 1).replace(/\s+\S*$/, '') + '…';
+  };
   for (const l of locales) {
     const p = person(l.code);
+    const role = p.role.split(' · ')[0];
     title[l.code] = p.name;
-    description[l.code] = escapeHtml(`${p.role}. ${p.bio}`);
+    if (l.code === 'en') {
+      const withBrand = `${p.name}: ${role} | ${site.siteName}`;
+      seoTitle.en = escapeHtml(withBrand.length <= 62 ? withBrand : `${p.name}: ${role}`);
+    }
+    description[l.code] = escapeHtml(fit(`${p.name}, ${role}, ${site.siteName}. ${p.bio}`));
   }
 
   const absolute = (locale, file) => `${site.baseUrl}${locale === 'en' ? '' : '/' + locale}/${file}`;
@@ -166,7 +177,7 @@ function makePage(slug) {
     slug,
     outputFile: `about-us/${slug}.html`,
     activeNavId: 'aboutUs',
-    meta: { title, description, ogImage: 'about-us' },
+    meta: { title, seoTitle, description, ogImage: 'about-us' },
     main
   };
 }

@@ -308,6 +308,7 @@ module.exports = {
   outputFile: 'organizational-development.html',
   activeNavId: 'organizationalDevelopment',
   meta: {
+    seoTitle: { en: 'Organizational Development: Programs, Policy &amp; Grant Writing' },
     title: {
       en: 'Organizational Development',
       fr: 'Développement Organisationnel',

@@ -51,7 +51,8 @@ function outputPath(locale, outputFile) {
 function renderPage(page, locale) {
   const metaHtml = meta({
     locale,
-    title: page.meta.title[locale.code],
+    title: (page.meta.seoTitle && page.meta.seoTitle[locale.code]) || page.meta.title[locale.code],
+    rawTitle: Boolean(page.meta.seoTitle && page.meta.seoTitle[locale.code]),
     description: page.meta.description[locale.code],
     outputFile: page.outputFile,
     ogImage: page.meta.ogImage,

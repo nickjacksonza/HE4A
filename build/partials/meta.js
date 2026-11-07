@@ -37,10 +37,10 @@ function urlFor(locale, outputFile) {
 
 // pageMeta: { locale, title, description, outputFile, ogImage }
 function meta(pageMeta) {
-  const { locale, title, description, outputFile, ogImage, jsonLd, noindex = false } = pageMeta;
+  const { locale, title, description, outputFile, ogImage, jsonLd, noindex = false, rawTitle = false } = pageMeta;
   const url = urlFor(locale, outputFile);
   const ogImageUrl = `${site.baseUrl}/assets/og/${ogImage}.jpg`;
-  const fullTitle = title.includes(site.siteName) ? title : `${title} | ${site.siteName}`;
+  const fullTitle = rawTitle || title.includes(site.siteName) ? title : `${title} | ${site.siteName}`;
 
   const alternates = locales
     .map((l) => `<link rel="alternate" hreflang="${l.hreflang}" href="${urlFor(l, outputFile)}">`)

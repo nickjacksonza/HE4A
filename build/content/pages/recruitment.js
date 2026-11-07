@@ -306,6 +306,7 @@ module.exports = {
   outputFile: 'recruitment.html',
   activeNavId: 'recruitment',
   meta: {
+    seoTitle: { en: 'Healthcare Recruitment: Executive Search &amp; Frontline Hiring' },
     title: {
       en: 'Healthcare Recruitment',
       fr: 'Recrutement en Santé',
@@ -313,7 +314,7 @@ module.exports = {
       pt: 'Recrutamento em Saúde'
     },
     description: {
-      en: 'Executive search and frontline hiring for healthcare organizations, from Chief Medical Officer to front desk. We handle the heavy lifting so you choose from candidates who have bought into your mission.',
+      en: 'Executive search and frontline hiring for healthcare organizations, from Chief Medical Officer to front desk. Choose from candidates who believe in your mission.',
       fr: 'Recherche de cadres et recrutement de terrain pour les organisations de santé, du directeur médical à l’accueil. Nous nous chargeons du gros du travail pour que vous choisissiez parmi des candidats acquis à votre mission.',
       es: 'Búsqueda de ejecutivos y contratación de primera línea para organizaciones de salud, del director médico a la recepción. Hacemos el trabajo pesado para que elijas entre candidatos comprometidos con tu misión.',
       pt: 'Busca de executivos e contratação de linha de frente para organizações de saúde, do diretor médico à recepção. Fazemos o trabalho pesado para que você escolha entre candidatos comprometidos com sua missão.'
