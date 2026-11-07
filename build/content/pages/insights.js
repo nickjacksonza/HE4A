@@ -13,24 +13,25 @@ const formatDate = (iso) => new Date(`${iso}T12:00:00Z`).toLocaleDateString('en-
 const allLocales = (value) => ({ en: value, fr: value, es: value, pt: value });
 
 function indexMain(locale) {
-  return `<section class="section--first band-paper">
+  return `<section class="section section--first page-hero band-sky">
   <div class="container">
     <p class="breadcrumb breadcrumb--light"><a href="${href(locale, 'index.html')}">Home</a> / ${TITLE}</p>
-    <span class="eyebrow">From the collective</span>
+    <span class="eyebrow eyebrow--on-sky">From the collective</span>
     <h1 class="section-heading" style="font-size:clamp(34px,4vw,52px);max-width:18ch;margin-bottom:var(--space-5)">${TITLE}</h1>
-    <p class="section-subtext" style="font-size:var(--text-md);max-width:60ch">Plain-language writing on health equity, leadership and the work of building systems that serve every community.</p>
+    <p class="section-subtext" style="font-size:var(--text-md);max-width:60ch;color:var(--color-ink-800)">Plain-language writing on health equity, leadership and the work of building systems that serve every community.</p>
   </div>
 </section>
 
-<section class="section band-paper-subtle">
+<section class="section page-body band-paper">
   <div class="container">
-    <div class="auto-grid" style="--min:300px">
+    <div class="auto-grid post-grid" style="--min:300px">
       ${posts
         .map(
           (p) => `<article class="post-card">
-        <p class="post-card-date"><time datetime="${p.date}">${formatDate(p.date)}</time>${p.source ? ` · First published on ${escapeHtml(p.source)}` : ''}</p>
+        <p class="post-card-meta"><span class="post-chip${p.source ? ' post-chip--source' : ''}">${p.source ? `First published on ${escapeHtml(p.source)}` : 'Equity Is the Word'}</span><time class="post-card-date" datetime="${p.date}">${formatDate(p.date)}</time></p>
         <h2 class="post-card-title"><a href="${href(locale, `insights/${p.slug}.html`)}">${escapeHtml(p.title)}</a></h2>
         <p class="post-card-text">${escapeHtml(p.description)}</p>
+        <span class="post-card-more" aria-hidden="true">Read the article →</span>
       </article>`
         )
         .join('\n      ')}
@@ -59,7 +60,7 @@ function postMain(post) {
         </ol>
       </nav>`
     : '';
-  return (locale) => `<section class="section--first band-paper">
+  return (locale) => `<section class="section section--first page-hero band-paper">
   <div class="container">
     <p class="breadcrumb breadcrumb--light"><a href="${href(locale, 'index.html')}">Home</a> / <a href="${href(locale, 'insights.html')}">All ${TITLE}</a> / ${escapeHtml(post.title)}</p>
     <h1 class="section-heading" style="font-size:clamp(32px,4vw,48px);max-width:22ch;margin-bottom:var(--space-4)">${escapeHtml(post.title)}</h1>
@@ -68,7 +69,7 @@ function postMain(post) {
   </div>
 </section>
 
-<section class="section band-paper-subtle">
+<section class="section page-body band-paper-subtle">
   <div class="container">
     <div class="prose">
       ${takeawaysBox}

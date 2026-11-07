@@ -7,7 +7,7 @@ const site = require('../site');
 const UPDATED = 'November 7, 2026';
 
 function main(locale) {
-  return `<section class="section--first band-paper">
+  return `<section class="section section--first page-hero band-paper">
   <div class="container">
     <p class="breadcrumb breadcrumb--light"><a href="${href(locale, 'index.html')}">Home</a> / Privacy Policy</p>
     <span class="eyebrow">Legal</span>
@@ -16,7 +16,7 @@ function main(locale) {
   </div>
 </section>
 
-<section class="section band-paper-subtle">
+<section class="section page-body band-paper-subtle">
   <div class="container">
     <div class="prose">
       <h2 class="prose-heading">Who we are</h2>

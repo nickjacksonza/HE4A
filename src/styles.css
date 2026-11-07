@@ -1634,3 +1634,26 @@ main:focus { outline: none; }
 .toc li:last-child { margin-bottom: 0; }
 .toc a { color: var(--brand-primary); text-underline-offset: 3px; display: inline-block; padding: 2px 0; }
 .prose [id] { scroll-margin-top: var(--space-8); }
+
+/* ---- 27. Page headers and the Insights index ------------------------------------ */
+.page-hero { padding: var(--space-8) var(--space-6) var(--space-7); }
+.page-body { padding-top: var(--space-8); }
+@media (max-width: 600px) {
+  .page-hero { padding: var(--space-7) var(--space-4) var(--space-6); }
+  .page-body { padding-top: var(--space-7); }
+}
+
+/* Insights cards: a colour strip that rotates through the palette, a label for where the
+   article first appeared, and a "Read" cue at the bottom. */
+.post-grid { gap: var(--space-6); }
+.post-card { --accent: var(--color-sky-400); border-top: 6px solid var(--accent); padding-top: var(--space-5); }
+.post-card:nth-child(3n + 2) { --accent: var(--color-blossom-400); }
+.post-card:nth-child(3n) { --accent: var(--color-sky-700); }
+.post-card-meta { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-2) var(--space-3); margin: 0; }
+.post-chip { display: inline-block; font-size: 12px; font-weight: var(--weight-semibold); letter-spacing: 0.04em; text-transform: uppercase; padding: 3px 10px; border-radius: var(--radius-full); background: var(--color-sky-100); color: var(--color-sky-900); }
+.post-chip--source { background: var(--color-blossom-100); color: var(--color-blossom-900); }
+.post-card-more { margin-top: auto; padding-top: var(--space-2); font-size: var(--text-sm); font-weight: var(--weight-semibold); color: var(--brand-primary); }
+.post-card:hover .post-card-more { text-decoration: underline; text-underline-offset: 4px; }
+/* Two bands of the same colour in a row: no second helping of padding between them. */
+.page-hero.band-paper + .page-body.band-paper { padding-top: var(--space-4); }
+.band-sky .breadcrumb, .band-sky .breadcrumb a { color: var(--color-ink-800); }

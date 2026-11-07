@@ -105,7 +105,7 @@ const FORM_LABEL = { en: 'contact form', fr: 'formulaire de contact', es: 'formu
 
 function main(locale) {
   const t = COPY[locale];
-  return `<section class="section--first band-paper">
+  return `<section class="section section--first page-hero band-paper">
   <div class="container">
     <p class="breadcrumb breadcrumb--light"><a href="${href(locale, 'index.html')}">${shared.breadcrumbHome[locale]}</a> / ${t.heading}</p>
     <span class="eyebrow">${t.eyebrow}</span>
@@ -114,7 +114,7 @@ function main(locale) {
   </div>
 </section>
 
-<section class="section band-paper-subtle">
+<section class="section page-body band-paper-subtle">
   <div class="container">
     <div class="prose">
       <h2 class="prose-heading">${t.builtHeading}</h2>

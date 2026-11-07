@@ -104,7 +104,7 @@ function main(locale) {
   const officesLine = site.offices.map((o) => `${o.city}, ${o.country}`).join('<br>');
   const hours = site.hours[locale];
 
-  return `<section class="section--first band-paper">
+  return `<section class="section section--first page-hero band-paper">
   <div class="container">
     <p class="breadcrumb breadcrumb--light"><a href="${href(locale, 'index.html')}">${shared.breadcrumbHome[locale]}</a> / ${shared.contactLabel[locale]}</p>
     <h1 class="section-heading" style="font-size:clamp(34px,4vw,52px);max-width:18ch;margin-bottom:var(--space-5)">${t.heading}</h1>
@@ -112,7 +112,7 @@ function main(locale) {
   </div>
 </section>
 
-<section class="section band-paper">
+<section class="section page-body band-paper">
   <div class="container">
     <div class="contact-grid">
       ${formCard(locale)}
