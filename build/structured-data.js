@@ -16,6 +16,7 @@ const shared = require('./content/shared');
 const { NAV_STRUCTURE, NAV_LABELS } = require('./content/nav');
 const aboutUs = require('./content/pages/about-us');
 const { slugify, cleanPath } = require('./helpers');
+const { testimonials } = require('./content/testimonials');
 
 const ACE_SLUG = 'ace-robinson';
 const ACE_SUFFIX = 'M.P.H., M.H.L';
@@ -278,6 +279,22 @@ function forPage(page, locale, pages) {
             }
           }
         : {})
+    });
+  }
+
+  // The "What Clients Say" quotes, as Reviews of the service. There is no star rating,
+  // because none was given, and none is made up.
+  if (page.service) {
+    testimonials(locale).forEach((t, i) => {
+      const prefix = t.name.startsWith('Dr. ') ? 'Dr.' : null;
+      graph.push({
+        '@type': 'Review',
+        '@id': `${url}#review-${i + 1}`,
+        reviewBody: t.quote,
+        inLanguage: localeOf(locale).hreflang,
+        author: { '@type': 'Person', name: prefix ? t.name.slice(4) : t.name, ...(prefix ? { honorificPrefix: prefix } : {}), ...(t.title ? { jobTitle: t.title } : {}) },
+        itemReviewed: { '@id': `${url}#service` }
+      });
     });
   }
 
