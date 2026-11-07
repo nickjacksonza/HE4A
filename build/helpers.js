@@ -98,7 +98,7 @@ const PEOPLE_PHOTO_DIMS = { w: 400, h: 400 };
 // fall back to the placeholder box. `sizes` defaults to the small team-card/
 // collective-grid slot; pass a larger hint for a bigger feature portrait so
 // the browser picks the 700w variant instead.
-function personPhoto(name, imgClass, sizes = '400px', priority = false) {
+function personPhoto(name, imgClass, sizes = '400px', priority = false, alt = name) {
   const key = PEOPLE_PHOTOS[name];
   if (!key) return null;
   const dir = asset(`assets/photos-optimized/people/${key}`);
@@ -107,7 +107,7 @@ function personPhoto(name, imgClass, sizes = '400px', priority = false) {
   return `<picture>
   <source type="image/avif" srcset="${srcset('avif')}" sizes="${sizes}">
   <source type="image/webp" srcset="${srcset('webp')}" sizes="${sizes}">
-  <img src="${dir}/${key}-${largest}.jpg" srcset="${srcset('jpg')}" sizes="${sizes}" width="${PEOPLE_PHOTO_DIMS.w}" height="${PEOPLE_PHOTO_DIMS.h}" alt="${escapeHtml(name)}"${imgClass ? ` class="${imgClass}"` : ''} ${priority ? 'fetchpriority="high"' : 'loading="lazy" decoding="async"'}>
+  <img src="${dir}/${key}-${largest}.jpg" srcset="${srcset('jpg')}" sizes="${sizes}" width="${PEOPLE_PHOTO_DIMS.w}" height="${PEOPLE_PHOTO_DIMS.h}" alt="${escapeHtml(alt)}"${imgClass ? ` class="${imgClass}"` : ''} ${priority ? 'fetchpriority="high"' : 'loading="lazy" decoding="async"'}>
 </picture>`;
 }
 
@@ -203,13 +203,15 @@ function teamCard(person, locale) {
 // by callers for the staggered-grid rhythm.
 // `profile` ({ href, label }) is optional; when present the portrait and name
 // link to the person's profile page and a "View Profile" link follows the bio.
-function personCard({ name, role, bio, stagger, profile, homeShort }) {
-  const photo = personPhoto(name, 'person-portrait-photo');
+function personCard({ name, role, bio, stagger, profile, homeShort, portraitAlt }) {
+  // With a profile link, the portrait is a second link to the same page, so its
+  // alt text (the link text) differs from the name link's text.
+  const photo = personPhoto(name, 'person-portrait-photo', '400px', false, profile && portraitAlt ? portraitAlt : name);
   const portraitInner = photo ? photo : `<span>${escapeHtml(name)}</span>`;
   const portraitClass = photo ? 'person-portrait' : 'person-portrait person-portrait-placeholder';
   const portrait = `<div class="${portraitClass}">${portraitInner}</div>`;
   return `<div class="person" style="--stagger:${stagger}px">
-        ${profile ? `<a href="${profile.href}" class="person-link" tabindex="-1" aria-hidden="true">${portrait}<span class="visually-hidden">${escapeHtml(name)}</span></a>` : portrait}
+        ${profile ? `<a href="${profile.href}" class="person-link" tabindex="-1" aria-hidden="true">${portrait}</a>` : portrait}
         <div class="person-name">${profile ? `<a href="${profile.href}" class="person-name-link">${escapeHtml(name)}</a>` : escapeHtml(name)}</div>
         <div class="person-role">${escapeHtml(role)}</div>
         ${bioBlock('person-bio', bio, homeShort)}${profile ? `\n        <a href="${profile.href}" class="person-more">${profile.label}<span class="visually-hidden">: ${escapeHtml(name)}</span></a>` : ''}

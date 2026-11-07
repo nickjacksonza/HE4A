@@ -18,7 +18,7 @@ const COPY = {
     hero: {
       eyebrow: 'Onward. Together.',
       title: 'Equitable healthcare, built with communities',
-      text: 'We’re a global collective of public health leaders. You already know what your communities need. We help you build the leadership, systems and teams to deliver it.',
+      text: 'We’re a global collective of public health leaders. You already know what your communities need. We help you build the leadership, systems and teams to deliver equitable healthcare.',
       ctaPrimary: 'Start a Conversation',
       ctaSecondary: 'See Our Services'
     },
@@ -35,7 +35,7 @@ const COPY = {
       eyebrow: 'What We Do',
       heading: 'Three ways we can support your work',
       subtext: 'Every engagement is built around what your team needs most, and built so you can keep it running once we’re gone.',
-      cta: 'Work with us',
+      cta: 'Request support',
       cards: [
         { heading: 'Non-Profit Leadership', desc: 'Board governance and executive coaching for the people holding equity work together.', tags: ['Board Governance', 'Executive Coaching'] },
         { heading: 'Organizational Development', desc: 'Program oversight, communications, policy, grant writing and financial leadership that keep your mission funded.', link: 'Explore →' },
@@ -98,7 +98,7 @@ const COPY = {
       eyebrow: 'Ce que Nous Faisons',
       heading: 'Trois façons de soutenir votre travail',
       subtext: "Chaque intervention est bâtie selon les besoins prioritaires de votre équipe, et bâtie pour que vous puissiez la poursuivre une fois que nous sommes partis.",
-      cta: 'Travailler avec nous',
+      cta: 'Demander un accompagnement',
       cards: [
         { heading: 'Direction Associative', desc: 'Gouvernance du conseil et coaching de direction pour celles et ceux qui portent le travail sur l’équité.', tags: ['Gouvernance du Conseil', 'Coaching de Direction'] },
         { heading: 'Développement Organisationnel', desc: 'Supervision de programmes, communication, politiques publiques, rédaction de subventions et direction financière qui maintiennent le financement de votre mission.', link: 'Découvrir →' },
@@ -161,7 +161,7 @@ const COPY = {
       eyebrow: 'Lo Que Hacemos',
       heading: 'Tres formas de apoyar tu trabajo',
       subtext: 'Cada intervención se construye según lo que tu equipo más necesita, y se construye para que siga funcionando cuando ya no estemos.',
-      cta: 'Trabaja con nosotros',
+      cta: 'Solicita apoyo',
       cards: [
         { heading: 'Liderazgo sin Fines de Lucro', desc: 'Gobernanza de la junta y coaching ejecutivo para quienes sostienen el trabajo de equidad.', tags: ['Gobernanza de la Junta', 'Coaching Ejecutivo'] },
         { heading: 'Desarrollo Organizacional', desc: 'Supervisión de programas, comunicaciones, política pública, redacción de propuestas y liderazgo financiero que mantienen financiada tu misión.', link: 'Explorar →' },
@@ -224,7 +224,7 @@ const COPY = {
       eyebrow: 'O Que Fazemos',
       heading: 'Três formas de apoiar seu trabalho',
       subtext: 'Cada atuação é construída em torno do que sua equipe mais precisa, e construída para continuar funcionando depois que sairmos.',
-      cta: 'Trabalhe conosco',
+      cta: 'Solicite apoio',
       cards: [
         { heading: 'Liderança Sem Fins Lucrativos', desc: 'Governança do conselho e coaching executivo para quem sustenta o trabalho de equidade.', tags: ['Governança do Conselho', 'Coaching Executivo'] },
         { heading: 'Desenvolvimento Organizacional', desc: 'Supervisão de programas, comunicação, política pública, redação de propostas e liderança financeira que mantêm sua missão financiada.', link: 'Explorar →' },
@@ -318,28 +318,29 @@ function main(locale) {
       <div class="service-card service-card--featured">
         ${picture({ name: 'whiteboard-session', widths: [400, 640, 960, 1200], sizes: '(max-width: 720px) 100vw, 50vw', alt: alts.whiteboard, imgClass: 'service-media' })}
         <div class="service-body">
-          <div class="service-heading"><a href="${href(locale, 'non-profit-leadership.html')}" class="service-card-link">${t.services.cards[0].heading}</a></div>
+          <div class="service-heading">${t.services.cards[0].heading}</div>
           <p class="service-desc">${t.services.cards[0].desc}</p>
           <div class="service-tags">
             <span class="tag-soft">${t.services.cards[0].tags[0]}</span>
             <span class="tag-soft">${t.services.cards[0].tags[1]}</span>
           </div>
+          <a href="${href(locale, 'non-profit-leadership.html')}" class="service-link service-card-link">${t.services.cards[1].link}<span class="visually-hidden"> ${t.services.cards[0].heading}</span></a>
         </div>
       </div>
       <div class="service-card service-card--compact">
         ${picture({ name: 'pair-working', widths: [400, 640, 960, 1280, 1920], sizes: '(max-width: 720px) 100vw, 26vw', alt: alts.laptop, imgClass: 'service-media' })}
         <div class="service-body">
-          <div class="service-heading"><a href="${href(locale, 'organizational-development.html')}" class="service-card-link">${t.services.cards[1].heading}</a></div>
+          <div class="service-heading">${t.services.cards[1].heading}</div>
           <p class="service-desc">${t.services.cards[1].desc}</p>
-          <div class="service-link" aria-hidden="true">${t.services.cards[1].link}</div>
+          <a href="${href(locale, 'organizational-development.html')}" class="service-link service-card-link">${t.services.cards[1].link}<span class="visually-hidden"> ${t.services.cards[1].heading}</span></a>
         </div>
       </div>
       <div class="service-card service-card--compact">
         ${picture({ name: 'team-meeting', widths: [400, 640, 960, 1280, 1920], sizes: '(max-width: 720px) 100vw, 26vw', alt: alts.meeting, imgClass: 'service-media' })}
         <div class="service-body">
-          <div class="service-heading"><a href="${href(locale, 'trainings.html')}" class="service-card-link">${t.services.cards[2].heading}</a></div>
+          <div class="service-heading">${t.services.cards[2].heading}</div>
           <p class="service-desc">${t.services.cards[2].desc}</p>
-          <div class="service-link" aria-hidden="true">${t.services.cards[2].link}</div>
+          <a href="${href(locale, 'trainings.html')}" class="service-link service-card-link">${t.services.cards[1].link}<span class="visually-hidden"> ${t.services.cards[2].heading}</span></a>
         </div>
       </div>
     </div>

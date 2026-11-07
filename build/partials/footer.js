@@ -3,6 +3,16 @@ const { NAV_LABELS } = require('../content/nav');
 const shared = require('../content/shared');
 const { href, asset } = require('../helpers');
 
+// Footer link text. The same pages are linked from the header menu, so these
+// describe the page instead of repeating its menu label. Every link text then
+// appears once on a page.
+const FOOTER_LINKS = {
+  en: { nonProfitLeadership: 'Board governance and coaching', organizationalDevelopment: 'Programs, policy and grants', trainings: 'Racial equity and LGBTQ+ training', publicSpeaking: 'Keynotes and moderation', recruitment: 'Executive search and hiring', aboutUs: 'Meet the collective', contact: 'Send us a message' },
+  fr: { nonProfitLeadership: 'Gouvernance et coaching', organizationalDevelopment: 'Programmes, politiques et subventions', trainings: 'Formation en équité raciale et LGBTQ+', publicSpeaking: 'Conférences et modération', recruitment: 'Recherche de cadres et recrutement', aboutUs: 'Rencontrer le collectif', contact: 'Envoyez-nous un message' },
+  es: { nonProfitLeadership: 'Gobernanza y coaching', organizationalDevelopment: 'Programas, políticas y subvenciones', trainings: 'Formación en equidad racial y LGBTQ+', publicSpeaking: 'Conferencias y moderación', recruitment: 'Búsqueda de ejecutivos y contratación', aboutUs: 'Conoce al colectivo', contact: 'Envíanos un mensaje' },
+  pt: { nonProfitLeadership: 'Governança e coaching', organizationalDevelopment: 'Programas, políticas e financiamentos', trainings: 'Treinamento em equidade racial e LGBTQ+', publicSpeaking: 'Palestras e moderação', recruitment: 'Busca de executivos e contratação', aboutUs: 'Conheça o coletivo', contact: 'Envie-nos uma mensagem' }
+};
+
 const FOOTER_COPY = {
   en: { services: 'Services', organization: 'Organization', businessHours: 'Business Hours', availableIn: 'Available in', contactCta: 'Contact Us →', blurb: 'A global health equity collective working with the communities healthcare has left out.' },
   fr: { services: 'Services', organization: 'Organisation', businessHours: 'Heures d’Ouverture', availableIn: 'Disponible en', contactCta: 'Contactez-Nous →', blurb: 'Un collectif mondial pour l’équité en santé, travaillant avec les communautés que le système de santé a laissées de côté.' },
@@ -45,7 +55,7 @@ function shareLinks(locale, page) {
 
 function footer(locale, page) {
   const f = FOOTER_COPY[locale];
-  const labels = NAV_LABELS[locale];
+  const text = FOOTER_LINKS[locale];
   const officesLine = site.offices.map((o) => `${o.city}, ${o.country}`).join('<br>');
   const hours = site.hours[locale];
 
@@ -61,16 +71,16 @@ function footer(locale, page) {
     </div>
     <div class="footer-col">
       <div class="footer-heading">${f.services}</div>
-      <a href="${href(locale, 'non-profit-leadership.html')}" class="footer-link">${labels.nonProfitLeadership}</a>
-      <a href="${href(locale, 'organizational-development.html')}" class="footer-link">${labels.organizationalDevelopment}</a>
-      <a href="${href(locale, 'trainings.html')}" class="footer-link">${labels.trainings}</a>
-      <a href="${href(locale, 'public-speaking.html')}" class="footer-link">${labels.publicSpeaking}</a>
-      <a href="${href(locale, 'recruitment.html')}" class="footer-link">${labels.recruitment}</a>
+      <a href="${href(locale, 'non-profit-leadership.html')}" class="footer-link">${text.nonProfitLeadership}</a>
+      <a href="${href(locale, 'organizational-development.html')}" class="footer-link">${text.organizationalDevelopment}</a>
+      <a href="${href(locale, 'trainings.html')}" class="footer-link">${text.trainings}</a>
+      <a href="${href(locale, 'public-speaking.html')}" class="footer-link">${text.publicSpeaking}</a>
+      <a href="${href(locale, 'recruitment.html')}" class="footer-link">${text.recruitment}</a>
     </div>
     <div class="footer-col">
       <div class="footer-heading">${f.organization}</div>
-      <a href="${href(locale, 'about-us.html')}" class="footer-link">${labels.aboutUs}</a>
-      <a href="${href(locale, 'contact.html')}" class="footer-link">${shared.contactLabel[locale]}</a>
+      <a href="${href(locale, 'about-us.html')}" class="footer-link">${text.aboutUs}</a>
+      <a href="${href(locale, 'contact.html')}" class="footer-link">${text.contact}</a>
       <a href="${href(locale, 'accessibility.html')}" class="footer-link">${shared.accessibilityLabel[locale]}</a>
       <div class="footer-text">${officesLine}</div>
       <a href="mailto:${site.email}" class="footer-link" style="margin-top:6px">${site.email}</a>

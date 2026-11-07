@@ -1,4 +1,5 @@
 const { NAV_STRUCTURE, NAV_LABELS } = require('../content/nav');
+const shared = require('../content/shared');
 const locales = require('../content/locales');
 const { href, asset } = require('../helpers');
 const site = require('../content/site');
@@ -16,26 +17,18 @@ function langBar(currentLocale, currentOutputFile) {
     <div class="lang-buttons">
 ${buttons}
     </div>
-    <a href="${href(currentLocale, 'contact.html')}" class="lang-bar-cta">${NAV_LABELS[currentLocale].workWithUs}</a>
+    <a href="${href(currentLocale, 'contact.html')}" class="lang-bar-cta">${shared.contactLabel[currentLocale]}</a>
   </div>`;
 }
 
-// Language, contact and social links shown at the bottom of the mobile menu
-// (hidden on desktop, where the lang bar above the header covers language).
-function navExtras(currentLocale, currentOutputFile) {
-  const langs = locales.map((locale) => (locale.code === currentLocale
-    ? `<span class="nav-lang-chip is-active" aria-current="true">${locale.code.toUpperCase()}</span>`
-    : `<a href="${href(locale.code, currentOutputFile)}" class="nav-lang-chip" title="${locale.endonym}" lang="${locale.hreflang}">${locale.code.toUpperCase()}</a>`)).join('\n        ');
+// Social links shown at the bottom of the mobile menu (hidden on desktop). The
+// language bar above the header stays on screen at every width, and the footer
+// has the email and phone, so neither is repeated here: each link text appears
+// once per page.
+function navExtras() {
   const social = [['Facebook', site.social.facebook], ['Instagram', site.social.instagram], ['LinkedIn', site.social.linkedin], ['Twitter', site.social.twitter]]
     .map(([label, url]) => `<a href="${url}" class="nav-extras-link" rel="noopener">${label}</a>`).join('\n        ');
   return `      <div class="nav-extras">
-        <div class="nav-extras-row">
-        ${langs}
-        </div>
-        <div class="nav-extras-row">
-          <a href="mailto:${site.email}" class="nav-extras-link">${site.email}</a>
-          <a href="tel:${site.phone.replace(/\s+/g, '')}" class="nav-extras-link">${site.phone}</a>
-        </div>
         <div class="nav-extras-row">
         ${social}
         </div>
@@ -104,7 +97,7 @@ ${langBar(locale, currentOutputFile)}
     <nav class="nav" id="primary-nav">
 ${navMarkup(locale, activeNavId)}
       <a href="${href(locale, 'contact.html')}" class="btn btn-primary btn-sm nav-cta">${NAV_LABELS[locale].workWithUs}</a>
-${navExtras(locale, currentOutputFile)}
+${navExtras()}
     </nav>
   </header>
 </div>`;
