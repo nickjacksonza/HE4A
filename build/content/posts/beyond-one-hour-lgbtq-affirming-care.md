@@ -59,7 +59,7 @@ Changing a system takes years, and it takes people who stay. GLMA: Health Profes
 3. **Weeks 7 to 10:** Run the training, with separate sessions for staff and for leaders.
 4. **Weeks 11 to 13:** Check in. What changed? What did staff say they still don't know? Name an owner and a date for each gap.
 
-Our [equity trainings](/trainings.html) include LGBTQ+ equity training for healthcare, built around the people in the room and ending with written commitments and a 60-day check-in. If you'd like help with the assessment or the plan, [start a conversation](/contact.html).
+Our [LGBTQ+ equity training for healthcare](/trainings.html) is built around the people in the room and ending with written commitments and a 60-day check-in. If you'd like help with the assessment or the plan, [start a conversation](/contact.html).
 
 Onward. Together.
 
