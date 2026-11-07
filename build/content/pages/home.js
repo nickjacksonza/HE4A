@@ -1,4 +1,4 @@
-const { picture, href, personCard } = require('../../helpers');
+const { picture, href, personCard, sortPeople } = require('../../helpers');
 const site = require('../site');
 
 // META: locale-independent structural data (proper nouns + layout constants).
@@ -315,33 +315,33 @@ function main(locale) {
       <a href="${href(locale, 'contact.html')}" class="btn btn-outline-dark">${t.services.cta}</a>
     </div>
     <div class="services-grid">
-      <a href="${href(locale, 'non-profit-leadership.html')}" class="service-card service-card--featured">
+      <div class="service-card service-card--featured">
         ${picture({ name: 'whiteboard-session', widths: [400, 640, 960, 1200], sizes: '(max-width: 720px) 100vw, 50vw', alt: alts.whiteboard, imgClass: 'service-media' })}
         <div class="service-body">
-          <div class="service-heading">${t.services.cards[0].heading}</div>
+          <div class="service-heading"><a href="${href(locale, 'non-profit-leadership.html')}" class="service-card-link">${t.services.cards[0].heading}</a></div>
           <p class="service-desc">${t.services.cards[0].desc}</p>
           <div class="service-tags">
             <span class="tag-soft">${t.services.cards[0].tags[0]}</span>
             <span class="tag-soft">${t.services.cards[0].tags[1]}</span>
           </div>
         </div>
-      </a>
-      <a href="${href(locale, 'organizational-development.html')}" class="service-card service-card--compact">
+      </div>
+      <div class="service-card service-card--compact">
         ${picture({ name: 'pair-working', widths: [400, 640, 960, 1280, 1920], sizes: '(max-width: 720px) 100vw, 26vw', alt: alts.laptop, imgClass: 'service-media' })}
         <div class="service-body">
-          <div class="service-heading">${t.services.cards[1].heading}</div>
+          <div class="service-heading"><a href="${href(locale, 'organizational-development.html')}" class="service-card-link">${t.services.cards[1].heading}</a></div>
           <p class="service-desc">${t.services.cards[1].desc}</p>
-          <div class="service-link">${t.services.cards[1].link}</div>
+          <div class="service-link" aria-hidden="true">${t.services.cards[1].link}</div>
         </div>
-      </a>
-      <a href="${href(locale, 'trainings.html')}" class="service-card service-card--compact">
+      </div>
+      <div class="service-card service-card--compact">
         ${picture({ name: 'team-meeting', widths: [400, 640, 960, 1280, 1920], sizes: '(max-width: 720px) 100vw, 26vw', alt: alts.meeting, imgClass: 'service-media' })}
         <div class="service-body">
-          <div class="service-heading">${t.services.cards[2].heading}</div>
+          <div class="service-heading"><a href="${href(locale, 'trainings.html')}" class="service-card-link">${t.services.cards[2].heading}</a></div>
           <p class="service-desc">${t.services.cards[2].desc}</p>
-          <div class="service-link">${t.services.cards[2].link}</div>
+          <div class="service-link" aria-hidden="true">${t.services.cards[2].link}</div>
         </div>
-      </a>
+      </div>
     </div>
   </div>
 </section>
@@ -371,7 +371,7 @@ function main(locale) {
       <a href="${href(locale, 'about-us.html')}" class="btn btn-outline-dark">${t.collective.cta}</a>
     </div>
     <div class="auto-grid" style="--min:190px">
-      ${PEOPLE_META.map((p, i) => personCard({ name: p.name, role: p.place, bio: t.collective.bios[i], stagger: p.stagger })).join('\n      ')}
+      ${sortPeople(PEOPLE_META.map((p, i) => ({ name: p.name, role: p.place, bio: t.collective.bios[i], stagger: p.stagger })), (p) => p.name).map((card) => personCard(card)).join('\n      ')}
     </div>
   </div>
 </section>
@@ -387,14 +387,17 @@ function main(locale) {
 
 module.exports = {
   slug: 'home',
+  people: PEOPLE_META.map((p) => p.name),
   outputFile: 'index.html',
   activeNavId: null,
   meta: {
+    // About 520-570px wide in a search result (the limit is about 580px), and it
+    // carries the words of the page's H1.
     title: {
-      en: 'Health Equity 4 All',
-      fr: 'Health Equity 4 All',
-      es: 'Health Equity 4 All',
-      pt: 'Health Equity 4 All'
+      en: 'Health Equity 4 All: Equitable Healthcare Built With Communities',
+      fr: 'Health Equity 4 All | Équité en santé avec les communautés',
+      es: 'Health Equity 4 All | Salud equitativa con las comunidades',
+      pt: 'Health Equity 4 All | Saúde equitativa com as comunidades'
     },
     description: {
       en: 'A global collective of public health leaders helping organizations build the leadership, systems and teams their communities need.',

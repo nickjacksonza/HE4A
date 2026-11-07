@@ -10,7 +10,40 @@ const FOOTER_COPY = {
   pt: { services: 'Serviços', organization: 'Organização', businessHours: 'Horário de Atendimento', availableIn: 'Disponível em', contactCta: 'Fale Conosco →', blurb: 'Um coletivo global pela equidade em saúde, trabalhando com as comunidades que o sistema de saúde deixou de lado.' }
 };
 
-function footer(locale) {
+// Plain share links: no scripts, no trackers. The visible text is just the
+// network name; the hidden text makes each link's name unique and tells
+// screen reader users that it opens a new tab.
+const SHARE_COPY = {
+  en: { label: 'Share this page', on: 'Share on', byEmail: 'Share by email', email: 'Email', newTab: '(opens in a new tab)' },
+  fr: { label: 'Partager cette page', on: 'Partager sur', byEmail: 'Partager par courriel', email: 'Courriel', newTab: '(s’ouvre dans un nouvel onglet)' },
+  es: { label: 'Compartir esta página', on: 'Compartir en', byEmail: 'Compartir por correo', email: 'Correo', newTab: '(se abre en una pestaña nueva)' },
+  pt: { label: 'Compartilhar esta página', on: 'Compartilhar em', byEmail: 'Compartilhar por e-mail', email: 'E-mail', newTab: '(abre em uma nova guia)' }
+};
+
+function shareLinks(locale, page) {
+  const c = SHARE_COPY[locale];
+  const title = page.title.replace(/&amp;/g, '&');
+  const u = encodeURIComponent(page.url);
+  const t = encodeURIComponent(title);
+  const both = encodeURIComponent(`${title} ${page.url}`);
+  const networks = [
+    ['LinkedIn', `https://www.linkedin.com/sharing/share-offsite/?url=${u}`],
+    ['Facebook', `https://www.facebook.com/sharer/sharer.php?u=${u}`],
+    ['X', `https://x.com/intent/post?url=${u}&text=${t}`],
+    ['WhatsApp', `https://wa.me/?text=${both}`],
+    ['Bluesky', `https://bsky.app/intent/compose?text=${both}`]
+  ];
+  const items = networks.map(([name, url]) => `<li><a href="${url}" class="share-link" target="_blank" rel="noopener noreferrer"><span class="visually-hidden">${c.on} </span>${name}<span class="visually-hidden"> ${c.newTab}</span></a></li>`);
+  items.push(`<li><a href="mailto:?subject=${t}&amp;body=${u}" class="share-link"><span class="visually-hidden">${c.byEmail}: </span>${c.email}</a></li>`);
+  return `<div class="footer-share">
+    <span class="footer-share-label" id="share-label">${c.label}</span>
+    <ul class="footer-share-list" aria-labelledby="share-label">
+      ${items.join('\n      ')}
+    </ul>
+  </div>`;
+}
+
+function footer(locale, page) {
   const f = FOOTER_COPY[locale];
   const labels = NAV_LABELS[locale];
   const officesLine = site.offices.map((o) => `${o.city}, ${o.country}`).join('<br>');
@@ -50,6 +83,7 @@ function footer(locale) {
       <a href="${href(locale, 'contact.html')}" class="footer-cta">${f.contactCta}</a>
     </div>
   </div>
+  ${shareLinks(locale, page)}
   <div class="footer-bottom">
     <span>© ${site.copyrightYear} ${site.legalName}</span>
     <span>${site.siteName}</span>

@@ -260,11 +260,11 @@ ${panels}
     <h2 class="section-heading">${shared.whoLeadsThisWork[locale]}</h2>
     <p class="section-subtext" style="margin-bottom:var(--space-7)">${t.team.subtext}</p>
     <div class="auto-grid" style="--min:380px">
-      ${teamCard({ name: TEAM_META[0].name, role: t.team.role1, bio: t.team.bio1 }, locale)}
       ${teamCard({ name: TEAM_META[1].name, role: t.team.role2, bio: t.team.bio2 }, locale)}
-      ${teamCard({ name: TEAM_META[2].name, role: t.team.role3, bio: t.team.bio3 }, locale)}
       ${teamCard({ name: people.johnHanna.name, role: people.johnHanna.teamRole[locale], bio: people.johnHanna.bio[locale], homeShort: homeShortFor(people.johnHanna, locale) }, locale)}
+      ${teamCard({ name: TEAM_META[0].name, role: t.team.role1, bio: t.team.bio1 }, locale)}
       ${teamCard({ name: people.robertMiller.name, role: people.robertMiller.teamRole[locale], bio: people.robertMiller.bio[locale], homeShort: homeShortFor(people.robertMiller, locale) }, locale)}
+      ${teamCard({ name: TEAM_META[2].name, role: t.team.role3, bio: t.team.bio3 }, locale)}
     </div>
   </div>
 </section>
@@ -289,9 +289,13 @@ ${testimonialsSection(locale)}
 
 module.exports = {
   slug: 'trainings',
+  service: true,
+  faqs: (locale) => COPY[locale].faqs,
+  people: ['Diego Calixto', people.johnHanna.name, 'Lauren Miller', people.robertMiller.name, 'Lucy Wanjiku Njenga'],
   outputFile: 'trainings.html',
   activeNavId: 'trainings',
   meta: {
+    seoTitle: { en: 'Equity Trainings: Racial Equity, LGBTQ+ &amp; Health Equity Training' },
     title: {
       en: 'Equity Trainings',
       fr: 'Formations Équité',
@@ -299,7 +303,7 @@ module.exports = {
       pt: 'Capacitações em Equidade'
     },
     description: {
-      en: 'Racial equity, LGBTQ+ equity and social determinants of health, taught so your team can use it on Monday. Every session ends with commitments the team follows up on.',
+      en: 'Racial equity, LGBTQ+ equity and social determinants of health, taught so your team can use it on Monday. Every session ends with follow-up commitments.',
       fr: 'Équité raciale, équité LGBTQ+ et déterminants sociaux de la santé, enseignés pour que votre équipe s’en serve dès lundi. Chaque séance se termine par des engagements suivis.',
       es: 'Equidad racial, equidad LGBTQ+ y determinantes sociales de la salud, enseñados para que tu equipo los use el lunes. Cada sesión termina con compromisos que el equipo da seguimiento.',
       pt: 'Equidade racial, equidade LGBTQ+ e determinantes sociais da saúde, ensinados para sua equipe usar na segunda-feira. Cada sessão termina com compromissos acompanhados pela equipe.'

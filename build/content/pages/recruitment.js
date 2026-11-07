@@ -28,7 +28,7 @@ const COPY = {
       heading: 'Meet Who Leads Your Search',
       bio: 'Ace Robinson has spent two decades building the teams behind HIV, mpox and public health programs. He serves as Acting Director of Duke University’s Sexual & Gender Minority Wellness program, co-chairs the Federal AIDS Policy Partnership, sits on the UCLA CHIPTS steering committee, and chairs the Brown University Advisory Council to Eliminate Anti-Black Racism. His commentary on HIV policy and leadership appears regularly in TheBody and TheBodyPro.',
       quoteText: 'Building an exceptional team requires strategy, consistency, and dedication to find the best candidates, get them through the door, and ensure they stay.',
-      linkedin: 'LinkedIn',
+      linkedin: 'Ace on LinkedIn',
       writing: 'His Writing on TheBody',
       listen: 'Hear Him Speak'
     },
@@ -73,7 +73,7 @@ const COPY = {
       heading: 'Découvrez Qui Dirige Votre Recherche',
       bio: 'Ace Robinson constitue depuis vingt ans les équipes derrière les programmes de lutte contre le VIH, le mpox et la santé publique. Il est directeur par intérim du programme de bien-être des minorités sexuelles et de genre de l’Université Duke, co-préside le Federal AIDS Policy Partnership, siège au comité directeur de l’UCLA CHIPTS et préside le Brown University Advisory Council to Eliminate Anti-Black Racism. Ses analyses sur les politiques et le leadership en matière de VIH paraissent régulièrement dans TheBody et TheBodyPro.',
       quoteText: 'Bâtir une équipe exceptionnelle exige de la stratégie, de la constance et de la détermination : trouver les meilleurs candidats, les faire entrer, et faire en sorte qu’ils restent.',
-      linkedin: 'LinkedIn',
+      linkedin: 'Ace sur LinkedIn',
       writing: 'Ses Écrits sur TheBody',
       listen: 'Écoutez-le'
     },
@@ -118,7 +118,7 @@ const COPY = {
       heading: 'Conoce Quién Lidera tu Búsqueda',
       bio: 'Ace Robinson lleva dos décadas formando los equipos detrás de programas de VIH, mpox y salud pública. Es Director Interino del programa de bienestar de minorías sexuales y de género de la Universidad Duke, copreside la Federal AIDS Policy Partnership, integra el comité directivo de UCLA CHIPTS y preside el Brown University Advisory Council to Eliminate Anti-Black Racism. Sus análisis sobre política de VIH y liderazgo aparecen regularmente en TheBody y TheBodyPro.',
       quoteText: 'Construir un equipo excepcional exige estrategia, constancia y dedicación: encontrar a los mejores candidatos, lograr que entren por la puerta y asegurar que se queden.',
-      linkedin: 'LinkedIn',
+      linkedin: 'Ace en LinkedIn',
       writing: 'Sus Artículos en TheBody',
       listen: 'Escúchalo'
     },
@@ -163,7 +163,7 @@ const COPY = {
       heading: 'Conheça Quem Lidera Sua Busca',
       bio: 'Ace Robinson passou duas décadas formando as equipes por trás de programas de HIV, mpox e saúde pública. É Diretor Interino do programa de bem-estar de minorias sexuais e de gênero da Universidade Duke, copreside a Federal AIDS Policy Partnership, integra o comitê diretor da UCLA CHIPTS e preside o Brown University Advisory Council to Eliminate Anti-Black Racism. Seus textos sobre política de HIV e liderança são publicados regularmente na TheBody e na TheBodyPro.',
       quoteText: 'Construir uma equipe excepcional exige estratégia, consistência e dedicação: encontrar os melhores candidatos, fazê-los entrar pela porta e garantir que fiquem.',
-      linkedin: 'LinkedIn',
+      linkedin: 'Ace no LinkedIn',
       writing: 'Seus Textos na TheBody',
       listen: 'Ouça-o'
     },
@@ -300,9 +300,13 @@ ${testimonialsSection(locale)}
 
 module.exports = {
   slug: 'recruitment',
+  service: true,
+  faqs: (locale) => COPY[locale].faqs,
+  people: [people.leandroMaldonado.name],
   outputFile: 'recruitment.html',
   activeNavId: 'recruitment',
   meta: {
+    seoTitle: { en: 'Healthcare Recruitment: Executive Search &amp; Frontline Hiring' },
     title: {
       en: 'Healthcare Recruitment',
       fr: 'Recrutement en Santé',
@@ -310,7 +314,7 @@ module.exports = {
       pt: 'Recrutamento em Saúde'
     },
     description: {
-      en: 'Executive search and frontline hiring for healthcare organizations, from Chief Medical Officer to front desk. We handle the heavy lifting so you choose from candidates who have bought into your mission.',
+      en: 'Executive search and frontline hiring for healthcare organizations, from Chief Medical Officer to front desk. Choose from candidates who believe in your mission.',
       fr: 'Recherche de cadres et recrutement de terrain pour les organisations de santé, du directeur médical à l’accueil. Nous nous chargeons du gros du travail pour que vous choisissiez parmi des candidats acquis à votre mission.',
       es: 'Búsqueda de ejecutivos y contratación de primera línea para organizaciones de salud, del director médico a la recepción. Hacemos el trabajo pesado para que elijas entre candidatos comprometidos con tu misión.',
       pt: 'Busca de executivos e contratação de linha de frente para organizações de saúde, do diretor médico à recepção. Fazemos o trabalho pesado para que você escolha entre candidatos comprometidos com sua missão.'

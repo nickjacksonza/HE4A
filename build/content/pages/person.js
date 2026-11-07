@@ -129,7 +129,7 @@ function makePage(slug) {
       : `<div class="profile-portrait profile-portrait-placeholder"><span>${PORTRAIT_LABEL[locale]} — ${escapeHtml(p.name)}</span></div>`;
     const contact = contactSection(profile, t);
 
-    return `<section class="section--first band-paper">
+    return `<section class="section section--first profile-hero band-paper">
   <div class="container">
     <p class="breadcrumb breadcrumb--light"><a href="${href(locale, 'index.html')}">${shared.breadcrumbHome[locale]}</a> / <a href="${href(locale, 'about-us.html')}">${aboutUs.meta.title[locale]}</a> / ${escapeHtml(p.name)}</p>
     <div class="profile-grid">
@@ -143,7 +143,7 @@ function makePage(slug) {
   </div>
 </section>
 
-<section class="section band-paper-subtle">
+<section class="section profile-contact band-paper-subtle">
   <div class="container">
     <div class="contact-grid">
       ${formCard(locale, { intro: t.formIntro, hidden: { _subject: t.formSubject(p.name), profile: p.name } })}
@@ -154,49 +154,30 @@ function makePage(slug) {
   }
 
   const title = {};
+  const seoTitle = {};
   const description = {};
+  // Search snippets show about 155 characters, so cut at a word boundary.
+  const fit = (text, max = 158) => {
+    if (text.length <= max) return text;
+    return text.slice(0, max - 1).replace(/\s+\S*$/, '') + '…';
+  };
   for (const l of locales) {
     const p = person(l.code);
+    const role = p.role.split(' · ')[0];
     title[l.code] = p.name;
-    description[l.code] = escapeHtml(`${p.role}. ${p.bio}`);
+    if (l.code === 'en') {
+      const withBrand = `${p.name}: ${role} | ${site.siteName}`;
+      seoTitle.en = escapeHtml(withBrand.length <= 62 ? withBrand : `${p.name}: ${role}`);
+    }
+    description[l.code] = escapeHtml(fit(`${p.name}, ${role}, ${site.siteName}. ${p.bio}`));
   }
 
   const absolute = (locale, file) => `${site.baseUrl}${locale === 'en' ? '' : '/' + locale}/${file}`;
-  const jsonLd = (locale) => {
-    const p = person(locale);
-    const social = Object.values(profile.social || {}).filter(Boolean);
-    return [
-      {
-        '@context': 'https://schema.org',
-        '@type': 'ProfilePage',
-        mainEntity: {
-          '@type': 'Person',
-          name: p.name,
-          jobTitle: p.role.split(' · ')[0],
-          description: p.bio,
-          url: absolute(locale, `about-us/${slug}.html`),
-          worksFor: { '@type': 'Organization', name: site.siteName, url: site.baseUrl },
-          ...(social.length ? { sameAs: social } : {})
-        }
-      },
-      {
-        '@context': 'https://schema.org',
-        '@type': 'BreadcrumbList',
-        itemListElement: [
-          { '@type': 'ListItem', position: 1, name: shared.breadcrumbHome[locale], item: absolute(locale, 'index.html') },
-          { '@type': 'ListItem', position: 2, name: aboutUs.meta.title[locale], item: absolute(locale, 'about-us.html') },
-          { '@type': 'ListItem', position: 3, name: p.name, item: absolute(locale, `about-us/${slug}.html`) }
-        ]
-      }
-    ];
-  };
-
   return {
     slug,
     outputFile: `about-us/${slug}.html`,
     activeNavId: 'aboutUs',
-    meta: { title, description, ogImage: 'about-us' },
-    jsonLd,
+    meta: { title, seoTitle, description, ogImage: 'about-us' },
     main
   };
 }

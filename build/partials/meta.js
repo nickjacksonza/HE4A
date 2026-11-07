@@ -1,6 +1,6 @@
 const site = require('../content/site');
 const locales = require('../content/locales');
-const { asset } = require('../helpers');
+const { asset, cleanPath } = require('../helpers');
 
 // Google Tag Manager. The dataLayer is set up straight away, so nothing is lost,
 // but gtm.js itself loads on the visitor's first interaction (or about eight
@@ -30,34 +30,17 @@ const GTM_SNIPPET = `<script>
   })();
 </script>`;
 
-function organizationJsonLd() {
-  return {
-    '@context': 'https://schema.org',
-    '@type': 'Organization',
-    name: site.siteName,
-    legalName: site.legalName,
-    url: site.baseUrl,
-    logo: `${site.baseUrl}/assets/logo/mark-transparent-76.webp`,
-    sameAs: [site.social.facebook, site.social.instagram, site.social.linkedin],
-    address: site.offices.map((o) => ({
-      '@type': 'PostalAddress',
-      addressLocality: o.city,
-      addressCountry: o.country
-    }))
-  };
-}
-
 function urlFor(locale, outputFile) {
   const prefix = locale.isDefault ? '' : `/${locale.code}`;
-  return `${site.baseUrl}${prefix}/${outputFile}`;
+  return `${site.baseUrl}${prefix}/${cleanPath(outputFile)}`;
 }
 
 // pageMeta: { locale, title, description, outputFile, ogImage }
 function meta(pageMeta) {
-  const { locale, title, description, outputFile, ogImage, jsonLd = [], noindex = false } = pageMeta;
+  const { locale, title, description, outputFile, ogImage, jsonLd, noindex = false, rawTitle = false } = pageMeta;
   const url = urlFor(locale, outputFile);
   const ogImageUrl = `${site.baseUrl}/assets/og/${ogImage}.jpg`;
-  const fullTitle = title === site.siteName ? site.siteName : `${title} | ${site.siteName}`;
+  const fullTitle = rawTitle || title.includes(site.siteName) ? title : `${title} | ${site.siteName}`;
 
   const alternates = locales
     .map((l) => `<link rel="alternate" hreflang="${l.hreflang}" href="${urlFor(l, outputFile)}">`)
@@ -94,9 +77,10 @@ ${xDefault}${locale.isDefault ? `\n<link rel="alternate" type="text/markdown" hr
 <meta name="twitter:description" content="${description}">
 <meta name="twitter:image" content="${ogImageUrl}">
 
-${[organizationJsonLd(), ...jsonLd].map((d) => `<script type="application/ld+json">${JSON.stringify(d)}</script>`).join('\n')}
+<script type="application/ld+json">${JSON.stringify(jsonLd)}</script>
 
 ${GTM_SNIPPET}`;
 }
 
+meta.urlFor = urlFor;
 module.exports = meta;
