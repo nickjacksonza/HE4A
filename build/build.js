@@ -161,6 +161,34 @@ Biographies, credentials and quotes on this site belong to the people they descr
   fs.writeFileSync(path.join(DIST, 'llms.txt'), text.replace(/\n{3,}/g, '\n\n'));
 }
 
+// Old paths that should redirect to current pages. GitHub Pages can't issue
+// real 301s, but a zero-delay meta-refresh with a canonical link is treated
+// equivalently by search engines.
+const REDIRECTS = [
+  { from: '2019-awardees/index.html', to: 'index.html' }
+];
+
+function writeRedirects() {
+  for (const { from, to } of REDIRECTS) {
+    const target = `${site.baseUrl}/${cleanPath(to)}`;
+    const html = `<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="refresh" content="0;url=${target}">
+<link rel="canonical" href="${target}">
+<title>Redirecting</title>
+</head>
+<body>
+<p>This page has moved to <a href="${target}">${target}</a>.</p>
+</body>
+</html>
+`;
+    fs.mkdirSync(path.join(DIST, path.dirname(from)), { recursive: true });
+    fs.writeFileSync(path.join(DIST, from), html);
+  }
+}
+
 function writeSecurityTxt() {
   const expires = new Date();
   expires.setFullYear(expires.getFullYear() + 1);
@@ -244,6 +272,7 @@ async function build() {
   }
 
   writeRobotsAndSitemap(generatedPaths);
+  writeRedirects();
   const mdPaths = writeMarkdownPages();
   writeLlmsTxt();
   writeSecurityTxt();
