@@ -28,7 +28,13 @@ const SITE_ID = `${BASE}/#website`;
 const LANGUAGE_NAMES = ['English', 'French', 'Spanish', 'Portuguese'];
 const PHOTO_WIDTH = 700;
 
-const builtOn = new Date().toISOString().slice(0, 10);
+const builtOn = new Date().toISOString();
+
+// Bare YYYY-MM-DD dates are invalid DateTime values in structured data;
+// Google expects a full ISO 8601 datetime.
+function toDateTime(d) {
+  return /^\d{4}-\d{2}-\d{2}$/.test(d) ? `${d}T00:00:00Z` : d;
+}
 
 function localeOf(code) {
   return locales.find((l) => l.code === code);
@@ -235,8 +241,8 @@ function forPage(page, locale, pages) {
       headline: page.post.title,
       description: page.post.description,
       url,
-      datePublished: page.post.date,
-      dateModified: page.post.updated || page.post.date,
+      datePublished: toDateTime(page.post.date),
+      dateModified: toDateTime(page.post.updated || page.post.date),
       inLanguage: localeOf(locale).hreflang,
       author: { '@id': personId(page.post.author) },
       publisher: { '@id': ORG_ID },
