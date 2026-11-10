@@ -293,7 +293,7 @@ function forPage(page, locale, pages) {
         reviewBody: t.quote,
         inLanguage: localeOf(locale).hreflang,
         author: { '@type': 'Person', name: prefix ? t.name.slice(4) : t.name, ...(prefix ? { honorificPrefix: prefix } : {}), ...(t.title ? { jobTitle: t.title } : {}) },
-        itemReviewed: { '@id': `${url}#service` }
+        itemReviewed: { '@type': 'Service', '@id': `${url}#service`, name: page.meta.title[locale] }
       });
     });
   }
